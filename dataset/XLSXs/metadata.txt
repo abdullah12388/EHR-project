@@ -1,0 +1,121 @@
+User data:
+	user_id
+	first_name
+	middle_name
+	last_name
+	gender
+	country
+	state
+	city
+	strret
+	zip_code
+	phone#
+	home_phone#
+	work_phone#
+	date_of_birth
+	age
+	marital_status
+	child#
+	email_1
+	email_2
+	nationality
+	profile_picture
+	jop_name
+	jop_org_name
+	jop_location
+	ssn
+	ssn_id
+	password
+	user_type
+	create_date
+
+patient data:
+	patient_id
+	emergancy_contact
+	QR_code ÇáßæÏ ÇáÓÑí ÇáãæÌæÏ Úáì ÈØÇŞÉ ÇáãÑíÖ ÇáÇáßÊÑæäíÉ
+	Disability_status äæÚ ÇáãÑíÖ (ãÚÇŞ Çã áÇ)
+	hieght
+	wieght
+	Blood_type
+	chronic_diseases åá ÇáãÑíÖ ãÕÇÈ ÈÇãÑÇÖ ãÒãäÉ Çã áÇ
+	
+	
+
+doctor data:
+	doctor_id
+	registration_# ÑŞã ÇáÊÓÌíá
+	specialization ÇáÊÎÕÕ ÇáÑÆíÓí
+	registration_date ÊÇÑíÎ ÇáÊÓÌíá
+	licence_# ÑŞã ÇáÊÑÎíÕ
+	last_year_payment ÇÎÑ ÓäÉ ÓÏÇÏ
+	end_date ÊÇÑíÎ ÇäÊåÇÁ ÇáÊÑÎíÕ
+	specialization_type äæÚ ÊÑÎíÕ ÇáØÈíÈ(ããÇÑÓ-ÇÎÕÇÆí...)
+	university
+	work_place ÇáãßÇä ÇáĞì íÚãá İíå Çæ íãÊáßå (ãÓÊÔİì-ÚíÇÏÉ ÎÇÕÉ)
+	sub_syndicate ÇáäŞÇÈÉ ÇáİÑÚíÉ
+	general_secretary ÇáÇãíä ÇáÚÇã ÇáãĞßæÑ İì ÊÑÎíÕ ÇáØÈíÈ
+	working_till 
+	graduation_year
+	
+prescription data: ÇáÑæÔÊÉ
+	patient_id
+	disease_name ÇÓã ÇáãÑÖ
+	disease_code ßæÏ ÇáãÑÖ
+	disease_discription æÕİ ÇáãÑÖ
+	chronic_diseases ÇáÇãÑÇÖ ÇáãÒãäÉ
+	Analytics_name ÇÓã ÇáÊÍÇáíá
+	Analytics_code ßæÏ ÇáÊÍÇáíá
+	Analytics_result äÊíÌÉ ÇáÊÍÇáíá
+	rays_name ÇÓã ÇáÇÔÚÉ
+	rays_code ßæÏ ÇáÇÔÚÉ
+	rays_result äÊíÌÉ ÇáÇÔÚÉ
+	medicine_name ÇÓã ÇáÚáÇÌ 
+	medicine_code ßæÏ ÇáÚáÇÌ
+	medicine_num_0f_potions ÚÏÏ ÌÑÚÇÊ ÇáÚáÇÌ
+	medicine_num_of_pills ÚÏÏ ÇáÍÈæÈ ãä ÇáÚáÇÌ
+	doctor_signature ÊæŞíÚ ÇáØÈíÈ (ÇáßÊÑæäí)
+	submit_date
+	
+hospital data:
+	h_id
+	h_name
+	h_country
+	h_state
+	h_city
+	h_street
+	h_zipcode
+	h_phone#
+	h_type äæÚ ÇáãÓÊÔİí(ÑÚÇíÉ ÇØİÇá-ÑÚÇíÉ ãÊæÓØÉ-ÑÚÇíÉ ÍÑÌÉ)
+	h_ownership ãÇáß ÇáãÓÊÔİí(ÎÇÕ Çæ ÍßæãÉ)
+	h_emergancy_services ÎÏãÉ ÇáØæÇÑÆ
+	h_rate ÊŞíã ÇáãÓÊÔİì
+	e_mail 
+	website
+	logo
+	Internal_Medicine ÇŞÓÇã ÇáãÓÊÔİí æÇáÑŞã ÇáãæÌæÏ ÈíÏá Úáì ÚÏÏ ÇáÓÑÇíÑ İì ßá ŞÓã
+	Cardiology
+	Endocrinology
+	Hematology
+	Nephrology
+	Surgery
+	Pediatric
+	Obstetrics -Gynaecology
+	Ophthalmologist
+	Neurology
+	Ear_Nose_Throat
+	Urology
+	Dermatology
+	Hepatology
+	Radiology
+	Psychiatry
+	Dentistry
+	Forensic_medicine
+	Anatomy
+	Num_Of_Bed ÚÏÏ ÇáÓÑÇíÑ Çáßáì İì ÇáãÓÊÔİí
+	HR_username ÇáÇßæäÊ ÇáÎÇÕ ÈÇáãæÇÑÏ ÇáÈÔÑíÉ
+	HR_Password 
+	PH_username ÇáÇßæäÊ ÇáÎÇÕ ÈÇáÕíÏáÉ Çáì İì ÇáãÓÊÔİí
+	PH_password
+	Lab_username ÇáÇßæäÊ ÇáÎÇÕ ÈãÚãá ÇáãÓÊÔİí
+	Lab_password
+	Creation_date

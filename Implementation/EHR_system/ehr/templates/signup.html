@@ -10,7 +10,12 @@
 							<form method='POST' action=''>
                                 <div class="home_text">
                                     {% csrf_token %}
-                                    {{ form|crispy }}
+                                    {% for field in form %}
+										<div class="mydiv">
+											<label class="mylabel">{{ field.label }}</label>
+											{{ field }}
+										</div>
+									{% endfor %}
                                     <button type="submit" class="button home_button">Submit</button>
                                 </div>
                             </form>

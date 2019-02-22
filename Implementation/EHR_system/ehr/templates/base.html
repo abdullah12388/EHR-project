@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+{# Make modifiable head elements #}
+<head>
+    {% include "header.html" %}
+</head>
+<body>
+    <div class="super_container">
+
+    {# Navigation Menu #}
+        {% include "navbar.html" %}
+
+    {# The Document Body #}
+        {# SignUp Body #}
+            {% block login_content %}
+            {% endblock login_content %}
+        {# SignUp Body #}
+            {% block signup_content %}
+            {% endblock signup_content %}
+            </div>
+        {# Home Body #}
+            {% block home_content %}
+            {% endblock home_content %}
+    {# The Footer #}
+        {% include "footer.html" %}
+    </div>
+</body>
+</html>

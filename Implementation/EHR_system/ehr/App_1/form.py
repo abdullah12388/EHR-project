@@ -144,7 +144,7 @@ class AddUser(forms.ModelForm):
         'id': 'file1',
         'required' : 'required',
     }))
-    SSN_Picture = forms.FileField(widget = forms.ClearableFileInput(attrs={
+    SSN_Picture = forms.FileField(widget=forms.ClearableFileInput(attrs={
         'class': 'inputfile',
         'name': 'file',
         'id': 'file2',

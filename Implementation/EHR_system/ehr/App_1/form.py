@@ -30,18 +30,25 @@ class AddManager(forms.ModelForm):
 
 
 class AddTemp(forms.ModelForm):
-    first_name = forms.EmailField(widget=forms.EmailInput(attrs={
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'placeholder': 'E-mail',
-        'maxlength': 250,
-        'required': 'required',
-         }))
-    last_name = forms.EmailField(widget=forms.EmailInput(attrs={
+        'placeholder': 'Password',
+        'minlength': 5,
+        'maxlength': 7,
+        'required': 'required'
+    }))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'placeholder': 'E-mail',
-        'maxlength': 250,
+        'placeholder': 'Password',
+        'minlength': 5,
+        'maxlength': 7,
         'required': 'required',
-         }))
+        #'type': 'password'
+    }))
+    # temp_id = forms.IntegerField(widget=forms.NumberInput(attrs={
+    #     'class': 'display'
+    # }))
+
     class Meta:
         model = temp
         fields = ['first_name','last_name']

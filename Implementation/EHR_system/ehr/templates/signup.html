@@ -10,7 +10,13 @@
 							<form method='POST' action=''>
                                 <div class="home_text">
                                     {% csrf_token %}
-                                    {% for field in form %}
+                                    {% for field in form1 %}
+										<div class="mydiv">
+											<label class="mylabel">{{ field.label }}</label>
+											{{ field }}
+										</div>
+									{% endfor %}
+									{% for field in form2 %}
 										<div class="mydiv">
 											<label class="mylabel">{{ field.label }}</label>
 											{{ field }}

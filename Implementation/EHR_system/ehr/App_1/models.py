@@ -7,7 +7,7 @@ class admin(models.Model):
     password = models.CharField(max_length=255)
 
 class temp(models.Model):
-    temp= models.ForeignKey(admin)
+    temp = models.ForeignKey(admin)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
 

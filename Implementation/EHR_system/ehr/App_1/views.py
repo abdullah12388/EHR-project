@@ -17,7 +17,7 @@ def signup(request):
         form = AddManager(request.POST or None)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/test/')
+            return HttpResponseRedirect('/login/')
     else:
         form = AddManager()
     context = {

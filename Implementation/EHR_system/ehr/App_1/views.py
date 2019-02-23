@@ -26,7 +26,7 @@ def signup(request):
     return render(request, 'signup.html', context)
 
 def test(request):
-    a = admin.objects.get(pk=14)
+    a = admin.objects.get(pk=1)
     pk_list = []
     email_list = []
     for instance in admin.objects.filter(pk__gt=0):

@@ -1,14 +1,12 @@
 from django.http import HttpResponseRedirect
-<<<<<<< HEAD
+
 from django.shortcuts import render,get_object_or_404
-from App_1.form import AddManager
+
 from App_1.models import admin, patient
 
-=======
 from django.shortcuts import render
 from .form import AddManager,AddUser
 from .models import admin
->>>>>>> e4de845ec72ddcdd9c7c2d5305ae661706348ebe
 
 # Create your views here.
 def home(request):
@@ -44,11 +42,10 @@ def test(request):
     }
     return render(request, 'test.html', context)
 
-<<<<<<< HEAD
 def patientIdentity(request, patient_id):
     patientData = get_object_or_404(patient, pk=patient_id)
     return render(request, 'patientIdentity.html', {'patient':patientData})
-=======
+
 
 def patient_profile(request):
     form = AddUser()
@@ -61,4 +58,3 @@ def patient_profile(request):
 def patientHistory(request):
 
     return render(request, 'patientHistory.html', {})
->>>>>>> e4de845ec72ddcdd9c7c2d5305ae661706348ebe

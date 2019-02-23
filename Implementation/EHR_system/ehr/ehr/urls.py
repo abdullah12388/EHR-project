@@ -25,9 +25,8 @@ urlpatterns = [
     url(r'^patientProfile/', view.patient_profile, name='patient_profile'),
     url(r'^signup/', view.signup, name='signup'),
     url(r'^test/', view.test, name='test'),
-<<<<<<< HEAD
-    url(r'^patientIdentity/', view.patient,name='patientIdentity')
-=======
+    url(r'^patientIdentity/', view.patient,name='patientIdentity'),
+
     url(r'^patientHistory/', view.patientHistory, name='patientHistory'),
->>>>>>> e4de845ec72ddcdd9c7c2d5305ae661706348ebe
+
 ]

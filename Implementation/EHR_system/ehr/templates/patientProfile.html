@@ -10,22 +10,22 @@
 					<div class="col-3">
 						<div class="row">
 							<div class="text-center">
-								<img src="{% static 'images/about.jpg' %}" style="width:80%" alt="profile picture" class="img-thumbnail"/>
+								<img src="{% static 'images/user.png' %}" style="width:80%; margin: 20px 0 0 0; " alt="profile picture" class="img-thumbnail"/>
 							</div>
 						</div>
 						<div class="row">
 							{{ form.Profile_picture }}
-                            <label for="file1">Choose a file</label>
+                            <label for="Picture">Choose a file</label>
 						</div>
-						<!--<div class="row">
+						<div class="row">
 							<div class="text-center">
-								<img src="images/ssn4.jpg" style="width:80%;margin:20px 0px 0px 0px" alt="SSN" class="img-thumbnail">
+								<img src="{% static 'images/SSN.png' %}" style="width:80%;margin:20px 0px 0px 7px" alt="SSN" class="img-thumbnail">
 							</div>
 						</div>
 						<div class="row">
-							<input type="file" name="file" id="file2" class="inputfile" required/>
-							<label for="file2">Choose a file</label>
-						</div>-->
+							{{ form.SSN_Picture }}
+							<label for="file2">Upload SSN</label>
+						</div>
 					</div>
 					<div class="col-9">
 						<div class="form-row" style="margin-bottom:20px">

@@ -4,7 +4,7 @@
 <head>
     {% include "header.html" %}
 </head>
-<body>
+<div>
     <div class="super_container">
 
     {# Navigation Menu #}
@@ -17,17 +17,17 @@
         {# SignUp Body #}
             {% block signup_content %}
             {% endblock signup_content %}
-            </div>
         {# Profile body#}
             {% block patientProfile %}
             {% endblock patientProfile %}
 
+            </div>
         {# Home Body #}
             {% block home_content %}
             {% endblock home_content %}
 
     {# The Footer #}
         {% include "footer.html" %}
-
+    </div>
 </body>
 </html>

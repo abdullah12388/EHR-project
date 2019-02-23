@@ -52,7 +52,7 @@ class AddUser(forms.ModelForm):
     }))
     gender = forms.IntegerField(widget=forms.NumberInput(attrs={
         'class': 'form-control',
-        'placeholder': '1-Male 2-female',
+        'placeholder': '1-M 2-F',
         'required': 'required'
     }),min_value=1,max_value=2)
     country = forms.CharField(widget=forms.TextInput(attrs={
@@ -141,7 +141,14 @@ class AddUser(forms.ModelForm):
     Profile_picture = forms.FileField(widget=forms.ClearableFileInput(attrs={
         'class': 'inputfile',
         'name': 'file',
-        'id': 'file1'
+        'id': 'file1',
+        'required' : 'required',
+    }))
+    SSN_Picture = forms.FileField(widget = forms.ClearableFileInput(attrs={
+        'class': 'inputfile',
+        'name': 'file',
+        'id': 'file2',
+        'required': 'required'
     }))
     Job_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
@@ -176,13 +183,13 @@ class AddUser(forms.ModelForm):
     New_Password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
         'pattern': '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}',
-        'placeholder': 'New Password',
+        'placeholder': 'New Pass',
         'required': 'required'
     }))
     Confirm_Pass = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
         'pattern': '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}',
-        'placeholder': 'Confirm Password',
+        'placeholder': 'Confirm Pass',
         'required': 'required'
     }))
 
@@ -213,4 +220,4 @@ class AddUser(forms.ModelForm):
                   'Ssn',
                   'Ssn_id',
                   'New_Password',
-                  'Confirm_Pass']
+                  'SSN_Picture']

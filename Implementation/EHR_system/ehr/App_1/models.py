@@ -51,7 +51,7 @@ class user(models.Model):
     Ssn = models.CharField(max_length=100)
     Ssn_id = models.CharField(max_length=100)
     New_Password = models.CharField(max_length=100)
-    Confirm_Pass = models.CharField(max_length=100)
+    SSN_Picture = models.CharField(max_length=100)
     User_type = models.IntegerField()
     Create_date = models.DateTimeField(auto_now_add=True)
 

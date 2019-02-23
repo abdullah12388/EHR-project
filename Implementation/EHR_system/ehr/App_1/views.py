@@ -7,10 +7,8 @@ from .models import admin
 def home(request):
     return render(request, 'home.html', {})
 
-
 def login(request):
     return render(request, 'login.html', {})
-
 
 def signup(request):
     if request.method == 'POST':
@@ -38,3 +36,7 @@ def test(request):
         'email_list': email_list,
     }
     return render(request, 'test.html', context)
+
+def patientHistory(request):
+
+    return render(request, 'patientHistory.html', {})

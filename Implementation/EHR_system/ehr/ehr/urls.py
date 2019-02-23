@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^login/', view.login, name='login'),
     url(r'^signup/', view.signup, name='signup'),
     url(r'^test/', view.test, name='test'),
+    url(r'^patientHistory/', view.patientHistory, name='patientHistory'),
 ]

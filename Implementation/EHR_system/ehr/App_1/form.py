@@ -36,13 +36,12 @@ class AddTemp(forms.ModelForm):
         'maxlength': 250,
         'required': 'required',
          }))
-    last_name = forms.CharField(widget=forms.PasswordInput(attrs={
+    last_name = forms.EmailField(widget=forms.EmailInput(attrs={
         'class': 'form-control',
-        'placeholder': 'Password',
-        'minlength': 5,
-        'maxlength': 7,
-        'required': 'required'
-    }))
+        'placeholder': 'E-mail',
+        'maxlength': 250,
+        'required': 'required',
+         }))
     class Meta:
         model = temp
         fields = ['first_name','last_name']

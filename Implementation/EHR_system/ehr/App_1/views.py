@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .form import AddManager
+from .form import AddManager,AddUser
 from .models import admin
 
 # Create your views here.
@@ -36,6 +36,15 @@ def test(request):
         'email_list': email_list,
     }
     return render(request, 'test.html', context)
+
+
+def patient_profile(request):
+    form = AddUser()
+    context = {
+        'form': form
+    }
+    return render(request, 'patientProfile.html', context)
+
 
 def patientHistory(request):
 

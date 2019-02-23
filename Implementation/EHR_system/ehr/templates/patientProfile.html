@@ -1,0 +1,165 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+{% block patientProfile%}
+	<div class="container">
+		<h2 style="text-align:center;color:#32c69a;margin:20px 0px 30px 0px">Profile Information</h2>
+		<div class="jumbotron" style="background-color:rgba(18,17,17,0.66)">
+			<form method="POST" action="">
+                {% csrf_token %}
+				<div class="row">
+					<div class="col-3">
+						<div class="row">
+							<div class="text-center">
+								<img src="{% static 'images/user.png' %}" style="width:80%" alt="profile picture" class="img-thumbnail"/>
+							</div>
+						</div>
+						<div class="row">
+							{{ form.Profile_picture }}
+                            <label for="file1">Choose a file</label>
+						</div>
+						<!--<div class="row">
+							<div class="text-center">
+								<img src="images/ssn4.jpg" style="width:80%;margin:20px 0px 0px 0px" alt="SSN" class="img-thumbnail">
+							</div>
+						</div>
+						<div class="row">
+							<input type="file" name="file" id="file2" class="inputfile" required/>
+							<label for="file2">Choose a file</label>
+						</div>-->
+					</div>
+					<div class="col-9">
+						<div class="form-row" style="margin-bottom:20px">
+							<div class="col">
+								{{ form.first_name }}
+							</div>
+							<div class="col">
+								{{ form.middle_name }}
+							</div>
+							<div class="col">
+								{{ form.last_name }}
+							</div>
+						</div>
+						<div class="form-row" style="margin-bottom:20px">
+							<div class="col">
+								{{ form.country }}
+							</div>
+							<div class="col">
+								{{ form.state }}
+							</div>
+							<div class="col">
+								{{ form.city }}
+							</div>
+							<div class="col">
+								{{ form.street }}
+							</div>
+						</div>
+						<div class="form-row" style="margin-bottom:20px">
+							<div class="col">
+								{{ form.zip_code }}
+							</div>
+							<div class="col">
+								{{ form.phone_number }}
+							</div>
+							<div class="col">
+								{{ form.home_phone_number }}
+							</div>
+							<div class="col">
+								{{ form.work_phone_number }}
+							</div>
+						</div>
+						<div class="form-row" style="margin-bottom:20px">
+							<div class="col">
+								{{ form.gender }}
+							</div>
+							<div class="col">
+								{{ form.Date_of_birth }}
+							</div>
+							<div class="col">
+                                {{ form.marital_status}}
+							</div>
+							<div class="col">
+								{{ form.Child_num }}
+							</div>
+						</div>
+						<div class="form-row" style="margin-bottom:20px">
+							<div class="col">
+								{{ form.email_1 }}
+							</div>
+							<div class="col">
+								{{ form.email_2 }}
+							</div>
+						</div>
+						<div class="form-row" style="margin-bottom:20px">
+							<div class="col">
+								{{ form.Nationality }}
+							</div>
+							<div class="col">
+                                {{ form.Job_name }}
+							</div>
+							<div class="col">
+                                {{ form.Job_organization }}
+							</div>
+							<div class="col">
+                                {{ form.Jop_place }}
+							</div>
+						</div>
+						<div class="form-row" style="margin-bottom:20px">
+							<div class="col-6">
+								{{ form.Ssn }}
+							</div>
+							<div class="col">
+								{{ form.New_Password }}
+							</div>
+							<div class="col">
+								 {{ form.Confirm_Pass }}
+							</div>
+						</div>
+						<div class="form-row" style="margin-bottom:20px">
+							<div class="col">
+								<input type="text" class="form-control" pattern="[0-9]{11}" placeholder="Emergency Contact" required>
+							</div>
+							<div class="col">
+								<input type="text" class="form-control" pattern="[0-9]{2,3}" placeholder="Height /cm" required>
+							</div>
+							<div class="col">
+								<input type="text" class="form-control" pattern="[0-9]{2,3}" placeholder="Weight /kg" required>
+							</div>
+						</div>
+						<div class="form-row" style="margin-bottom:20px">
+							<div class="col">
+								<select class="custom-select" style="width:100%" required>
+									<option value="" disabled selected>Blood type</option>
+									<option value="1">A+</option>
+									<option value="2">A-</option>
+									<option value="3">B+</option>
+									<option value="4">B-</option>
+									<option value="5">AB+</option>
+									<option value="6">AB-</option>
+									<option value="7">O+</option>
+									<option value="8">O-</option>
+									<option value="9">other</option>
+								</select>
+							</div>
+							<div class="col">
+								<select class="custom-select" style="width:100%" required>
+									<option value="" disabled selected>Disabled Status</option>
+									<option value="1">Disabled</option>
+									<option value="2">Not-Disabled</option>
+								</select>
+							</div>
+							<div class="col">
+								<select class="custom-select" style="width:100%" required>
+									<option value="" disabled selected>Chronic Diseases</option>
+									<option value="1">Has</option>
+									<option value="2">Hasn't</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<input type="submit" class="form-control" style="width:20%;margin:40px auto 0px auto" value="Submit">
+			</form>
+		</div>
+	</div>
+{% endblock patientProfile%}

@@ -11,18 +11,23 @@
         {% include "navbar.html" %}
 
     {# The Document Body #}
-        {# SignUp Body #}
+        {# Login Body #}
             {% block login_content %}
             {% endblock login_content %}
         {# SignUp Body #}
             {% block signup_content %}
             {% endblock signup_content %}
             </div>
+        {# Profile body#}
+            {% block patientProfile %}
+            {% endblock patientProfile %}
+
         {# Home Body #}
             {% block home_content %}
             {% endblock home_content %}
+
     {# The Footer #}
         {% include "footer.html" %}
-    </div>
+
 </body>
 </html>

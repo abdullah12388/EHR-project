@@ -7,10 +7,8 @@ from .models import admin
 def home(request):
     return render(request, 'home.html', {})
 
-
 def login(request):
     return render(request, 'login.html', {})
-
 
 def signup(request):
     if request.method == 'POST':
@@ -26,7 +24,7 @@ def signup(request):
     return render(request, 'signup.html', context)
 
 def test(request):
-    a = admin.objects.get(pk=14)
+    a = admin.objects.get(pk=1)
     pk_list = []
     email_list = []
     for instance in admin.objects.filter(pk__gt=0):
@@ -38,3 +36,7 @@ def test(request):
         'email_list': email_list,
     }
     return render(request, 'test.html', context)
+
+def patientHistory(request):
+
+    return render(request, 'patientHistory.html', {})

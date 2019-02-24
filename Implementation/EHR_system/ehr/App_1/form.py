@@ -1,5 +1,5 @@
 from django import forms
-from .models import admin,user
+from .models import admin, temp, user
 
 
 class AddManager(forms.ModelForm):

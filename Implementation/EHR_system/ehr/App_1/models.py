@@ -8,6 +8,10 @@ class admin(models.Model):
     email = models.EmailField(max_length=255)
     password = models.CharField(max_length=255)
 
+class temp(models.Model):
+    temp = models.ForeignKey(admin)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
 
 class manager(models.Model):
     id = models.AutoField(primary_key=True)
@@ -57,7 +61,7 @@ class user(models.Model):
 
 
 class patient(models.Model):
-    Patient_id = models.ForeignKey(user)
+    Patient = models.ForeignKey(user)
     Emergency_contact = models.CharField(max_length=50)
     QR_code = models.TextField()
     Disability_status = models.BooleanField(default=False)

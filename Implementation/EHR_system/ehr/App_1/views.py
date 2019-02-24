@@ -38,7 +38,6 @@ def signup(request):
 
 
 def test(request):
-    a = admin.objects.get(pk=3)
     b = admin.objects.filter(id__iexact = 2).exists()
     if b:
         a = admin.objects.get(pk=3)

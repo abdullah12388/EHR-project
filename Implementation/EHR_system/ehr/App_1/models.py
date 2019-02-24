@@ -8,6 +8,10 @@ class admin(models.Model):
     email = models.EmailField(max_length=255)
     password = models.CharField(max_length=255)
 
+class temp(models.Model):
+    temp = models.ForeignKey(admin)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
 
 class manager(models.Model):
     id = models.AutoField(primary_key=True)

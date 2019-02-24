@@ -20,7 +20,7 @@ from App_1 import views as view
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^home/$', view.home, name='home'),
+    url(r'^$', view.home, name='home'),
     url(r'^login/$', view.login, name='login'),
     url(r'^patientProfile/', view.patient_profile, name='patient_profile'),
     url(r'^signup/', view.signup, name='signup'),

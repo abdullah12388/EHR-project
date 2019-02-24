@@ -57,7 +57,7 @@ class user(models.Model):
 
 
 class patient(models.Model):
-    Patient_id = models.ForeignKey(user)
+    Patient = models.ForeignKey(user)
     Emergency_contact = models.CharField(max_length=50)
     QR_code = models.TextField()
     Disability_status = models.BooleanField(default=False)

@@ -1,10 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .form import AddManager
-from .form import AddTemp
-from .form import AddManager,AddUser
+from .form import AddManager, AddTemp
 from .models import admin
-from .models import temp
 
 # Create your views here.
 def home(request):

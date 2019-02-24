@@ -4,23 +4,28 @@
 <head>
     {% include "header.html" %}
 </head>
-<body>
+<div>
     <div class="super_container">
 
     {# Navigation Menu #}
         {% include "navbar.html" %}
 
     {# The Document Body #}
-        {# SignUp Body #}
+        {# Login Body #}
             {% block login_content %}
             {% endblock login_content %}
         {# Login Body #}
             {% block signup_content %}
             {% endblock signup_content %}
+        {# Profile body#}
+            {% block patientProfile %}
+            {% endblock patientProfile %}
+
             </div>
         {# Home Body #}
             {% block home_content %}
             {% endblock home_content %}
+
     {# The Footer #}
         {% include "footer.html" %}
     </div>

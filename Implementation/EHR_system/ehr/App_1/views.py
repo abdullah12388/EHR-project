@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .form import AddManager
 from .form import AddTemp
+from .form import AddManager,AddUser
 from .models import admin
 from .models import temp
 
@@ -65,3 +66,11 @@ def test(request):
 
 def patientHistory(request):
     return render(request, 'patientHistory.html', {})
+
+def patient_profile(request):
+    form = AddUser()
+    context = {
+        'form': form
+    }
+    return render(request, 'patientProfile.html', context)
+

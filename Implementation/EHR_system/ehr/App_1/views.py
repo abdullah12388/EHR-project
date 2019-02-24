@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .form import AddManager, AddTemp, AddUser
 from .models import admin
-
+from django.http import JsonResponse
 # Create your views here.
 def home(request):
     return render(request, 'home.html', {})
@@ -37,6 +37,14 @@ def signup(request):
     return render(request, 'signup.html', context)
 
 
+def validate_email(request):
+    email = request.GET.get('email', None)
+    data = {
+        'is_taken' : admin.objects.filter(email__iexact = email).exists()
+    }
+    return JsonResponse(data)
+
+
 def test(request):
     b = admin.objects.filter(id__iexact = 2).exists()
     if b:
@@ -62,6 +70,7 @@ def test(request):
 
 def patientHistory(request):
     return render(request, 'patientHistory.html', {})
+
 
 def patient_profile(request):
     form = AddUser()

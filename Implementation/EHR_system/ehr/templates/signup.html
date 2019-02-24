@@ -1,6 +1,32 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load staticfiles %}
 {% block signup_content %}
+
+{% block javascript %}
+<script>
+
+$("#id_email").onkeyup(function () {
+   var email = $(this).val();
+   $.ajax({
+       url: "/ajax/validate_email/",
+       data: {
+           'email' : email
+       },
+       dataType: 'json',
+       success: function (data) {
+           if (data.is_taken) {
+               alert('This email is already used');
+               console.log("found");
+           } else {
+			   console.log("not found");
+		   }
+       }
+   });
+});
+
+</script>
+{% endblock javascript %}
 		<div class="home_container" style="top:30%">
 			<div class="container">
 				<div class="row">
@@ -30,5 +56,4 @@
 				</div>
 			</div>
 		</div>
-
 {% endblock signup_content %}

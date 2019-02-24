@@ -9,6 +9,7 @@ class AddManager(forms.ModelForm):
         'placeholder': 'E-mail',
         'maxlength': 250,
         'required': 'required',
+        'id': 'id_email'
          }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
@@ -28,26 +29,6 @@ class AddManager(forms.ModelForm):
         model = admin
         fields = ['email','password', 're_password']
 
-
-class AddTemp(forms.ModelForm):
-    first_name = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control',
-        'placeholder': 'Password',
-        'minlength': 5,
-        'maxlength': 7,
-        'required': 'required'
-    }))
-    last_name = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control',
-        'placeholder': 'Password',
-        'minlength': 5,
-        'maxlength': 7,
-        'required': 'required',
-        #'type': 'password'
-    }))
-    class Meta:
-        model = temp
-        fields = ['first_name','last_name']
 
 class AddTemp(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={

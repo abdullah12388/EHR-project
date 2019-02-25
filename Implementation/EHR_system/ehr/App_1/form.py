@@ -23,7 +23,8 @@ class AddManager(forms.ModelForm):
         'placeholder': 'Password',
         'minlength': 5,
         'maxlength': 7,
-        'required': 'required'
+        'required': 'required',
+        'id': 're_pass'
     }))
     class Meta:
         model = admin

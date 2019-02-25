@@ -1727,7 +1727,7 @@ section
 Patient Signup
 *********************************/
 .show {
-	color: darkred;
+	color: #8a2e2e;
 	display: block;
 }
 .hide {

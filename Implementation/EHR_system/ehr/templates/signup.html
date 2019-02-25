@@ -16,7 +16,10 @@
 										<div class="mydiv">
 											<label class="mylabel">{{ field.label }}</label>
 											{{ field }}
-											<p id="warn" class="hide">this email already exist</p>
+											<b id="warn" class="hide">
+												<i class="fa fa-warning" aria-hidden="true"></i>
+												email already exist
+											</b>
 										</div>
 									{% endfor %}
 									{% for field in form2 %}

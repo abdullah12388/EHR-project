@@ -1,32 +1,8 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% load staticfiles %}
+
 {% block signup_content %}
-
-{% block javascript %}
-<script>
-
-$("#id_email").onkeyup(function () {
-   var email = $(this).val();
-   $.ajax({
-       url: "/ajax/validate_email/",
-       data: {
-           'email' : email
-       },
-       dataType: 'json',
-       success: function (data) {
-           if (data.is_taken) {
-               alert('This email is already used');
-               console.log("found");
-           } else {
-			   console.log("not found");
-		   }
-       }
-   });
-});
-
-</script>
-{% endblock javascript %}
 		<div class="home_container" style="top:30%">
 			<div class="container">
 				<div class="row">
@@ -40,6 +16,7 @@ $("#id_email").onkeyup(function () {
 										<div class="mydiv">
 											<label class="mylabel">{{ field.label }}</label>
 											{{ field }}
+											<p id="warn" class="hide">this email already exist</p>
 										</div>
 									{% endfor %}
 									{% for field in form2 %}

@@ -1,9 +1,7 @@
 from django import forms
-from .models import admin, temp
-from .models import user
+from .models import *
 
 class AddManager(forms.ModelForm):
-
     email = forms.EmailField(widget=forms.EmailInput(attrs={
         'class': 'form-control',
         'placeholder': 'E-mail',
@@ -30,7 +28,6 @@ class AddManager(forms.ModelForm):
         model = admin
         fields = ['email','password', 're_password']
 
-
 class AddTemp(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
@@ -50,6 +47,35 @@ class AddTemp(forms.ModelForm):
     class Meta:
         model = temp
         fields = ['first_name','last_name']
+
+class tempRegister(forms.ModelForm):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'E-mail',
+        'maxlength': 250,
+        'required': 'required',
+        'id': 'id_email'
+    }))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Password',
+        'minlength': 8,
+        'maxlength': 100,
+        'required': 'required',
+        'id': 'pass'
+    }))
+    re_password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Password',
+        'minlength': 8,
+        'maxlength': 100,
+        'required': 'required',
+        'id': 're_pass'
+    }))
+    re_password.label = 'Repeat password'
+    class Meta:
+        model = temp_register
+        fields = ['email', 'password', 're_password']
 
 class AddUser(forms.ModelForm):
 

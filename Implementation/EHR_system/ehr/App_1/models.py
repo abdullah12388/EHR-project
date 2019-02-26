@@ -53,14 +53,14 @@ class user(models.Model):
     email_1 = models.EmailField(max_length=100)
     email_2 = models.EmailField(max_length=100)
     Nationality = models.CharField(max_length=100)
-    Profile_picture = models.CharField(max_length=100)
+    Profile_picture = models.ImageField()
     Job_name = models.CharField(max_length=100)
     Job_organization = models.CharField(max_length=100)
     Jop_place = models.CharField(max_length=100)
     Ssn = models.CharField(max_length=100)
     Ssn_id = models.CharField(max_length=100)
     New_Password = models.CharField(max_length=100)
-    SSN_Picture = models.CharField(max_length=100)
+    SSN_Picture = models.ImageField()
     User_type = models.IntegerField()
     Create_date = models.DateTimeField(auto_now_add=True)
 
@@ -68,11 +68,11 @@ class user(models.Model):
 class patient(models.Model):
     Patient = models.ForeignKey(user)
     Emergency_contact = models.CharField(max_length=50)
-    QR_code = models.TextField()
+    QR_code = models.CharField(max_length=500)
     Disability_status = models.BooleanField(default=False)
     Height = models.FloatField()
     weight = models.FloatField()
-    Blood_type = models.CharField(max_length=50)
+    Blood_type = models.CharField(max_length=500)
     Chronic_diseases = models.BooleanField(default=False)
 
 

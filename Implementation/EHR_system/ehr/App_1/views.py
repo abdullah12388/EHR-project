@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .form import AddManager, AddTemp, AddUser, tempRegister
+from .form import AddManager, AddTemp, AddUser, tempRegister, login
 from .models import admin, temp_register
 from django.http import JsonResponse
 # Create your views here.
@@ -8,8 +8,6 @@ def home(request):
     return render(request, 'home.html', {})
 
 
-def login(request):
-    return render(request, 'login.html', {})
 
 
 # def signup(request):
@@ -46,14 +44,13 @@ def temp_Register(request):
                 return HttpResponseRedirect('/signup/?a=1')
             else:
                 instance.save()
-                return HttpResponseRedirect('/signup/')
+                return HttpResponseRedirect('/login/')
     else:
         form = tempRegister()
     context = {
         'form': form
     }
     return render(request, 'signup.html', context)
-
 
 def validate_email(request):
     email = request.GET.get('email', None)
@@ -62,6 +59,31 @@ def validate_email(request):
         'is_taken' : temp_register.objects.filter(email__iexact = email).exists()
     }
     return JsonResponse(data)
+
+
+def patientLogin(request):
+    if request.method == 'POST':
+        form = login(request.POST or None)
+        if form.is_valid():
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password')
+            user_is_exist = temp_register.objects.filter(email__iexact = email).exists()
+            if user_is_exist:
+                id = temp_register.objects.get(email=email).id
+                password_db = temp_register.objects.get(email=email).password
+                if password == password_db:
+                    request.session['patient_id'] = id
+                    return HttpResponseRedirect('/')
+                else:
+                    return HttpResponseRedirect('/login/?alert=wrong_password')
+            else:
+                return HttpResponseRedirect('/login/?alert=wrong_email')
+    else:
+        form = login()
+    context = {
+        'form': form
+    }
+    return render(request, 'login.html', context)
 
 
 def test(request):

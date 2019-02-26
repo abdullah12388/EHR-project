@@ -77,6 +77,26 @@ class tempRegister(forms.ModelForm):
         model = temp_register
         fields = ['email', 'password', 're_password']
 
+class login(forms.ModelForm):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'E-mail',
+        'maxlength': 250,
+        'required': 'required',
+        'id': 'id_email'
+    }))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Password',
+        'minlength': 8,
+        'maxlength': 100,
+        'required': 'required',
+        'id': 'id_pass'
+    }))
+    class Meta:
+        model = temp_register
+        fields = ['email', 'password']
+
 class AddUser(forms.ModelForm):
 
     first_name = forms.CharField(widget=forms.TextInput(attrs={

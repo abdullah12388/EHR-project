@@ -27,6 +27,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="ehr.App_1.models.admin.objects" />
+          <option value="ehr.ehr.urls.App_1" />
         </list>
       </option>
     </inspection_tool>

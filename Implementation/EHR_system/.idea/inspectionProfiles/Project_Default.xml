@@ -18,13 +18,8 @@
           <option value="E501" />
           <option value="W29" />
           <option value="E501" />
-        </list>
-      </option>
-    </inspection_tool>
-    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="ignoredIdentifiers">
-        <list>
-          <option value="ehr.App_1.models.admin.objects" />
+          <option value="W29" />
+          <option value="E501" />
         </list>
       </option>
     </inspection_tool>

@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', view.home, name='home'),
     url(r'^login/$', view.patientLogin, name='login'),
+    url(r'^logout/$', view.patientLogout, name='logout'),
     url(r'^patientProfile/', view.patient_profile, name='patient_profile'),
     # url(r'^signup/', view.signup, name='signup'),
     url(r'^signup/', view.temp_Register, name='signup'),

@@ -11,7 +11,6 @@ def home(request):
 
 
 
-
 # def signup(request):
 #     if request.method == 'POST':
 #         form1 = AddManager(request.POST or None)
@@ -75,6 +74,8 @@ def patientLogin(request):
                 password_db = temp_register.objects.get(email=email).password
                 if password == password_db:
                     request.session['patient_id'] = id
+                    if 'patient_id' not in request.session:
+                        print('THIS IS TRUE')
                     return HttpResponseRedirect('/')
                 else:
                     return HttpResponseRedirect('/login/?alert=wrong_password')
@@ -87,6 +88,13 @@ def patientLogin(request):
     }
     return render(request, 'login.html', context)
 
+def patientLogout(request):
+    if 'patient_id' in request.session:
+        request.session.pop('patient_id')
+        print('SESSION FOUND')
+    if 'patient_id' not in request.session:
+        print('SESSION DELETED')
+    return HttpResponseRedirect('/login/')
 
 def test(request):
     b = admin.objects.filter(id__iexact = 2).exists()

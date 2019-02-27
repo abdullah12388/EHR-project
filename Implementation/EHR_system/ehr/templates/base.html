@@ -20,7 +20,9 @@
         {# Profile body#}
             {% block patientProfile %}
             {% endblock patientProfile %}
-
+        {# patientCard body#}
+            {% block patientCard %}
+            {% endblock patientCard %}
             </div>
         {# Home Body #}
             {% block home_content %}
@@ -29,5 +31,7 @@
     {# The Footer #}
         {% include "footer.html" %}
     </div>
+{% block javascript %}
+{% endblock javascript %}
 </body>
 </html>

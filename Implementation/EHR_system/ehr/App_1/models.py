@@ -8,6 +8,10 @@ class admin(models.Model):
     email = models.EmailField(max_length=255)
     password = models.CharField(max_length=255)
 
+class temp(models.Model):
+    temp = models.ForeignKey(admin)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
 
 class manager(models.Model):
     id = models.AutoField(primary_key=True)
@@ -23,6 +27,12 @@ class manager(models.Model):
     def __str__(self):
         return self.email
 
+class temp_register(models.Model):
+    id = models.AutoField(primary_key=True)
+    email = models.EmailField(max_length=255)
+    password = models.CharField(max_length=255)
+    def __str__(self):
+        return self.email
 
 class user(models.Model):
     user_id = models.AutoField(primary_key=True)
@@ -44,26 +54,26 @@ class user(models.Model):
     email_1 = models.EmailField(max_length=100)
     email_2 = models.EmailField(max_length=100)
     Nationality = models.CharField(max_length=100)
-    Profile_picture = models.CharField(max_length=100)
+    Profile_picture = models.ImageField()
     Job_name = models.CharField(max_length=100)
     Job_organization = models.CharField(max_length=100)
     Jop_place = models.CharField(max_length=100)
     Ssn = models.CharField(max_length=100)
     Ssn_id = models.CharField(max_length=100)
     New_Password = models.CharField(max_length=100)
-    SSN_Picture = models.CharField(max_length=100)
+    SSN_Picture = models.ImageField()
     User_type = models.IntegerField()
     Create_date = models.DateTimeField(auto_now_add=True)
 
 
 class patient(models.Model):
-    Patient_id = models.ForeignKey(user)
+    Patient = models.ForeignKey(user)
     Emergency_contact = models.CharField(max_length=50)
-    QR_code = models.TextField()
+    QR_code = models.CharField(max_length=500)
     Disability_status = models.BooleanField(default=False)
     Height = models.FloatField()
     weight = models.FloatField()
-    Blood_type = models.CharField(max_length=50)
+    Blood_type = models.CharField(max_length=500)
     Chronic_diseases = models.BooleanField(default=False)
 
 
@@ -256,4 +266,3 @@ class blocked_organizations(models.Model):
 class blocked_users(models.Model):
     manager_id = models.ForeignKey(manager)
     user_id = models.ForeignKey(user)
-

@@ -76,7 +76,7 @@ def patientLogin(request):
                     request.session['patient_id'] = id
                     if 'patient_id' not in request.session:
                         print('THIS IS TRUE')
-                    return HttpResponseRedirect('/')
+                    return HttpResponseRedirect('/patientProfile/')
                 else:
                     return HttpResponseRedirect('/login/?alert=wrong_password')
             else:
@@ -134,49 +134,55 @@ def patient_profile(request):
             # stop save in database
             instance1 = form1.save(commit=False)
 
-            # upload profile,ssn pictures and save paths to database
-            profile_picture_file = request.FILES['Profile_picture']
-            ssn_picture_file = request.FILES['SSN_Picture']
-            fs = FileSystemStorage()
-            ppf_name = fs.save(profile_picture_file.name,profile_picture_file)
-            spf_name = fs.save(ssn_picture_file.name,ssn_picture_file)
-            instance1.Profile_picture = fs.url(ppf_name)
-            instance1.SSN_Picture = fs.url(spf_name)
-
-            # extract ssn id from full ssn
-            ssn = instance1.Ssn
-            ssn = ssn.replace('-', '')
-            instance1.Ssn_id = ssn[7:14]
-
-            qr = qrcode.QRCode(
-                version=1,
-                error_correction=qrcode.constants.ERROR_CORRECT_M,
-                box_size=10,
-                border=4,
-            )
-            qr.add_data(instance1.Ssn_id)
-            qr.make(fit=True)
-            qrc_id = qr.make_image()
-            img_name = instance1.first_name
-            img_exten = 'png'
-            img = img_name + '.' + img_exten
-            img_file = qrc_id.save(img)
-            # qrcode_id = fs.save(img, img_file)
-            instance1.save()
-
-            # get the user id with the email
-            a = form1.cleaned_data.get('email_1')
-            u_id = user.objects.get(email_1=a).user_id
-
-            if form2.is_valid():
-                instance2 = form2.save(commit=False)
-                instance2.Patient_id = u_id
-                instance2.QR_code = fs.url(img_file)
-                instance2.save()
-                return HttpResponseRedirect('/login/')
+            password = form1.cleaned_data.get('New_Password')
+            con_password = form1.cleaned_data.get('Confirm_Pass')
+            if password != con_password:
+                return HttpResponseRedirect('/patientProfile/?c=1')
             else:
-                print('form two')
-                print(form2.errors)
+
+                # upload profile,ssn pictures and save paths to database
+                profile_picture_file = request.FILES['Profile_picture']
+                ssn_picture_file = request.FILES['SSN_Picture']
+                fs = FileSystemStorage()
+                ppf_name = fs.save(profile_picture_file.name,profile_picture_file)
+                spf_name = fs.save(ssn_picture_file.name,ssn_picture_file)
+                instance1.Profile_picture = fs.url(ppf_name)
+                instance1.SSN_Picture = fs.url(spf_name)
+
+                # extract ssn id from full ssn
+                ssn = instance1.Ssn
+                ssn = ssn.replace('-', '')
+                instance1.Ssn_id = ssn[7:14]
+
+                qr = qrcode.QRCode(
+                    version=1,
+                    error_correction=qrcode.constants.ERROR_CORRECT_M,
+                    box_size=10,
+                    border=4,
+                )
+                qr.add_data(instance1.Ssn_id)
+                qr.make(fit=True)
+                qrc_id = qr.make_image()
+                img_name = instance1.first_name
+                img_exten = 'png'
+                img = img_name + '.' + img_exten
+                img_file = qrc_id.save(img)
+                # qrcode_id = fs.save(img, img_file)
+                instance1.save()
+
+                # get the user id with the email
+                a = form1.cleaned_data.get('email_1')
+                u_id = user.objects.get(email_1=a).user_id
+
+                if form2.is_valid():
+                    instance2 = form2.save(commit=False)
+                    instance2.Patient_id = u_id
+                    instance2.QR_code = fs.url(img_file)
+                    instance2.save()
+                    return HttpResponseRedirect('/')
+                else:
+                    print('form two')
+                    print(form2.errors)
         else:
             print('form one')
             print(form1.errors)

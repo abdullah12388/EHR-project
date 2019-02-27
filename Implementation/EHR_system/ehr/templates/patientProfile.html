@@ -1,6 +1,13 @@
 {% extends "base.html"%}
 {% load staticfiles %}
 {% block patientProfile%}
+
+{% if request.GET.c == "1" %}
+	<script>
+		alert('passwords not matched')
+	</script>
+{% endif %}
+
 <div style="width:10px;height:175px"></div>
 	<div class="container">
 		<h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Profile Information</h2>
@@ -112,7 +119,13 @@
 								{{ form1.New_Password }}
 							</div>
 							<div class="col">
-								 {{ form1.Confirm_Pass }}
+                                <div class="mydiv">
+                                     {{ form1.Confirm_Pass }}
+                                    <b id="warn2" class="hide">
+                                        <i class="fa fa-warning" aria-hidden="true"></i>
+                                        not matched
+                                    </b>
+                                </div>
 							</div>
 								 {{ form1.Ssn_id }}
 								 {{ form1.User_type }}
@@ -145,7 +158,8 @@
 					</div>
 
 				</div>
-				<input type="submit" class="form-control" style="width:20%;margin:40px auto 0px auto" value="Submit">
+				<button id="id_signup_submit" type="submit" style="width:20%;margin:40px auto 0px 350px" class="button home_button">Submit</button>
+                <!--<input type="submit" class="form-control" style="width:20%;margin:40px auto 0px auto" value="Submit">-->
 			</form>
 		</div>
 	</div>

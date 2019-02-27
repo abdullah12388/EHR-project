@@ -1721,3 +1721,15 @@ section
 .inputfile + label:hover {
     background-color: #32c69a;
 }
+
+
+/*********************************
+Patient Signup
+*********************************/
+.show {
+	color: darkred;
+	display: block;
+}
+.hide {
+	display: none;
+}

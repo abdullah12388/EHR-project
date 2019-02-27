@@ -290,6 +290,7 @@ class Migration(migrations.Migration):
                 ('Ssn', models.CharField(max_length=100)),
                 ('Ssn_id', models.CharField(max_length=100)),
                 ('Password', models.CharField(max_length=100)),
+                ('SSN_Picture', models.CharField(max_length=100)),
                 ('User_type', models.IntegerField()),
                 ('Create_date', models.DateTimeField(auto_now_add=True)),
             ],

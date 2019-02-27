@@ -1,14 +1,13 @@
 from django import forms
-from .models import admin, temp, user, patient
-
+from .models import *
 
 class AddManager(forms.ModelForm):
-
     email = forms.EmailField(widget=forms.EmailInput(attrs={
         'class': 'form-control',
         'placeholder': 'E-mail',
         'maxlength': 250,
         'required': 'required',
+        'id': 'id_email'
          }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
@@ -22,12 +21,12 @@ class AddManager(forms.ModelForm):
         'placeholder': 'Password',
         'minlength': 5,
         'maxlength': 7,
-        'required': 'required'
+        'required': 'required',
+        'id': 're_pass'
     }))
-
     class Meta:
         model = admin
-        fields = ['email', 'password', 're_password']
+        fields = ['email','password', 're_password']
 
 
 class AddTemp(forms.ModelForm):
@@ -50,6 +49,54 @@ class AddTemp(forms.ModelForm):
         model = temp
         fields = ['first_name','last_name']
 
+class tempRegister(forms.ModelForm):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'E-mail',
+        'maxlength': 250,
+        'required': 'required',
+        'id': 'id_email'
+    }))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Password',
+        'minlength': 8,
+        'maxlength': 100,
+        'required': 'required',
+        'id': 'pass'
+    }))
+    re_password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Password',
+        'minlength': 8,
+        'maxlength': 100,
+        'required': 'required',
+        'id': 're_pass'
+    }))
+    re_password.label = 'Repeat password'
+    class Meta:
+        model = temp_register
+        fields = ['email', 'password', 're_password']
+
+class login(forms.ModelForm):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'E-mail',
+        'maxlength': 250,
+        'required': 'required',
+        'id': 'id_email'
+    }))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Password',
+        'minlength': 8,
+        'maxlength': 100,
+        'required': 'required',
+        'id': 'id_pass'
+    }))
+    class Meta:
+        model = temp_register
+        fields = ['email', 'password']
 
 class AddUser(forms.ModelForm):
 

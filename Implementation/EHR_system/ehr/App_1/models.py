@@ -23,10 +23,15 @@ class manager(models.Model):
     city = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=255)
     blocked = models.BooleanField(default=False)
-
     def __str__(self):
         return self.email
 
+class temp_register(models.Model):
+    id = models.AutoField(primary_key=True)
+    email = models.EmailField(max_length=255)
+    password = models.CharField(max_length=255)
+    def __str__(self):
+        return self.email
 
 class user(models.Model):
     user_id = models.AutoField(primary_key=True)

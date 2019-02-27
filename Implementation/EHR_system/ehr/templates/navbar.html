@@ -8,11 +8,11 @@
 				<button class="menu_search_button"><i class="fa fa-search" aria-hidden="true"></i></button>
 			</form>
 			<ul>
-				<li class="menu_item"><a href="/home/">Home</a></li>
+				<li class="menu_item"><a href="/">Home</a></li>
 				<li class="menu_item"><a href="#">About us</a></li>
 				<li class="menu_item"><a href="#">Services</a></li>
-				<li class="menu_item"><a href="#">News</a></li>
-				<li class="menu_item"><a href="#">Contact</a></li>
+				<li class="menu_item"><a href="{% url 'login' %}">Login</a></li>
+				<li class="menu_item"><a href="{% url 'signup' %}">Register</a></li>
 			</ul>
 		</div>
 		<div class="menu_social">
@@ -72,8 +72,14 @@
 													<li class="active"><a href="/home/">Home</a></li>
 													<li><a href="about.html">About Us</a></li>
 													<li><a href="services.html">Services</a></li>
+													{% if 'patient_id' not in request.session %}
 													<li><a href="/login/">Login</a></li>
 													<li><a href="/signup/">Register</a></li>
+													{% endif %}
+													{% if 'patient_id' in request.session %}
+													<li><a href="#">Profile</a></li>
+													<li><a href="/logout/">Logout</a></li>
+													{% endif %}
 												</ul>
 											</nav>
 											<div class="search_content d-flex flex-row align-items-center justify-content-end ml-auto">
@@ -91,4 +97,3 @@
 				</div>
 			</div>
 		</header>
-

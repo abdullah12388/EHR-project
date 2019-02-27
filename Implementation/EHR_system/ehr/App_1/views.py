@@ -1,15 +1,17 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from .form import AddManager,AddUser
+from .models import admin
+from django.shortcuts import render
 from .form import *
 from .models import admin, user, temp_register
 from django.core.files.storage import FileSystemStorage
 import qrcode
 from django.http import JsonResponse
+
 # Create your views here.
 def home(request):
     return render(request, 'home.html', {})
-
-
 
 # def signup(request):
 #     if request.method == 'POST':
@@ -119,10 +121,6 @@ def test(request):
     return render(request, 'test.html', context)
 
 
-def patientHistory(request):
-    return render(request, 'patientHistory.html', {})
-
-
 def patient_profile(request):
     if request.method == 'POST':
 
@@ -198,9 +196,83 @@ def patient_profile(request):
 
 
 def patientHistory(request):
-
     return render(request, 'patientHistory.html', {})
 
-def patientCard(request):
-    return render(request,'patientData.html',{})
 
+def patient_profile(request):
+    if request.method == 'POST':
+
+        form1 = AddUser(request.POST or None)
+        form2 = AddPatient(request.POST or None)
+
+        if form1.is_valid():
+
+            # stop save in database
+            instance1 = form1.save(commit=False)
+
+            password = form1.cleaned_data.get('New_Password')
+            con_password = form1.cleaned_data.get('Confirm_Pass')
+            if password != con_password:
+                return HttpResponseRedirect('/patientProfile/?c=1')
+            else:
+
+                # upload profile,ssn pictures and save paths to database
+                profile_picture_file = request.FILES['Profile_picture']
+                ssn_picture_file = request.FILES['SSN_Picture']
+                fs = FileSystemStorage()
+                ppf_name = fs.save(profile_picture_file.name,profile_picture_file)
+                spf_name = fs.save(ssn_picture_file.name,ssn_picture_file)
+                instance1.Profile_picture = fs.url(ppf_name)
+                instance1.SSN_Picture = fs.url(spf_name)
+
+                # extract ssn id from full ssn
+                ssn = instance1.Ssn
+                ssn = ssn.replace('-', '')
+                instance1.Ssn_id = ssn[7:14]
+
+                qr = qrcode.QRCode(
+                    version=1,
+                    error_correction=qrcode.constants.ERROR_CORRECT_M,
+                    box_size=10,
+                    border=4,
+                )
+                qr.add_data(instance1.Ssn_id)
+                qr.make(fit=True)
+                qrc_id = qr.make_image()
+                img_name = instance1.first_name
+                img_exten = 'png'
+                img = img_name + '.' + img_exten
+                img_file = qrc_id.save(img)
+                # qrcode_id = fs.save(img, img_file)
+                instance1.save()
+
+                # get the user id with the email
+                a = form1.cleaned_data.get('email_1')
+                u_id = user.objects.get(email_1=a).user_id
+
+                if form2.is_valid():
+                    instance2 = form2.save(commit=False)
+                    instance2.Patient_id = u_id
+                    instance2.QR_code = fs.url(img_file)
+                    instance2.save()
+                    return HttpResponseRedirect('/')
+                else:
+                    print('form two')
+                    print(form2.errors)
+        else:
+            print('form one')
+            print(form1.errors)
+    else:
+        form1 = AddUser()
+        form2 = AddPatient()
+        context = {
+            'form1': form1,
+            'form2': form2,
+        }
+        return render(request, 'patientProfile.html', context)
+
+
+
+def patientHistory(request):
+
+    return render(request, 'patientHistory.html', {})

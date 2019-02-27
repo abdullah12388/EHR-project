@@ -1,20 +1,35 @@
 {% extends 'base.html' %}
 {% block login_content %}
+
+{% if request.GET.alert == "wrong_email" %}
+	<script>
+		alert('wrong email')
+	</script>
+{% endif %}
+{% if request.GET.alert == "wrong_password" %}
+	<script>
+		alert('wrong password')
+	</script>
+{% endif %}
+
 		<div class="home_container" style="top:30%">
 			<div class="container">
 				<div class="row">
 					<div class="col">
 						<div class="home_content">
                             <div class="home_title">Login</div>
-							<form>
+							<form method='POST' action=''>
                                 <div class="home_text">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Enter Username" required="required">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control"  placeholder="Password" required="required">
-                                    </div>
-                                    <button type="submit" class="button home_button">Submit</button>
+                                    {% csrf_token %}
+									<div class="mydiv">
+										<label class="mylabel">{{ form.email.label }}</label>
+										{{ form.email }}
+									</div>
+									<div class="mydiv">
+										<label class="mylabel">{{ form.password.label }}</label>
+										{{ form.password }}
+									</div>
+                                    <button id="" type="submit" class="button home_button">Submit</button>
                                 </div>
                             </form>
                             <div class="home_text">

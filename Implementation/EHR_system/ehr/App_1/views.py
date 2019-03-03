@@ -120,7 +120,15 @@ def test(request):
 
 
 def patientHistory(request):
-    return render(request, 'patientHistory.html', {})
+    if request.method == 'POST':
+        form = searchHistory(request.POST or None)
+        form.save()
+    else:
+        form = searchHistory()
+    context = {
+        'form': form
+    }
+    return render(request, 'patientHistory.html', context)
 
 
 def patient_profile(request):
@@ -195,9 +203,4 @@ def patient_profile(request):
         }
         return render(request, 'patientProfile.html', context)
 
-
-
-def patientHistory(request):
-
-    return render(request, 'patientHistory.html', {})
 

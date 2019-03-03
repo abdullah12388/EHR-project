@@ -4,6 +4,9 @@
 <head>
     {% include "header.html" %}
 </head>
+<body class="{% if request.get_full_path == '/patientHistory/' %} body_color
+ {% else %}body
+ {% endif %}">
 <div>
     <div class="super_container">
 
@@ -20,8 +23,11 @@
         {# Profile body#}
             {% block patientProfile %}
             {% endblock patientProfile %}
-
             </div>
+
+        {# All Patient History #}
+            {% block patient_history_content %}
+            {% endblock patient_history_content %}
         {# Home Body #}
             {% block home_content %}
             {% endblock home_content %}

@@ -47,7 +47,7 @@ class user(models.Model):
     phone_number = models.CharField(max_length=100)
     home_phone_number = models.CharField(max_length=100)
     work_phone_number = models.CharField(max_length=100)
-    Date_of_birth = models.CharField(max_length=100)
+    Date_of_birth = models.DateField()
     marital_status = models.CharField(max_length=100)
     Child_num = models.CharField(max_length=100)
     email_1 = models.EmailField(max_length=100)
@@ -137,30 +137,30 @@ class organization(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     org_rate = models.IntegerField()
     Type = models.IntegerField()
-    hospital_id = models.ForeignKey(hospital)
+    hospital = models.ForeignKey(hospital)
 
     def __str__(self):
         return self.org_email
 
 
 class doctor(models.Model):
-    Doc_id = models.ForeignKey(user)
+    Doc = models.ForeignKey(user)
     Registration_num = models.CharField(max_length=50)
     Specialization = models.CharField(max_length=100)
     Registration_date = models.DateTimeField(auto_now_add=True)
     licence = models.CharField(max_length=250)
-    Last_date_payment = models.DateTimeField(auto_now=True)
-    End_date = models.DateTimeField(auto_now=True)
+    Last_date_payment = models.DateField(auto_now=True)
+    End_date = models.DateField(auto_now=True)
     Specialization_type = models.CharField(max_length=100)
     University = models.CharField(max_length=100)
     Work_place = models.CharField(max_length=100)
     Sub_syndicate = models.CharField(max_length=500)
     General_secretary = models.CharField(max_length=500)
-    Working_till = models.DateTimeField(auto_now=True)
+    Working_till = models.TimeField(auto_now=True)
     Graduation_year = models.CharField(max_length=50)
     doc_rate = models.IntegerField()
-    hospital_id = models.ForeignKey(hospital)
-    clinic_id = models.ForeignKey(organization)
+    hospital = models.ForeignKey(hospital, blank=True, null=True)
+    clinic = models.ForeignKey(organization, blank=True, null=True)
 
 
 class prescription(models.Model):
@@ -174,10 +174,10 @@ class prescription(models.Model):
 
 
 class report(models.Model):
-    report_id = models.AutoField(primary_key=True)
-    patient_id = models.ForeignKey(patient)
-    prescription_id = models.ForeignKey(prescription)
-    doctor_id = models.ForeignKey(doctor)
+    report = models.AutoField(primary_key=True)
+    patient = models.ForeignKey(patient)
+    prescription = models.ForeignKey(prescription)
+    doctor = models.ForeignKey(doctor)
 
 
 class all_analytics(models.Model):
@@ -202,67 +202,67 @@ class all_rays(models.Model):
 
 class patient_analytics(models.Model):
     P_A_id = models.AutoField(primary_key=True)
-    pat_id = models.ForeignKey(patient)
-    analy_id = models.ForeignKey(all_analytics)
+    pat = models.ForeignKey(patient)
+    analy = models.ForeignKey(all_analytics)
     analytics_result = models.TextField()
-    lab_id = models.ForeignKey(organization)
+    lab = models.ForeignKey(organization)
 
 
 class patient_chronic(models.Model):
     P_C_id = models.AutoField(primary_key=True)
-    pat_id = models.ForeignKey(patient)
-    chr_id = models.ForeignKey(all_chronic)
+    pat = models.ForeignKey(patient)
+    chr = models.ForeignKey(all_chronic)
 
 
 class patient_medicine(models.Model):
     P_M_id = models.AutoField(primary_key=True)
-    pat_id = models.ForeignKey(patient)
-    med_id = models.ForeignKey(all_medicine)
+    pat = models.ForeignKey(patient)
+    med = models.ForeignKey(all_medicine)
     number_of_potions = models.IntegerField()
     number_of_pills = models.IntegerField()
     medicine_submit = models.BooleanField(default=False)
-    pharmacy_id = models.ForeignKey(organization)
+    pharmacy = models.ForeignKey(organization)
 
 
 class patient_rays(models.Model):
     P_R_id = models.AutoField(primary_key=True)
-    pat_id = models.ForeignKey(patient)
-    ray_id = models.ForeignKey(all_rays)
+    pat = models.ForeignKey(patient)
+    ray = models.ForeignKey(all_rays)
     rays_result = models.TextField()
-    lab_id = models.ForeignKey(organization)
+    lab = models.ForeignKey(organization)
 
 
 class multi_analytics(models.Model):
-    report_id = models.ForeignKey(report)
-    P_A_id = models.ForeignKey(patient_analytics)
+    report = models.ForeignKey(report)
+    P_A= models.ForeignKey(patient_analytics)
 
 
 class multi_chronic(models.Model):
-    report_id = models.ForeignKey(report)
-    P_C_id = models.ForeignKey(patient_chronic)
+    report = models.ForeignKey(report)
+    P_C = models.ForeignKey(patient_chronic)
 
 
 class multi_medecines(models.Model):
-    report_id = models.ForeignKey(report)
-    P_M_id = models.ForeignKey(patient_medicine)
+    report = models.ForeignKey(report)
+    P_M = models.ForeignKey(patient_medicine)
 
 
 class multi_rays(models.Model):
-    report_id = models.ForeignKey(report)
-    P_R_id = models.ForeignKey(patient_rays)
+    report = models.ForeignKey(report)
+    P_R = models.ForeignKey(patient_rays)
 
 
 class blocked_hospitals(models.Model):
-    manager_id = models.ForeignKey(manager)
-    hospital_id = models.ForeignKey(hospital)
+    manager = models.ForeignKey(manager)
+    hospital = models.ForeignKey(hospital)
 
 
 class blocked_organizations(models.Model):
-    manager_id = models.ForeignKey(manager)
-    organ_id = models.ForeignKey(organization)
+    manager = models.ForeignKey(manager)
+    organ = models.ForeignKey(organization)
 
 
 class blocked_users(models.Model):
-    manager_id = models.ForeignKey(manager)
-    user_id = models.ForeignKey(user)
+    manager = models.ForeignKey(manager)
+    user = models.ForeignKey(user)
 

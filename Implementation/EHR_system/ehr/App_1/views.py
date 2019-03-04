@@ -246,7 +246,6 @@ def patient_profile(request):
         return render(request, 'patientProfile.html', context)
 
 
-
 def test(request):
     b = admin.objects.filter(id__iexact = 2).exists()
     if b:

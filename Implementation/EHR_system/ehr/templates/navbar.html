@@ -33,11 +33,9 @@
     {% else %} home
     {% endif %}
     ">
-    <div class="
-    {% if request.get_full_path == '/patientHistory/' %}
+    <div class="{% if request.get_full_path == '/patientHistory/' %}
     {% else %} background_image
-    {% endif %}
-        "></div>
+    {% endif %}"></div>
 
     <!-- Header -->
     <header class="header" id="header">

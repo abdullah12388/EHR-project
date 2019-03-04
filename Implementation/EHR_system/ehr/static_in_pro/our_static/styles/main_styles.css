@@ -1775,7 +1775,7 @@ Patient History
     background-color: #FFF;
     position: relative;
     bottom: 33px;
-    width: 127px;
+    width: 159px;
     padding-left: 7px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
@@ -1799,4 +1799,10 @@ Patient History
     background-color: white;
     color: #000;
     transition: all 0.65s ease-in-out;
+}
+.by h4, .by b{
+    color: white;
+}
+.by p{
+    color: whitesmoke;
 }

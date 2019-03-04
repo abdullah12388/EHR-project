@@ -31,6 +31,7 @@
           <option value="ehr.App_1.models.temp_register.objects" />
           <option value="ehr.ehr.urls.App_1" />
           <option value="ehr.App_1.models.user.objects" />
+          <option value="ehr.App_1.models.report.objects" />
         </list>
       </option>
     </inspection_tool>

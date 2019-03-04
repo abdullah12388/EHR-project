@@ -14,168 +14,39 @@
                 <button  type="submit"><span class="glyphicon glyphicon-search"></span></button>
             </form>
         </div>
+        <!--<div class="history_details">-->
+            <!--<div class="history_date"><p>{{ Submit_date|date:'m-d-Y h:i a' }}</p></div>-->
+            <!--<h3>{{ pk_list }}</h3>-->
+            <!--<h3>{{ doctor_id }}</h3>-->
+            <!--<h3>{{ patient_id }}</h3>-->
+            <!--<h3>{{ prescription_id }}</h3>-->
+            <!--<h3>{{ Submit_date|date:"SHORT_DATETIME_FORMAT"  }}</h3>-->
+            <!--<h3>{{ Submit_date|date:"D d M Y"  }}</h3>-->
+            <!--<h3>{{ Submit_date|time:"P" }}</h3>-->
+            <!--<h3>{{ Submit_date|date:'m-d-Y h:i a' }}</h3>-->
+            <!--<div class="row text-center">-->
+                <!--<a class="col-sm-3 elements" href="#">Prescription</a>-->
+                <!--<a class="col-sm-3 elements" href="#">Medicines</a>-->
+                <!--<a class="col-sm-3 elements" href="#">Analytics</a>-->
+                <!--<a class="col-sm-3 elements" href="#">Rays</a>-->
+            <!--</div>-->
+        <!--</div>-->
+        {% for pk, doctor_id, patient_id, prescription_id, Submit_date in mix %}
         <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
+            <div class="history_date"><p>{{ Submit_date|date:'m-d-Y h:i a' }}</p></div>
             <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
+                <a class="col-sm-3 elements" href="/patientHstory?id=1/">Prescription</a>
                 <a class="col-sm-3 elements" href="#">Medicines</a>
                 <a class="col-sm-3 elements" href="#">Analytics</a>
                 <a class="col-sm-3 elements" href="#">Rays</a>
             </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
+            <div class="by">
+                <h4 class="" style="color: white"><b>By:</b></h4>
+                <p><b style="color: white">Doctor: </b> Ahmed Hossam</p>
+                <p><b style="color: white">Hospital: </b> National Ahmed Orabi</p>
             </div>
         </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
-        <div class="history_details">
-            <div class="history_date"><p>28-11-2018  23:18</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="#">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock patient_history_content %}

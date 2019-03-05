@@ -295,8 +295,6 @@ class AddUser(forms.ModelForm):
                   'SSN_Picture',
                   'User_type']
 
-
-
 class AddPatient(forms.ModelForm):
 
     Emergency_contact = forms.CharField(widget=forms.TextInput(attrs={
@@ -340,3 +338,15 @@ class AddPatient(forms.ModelForm):
                   'Blood_type',
                   'Chronic_diseases',
                   'QR_code']
+
+class searchHistory(forms.ModelForm):
+    search_content = forms.CharField(widget=forms.TextInput(attrs={
+        'class': '',
+        'placeholder': 'search...',
+        'maxlength': 250,
+        'required': 'required',
+        'id': 'id_search'
+    }))
+    class Meta:
+        model = report
+        fields = ['search_content']

@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    url(r'^admin/$', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^$', view.home, name='home'),
     url(r'^login/$', view.patientLogin, name='login'),
     url(r'^logout/$', view.patientLogout, name='logout'),

@@ -24,6 +24,7 @@ class AddManager(forms.ModelForm):
         'required': 'required',
         'id': 're_pass'
     }))
+
     class Meta:
         model = admin
         fields = ['email','password', 're_password']

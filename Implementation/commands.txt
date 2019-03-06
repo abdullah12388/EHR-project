@@ -1,6 +1,7 @@
-pip install virtualenv
+
 virtualenv venv-first-project
 C:\Projects\tehaProject\venv-first-project\Scripts\activate
+
 pip install django==1.8.3
 C:/Users/Abdu/AppData/Local/Programs/Python/Python36-32/Scripts/django-admin.py startproject teha
 django-admin startproject tehaProject
@@ -11,6 +12,16 @@ python manage.py startapp blogs
 python manage.py makemigrations	--> di 3l4an t3rf ay Class 2t3ml fi L models 
 python manage.py migrate
 python manage.py collectstatic
-pip install --upgrade django-crispy-forms
+
 cd django-registration-v1.9 ==> python setup.py install
 
+python manage.py dbshell
+
+python -m pip install --upgrade pip
+pip install virtualenv
+pip install django==1.10.5
+pip install --upgrade django-crispy-forms
+pip install bcrypt
+pip install django[argon2]
+pip install django-mysql
+pip install --only-binary :all: mysqlclient

@@ -173,7 +173,6 @@ class AddUser(forms.ModelForm):
     }))
     Date_of_birth = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'pattern': '[0-9]{2}-[0-9]{2}-[0-9]{4}',
         'placeholder': 'Birth Date',
         'required': 'required'
     }))
@@ -193,7 +192,8 @@ class AddUser(forms.ModelForm):
         'class': 'form-control',
         'pattern': '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$',
         'placeholder': 'First E-mail',
-        'required': 'required'
+        'required': 'required',
+        'id': 'id_email_2'
     }))
     email_2 = forms.EmailField(widget=forms.EmailInput(attrs={
         'class': 'form-control',
@@ -255,13 +255,15 @@ class AddUser(forms.ModelForm):
         'class': 'form-control',
         'pattern': '(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}',
         'placeholder': 'New Pass',
-        'required': 'required'
+        'required': 'required',
+        'id': 'pass'
     }))
     Confirm_Pass = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
         'pattern': '(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}',
         'placeholder': 'Confirm Pass',
-        'required': 'required'
+        'required': 'required',
+        'id': 're_pass'
     }))
 
     class Meta:

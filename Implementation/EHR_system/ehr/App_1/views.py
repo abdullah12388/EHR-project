@@ -108,6 +108,17 @@ def validate_email(request):
     }
     return JsonResponse(data)
 
+
+def validate_email_2(request):
+    email1 = request.GET.get('email_1', None)
+    data = {
+        # 'is_taken' : admin.objects.filter(email__iexact = email).exists()
+        'is_taken' : AddUser.objects.filter(email__iexact = email1).exists()
+    }
+    print(email1)
+    return JsonResponse(data)
+
+
 def patientLogin(request):
     if request.method == 'POST':
         form = login(request.POST or None)

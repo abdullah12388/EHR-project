@@ -244,7 +244,7 @@ def patient_profile(request):
                 if form2.is_valid():
                     instance2 = form2.save(commit=False)
                     instance2.Patient_id = u_id
-                    instance2.QR_code = 'static_in_pro/our_static/images/QRcodes/'+img
+                    instance2.QR_code = 'images/QRcodes/'+img
                     instance2.save()
                     return HttpResponseRedirect('/')
                 else:

@@ -25,3 +25,5 @@ pip install bcrypt
 pip install django[argon2]
 pip install django-mysql
 pip install --only-binary :all: mysqlclient
+pip install Pillow
+pip install qrcode

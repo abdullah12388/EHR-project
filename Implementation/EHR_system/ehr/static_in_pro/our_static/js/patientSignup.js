@@ -1,5 +1,6 @@
 
 var warn = $("#warn");
+// var warn = document.getElementById('warn');
 var warn2 = $("#warn2");
 var submit = $("#id_signup_submit");
 var email_ = $("#id_email");

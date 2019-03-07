@@ -42,6 +42,8 @@ class DB_functions:
         patient_id = []
         prescription_id = []
         Submit_date = []
+        clinic = []
+        hospital = []
         report_data = report.objects.order_by('-Submit_date')
         if report_data.exists():
             for instance in report_data:
@@ -50,8 +52,11 @@ class DB_functions:
                 patient_id.append(instance.patient_id)
                 prescription_id.append(instance.prescription_id)
                 Submit_date.append(instance.Submit_date)
-            mix = zip(pk_list, doctor_id, patient_id, prescription_id, Submit_date)
-            return mix
+                clinic.append(instance.clinic)
+                hospital.append(instance.hospital)
+            all_report_data = [pk_list, doctor_id, patient_id, prescription_id, Submit_date, clinic, hospital]
+
+            return all_report_data
         else:
             return False
 

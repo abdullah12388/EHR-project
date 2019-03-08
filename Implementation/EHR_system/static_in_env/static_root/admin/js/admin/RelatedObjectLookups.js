@@ -162,7 +162,11 @@
             }
         });
         $('.related-widget-wrapper select').trigger('change');
+<<<<<<< Updated upstream
         $('.related-lookup').click(function(e) {
+=======
+        $('body').on('click', '.related-lookup', function(e) {
+>>>>>>> Stashed changes
             e.preventDefault();
             var event = $.Event('django:lookup-related');
             $(this).trigger(event);

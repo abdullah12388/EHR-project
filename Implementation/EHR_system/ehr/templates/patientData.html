@@ -1,29 +1,79 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-{% block patientCard %}
-
-
+{% block patientData %}
+{% if data %}
+    {% if age %}
     <div class="container" style="padding-top:200px">
-      <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Patient Card</h2>
-      <div class="jumbotron" style="background-color:rgba(18,17,17,0.66)">
-        <div class="col" style="border:solid 5px">
-          pic
+        <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Patient Data</h2>
 
+        <div class="jumbotron" style="background-color:rgba(18,17,17,0.66); width: 80%; margin: auto">
+            <div class="row" >
+                <div class="col-3 ">
+                    <div style=" margin: 2px; height: 170px; overflow: hidden ">
+                        <img src="{{ data.Patient.Profile_picture }} " style="width: 100%; height: 100%"  >
+                    </div>
+                </div>
+                <div class="col-5" style="padding-left: 4%">
+                    <div class="row">
+                        <div style="width: 100%">
+<!--50,198,154-->
+                            <p style="color: white">
+                                {{ data.Patient.first_name }}
+                                {{ data.Patient.middle_name }}
+                                {{ data.Patient.last_name }}
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col" >
+                            <div class="row">
+                                <div style="width: 100%">
+                                    <p style="color: white">
+                                            {{ age }} years old
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div style="width: 100%">
+                                    <p style="color: white">
+                                        {{ data.Patient.phone_number }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div style=" width: 100%">
+                            <p style="color: white">
+                                {{ data.Patient.Create_date }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+
+
+                                <div style="margin: 2px; width: 100%;text-align: right; padding-top: 25%">
+                                    <img src="{{ data.QR_code }} " style="width: 160px; height: 160px"  >
+                                    <!--{{ data.QR_code }}-->
+                                </div>
+
+
+                </div>
+            </div>
         </div>
-        <div class="col" style="border:solid 5px">
-          <div class="row">
-            full name
-          </div>
-          <div class="row">
-
-          </div>
-          <div class="row">
-            create
-          </div>
-
-        </div>
-
-      </div>
     </div>
+    {% else %}
+    <p>
+        you don't have any age!!!!!!!!!
+    </p>
+    {% endif %}
+{% else %}
 
-{% endblock %}
+<p>
+    you don't have any data!!!!!!!!!
+</p>
+
+{% endif %}
+{% endblock patientData %}

@@ -1,13 +1,15 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .form import AddManager,AddUser
-from .models import admin
+from .models import admin , user , patient
 from django.shortcuts import render
 from .form import *
 from .models import admin, user, temp_register, report
 from django.core.files.storage import FileSystemStorage
 import qrcode,shutil
 from django.http import JsonResponse
+from datetime import date
+import datetime
 
 # Create your views here.
 
@@ -15,6 +17,7 @@ class DB_functions:
     __patient_email = ''
     __patient_password = ''
     patient_login_result = ''
+
 
     def set_patient_email(self, email):
         self.__patient_email = email
@@ -36,6 +39,11 @@ class DB_functions:
             self.patient_login_result = 'wrong_email'
         return self.patient_login_result
 
+    def calculateAge(Date_of_birth):
+        oldDate = Date_of_birth
+        today = date.today()
+        return today.year - oldDate.year - ((today.month, today.day) < (oldDate.month, oldDate.day))
+
     def patient_report_data(self):
         pk_list = []
         doctor_id = []
@@ -54,6 +62,10 @@ class DB_functions:
             return mix
         else:
             return False
+
+
+
+
 
 def home(request):
     return render(request, 'home.html', {})
@@ -285,6 +297,24 @@ def test(request):
     }
     return render(request, 'test.html', context)
 
+<<<<<<< Updated upstream
 
 def move(src, dest):
     shutil.move(src, dest)
+=======
+def patientData(request):
+    id = request.GET.get('id', None)
+    context = {}
+    isFound = patient.objects.filter(id__iexact = id).exists()
+    if isFound:
+        data = patient.objects.get(pk=id)
+        age = DB_functions.calculateAge(data.Patient.Date_of_birth)
+        #khan = date.today().year - data.Patient.Date_of_birth.year - ((date.today().month, date.today().day) < (data.Patient.Date_of_birth.month, data.Patient.Date_of_birth.day))
+        context = {
+            'data': data,
+            'age' : age
+        }
+    else:
+        context.update({'data':'not_found'})
+    return render(request,'patientData.html',context)
+>>>>>>> Stashed changes

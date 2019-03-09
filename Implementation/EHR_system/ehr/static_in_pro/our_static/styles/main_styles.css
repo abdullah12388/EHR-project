@@ -1807,7 +1807,6 @@ Patient History
     color: whitesmoke;
 }
 .HomeContentStyle{
-    border: solid 3px;
-    margin-right: 5px;
     margin-top: 5px;
+    border:solid 3px;
 }

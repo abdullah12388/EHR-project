@@ -9,7 +9,6 @@ from django.core.files.storage import FileSystemStorage
 import qrcode,shutil,os
 from django.http import JsonResponse
 from django.conf import settings as set
-
 # Create your views here.
 
 class DB_functions:

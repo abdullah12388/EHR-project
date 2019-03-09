@@ -166,6 +166,11 @@
 #changelist-filter a {
     display: block;
     color: #999;
+<<<<<<< Updated upstream
+=======
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+>>>>>>> Stashed changes
 }
 
 #changelist-filter li.selected {

@@ -1,13 +1,17 @@
+from datetime import date
+
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .form import AddManager,AddUser
-from .models import admin
+from .models import admin , user , patient
 from django.shortcuts import render
 from .form import *
 from .models import admin, user, temp_register, report
 from django.core.files.storage import FileSystemStorage
-import qrcode,shutil
+import qrcode,shutil,os
 from django.http import JsonResponse
+from django.conf import settings as set
+
 
 # Create your views here.
 
@@ -15,6 +19,7 @@ class DB_functions:
     __patient_email = ''
     __patient_password = ''
     patient_login_result = ''
+
 
     def set_patient_email(self, email):
         self.__patient_email = email
@@ -36,6 +41,11 @@ class DB_functions:
             self.patient_login_result = 'wrong_email'
         return self.patient_login_result
 
+    def calculateAge(Date_of_birth):
+        oldDate = Date_of_birth
+        today = date.today()
+        return today.year - oldDate.year - ((today.month, today.day) < (oldDate.month, oldDate.day))
+
     def patient_report_data(self):
         pk_list = []
         doctor_id = []
@@ -54,6 +64,10 @@ class DB_functions:
             return mix
         else:
             return False
+
+
+
+
 
 def home(request):
     return render(request, 'home.html', {})
@@ -109,13 +123,13 @@ def validate_email(request):
     return JsonResponse(data)
 
 
-def validate_email_2(request):
+def valid_email(request):
     email1 = request.GET.get('email_1', None)
+    print(email1)
     data = {
         # 'is_taken' : admin.objects.filter(email__iexact = email).exists()
-        'is_taken' : AddUser.objects.filter(email__iexact = email1).exists()
+        'is_taken': user.objects.filter(email_1__iexact = email1).exists()
     }
-    print(email1)
     return JsonResponse(data)
 
 
@@ -216,7 +230,6 @@ def patient_profile(request):
 
                 # extract ssn id from full ssn
                 ssn = instance1.Ssn
-                ssn = ssn.replace('-', '')
                 instance1.Ssn_id = ssn[7:14]
 
                 qr = qrcode.QRCode(
@@ -231,11 +244,10 @@ def patient_profile(request):
                 img_name = instance1.Ssn_id
                 img_exten = 'png'
                 img = img_name + '.' + img_exten
-                img_file = qrc_id.save(img)
-                # qrcode_id = fs.save(img, img_file)
+                qrc_id.save(img)
                 instance1.save()
 
-                move(img,'static_in_pro/our_static/images/QRcodes/')
+                move(os.path.join('',img),os.path.join(set.MEDIA_ROOT,img))
 
                 # get the user id with the email
                 a = form1.cleaned_data.get('email_1')
@@ -244,7 +256,7 @@ def patient_profile(request):
                 if form2.is_valid():
                     instance2 = form2.save(commit=False)
                     instance2.Patient_id = u_id
-                    instance2.QR_code = 'images/QRcodes/'+img
+                    instance2.QR_code = fs.url(img)
                     instance2.save()
                     return HttpResponseRedirect('/')
                 else:
@@ -286,5 +298,23 @@ def test(request):
     return render(request, 'test.html', context)
 
 
+
 def move(src, dest):
     shutil.move(src, dest)
+
+def patientData(request):
+    id = request.GET.get('id', None)
+    context = {}
+    isFound = patient.objects.filter(id__iexact = id).exists()
+    if isFound:
+        data = patient.objects.get(pk=id)
+        age = DB_functions.calculateAge(data.Patient.Date_of_birth)
+        #khan = date.today().year - data.Patient.Date_of_birth.year - ((date.today().month, date.today().day) < (data.Patient.Date_of_birth.month, data.Patient.Date_of_birth.day))
+        context = {
+            'data': data,
+            'age' : age
+        }
+    else:
+        context.update({'data':'not_found'})
+    return render(request,'patientData.html',context)
+

@@ -166,6 +166,13 @@ thead th.sorted .text {
     margin-left: 5px;
 }
 
+<<<<<<< Updated upstream
+=======
+form .aligned p.help, form .aligned div.help {
+    clear: right;
+}
+
+>>>>>>> Stashed changes
 form ul.inline li {
     float: right;
     padding-right: 0;
@@ -226,6 +233,13 @@ form .form-row p.datetime {
     overflow: hidden;
 }
 
+<<<<<<< Updated upstream
+=======
+.related-widget-wrapper {
+    float: right;
+}
+
+>>>>>>> Stashed changes
 /* MISC */
 
 .inline-related h2, .inline-group h2 {

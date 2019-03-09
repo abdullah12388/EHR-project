@@ -1,3 +1,4 @@
+
 var warn = $("#warn");
 var warn2 = $("#warn2");
 var submit = $("#id_signup_submit");
@@ -49,7 +50,7 @@ email_.keyup(function () {
 email_2.keyup(function () {
    var email2 = $(this).val();
    $.ajax({
-       url: "/ajax/valid_email/",
+       url: "/ajax/validate_email_2/",
        data: {
            'email_1' : email2
        },

@@ -8,16 +8,16 @@
 
         <div class="jumbotron" style="background-color:rgba(18,17,17,0.66); width: 80%; margin: auto">
             <div class="row" >
-                <div class="col-3 ">
+                <div class="col-md-3 " >
                     <div style=" margin: 2px; height: 170px; overflow: hidden ">
-                        <img src="{{ data.Patient.Profile_picture }} " style="width: 100%; height: 100%"  >
+                        <img src="{{ data.Patient.Profile_picture }} " style="; min-width: 50%; max-width: 100%; height: 100%"  >
                     </div>
                 </div>
-                <div class="col-5" style="padding-left: 4%">
+                <div class="col-md-5" style="padding-left: 4%; text-align: center">
                     <div class="row">
                         <div style="width: 100%">
 <!--50,198,154-->
-                            <p style="color: white">
+                            <p style="color: white; margin-bottom: 0px">
                                 {{ data.Patient.first_name }}
                                 {{ data.Patient.middle_name }}
                                 {{ data.Patient.last_name }}
@@ -29,14 +29,14 @@
                         <div class="col" >
                             <div class="row">
                                 <div style="width: 100%">
-                                    <p style="color: white">
+                                    <p style="color: white ; margin-bottom: 0px">
                                             {{ age }} years old
                                     </p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div style="width: 100%">
-                                    <p style="color: white">
+                                    <p style="color: white; margin-bottom: 0px">
                                         {{ data.Patient.phone_number }}
                                     </p>
                                 </div>
@@ -45,16 +45,16 @@
                     </div>
                     <div class="row">
                         <div style=" width: 100%">
-                            <p style="color: white">
+                            <p style="color: white ; margin-bottom: 0px">
                                 {{ data.Patient.Create_date }}
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
 
 
-                                <div style="margin: 2px; width: 100%;text-align: right; padding-top: 25%">
+                                <div style="margin: 2px; width: 100%;text-align: right;">
                                     <img src="{{ data.QR_code }} " style="width: 160px; height: 160px"  >
                                     <!--{{ data.QR_code }}-->
                                 </div>

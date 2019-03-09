@@ -2,46 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7271676e-b14f-4be7-bf1f-ce64a067074c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ehr.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ehr.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App_1/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/App_1/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App_1/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/App_1/form.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App_1/migrations/0002_auto_20190305_1251.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/App_1/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/App_1/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App_1/migrations/0002_auto_20190306_1321.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App_1/migrations/0002_auto_20190306_2103.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App_1/migrations/0003_auto_20190306_1324.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/App_1/migrations/0004_merge_20190306_1346.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/App_1/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/App_1/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ehr/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_pro/our_static/styles/main_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_pro/our_static/styles/main_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/patientData.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patientData.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/css/changelists.css" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/css/changelists.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/css/forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/css/forms.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/css/rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/css/rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/css/widgets.css" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/css/widgets.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/SelectBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/SelectBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/SelectFilter2.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/SelectFilter2.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/actions.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/actions.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/admin/DateTimeShortcuts.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/admin/DateTimeShortcuts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/admin/RelatedObjectLookups.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/admin/RelatedObjectLookups.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/change_form.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/change_form.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/collapse.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/collapse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/collapse.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/collapse.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/core.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/core.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/inlines.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/inlines.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/inlines.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/inlines.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/jquery.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/jquery.init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/prepopulate.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/prepopulate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/prepopulate.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/prepopulate.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/timeparse.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/timeparse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/urlify.js" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/urlify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/styles/main_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../static_in_env/static_root/styles/main_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../commands.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../commands.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App_1/form.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="340" column="6" selection-start-line="340" selection-start-column="6" selection-end-line="340" selection-end-column="6" />
+            <state relative-caret-position="6156">
+              <caret line="343" column="6" selection-start-line="343" selection-start-column="6" selection-end-line="343" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -63,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ehr/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1710">
-              <caret line="95" column="21" selection-start-line="95" selection-start-column="21" selection-end-line="95" selection-end-column="21" />
+            <state relative-caret-position="461">
+              <caret line="95" column="23" selection-start-line="95" selection-start-column="23" selection-end-line="95" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -72,7 +40,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ehr/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="587">
+            <state relative-caret-position="540">
               <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
               <folding>
                 <element signature="e#612#653#0" expanded="true" />
@@ -84,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App_1/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="50" column="4" lean-forward="true" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="17" />
+            <state relative-caret-position="900">
+              <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -93,8 +61,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App_1/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4071">
-              <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+            <state relative-caret-position="411">
+              <caret line="311" column="115" lean-forward="true" selection-start-line="311" selection-start-column="115" selection-end-line="311" selection-end-column="115" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
               </folding>
@@ -105,7 +73,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/App_1/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="126">
               <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -117,12 +85,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/patientData.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+            <state relative-caret-position="196">
+              <caret line="15" column="81" selection-start-line="15" selection-start-column="81" selection-end-line="15" selection-end-column="81" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h2#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
@@ -140,6 +109,15 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static_in_pro/our_static/styles/main_styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="1311" column="6" selection-start-line="1311" selection-start-column="6" selection-end-line="1311" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -152,6 +130,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>request.</find>
+      <find>jumptron</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -173,11 +152,11 @@
         <option value="$PROJECT_DIR$/App_1/urls.py" />
         <option value="$PROJECT_DIR$/ehr/urls.py" />
         <option value="$PROJECT_DIR$/templates/patientHistory.html" />
-        <option value="$PROJECT_DIR$/ehr/settings.py" />
         <option value="$PROJECT_DIR$/static_in_pro/our_static/styles/main_styles.css" />
         <option value="$PROJECT_DIR$/templates/patientProfile.html" />
         <option value="$PROJECT_DIR$/App_1/form.py" />
         <option value="$PROJECT_DIR$/App_1/models.py" />
+        <option value="$PROJECT_DIR$/ehr/settings.py" />
         <option value="$PROJECT_DIR$/App_1/views.py" />
         <option value="$PROJECT_DIR$/templates/patientData.html" />
       </list>
@@ -194,22 +173,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="ehr" type="cbb8eebc:String" user="ehr" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="ehr" type="cbb8eebc:String" user="ehr" />
-              <item name="ehr" type="cbb8eebc:String" user="ehr" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -260,6 +223,22 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ehr" type="cbb8eebc:String" user="ehr" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ehr" type="cbb8eebc:String" user="ehr" />
+              <item name="ehr" type="cbb8eebc:String" user="ehr" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -291,18 +270,19 @@
       <updated>1550929668064</updated>
       <workItem from="1551783680200" duration="898000" />
       <workItem from="1551816542454" duration="16777000" />
-      <workItem from="1551996926409" duration="10680000" />
+      <workItem from="1551996926409" duration="11407000" />
+      <workItem from="1552121195985" duration="2897000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34007000" />
+    <option name="totallyTimeSpent" value="37631000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19215938" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19473007" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="0" />
@@ -431,37 +411,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static_in_pro/our_static/styles/main_styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="248" column="15" selection-start-line="248" selection-start-column="15" selection-end-line="248" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1710">
-          <caret line="95" column="21" selection-start-line="95" selection-start-column="21" selection-end-line="95" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_1/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/App_1/form.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="340" column="6" selection-start-line="340" selection-start-column="6" selection-end-line="340" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/patientHistory.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -469,9 +418,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/App_1/form.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6156">
+          <caret line="343" column="6" selection-start-line="343" selection-start-column="6" selection-end-line="343" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ehr/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
+        <state relative-caret-position="540">
           <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
           <folding>
             <element signature="e#612#653#0" expanded="true" />
@@ -479,31 +435,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/App_1/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App_1/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="95" column="23" selection-start-line="95" selection-start-column="23" selection-end-line="95" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/App_1/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4071">
-          <caret line="43" column="28" selection-start-line="43" selection-start-column="28" selection-end-line="43" selection-end-column="28" />
+        <state relative-caret-position="411">
+          <caret line="311" column="115" lean-forward="true" selection-start-line="311" selection-start-column="115" selection-end-line="311" selection-end-column="115" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/App_1/models.py">
+    <entry file="file://$PROJECT_DIR$/static_in_pro/our_static/styles/main_styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="50" column="4" lean-forward="true" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="17" />
+        <state relative-caret-position="221">
+          <caret line="1311" column="6" selection-start-line="1311" selection-start-column="6" selection-end-line="1311" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/patientData.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+        <state relative-caret-position="196">
+          <caret line="15" column="81" selection-start-line="15" selection-start-column="81" selection-end-line="15" selection-end-column="81" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#h2#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />

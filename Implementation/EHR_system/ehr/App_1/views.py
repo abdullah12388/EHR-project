@@ -297,11 +297,11 @@ def test(request):
     }
     return render(request, 'test.html', context)
 
-<<<<<<< Updated upstream
+
 
 def move(src, dest):
     shutil.move(src, dest)
-=======
+
 def patientData(request):
     id = request.GET.get('id', None)
     context = {}
@@ -317,4 +317,4 @@ def patientData(request):
     else:
         context.update({'data':'not_found'})
     return render(request,'patientData.html',context)
->>>>>>> Stashed changes
+

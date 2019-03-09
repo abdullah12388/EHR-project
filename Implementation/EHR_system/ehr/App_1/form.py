@@ -172,11 +172,11 @@ class AddUser(forms.ModelForm):
         'placeholder': 'Work Phone',
         'required': 'required'
     }))
-    Date_of_birth = forms.CharField(widget=forms.TextInput(attrs={
+    Date_of_birth = forms.DateField(widget=forms.DateInput(attrs={
         'class': 'form-control',
         'placeholder': 'Birth Date',
         'required': 'required'
-    }))
+    }),input_formats=['%Y-%m-%d','%m/%d/%Y','%m/%d/%y','%d-%m-%Y'])
     marital_status = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'pattern': '[a-z]{5,}',
@@ -240,7 +240,6 @@ class AddUser(forms.ModelForm):
     }))
     Ssn = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'pattern': '[0-9]{1}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{3}-[0-9]{2}',
         'placeholder': 'SSN X-XX-XX-XX-XX-XXX-XX',
         'required': 'required'
     }))

@@ -1,3 +1,5 @@
+from datetime import date
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from .form import AddManager,AddUser
@@ -9,6 +11,7 @@ from django.core.files.storage import FileSystemStorage
 import qrcode,shutil,os
 from django.http import JsonResponse
 from django.conf import settings as set
+
 
 # Create your views here.
 

@@ -1806,3 +1806,18 @@ Patient History
 .by p{
     color: whitesmoke;
 }
+
+.medicine_head {
+    background-color: #32C69A;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+.medicine_head div {
+    padding: 6px 15px;
+    color: #ffffff;
+}
+.medicine_elem {
+    color: #fff;
+    font-size: 17px;
+}

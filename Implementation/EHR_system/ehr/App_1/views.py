@@ -8,7 +8,7 @@ from .models import admin, user, temp_register, report
 from django.core.files.storage import FileSystemStorage
 import qrcode
 from django.http import JsonResponse
-
+from array import *
 # Create your views here.
 
 class DB_functions:
@@ -42,8 +42,8 @@ class DB_functions:
         patient_id = []
         prescription_id = []
         Submit_date = []
-        clinic = []
-        hospital = []
+        clinic_id = []
+        hospital_id = []
         report_data = report.objects.order_by('-Submit_date')
         if report_data.exists():
             for instance in report_data:
@@ -52,11 +52,46 @@ class DB_functions:
                 patient_id.append(instance.patient_id)
                 prescription_id.append(instance.prescription_id)
                 Submit_date.append(instance.Submit_date)
-                clinic.append(instance.clinic)
-                hospital.append(instance.hospital)
-            all_report_data = [pk_list, doctor_id, patient_id, prescription_id, Submit_date, clinic, hospital]
-
+                clinic_id.append(instance.clinic_id)
+                hospital_id.append(instance.hospital_id)
+            all_report_data = [pk_list, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id]
             return all_report_data
+        else:
+            return False
+
+    def get_multi(self):
+        report_data = self.patient_report_data()
+        if not report_data == False:
+            report_id = report_data[0]
+            print("report_id",report_id)
+            i=0
+            p_a_id, p_c_id, p_m_id, p_r_id  = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))]
+            for i in range(0, len(report_id)):
+                multi_analytics_data = multi_analytics.objects.filter(report_id__exact=report_id[i]).exists()
+                multi_chronic_data = multi_chronic.objects.filter(report_id__exact=report_id[i]).exists()
+                multi_medicines_data = multi_medecines.objects.filter(report_id__exact=report_id[i]).exists()
+                multi_rays_data = multi_rays.objects.filter(report_id__exact=report_id[i]).exists()
+                if multi_analytics_data:
+                    j=0
+                    analytics_list = multi_analytics.objects.filter(report_id__exact=report_id[i])
+                    for instance in analytics_list:
+                        p_a_id[i].insert(j, instance.P_A_id)
+                        j = j+1
+                    print("p_a_id = " , p_a_id)
+                elif multi_chronic_data:
+                    chronic = multi_chronic.objects.filter(report_id__exact=report_id[i])
+                    for instance in chronic:
+                        p_a_id.append(instance.P_C_id)
+                elif multi_medicines_data:
+                    medicines = multi_medecines.objects.filter(report_id__exact=report_id[i])
+                    for instance in medicines:
+                        p_a_id.append(instance.P_M_id)
+                elif multi_rays_data:
+                    rays = multi_rays.objects.filter(report_id__exact=report_id[i])
+                    for instance in rays:
+                        p_a_id.append(instance.P_R_id)
+            result = zip(p_a_id, p_c_id, p_m_id, p_r_id)
+            return result
         else:
             return False
 
@@ -148,6 +183,7 @@ def patientLogout(request):
     return HttpResponseRedirect('/login/')
 
 def patientHistory(request):
+    global mix_1_1
     if request.method == 'POST':
         form = searchHistory(request.POST or None)
         form.save()
@@ -155,9 +191,14 @@ def patientHistory(request):
         form = searchHistory()
     context = {'form': form}
     db = DB_functions()
-    mix = db.patient_report_data()
-    if not mix == False:
-        context.update({'mix': mix})
+    mix_1 = db.patient_report_data()
+    mix_1_1 = zip(mix_1[0], mix_1[1], mix_1[2], mix_1[3], mix_1[4], mix_1[5], mix_1[6])
+    mix_2 = db.get_multi()
+    if not mix_1 == False:
+        context.update({
+            'mix': mix_1_1,
+            # 'mix_2': mix_2
+        })
     # pk_list = []
     # doctor_id = []
     # patient_id = []

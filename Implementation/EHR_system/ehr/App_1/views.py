@@ -192,9 +192,9 @@ def patientHistory(request):
     context = {'form': form}
     db = DB_functions()
     mix_1 = db.patient_report_data()
-    mix_1_1 = zip(mix_1[0], mix_1[1], mix_1[2], mix_1[3], mix_1[4], mix_1[5], mix_1[6])
     mix_2 = db.get_multi()
     if not mix_1 == False:
+        mix_1_1 = zip(mix_1[0], mix_1[1], mix_1[2], mix_1[3], mix_1[4], mix_1[5], mix_1[6])
         context.update({
             'mix': mix_1_1,
             # 'mix_2': mix_2

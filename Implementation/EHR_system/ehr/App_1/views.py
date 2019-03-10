@@ -1,3 +1,4 @@
+
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .form import AddManager,AddUser
@@ -8,7 +9,7 @@ from .models import admin, user, temp_register, report
 from django.core.files.storage import FileSystemStorage
 import qrcode
 from django.http import JsonResponse
-from array import *
+import django_filters as x
 # Create your views here.
 
 class DB_functions:
@@ -66,6 +67,8 @@ class DB_functions:
             print("report_id",report_id)
             i=0
             p_a_id, p_c_id, p_m_id, p_r_id  = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))]
+            p_a_id_, p_c_id_, p_m_id_, p_r_id_  = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))]
+
             for i in range(0, len(report_id)):
                 multi_analytics_data = multi_analytics.objects.filter(report_id__exact=report_id[i]).exists()
                 multi_chronic_data = multi_chronic.objects.filter(report_id__exact=report_id[i]).exists()
@@ -77,20 +80,68 @@ class DB_functions:
                     for instance in analytics_list:
                         p_a_id[i].insert(j, instance.P_A_id)
                         j = j+1
-                    print("p_a_id = " , p_a_id)
-                elif multi_chronic_data:
-                    chronic = multi_chronic.objects.filter(report_id__exact=report_id[i])
-                    for instance in chronic:
-                        p_a_id.append(instance.P_C_id)
-                elif multi_medicines_data:
-                    medicines = multi_medecines.objects.filter(report_id__exact=report_id[i])
-                    for instance in medicines:
-                        p_a_id.append(instance.P_M_id)
-                elif multi_rays_data:
-                    rays = multi_rays.objects.filter(report_id__exact=report_id[i])
-                    for instance in rays:
-                        p_a_id.append(instance.P_R_id)
-            result = zip(p_a_id, p_c_id, p_m_id, p_r_id)
+                    # print("p_a_id = " , p_a_id)
+                if multi_chronic_data:
+                    j=0
+                    chronic_list = multi_chronic.objects.filter(report_id__exact=report_id[i])
+                    for instance in chronic_list:
+                        p_c_id[i].insert(j, instance.P_C_id)
+                        j = j + 1
+                    # print("p_c_id = ", p_c_id)
+                if multi_medicines_data:
+                    j=0
+                    medicines_list = multi_medecines.objects.filter(report_id__exact=report_id[i])
+                    for instance in medicines_list:
+                        p_m_id[i].insert(j, instance.P_M_id)
+                        j = j + 1
+                    # print("p_m_id = ", p_m_id)
+                if multi_rays_data:
+                    j=0
+                    rays_list = multi_rays.objects.filter(report_id__exact=report_id[i])
+                    for instance in rays_list:
+                        p_r_id[i].insert(j, instance.P_R_id)
+                        j = j + 1
+                    # print("p_r_id = ", p_r_id)
+            result = [p_a_id, p_c_id, p_m_id, p_r_id]
+            for i in range(len(report_id)):
+                j, k, l, m = 0, 0, 0, 0
+                for j in range(len(p_a_id[i])):
+                    patient_analytics_list = patient_analytics.objects.get(P_A_id=p_a_id[i][j])
+                    p_a_id_[i].insert(j, patient_analytics_list.analytics_result)
+                for k in range(len(p_c_id[i])):
+                    patient_chronic_list = patient_chronic.objects.get(P_C_id=p_c_id[i][k])
+                    p_c_id_[i].insert(k, patient_chronic_list.chr_id)
+                for l in range(len(p_m_id[i])):
+                    patient_medicine_list = patient_medicine.objects.get(P_M_id=p_m_id[i][l])
+                    p_m_id_[i].insert(l, patient_medicine_list.number_of_pills)
+                for m in range(len(p_r_id[i])):
+                    patient_rays_list = patient_rays.objects.get(P_R_id=p_r_id[i][m])
+                    p_r_id_[i].insert(m, patient_rays_list.rays_result)
+
+            p_g_id = [multi_analytics.objects.filter(report_id__exact=report_id[y]) for y in range(len(report_id)) ]
+            p_g_id_ = [instance for instance in p_g_id]
+            print('p_g_id = ', p_g_id_)
+
+            print("p_a_id = ", p_a_id)
+            print("p_a_id_ = ", p_a_id_)
+            print("p_c_id = ", p_c_id)
+            print("p_c_id_ = ", p_c_id_)
+            print("p_m_id = ", p_m_id)
+            print("p_m_id_ = ", p_m_id_)
+            print("p_r_id = ", p_r_id)
+            print("p_r_id_ = ", p_r_id_)
+
+            # teha = x.CharFilter('teha##$^%##@+___""___((')
+            # print('teha = ', teha)
+            # if not p_c_id[0]:
+            #     if not p_c_id[0][0]:
+            #         print("p_c_id[0][0] = ", p_c_id[0][0])
+            # else:
+            #     print("p_c_id = ", p_c_id)
+            # print("p_c_id = ", p_c_id)
+            # print("p_m_id = ", p_m_id)
+            # print("p_r_id = ", p_r_id)
+
             return result
         else:
             return False

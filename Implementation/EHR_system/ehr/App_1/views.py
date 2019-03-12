@@ -210,7 +210,7 @@ def valid_email(request):
     print(email1)
     data = {
         # 'is_taken' : admin.objects.filter(email__iexact = email).exists()
-        'is_taken': AddUser.objects.filter(email__iexact = email1).exists()
+        'is_taken': user.objects.filter(email_1__iexact = email1).exists()
     }
     return JsonResponse(data)
 

@@ -30,6 +30,7 @@ urlpatterns = [
     # url(r'^signup/', view.signup, name='signup'),
     url(r'^signup/$', view.temp_Register, name='signup'),
     url(r'^ajax/validate_email/$', view.validate_email, name='validate_email'),
+    url(r'^ajax/valid_email/$', view.valid_email, name='valid_email'),
     url(r'^test/$', view.test, name='test'),
     url(r'^patientHistory/$', view.patientHistory, name='patientHistory'),
 ]

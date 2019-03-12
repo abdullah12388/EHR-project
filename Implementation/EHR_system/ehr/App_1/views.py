@@ -7,7 +7,7 @@ from django.shortcuts import render
 from .form import *
 from .models import admin, user, temp_register, report
 from django.core.files.storage import FileSystemStorage
-import qrcode
+import qrcode,shutil,os
 from django.http import JsonResponse
 # Create your views here.
 
@@ -204,6 +204,17 @@ def validate_email(request):
     }
     return JsonResponse(data)
 
+
+def valid_email(request):
+    email1 = request.GET.get('email_1', None)
+    print(email1)
+    data = {
+        # 'is_taken' : admin.objects.filter(email__iexact = email).exists()
+        'is_taken': AddUser.objects.filter(email__iexact = email1).exists()
+    }
+    return JsonResponse(data)
+
+
 def patientLogin(request):
     if request.method == 'POST':
         form = login(request.POST or None)
@@ -290,7 +301,6 @@ def patient_profile(request):
 
                 # extract ssn id from full ssn
                 ssn = instance1.Ssn
-                ssn = ssn.replace('-', '')
                 instance1.Ssn_id = ssn[7:14]
 
                 qr = qrcode.QRCode(
@@ -302,12 +312,13 @@ def patient_profile(request):
                 qr.add_data(instance1.Ssn_id)
                 qr.make(fit=True)
                 qrc_id = qr.make_image()
-                img_name = instance1.first_name
+                img_name = instance1.Ssn_id
                 img_exten = 'png'
                 img = img_name + '.' + img_exten
-                img_file = qrc_id.save(img)
-                # qrcode_id = fs.save(img, img_file)
+                qrc_id.save(img)
                 instance1.save()
+
+                move(os.path.join('',img),os.path.join(set.MEDIA_ROOT,img))
 
                 # get the user id with the email
                 a = form1.cleaned_data.get('email_1')
@@ -316,7 +327,7 @@ def patient_profile(request):
                 if form2.is_valid():
                     instance2 = form2.save(commit=False)
                     instance2.Patient_id = u_id
-                    instance2.QR_code = fs.url(img_file)
+                    instance2.QR_code = fs.url(img)
                     instance2.save()
                     return HttpResponseRedirect('/')
                 else:
@@ -356,3 +367,7 @@ def test(request):
         'email_list': email_list,
     }
     return render(request, 'test.html', context)
+
+
+def move(src, dest):
+    shutil.move(src, dest)

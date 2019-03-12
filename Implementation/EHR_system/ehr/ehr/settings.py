@@ -85,8 +85,8 @@ DATABASES = {
         'NAME': 'ehr',
         'USER': 'root',
         'PASSWORD': '',
-        'PORT': '3306',
         'HOST': 'localhost',
+        'PORT': '3306'
     }
 }
 

@@ -268,4 +268,3 @@ class blocked_organizations(models.Model):
 class blocked_users(models.Model):
     manager = models.ForeignKey(manager, on_delete=models.CASCADE)
     user = models.ForeignKey(user, on_delete=models.CASCADE)
-

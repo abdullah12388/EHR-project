@@ -17,17 +17,18 @@
             <div class="row">
                 <div class="col-3">
                     <div class="row">
-                        <div class="text-center">
-                            <img src="{% static 'images/user.png' %}" style="width:80%; margin: 20px 0 0 0; " alt="profile picture" class="img-thumbnail"/>
+                        <div style="width:200px;margin: auto">
+                            <img src="{% static 'images/user.png' %}" alt="profile picture" class="img-thumbnail"/>
                         </div>
                     </div>
                     <div class="row">
                         {{ form1.Profile_picture }}
                         <label for="file1">Choose a file</label>
                     </div>
+                    <div style="margin-top:45px"></div>
                     <div class="row">
-                        <div class="text-center">
-                            <img src="{% static 'images/SSN.png' %}" style="width:80%;margin:20px 0px 0px 7px" alt="SSN" class="img-thumbnail">
+                        <div style="width:200px;margin: auto">
+                            <img src="{% static 'images/SSN.png' %}"  alt="SSN" class="img-thumbnail">
                         </div>
                     </div>
                     <div class="row">
@@ -92,6 +93,10 @@
                     <div class="form-row" style="margin-bottom:20px">
                         <div class="col">
                             {{ form1.email_1 }}
+                            <b id="warn" class="hide">
+                                <i class="fa fa-warning" aria-hidden="true"></i>
+                                email already exist
+                            </b>
                         </div>
                         <div class="col">
                             {{ form1.email_2 }}
@@ -117,15 +122,17 @@
                         </div>
                         <div class="col">
                             {{ form1.New_Password }}
+                            <b id="warn1" class="hide">
+                                <i class="fa fa-warning" aria-hidden="true"></i>
+                                not matched
+                            </b>
                         </div>
                         <div class="col">
-                            <div class="mydiv">
-                                {{ form1.Confirm_Pass }}
-                                <b id="warn2" class="hide">
-                                    <i class="fa fa-warning" aria-hidden="true"></i>
-                                    not matched
-                                </b>
-                            </div>
+                            {{ form1.Confirm_Pass }}
+                            <b id="warn2" class="hide">
+                                <i class="fa fa-warning" aria-hidden="true"></i>
+                                not matched
+                            </b>
                         </div>
                         {{ form1.Ssn_id }}
                         {{ form1.User_type }}
@@ -158,7 +165,9 @@
                 </div>
 
             </div>
-            <button id="id_signup_submit" type="submit" style="width:20%;margin:40px auto 0px 350px" class="button home_button">Submit</button>
+            <div class="row">
+                <button id="id_signup_submit" type="submit" style="width:20%;margin:auto" class="button home_button">Submit</button>
+            </div>
             <!--<input type="submit" class="form-control" style="width:20%;margin:40px auto 0px auto" value="Submit">-->
         </form>
     </div>

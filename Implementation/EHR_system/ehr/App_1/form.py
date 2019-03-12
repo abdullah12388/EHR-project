@@ -24,6 +24,7 @@ class AddManager(forms.ModelForm):
         'required': 'required',
         'id': 're_pass'
     }))
+
     class Meta:
         model = admin
         fields = ['email','password', 're_password']
@@ -171,12 +172,12 @@ class AddUser(forms.ModelForm):
         'placeholder': 'Work Phone',
         'required': 'required'
     }))
-    Date_of_birth = forms.CharField(widget=forms.TextInput(attrs={
+    Date_of_birth = forms.DateField(widget=forms.DateInput(attrs={
         'class': 'form-control',
-        'pattern': '[0-9]{2}-[0-9]{2}-[0-9]{4}',
         'placeholder': 'Birth Date',
-        'required': 'required'
-    }))
+        'required': 'required',
+        'type': 'date'
+    }),input_formats=['%Y-%m-%d','%m/%d/%Y','%m/%d/%y','%d-%m-%Y'])
     marital_status = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'pattern': '[a-z]{5,}',
@@ -193,7 +194,8 @@ class AddUser(forms.ModelForm):
         'class': 'form-control',
         'pattern': '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$',
         'placeholder': 'First E-mail',
-        'required': 'required'
+        'required': 'required',
+        'id': 'id_email_2'
     }))
     email_2 = forms.EmailField(widget=forms.EmailInput(attrs={
         'class': 'form-control',
@@ -239,7 +241,6 @@ class AddUser(forms.ModelForm):
     }))
     Ssn = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
-        'pattern': '[0-9]{1}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{3}-[0-9]{2}',
         'placeholder': 'SSN X-XX-XX-XX-XX-XXX-XX',
         'required': 'required'
     }))
@@ -255,13 +256,15 @@ class AddUser(forms.ModelForm):
         'class': 'form-control',
         'pattern': '(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}',
         'placeholder': 'New Pass',
-        'required': 'required'
+        'required': 'required',
+        'id': 'pass'
     }))
     Confirm_Pass = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
         'pattern': '(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}',
         'placeholder': 'Confirm Pass',
-        'required': 'required'
+        'required': 'required',
+        'id': 're_pass'
     }))
 
     class Meta:

@@ -33,9 +33,17 @@
     {% else %} home
     {% endif %}
     ">
-    <div class="{% if request.get_full_path == '/patientHistory/' %}
+    <div class="
+    {% if request.get_full_path == '/patientHistory/' %}
     {% else %} background_image
-    {% endif %}"></div>
+    {% endif %}
+    " style="
+    {% if request.get_full_path == '/patientProfile/' %} height:120%
+    {% else %}
+        {% if request.get_full_path == '/patientProfile/?c=1' %} height:120%
+        {% endif %}
+    {% endif %}
+    "></div>
 
     <!-- Header -->
     <header class="header" id="header">
@@ -105,4 +113,3 @@
             </div>
         </div>
     </header>
-

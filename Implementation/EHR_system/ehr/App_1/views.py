@@ -9,18 +9,21 @@ from .models import admin, user, temp_register, report
 from django.core.files.storage import FileSystemStorage
 import qrcode
 from django.http import JsonResponse
-import django_filters as x
 # Create your views here.
 
 class DB_functions:
     __patient_email = ''
     __patient_password = ''
+    __final_all_reports = []
     patient_login_result = ''
 
     def set_patient_email(self, email):
         self.__patient_email = email
     def set_patient_password(self, password):
         self.__patient_password = password
+    def get_final_all_reports(self):
+        return self.__final_all_reports
+
     def patient_login(self, request):
         user_is_exist = temp_register.objects.filter(email__iexact=self.__patient_email).exists()
         if user_is_exist:
@@ -45,6 +48,10 @@ class DB_functions:
         Submit_date = []
         clinic_id = []
         hospital_id = []
+        doctor_names = []
+        prescription_detail = []
+        clinic_names = []
+        hospital_names = []
         report_data = report.objects.order_by('-Submit_date')
         if report_data.exists():
             for instance in report_data:
@@ -55,7 +62,19 @@ class DB_functions:
                 Submit_date.append(instance.Submit_date)
                 clinic_id.append(instance.clinic_id)
                 hospital_id.append(instance.hospital_id)
-            all_report_data = [pk_list, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id]
+                user_id = doctor.objects.get(id=instance.doctor_id).Doc_id
+                doctor_name = user.objects.get(user_id=user_id).first_name + " " + user.objects.get(user_id=user_id).last_name
+                doctor_names.append(doctor_name)
+                prescription_detail.append(prescription.objects.get(prescription_id=instance.prescription_id).Disease_disc)
+                if instance.clinic_id == None:
+                    clinic_names.append(False)
+                else:
+                    clinic_names.append(organization.objects.get(org_id=instance.clinic_id).org_name)
+                if instance.hospital_id == None:
+                    hospital_names.append(False)
+                else:
+                    hospital_names.append(hospital.objects.get(h_id=1).h_name)
+            all_report_data = [pk_list, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id, doctor_names, prescription_detail, clinic_names, hospital_names]
             return all_report_data
         else:
             return False
@@ -107,21 +126,16 @@ class DB_functions:
                 j, k, l, m = 0, 0, 0, 0
                 for j in range(len(p_a_id[i])):
                     patient_analytics_list = patient_analytics.objects.get(P_A_id=p_a_id[i][j])
-                    p_a_id_[i].insert(j, patient_analytics_list.analytics_result)
+                    p_a_id_[i].insert(j, patient_analytics_list)
                 for k in range(len(p_c_id[i])):
                     patient_chronic_list = patient_chronic.objects.get(P_C_id=p_c_id[i][k])
-                    p_c_id_[i].insert(k, patient_chronic_list.chr_id)
+                    p_c_id_[i].insert(k, patient_chronic_list)
                 for l in range(len(p_m_id[i])):
                     patient_medicine_list = patient_medicine.objects.get(P_M_id=p_m_id[i][l])
-                    p_m_id_[i].insert(l, patient_medicine_list.number_of_pills)
+                    p_m_id_[i].insert(l, patient_medicine_list)
                 for m in range(len(p_r_id[i])):
                     patient_rays_list = patient_rays.objects.get(P_R_id=p_r_id[i][m])
-                    p_r_id_[i].insert(m, patient_rays_list.rays_result)
-
-            p_g_id = [multi_analytics.objects.filter(report_id__exact=report_id[y]) for y in range(len(report_id)) ]
-            p_g_id_ = [instance for instance in p_g_id]
-            print('p_g_id = ', p_g_id_)
-
+                    p_r_id_[i].insert(m, patient_rays_list)
             print("p_a_id = ", p_a_id)
             print("p_a_id_ = ", p_a_id_)
             print("p_c_id = ", p_c_id)
@@ -130,47 +144,38 @@ class DB_functions:
             print("p_m_id_ = ", p_m_id_)
             print("p_r_id = ", p_r_id)
             print("p_r_id_ = ", p_r_id_)
-
-            # teha = x.CharFilter('teha##$^%##@+___""___((')
-            # print('teha = ', teha)
-            # if not p_c_id[0]:
-            #     if not p_c_id[0][0]:
-            #         print("p_c_id[0][0] = ", p_c_id[0][0])
-            # else:
-            #     print("p_c_id = ", p_c_id)
-            # print("p_c_id = ", p_c_id)
-            # print("p_m_id = ", p_m_id)
-            # print("p_r_id = ", p_r_id)
-
-            return result
+            self.__final_all_reports = [p_a_id_, p_c_id_, p_m_id_, p_r_id_]
+            return True
         else:
             return False
 
 def home(request):
     return render(request, 'home.html', {})
 
-# def signup(request):
-#     if request.method == 'POST':
-#         form1 = AddManager(request.POST or None)
-#         form2 = AddTemp(request.POST or None)
-#         if form1.is_valid():
-#             form1.save()
-#             a = form1.cleaned_data.get('email')
-#             admin_id = admin.objects.get(email = a).id
-#             #print(admin_id)
-#             if form2.is_valid():
-#                 instance = form2.save(commit=False)
-#                 instance.temp_id = admin_id
-#                 instance.save()
-#             #return HttpResponseRedirect('/login/')
-#     else:
-#         form1 = AddManager()
-#         form2 = AddTemp()
-#     context = {
-#         'form1': form1,
-#         'form2': form2
-#     }
-#     return render(request, 'signup.html', context)
+"""
+def signup(request):
+    if request.method == 'POST':
+        form1 = AddManager(request.POST or None)
+        form2 = AddTemp(request.POST or None)
+        if form1.is_valid():
+            form1.save()
+            a = form1.cleaned_data.get('email')
+            admin_id = admin.objects.get(email = a).id
+            #print(admin_id)
+            if form2.is_valid():
+                instance = form2.save(commit=False)
+                instance.temp_id = admin_id
+                instance.save()
+            #return HttpResponseRedirect('/login/')
+    else:
+        form1 = AddManager()
+        form2 = AddTemp()
+    context = {
+        'form1': form1,
+        'form2': form2
+    }
+    return render(request, 'signup.html', context)
+"""
 
 def temp_Register(request):
     if request.method == 'POST':
@@ -243,34 +248,17 @@ def patientHistory(request):
     context = {'form': form}
     db = DB_functions()
     mix_1 = db.patient_report_data()
-    mix_1_1 = zip(mix_1[0], mix_1[1], mix_1[2], mix_1[3], mix_1[4], mix_1[5], mix_1[6])
     mix_2 = db.get_multi()
-    if not mix_1 == False:
+    mix_2_1 = db.get_final_all_reports()
+    if not mix_1 == False and mix_2 == True:
+        mix_1_1 = zip(mix_1[0], mix_1[1], mix_1[2], mix_1[3], mix_1[4], mix_1[5], mix_1[6], mix_1[7], mix_1[8], mix_1[9], mix_1[10], mix_2_1[0], mix_2_1[1], mix_2_1[2], mix_2_1[3])
         context.update({
-            'mix': mix_1_1,
-            # 'mix_2': mix_2
+            'mix_1': mix_1_1,
         })
-    # pk_list = []
-    # doctor_id = []
-    # patient_id = []
-    # prescription_id = []
-    # Submit_date = []
-    # report_data  = report.objects.order_by('-Submit_date')
-    # if report_data.exists():
-    #     for instance in report_data:
-    #         pk_list.append(instance.pk)
-    #         doctor_id.append(instance.doctor_id)
-    #         patient_id.append(instance.patient_id)
-    #         prescription_id.append(instance.prescription_id)
-    #         Submit_date.append(instance.Submit_date)
-    #     mix = zip(pk_list, doctor_id, patient_id, prescription_id, Submit_date)
-    #     context.update( {
-    #         'pk_list': pk_list,
-    #         'doctor_id': doctor_id,
-    #         'patient_id': patient_id,
-    #         'prescription_id': prescription_id,
-    #         'Submit_date': Submit_date,
-    #         'mix': mix
+    # if not mix_2:
+    #     mix_2_1 = zip(mix_2[0], mix_2[1], mix_2[2], mix_2[3])
+    #     context.update({
+    #         'mix_2': mix_2_1
     #     })
     return render(request, 'patientHistory.html', context)
 

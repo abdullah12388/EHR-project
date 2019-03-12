@@ -1784,17 +1784,19 @@ Patient History
 .history_date p{
     color: #000;
 }
-.history_details .row{
+.history_details .report_header{
     background-color: #31ad88;
     width: 92%;
     margin: auto;
+    cursor: pointer;
 }
-.history_details .elements{
+.history_details a.elements{
     padding: 27px;
     color: #FFFFFF;
     font-size: 18px;
+
 }
-.history_details .elements:hover {
+.history_details a.elements:hover {
     text-decoration: none;
     background-color: white;
     color: #000;
@@ -1820,4 +1822,12 @@ Patient History
 .medicine_elem {
     color: #fff;
     font-size: 17px;
+}
+.row.medicine_elem.well {
+    background-color: #31ad88;
+}
+.medicine_body {
+    display: none;
+    margin-top: 10px;
+    padding-bottom: 7px;
 }

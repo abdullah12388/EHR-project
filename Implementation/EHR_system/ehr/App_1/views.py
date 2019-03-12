@@ -6,7 +6,7 @@ from .form import AddManager,AddUser
 from .models import admin , user , patient
 from django.shortcuts import render
 from .form import *
-from .models import admin, user, temp_register, report
+from .models import admin, user, temp_register, report, comments
 from django.core.files.storage import FileSystemStorage
 import qrcode,shutil,os
 from django.http import JsonResponse
@@ -317,4 +317,25 @@ def patientData(request):
     else:
         context.update({'data':'not_found'})
     return render(request,'patientData.html',context)
-
+# 1 for doctor
+# 2 for clinic
+# 3 for hospital
+# 4 for hospital
+def doctorHome(request):
+    id = request.GET.get('id', None)
+    context = {}
+    commentArray = []
+    # role = comments.objects.get(pk=id).role
+    data = comments.objects.filter(role__exact=1)
+    for i in data:
+        if i.role==1 :
+            commentArray.append(i.comment)
+            context.update({'data': commentArray})
+            print(commentArray)
+        elif i.role==2:
+            commentArray.append(i.comment)
+            context.update({'data': commentArray})
+        elif i.role==3:
+            commentArray.append(i.comment)
+            context.update({'data': commentArray})
+    return render(request,'doctorHome.html',context)

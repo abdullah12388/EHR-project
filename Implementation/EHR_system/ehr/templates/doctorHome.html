@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block doctorHome %}
+    <div class="container" style="padding-top:200px">
+        <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Doctor Home</h2>
+
+        <div class="container">
+            <div class="row">
+                <div class="col" style="border:solid 3px black;margin:3px ">
+                    {% for i in data %}
+                        <p style="color: black">{{ i }}</p>
+                    {% endfor %}
+                </div>
+                <div class="col" style="border:solid 3px black;margin:3px">
+                    bad
+                </div>
+                <div class="col" style="border:solid 3px black;margin:3px">
+                    rank
+                </div>
+            </div>
+            <div class="row" style="border:solid 3px black; text-align: center">
+                <div class="col-sm-6">
+                    <p>
+                        kadkankdnalwdnmlakwmdlk
+                    </p>
+                </div>
+                <div class="col-sm-6">
+                    <p>
+                        kadkankdnalwdnmlakwmdlk
+                    </p>
+                </div>
+            </div>
+            <div class="row" style="border:solid 3px black; margin-top:3px">
+            <p style="color: black">
+                mmkn n7ot API bygib a3lanat mn bra w m4 hn7tag nktb fiha ay code
+
+            </p>
+            </div>
+        </div>
+    </div>
+
+{% endblock doctorHome %}

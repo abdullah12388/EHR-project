@@ -186,7 +186,7 @@ class report(models.Model):
     doctor = models.ForeignKey(doctor, on_delete=models.CASCADE)
     clinic = models.ForeignKey(organization, on_delete=models.CASCADE, blank=True, null=True)
     hospital = models.ForeignKey(hospital, on_delete=models.CASCADE, blank=True, null=True)
-    Submit_date = models.DateTimeField(auto_now_add=True)
+    Submit_date = models.DateTimeField(auto_now=False, auto_now_add=True)
 
 
 class all_analytics(models.Model):
@@ -274,3 +274,13 @@ class blocked_organizations(models.Model):
 class blocked_users(models.Model):
     manager = models.ForeignKey(manager, on_delete=models.CASCADE)
     user = models.ForeignKey(user, on_delete=models.CASCADE)
+
+class comments(models.Model):
+    comment = models.TextField(null=False)
+    role = models.IntegerField(null=False)
+    to_whom_id_doctor = models.ForeignKey(doctor,blank=True,null=True, on_delete=models.CASCADE)
+    to_whom_id_hospital = models.ForeignKey(hospital, blank=True, null=True, on_delete=models.CASCADE)
+    to_whom_id_pharmacy = models.ForeignKey(organization, blank=True, null=True, on_delete=models.CASCADE)
+    comment_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    user_foreign_key = models.ForeignKey(patient,on_delete=models.CASCADE)
+

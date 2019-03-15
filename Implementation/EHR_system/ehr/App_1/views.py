@@ -287,3 +287,5 @@ def test(request):
 
 def move(src, dest):
     shutil.move(src, dest)
+def patientDoctor(request):
+    return render(request,'patientDoctor.html',{})

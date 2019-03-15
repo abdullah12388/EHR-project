@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^ajax/valid_email/$', view.valid_email, name='valid_email'),
     url(r'^test/$', view.test, name='test'),
     url(r'^patientHistory/$', view.patientHistory, name='patientHistory'),
+    url(r'^patientDoctor/$', view.patientDoctor, name='patientDoctor'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

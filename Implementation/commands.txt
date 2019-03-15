@@ -27,3 +27,11 @@ pip install django-mysql
 pip install --only-binary :all: mysqlclient
 pip install Pillow
 pip install qrcode
+//////////////////////////////////////////////////////////////////
+DB_HOST
+----------------
+Username: jVZP6lF9XM 
+Database: jVZP6lF9XM 
+Password: XWUwXq9OVQ 
+Server: remotemysql.com 
+Port: 3306

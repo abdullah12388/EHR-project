@@ -82,13 +82,24 @@ WSGI_APPLICATION = 'ehr.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sql9283480',
-        'HOST': 'sql9.freemysqlhosting.net',
+        'NAME': 'jVZP6lF9XM',
+        'HOST': 'remotemysql.com',
         'PORT': '3306',
-        'USER': 'sql9283480',
-        'PASSWORD': 'paADXX16VT',
-    }
+        'USER': 'jVZP6lF9XM',
+        'PASSWORD': 'XWUwXq9OVQ',
+    },
 }
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'ehr',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#         'PORT': '3306'
+#     }
+# }
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 

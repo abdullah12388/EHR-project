@@ -19,10 +19,16 @@ python manage.py dbshell
 pip install bcrypt
 pip install django[argon2]
 pip install django-mysql
-<<<<<<< Updated upstream
 pip install --only-binary :all: mysqlclient
 pip install Pillow
 pip install qrcode
-=======
-python -m pip install --upgrade pip
->>>>>>> Stashed changes
+//////////////////////////////////////////////////////////////////
+DB_HOST
+----------------
+https://remotemysql.com/phpmyadmin/
+Username: jVZP6lF9XM 
+Database: jVZP6lF9XM 
+Password: XWUwXq9OVQ 
+Server: remotemysql.com 
+Port: 3306
+DB_HOST

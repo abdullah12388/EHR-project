@@ -175,7 +175,8 @@ class AddUser(forms.ModelForm):
     Date_of_birth = forms.DateField(widget=forms.DateInput(attrs={
         'class': 'form-control',
         'placeholder': 'Birth Date',
-        'required': 'required'
+        'required': 'required',
+        'type': 'date'
     }),input_formats=['%Y-%m-%d','%m/%d/%Y','%m/%d/%y','%d-%m-%Y'])
     marital_status = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',

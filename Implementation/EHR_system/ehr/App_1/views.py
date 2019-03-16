@@ -8,6 +8,7 @@ from .form import *
 from .models import admin, user, temp_register, report
 from django.core.files.storage import FileSystemStorage
 import qrcode,shutil,os
+from django.conf import settings as set
 from django.http import JsonResponse
 # Create your views here.
 

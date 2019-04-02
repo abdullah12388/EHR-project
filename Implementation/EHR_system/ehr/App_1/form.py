@@ -1,5 +1,6 @@
 from django import forms
 from .models import *
+from django.contrib.auth.hashers import make_password
 
 class AddManager(forms.ModelForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={
@@ -75,6 +76,11 @@ class tempRegister(forms.ModelForm):
         'id': 're_pass'
     }))
     re_password.label = 'Repeat password'
+
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        return make_password(password)
+
     class Meta:
         model = temp_register
         fields = ['email', 'password', 're_password']
@@ -266,6 +272,11 @@ class AddUser(forms.ModelForm):
         'required': 'required',
         'id': 're_pass'
     }))
+
+    def clean_New_Password(self):
+        password = self.cleaned_data.get('New_Password')
+        return make_password(password)
+
 
     class Meta:
         model = user

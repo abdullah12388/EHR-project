@@ -16,7 +16,9 @@ python manage.py collectstatic
 cd django-registration-v1.9 ==> python setup.py install
 
 python manage.py dbshell
-
+/////////////////////////////////////////////////////////////////
+Django Installation
+---------------------
 python -m pip install --upgrade pip
 pip install virtualenv
 pip install django==1.10.5
@@ -31,9 +33,9 @@ pip install qrcode
 DB_HOST
 ----------------
 https://remotemysql.com/phpmyadmin/
-Username: jVZP6lF9XM 
-Database: jVZP6lF9XM 
-Password: XWUwXq9OVQ 
+Username: jVZP6lF9XM
+Database: jVZP6lF9XM
+Password: XWUwXq9OVQ
 Server: remotemysql.com 
 Port: 3306
 DB_HOST

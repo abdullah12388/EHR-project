@@ -15,36 +15,114 @@
             </form>
         </div>
         <!--<div class="history_details">-->
-            <!--<div class="history_date"><p>{{ Submit_date|date:'m-d-Y h:i a' }}</p></div>-->
-            <!--<h3>{{ pk_list }}</h3>-->
-            <!--<h3>{{ doctor_id }}</h3>-->
-            <!--<h3>{{ patient_id }}</h3>-->
-            <!--<h3>{{ prescription_id }}</h3>-->
-            <!--<h3>{{ Submit_date|date:"SHORT_DATETIME_FORMAT"  }}</h3>-->
-            <!--<h3>{{ Submit_date|date:"D d M Y"  }}</h3>-->
-            <!--<h3>{{ Submit_date|time:"P" }}</h3>-->
-            <!--<h3>{{ Submit_date|date:'m-d-Y h:i a' }}</h3>-->
-            <!--<div class="row text-center">-->
-                <!--<a class="col-sm-3 elements" href="#">Prescription</a>-->
-                <!--<a class="col-sm-3 elements" href="#">Medicines</a>-->
-                <!--<a class="col-sm-3 elements" href="#">Analytics</a>-->
-                <!--<a class="col-sm-3 elements" href="#">Rays</a>-->
-            <!--</div>-->
+        <!--<div class="history_date"><p>{{ Submit_date|date:'m-d-Y h:i a' }}</p></div>-->
+        <!--<h3>{{ pk_list }}</h3>-->
+        <!--<h3>{{ doctor_id }}</h3>-->
+        <!--<h3>{{ patient_id }}</h3>-->
+        <!--<h3>{{ prescription_id }}</h3>-->
+        <!--<h3>{{ Submit_date|date:"SHORT_DATETIME_FORMAT"  }}</h3>-->
+        <!--<h3>{{ Submit_date|date:"D d M Y"  }}</h3>-->
+        <!--<h3>{{ Submit_date|time:"P" }}</h3>-->
+        <!--<h3>{{ Submit_date|date:'m-d-Y h:i a' }}</h3>-->
+        <!--<div class="row text-center">-->
+        <!--<a class="col-sm-3 elements" href="#">Prescription</a>-->
+        <!--<a class="col-sm-3 elements" href="#">Medicines</a>-->
+        <!--<a class="col-sm-3 elements" href="#">Analytics</a>-->
+        <!--<a class="col-sm-3 elements" href="#">Rays</a>-->
         <!--</div>-->
-        {% for pk, doctor_id, patient_id, prescription_id, Submit_date in mix %}
+        <!--</div>-->
+        {% for pk, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id, doctor_name, prescription_detail, clinic_name, hospital_name, p_a_id, p_c_id, p_m_id, p_r_id in mix_1 %}
         <div class="history_details">
             <div class="history_date"><p>{{ Submit_date|date:'m-d-Y h:i a' }}</p></div>
-            <div class="row text-center">
-                <a class="col-sm-3 elements" href="/patientHstory?id=1/">Prescription</a>
-                <a class="col-sm-3 elements" href="#">Medicines</a>
-                <a class="col-sm-3 elements" href="#">Analytics</a>
-                <a class="col-sm-3 elements" href="#">Rays</a>
+            <div class="row text-center report_header">
+                <a class="col-sm-3 elements">Prescription</a>
+                <a class="col-sm-3 elements">Medicines</a>
+                <a class="col-sm-3 elements">Analytics</a>
+                <a class="col-sm-3 elements">Rays</a>
+
+                <div id="prescription" class="container-fluid text-center medicine_body" style="overflow-x: auto">
+                    <div class="row medicine_elem well">
+                        <h3>{{prescription_detail}}</h3>
+                    </div>
+                </div>
+                <div id="medicine" class="container-fluid text-center medicine_body" style="overflow-x: auto">
+                    <div class="row medicine_head">
+                        <div class="col-4">
+                            Name
+                        </div>
+                        <div class="col-4">
+                            Pills
+                        </div>
+                        <div class="col-4">
+                            Potions
+                        </div>
+                    </div>
+                    {% for i in p_a_id %}
+                    <div class="row medicine_elem">
+                        <div class="col-4">
+                    {{i.analytics_result}}
+                        </div>
+                        <div class="col-4">
+                    {{i.analytics_result}}
+                        </div>
+                        <div class="col-4">
+                    {{i.analytics_result}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div>
+                <div id="analytics" class="container-fluid text-center medicine_body" style="overflow-x: auto">
+                    <div class="row medicine_head">
+                        <div class="col-6">
+                            Name
+                        </div>
+                        <div class="col-6">
+                            Result
+                        </div>
+                    </div>
+                    {% for i in p_a_id %}
+                    <div class="row medicine_elem">
+                        <div class="col-6">
+                    {{i.analytics_result}}
+                        </div>
+                        <div class="col-6">
+                    {{i.analytics_result}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div>
+                <div id="rays" class="container-fluid text-center medicine_body" style="overflow-x: auto">
+                    <div class="row medicine_head">
+                        <div class="col-6">
+                            Name
+                        </div>
+                        <div class="col-6">
+                            Result
+                        </div>
+                    </div>
+                    {% for i in p_a_id %}
+                    <div class="row medicine_elem">
+                        <div class="col-6">
+                    {{i.analytics_result}}
+                        </div>
+                        <div class="col-6">
+                    {{i.analytics_result}}
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div>
             </div>
             <div class="by">
                 <h4 class="" style="color: white"><b>By:</b></h4>
-                <p><b style="color: white">Doctor: </b> Ahmed Hossam</p>
-                <p><b style="color: white">Hospital: </b> National Ahmed Orabi</p>
+                <p><b style="color: white">Doctor: </b> {{doctor_name}}</p>
+                {% if clinic_name == False %}
+                    <p><b style="color: white">Hospital: </b> {{hospital_name}}</p>
+                {% elif hospital_name == False %}
+                    <p><b style="color: white">Clinic: </b> {{clinic_name}}</p>
+                {% endif %}
             </div>
+
+
         </div>
         {% endfor %}
     </div>

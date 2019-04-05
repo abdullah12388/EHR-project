@@ -82,17 +82,34 @@ WSGI_APPLICATION = 'ehr.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ehr',
-        'USER': 'root',
-        'PASSWORD': '',
+        'NAME': 'jVZP6lF9XM',
+        'HOST': 'remotemysql.com',
         'PORT': '3306',
-        'HOST': 'localhost',
-    }
+        'USER': 'jVZP6lF9XM',
+        'PASSWORD': 'XWUwXq9OVQ',
+    },
 }
-
-
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'ehr',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': 'localhost',
+#         'PORT': '3306'
+#     }
+# }
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+]
 
 LANGUAGE_CODE = 'en-us'
 

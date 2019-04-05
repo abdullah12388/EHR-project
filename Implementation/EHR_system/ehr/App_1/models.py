@@ -143,6 +143,9 @@ class organization(models.Model):
     hr_password = models.CharField(max_length=100)
     creation_date = models.DateField(auto_now_add=True)
     org_rate = models.IntegerField()
+    # 1 for lab
+    # 2 for pharmacy
+    # 3 for hospital
     Type = models.IntegerField()
     hospital = models.ForeignKey(hospital, blank=True, null=True, on_delete=models.CASCADE)
 

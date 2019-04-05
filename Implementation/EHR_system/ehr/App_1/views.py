@@ -1,11 +1,21 @@
+<<<<<<< Updated upstream
 from datetime import date
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+=======
+
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render
+>>>>>>> Stashed changes
 from .form import AddManager,AddUser
 from .models import admin , user , patient
 from django.shortcuts import render
 from .form import *
+<<<<<<< Updated upstream
 from .models import admin, user, temp_register, report, comments
+=======
+from .models import admin, user, temp_register, report, patient, prescription, patient_medicine
+>>>>>>> Stashed changes
 from django.core.files.storage import FileSystemStorage
 import qrcode,shutil,os
 from django.conf import settings as set
@@ -252,6 +262,8 @@ def patientLogin(request):
     }
     return render(request, 'login.html', context)
 
+
+
 def patientLogout(request):
     if 'patient_id' in request.session:
         request.session.pop('patient_id')
@@ -424,3 +436,28 @@ def doctorHome(request):
 
 def patientDoctor(request):
     return render(request,'patientDoctor.html',{})
+<<<<<<< Updated upstream
+=======
+
+def pharmacyShowData(request, primary_key):
+    patientData = report.objects.filter(pk = primary_key)
+    for p in patientData:
+        prescriptions = p.prescription.Disease_name
+        print(patientData)
+
+    return render(request,'pharmacyShowData.html',{'prescriptions' : prescriptions})
+
+def pharmacySubmitPatientMedicine(request,forMedicine):
+    getAppropiriatePatient = patient.objects.filter(pk = forMedicine)
+    for patientData in getAppropiriatePatient:
+        data = patientData.patient_medicine.all()
+
+    context = {
+        'medicine_name': data.all_medicine.medicine_name,
+    }
+    print(data)
+    return render(request,'pharmacySubmitPatientMedicine.html',context)
+
+
+
+>>>>>>> Stashed changes

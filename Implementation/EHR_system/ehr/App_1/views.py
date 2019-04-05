@@ -222,8 +222,6 @@ def patientLogin(request):
         if form.is_valid():
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password')
             db = DB_functions()
             db.set_patient_email(email)
             db.set_patient_password(password)
@@ -234,7 +232,6 @@ def patientLogin(request):
                 return HttpResponseRedirect('/login/?alert=wrong_password')
             elif result == 'wrong_email':
                 return HttpResponseRedirect('/login/?alert=wrong_email')
-
     else:
         form = login()
     context = {

@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # My Apps
     'App_1',
+    'Doctor_App',
     # External Apps
     'crispy_forms',
 

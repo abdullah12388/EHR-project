@@ -16,11 +16,13 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from App_1 import views as view
+from Doctor_App import views
 from django.conf import settings
 from django.conf.urls.static import static
 
 
 urlpatterns = [
+    url(r'^Doctor/$', views.doctor_index),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^patientHistory/', view.patientHistory, name='patientHistory'),
     url(r'^$', view.home, name='home'),

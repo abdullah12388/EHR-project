@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block signup_content %}
+
+{% if request.GET.a == "1" %}
+<script>
+    alert('passwords not matched')
+</script>
+{% endif %}
+
+<div class="home_container" style="top:30%">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="home_content">
+                    <div class="home_title">SignUp</div>
+                    <!---->
+                    <!--<form method='POST' action=''>-->
+                    <!--<div class="home_text">-->
+                    <!--{% csrf_token %}-->
+                    <!--{% for field in form1 %}-->
+                    <!--<div class="mydiv">-->
+                    <!--<label class="mylabel">{{ field.label }}</label>-->
+                    <!--{{ field }}-->
+                    <!--<b id="warn" class="hide">-->
+                    <!--<i class="fa fa-warning" aria-hidden="true"></i>-->
+                    <!--email already exist-->
+                    <!--</b>-->
+                    <!--</div>-->
+                    <!--{% endfor %}-->
+                    <!--{% for field in form2 %}-->
+                    <!--<div class="mydiv">-->
+                    <!--<label class="mylabel">{{ field.label }}</label>-->
+                    <!--{{ field }}-->
+                    <!--</div>-->
+                    <!--{% endfor %}-->
+                    <!--<button id="id_signup_submit" type="submit" class="button home_button">Submit</button>-->
+                    <!--</div>-->
+                    <!--</form>-->
+                    <form method='POST' action=''>
+                        <div class="home_text">
+                            {% csrf_token %}
+                            <div class="mydiv">
+                                <label class="mylabel">{{ form.email.label }}</label>
+                                {{ form.email }}
+                                <b id="warn" class="hide">
+                                    <i class="fa fa-warning" aria-hidden="true"></i>
+                                    email already exist
+                                </b>
+                            </div>
+                            <div class="mydiv">
+                                <label class="mylabel">{{ form.password.label }}</label>
+                                {{ form.password }}
+                                <b id="warn1" class="hide">
+                                    <i class="fa fa-warning" aria-hidden="true"></i>
+                                    email already exist
+                                </b>
+                            </div>
+                            <div class="mydiv">
+                                <label class="mylabel">{{ form.re_password.label }}</label>
+                                {{ form.re_password }}
+                                <b id="warn2" class="hide">
+                                    <i class="fa fa-warning" aria-hidden="true"></i>
+                                    not matched
+                                </b>
+                            </div>
+
+                            <button id="id_signup_submit" type="submit" class="button home_button">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock signup_content %}

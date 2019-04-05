@@ -425,8 +425,6 @@ def doctorHome(request):
 
 def patientDoctor(request):
     return render(request,'patientDoctor.html',{})
-<<<<<<< Updated upstream
-=======
 
 def pharmacyShowData(request, primary_key):
     patientData = report.objects.filter(pk = primary_key)
@@ -448,5 +446,3 @@ def pharmacySubmitPatientMedicine(request,forMedicine):
     return render(request,'pharmacySubmitPatientMedicine.html',context)
 
 
-
->>>>>>> Stashed changes

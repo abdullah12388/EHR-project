@@ -1,4 +1,3 @@
-
 var warn = $("#warn");
 // var warn = document.getElementById('warn');
 var warn2 = $("#warn2");

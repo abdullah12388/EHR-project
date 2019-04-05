@@ -1,12 +1,15 @@
 {% load staticfiles %}
 <div style="
-    {% if request.get_full_path == '/patientProfile/' %}
-        width:10px;height:175px
-    {% else %}
-        {% if request.get_full_path == '/patientProfile/?c=1' %}
-            width:10px;height:175px
-        {% endif %}
-    {% endif %}"></div>
+{% if request.get_full_path == '/patientProfile/' %}
+    width:10px;
+    height:175px;
+{% else %}
+    {% if request.get_full_path == '/patientProfile/?c=1' %}
+        width:10px;
+        height:175px;
+    {% endif %}
+{% endif %}
+"></div>
 <footer class="footer">
     <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/footer.jpg' %}" data-speed="0.8"></div>
     <div class="footer_content">

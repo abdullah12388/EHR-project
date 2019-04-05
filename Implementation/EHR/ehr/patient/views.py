@@ -198,8 +198,8 @@ def patientLogin(request):
     if request.method == 'POST':
         form = login(request.POST or None)
         if form.is_valid():
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password')
+            # email = form.cleaned_data.get('email')
+            # password = form.cleaned_data.get('password')
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
             db = DB_functions()

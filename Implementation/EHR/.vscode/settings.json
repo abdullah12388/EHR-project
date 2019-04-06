@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "venv-ehr\\Scripts\\python.exe",
+    "python.linting.pylintEnabled": true
+}

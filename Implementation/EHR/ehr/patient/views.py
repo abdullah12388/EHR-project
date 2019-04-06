@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from patient.forms import tempRegister,login,AddUser,AddPatient,searchHistory
 from doctor.models import report,doctor,prescription,multi_analytics,multi_chronic,multi_medecines,multi_rays,patient_analytics,patient_chronic,patient_medicine,patient_rays
-from patient.models import user,temp_register
+from patient.models import user, patient, temp_register
 from hospital.models import organization,hospital
 from django.http import JsonResponse
 from django.core.files.storage import FileSystemStorage
@@ -25,16 +25,41 @@ class DB_functions:
         self.__patient_email = email
     def set_patient_password(self, password):
         self.__patient_password = password
+    def remove_from_temp(self, id):
+        check = temp_register.objects.filter(id__iexact=id).exists()
+        if check:
+            temp_register.objects.get(pk=id).delete()
+            print("Temp Deleted Successfully")
+            return True
+        else:
+            print("Temp Not Found")
+            return False
+
     def get_final_all_reports(self):
         return self.__final_all_reports
-
     def patient_login(self, request):
-        user_is_exist = temp_register.objects.filter(email__iexact=self.__patient_email).exists()
-        if user_is_exist:
-            id = temp_register.objects.get(email=self.__patient_email).id
-            password_db = temp_register.objects.get(email=self.__patient_email).password
-            if self.__patient_password == password_db:
-                request.session['patient_id'] = id
+        temp_is_exist = temp_register.objects.filter(email__iexact=self.__patient_email).exists()
+        user_is_exist = user.objects.filter(email_1__iexact=self.__patient_email).exists()
+        if temp_is_exist:
+            get = temp_register.objects.get(email=self.__patient_email)
+            id = get.id
+            password_db = get.password
+            if check_password(password=self.__patient_password, encoded=password_db):
+                request.session['patient_temp_id'] = id
+                request.session['user_type'] = 'temp'
+                if 'patient_temp_id' not in request.session:
+                    print('THIS IS FALSE')
+                self.patient_login_result = 'temp_email_exists'
+            else:
+                self.patient_login_result = 'wrong_password'
+        elif user_is_exist:
+            get = user.objects.get(email_1=self.__patient_email)
+            user_id = get.user_id
+            password_db = get.New_Password
+            patient_id = patient.objects.get(Patient_id=user_id).id
+            if check_password(password=self.__patient_password, encoded=password_db):
+                request.session['patient_id'] = patient_id
+                request.session['user_type'] = 'registered_patient'
                 if 'patient_id' not in request.session:
                     print('THIS IS FALSE')
                 self.patient_login_result = 'email_exists'
@@ -200,14 +225,14 @@ def patientLogin(request):
         if form.is_valid():
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password')
             db = DB_functions()
             db.set_patient_email(email)
             db.set_patient_password(password)
             result = db.patient_login(request)
-            if result == 'email_exists':
+            if result == 'temp_email_exists':
                 return HttpResponseRedirect('/patient/patientProfile/')
+            elif result == 'email_exists':
+                return HttpResponseRedirect('/')
             elif result == 'wrong_password':
                 return HttpResponseRedirect('/patient/login/?alert=wrong_password')
             elif result == 'wrong_email':
@@ -221,12 +246,15 @@ def patientLogin(request):
     return render(request, 'login.html', context)
 
 def patientLogout(request):
+    if 'patient_temp_id' in request.session:
+        request.session.pop('patient_id')
+        print('SESSION FOUND')
     if 'patient_id' in request.session:
         request.session.pop('patient_id')
         print('SESSION FOUND')
     if 'patient_id' not in request.session:
         print('SESSION DELETED')
-    return HttpResponseRedirect('/login/')
+    return HttpResponseRedirect('/patient/login/')
 
 def patient_profile(request):
     if request.method == 'POST':
@@ -274,6 +302,8 @@ def patient_profile(request):
                     instance2.Patient_id = u_id
                     instance2.QR_code = fs.url(img)
                     instance2.save()
+                    db = DB_functions()
+                    db.remove_from_temp(id=request.session['patient_temp_id'])
                     return HttpResponseRedirect('/')
                 else:
                     print('form two')

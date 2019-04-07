@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="98b4bc68-539c-449a-951a-192927208516" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/Implementation.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/jsLinters/jshint.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static_in_env/media_root/-67-01-.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static_in_env/media_root/56627487_424872361613948_6842597189949063168_n(1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static_in_env/media_root/V2 english.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/patient/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/patient/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="98b4bc68-539c-449a-951a-192927208516" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,16 +204,15 @@
       <option name="presentableId" value="Default" />
       <updated>1554500215030</updated>
       <workItem from="1554500220637" duration="2583000" />
-      <workItem from="1554670650185" duration="111000" />
+      <workItem from="1554670650185" duration="235000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2694000" />
+    <option name="totallyTimeSpent" value="2818000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16286863" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />

@@ -1,0 +1,24 @@
+
+/////////////////////////////////////////////////////////////////
+Django Installation
+---------------------
+python -m pip install --upgrade pip
+pip install virtualenv
+pip install django==2.0.5
+pip install --upgrade django-crispy-forms
+pip install bcrypt
+pip install django[argon2]
+pip install django-mysql
+pip install --only-binary :all: mysqlclient
+pip install Pillow
+pip install qrcode
+//////////////////////////////////////////////////////////////////
+DB_HOST
+----------------
+https://remotemysql.com/phpmyadmin/
+Username: Oabw9z00VD
+Database: Oabw9z00VD
+Password: ys2ICbkieB
+Server: remotemysql.com 
+Port: 3306
+DB_HOST

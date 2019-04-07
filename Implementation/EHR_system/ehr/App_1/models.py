@@ -143,6 +143,9 @@ class organization(models.Model):
     hr_password = models.CharField(max_length=100)
     creation_date = models.DateField(auto_now_add=True)
     org_rate = models.IntegerField()
+    # 1 for lab
+    # 2 for pharmacy
+    # 3 for hospital
     Type = models.IntegerField()
     hospital = models.ForeignKey(hospital, blank=True, null=True, on_delete=models.CASCADE)
 
@@ -215,6 +218,7 @@ class patient_analytics(models.Model):
     analy = models.ForeignKey(all_analytics, on_delete=models.CASCADE)
     analytics_result = models.TextField()
     lab = models.ForeignKey(organization, on_delete=models.CASCADE)
+    submit_analytics_date = models.DateTimeField()
 
 
 class patient_chronic(models.Model):
@@ -231,7 +235,7 @@ class patient_medicine(models.Model):
     number_of_pills = models.IntegerField()
     medicine_submit = models.BooleanField(default=False)
     pharmacy = models.ForeignKey(organization, on_delete=models.CASCADE)
-
+    submit_medicine_date = models.DateTimeField()
 
 class patient_rays(models.Model):
     P_R_id = models.AutoField(primary_key=True)
@@ -239,6 +243,7 @@ class patient_rays(models.Model):
     ray = models.ForeignKey(all_rays, on_delete=models.CASCADE)
     rays_result = models.TextField()
     lab = models.ForeignKey(organization, on_delete=models.CASCADE)
+    submit_rays_date = models.DateTimeField()
 
 
 class multi_analytics(models.Model):

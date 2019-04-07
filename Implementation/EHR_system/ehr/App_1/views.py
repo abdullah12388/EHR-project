@@ -1,15 +1,26 @@
+<<<<<<< Updated upstream
 from datetime import date
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+=======
+
+from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render
+>>>>>>> Stashed changes
 from .form import AddManager,AddUser
 from .models import admin , user , patient
 from django.shortcuts import render
 from .form import *
+<<<<<<< Updated upstream
 from .models import admin, user, temp_register, report, comments
+=======
+from .models import admin, user, temp_register, report, patient, prescription, patient_medicine
+>>>>>>> Stashed changes
 from django.core.files.storage import FileSystemStorage
 import qrcode,shutil,os
 from django.conf import settings as set
 from django.http import JsonResponse
+from django.contrib.auth.hashers import check_password
 # Create your views here.
 
 class DB_functions:
@@ -195,11 +206,13 @@ def temp_Register(request):
             instance = form.save(commit=False)
             password = form.cleaned_data.get('password')
             re_password = form.cleaned_data.get('re_password')
-            if password != re_password:
-                return HttpResponseRedirect('/signup/?a=1')
-            else:
+            if check_password(re_password, password):
                 instance.save()
+                print("password = ", password)
                 return HttpResponseRedirect('/login/')
+            else:
+                print(False)
+                return HttpResponseRedirect('/signup/?a=1')
     else:
         form = tempRegister()
     context = {
@@ -215,7 +228,6 @@ def validate_email(request):
     }
     return JsonResponse(data)
 
-
 def valid_email(request):
     email1 = request.GET.get('email_1', None)
     print(email1)
@@ -225,13 +237,10 @@ def valid_email(request):
     }
     return JsonResponse(data)
 
-
 def patientLogin(request):
     if request.method == 'POST':
         form = login(request.POST or None)
         if form.is_valid():
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password')
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
             db = DB_functions()
@@ -244,13 +253,14 @@ def patientLogin(request):
                 return HttpResponseRedirect('/login/?alert=wrong_password')
             elif result == 'wrong_email':
                 return HttpResponseRedirect('/login/?alert=wrong_email')
-
     else:
         form = login()
     context = {
         'form': form
     }
     return render(request, 'login.html', context)
+
+
 
 def patientLogout(request):
     if 'patient_id' in request.session:
@@ -259,6 +269,68 @@ def patientLogout(request):
     if 'patient_id' not in request.session:
         print('SESSION DELETED')
     return HttpResponseRedirect('/login/')
+
+def patient_profile(request):
+    if request.method == 'POST':
+        form1 = AddUser(request.POST or None)
+        form2 = AddPatient(request.POST or None)
+        if form1.is_valid():
+            # stop save in database
+            instance1 = form1.save(commit=False)
+            password = form1.cleaned_data.get('New_Password')
+            con_password = form1.cleaned_data.get('Confirm_Pass')
+            if not check_password(con_password, password):
+                return HttpResponseRedirect('/patientProfile/?c=1')
+            else:
+                # upload profile,ssn pictures and save paths to database
+                profile_picture_file = request.FILES['Profile_picture']
+                ssn_picture_file = request.FILES['SSN_Picture']
+                fs = FileSystemStorage()
+                ppf_name = fs.save(profile_picture_file.name,profile_picture_file)
+                spf_name = fs.save(ssn_picture_file.name,ssn_picture_file)
+                instance1.Profile_picture = fs.url(ppf_name)
+                instance1.SSN_Picture = fs.url(spf_name)
+                # extract ssn id from full ssn
+                ssn = instance1.Ssn
+                instance1.Ssn_id = ssn[7:14]
+                qr = qrcode.QRCode(
+                    version=1,
+                    error_correction=qrcode.constants.ERROR_CORRECT_M,
+                    box_size=10,
+                    border=4,
+                )
+                qr.add_data(instance1.Ssn_id)
+                qr.make(fit=True)
+                qrc_id = qr.make_image()
+                img_name = instance1.Ssn_id
+                img_exten = 'png'
+                img = img_name + '.' + img_exten
+                qrc_id.save(img)
+                instance1.save()
+                move(os.path.join('',img),os.path.join(set.MEDIA_ROOT,img))
+                # get the user id with the email
+                a = form1.cleaned_data.get('email_1')
+                u_id = user.objects.get(email_1=a).user_id
+                if form2.is_valid():
+                    instance2 = form2.save(commit=False)
+                    instance2.Patient_id = u_id
+                    instance2.QR_code = fs.url(img)
+                    instance2.save()
+                    return HttpResponseRedirect('/')
+                else:
+                    print('form two')
+                    print(form2.errors)
+        else:
+            print('form one')
+            print(form1.errors)
+    else:
+        form1 = AddUser()
+        form2 = AddPatient()
+        context = {
+            'form1': form1,
+            'form2': form2,
+        }
+        return render(request, 'patientProfile.html', context)
 
 def patientHistory(request):
     global mix_1_1
@@ -284,77 +356,6 @@ def patientHistory(request):
     #     })
     return render(request, 'patientHistory.html', context)
 
-def patient_profile(request):
-    if request.method == 'POST':
-
-        form1 = AddUser(request.POST or None)
-        form2 = AddPatient(request.POST or None)
-
-        if form1.is_valid():
-
-            # stop save in database
-            instance1 = form1.save(commit=False)
-
-            password = form1.cleaned_data.get('New_Password')
-            con_password = form1.cleaned_data.get('Confirm_Pass')
-            if password != con_password:
-                return HttpResponseRedirect('/patientProfile/?c=1')
-            else:
-
-                # upload profile,ssn pictures and save paths to database
-                profile_picture_file = request.FILES['Profile_picture']
-                ssn_picture_file = request.FILES['SSN_Picture']
-                fs = FileSystemStorage()
-                ppf_name = fs.save(profile_picture_file.name,profile_picture_file)
-                spf_name = fs.save(ssn_picture_file.name,ssn_picture_file)
-                instance1.Profile_picture = fs.url(ppf_name)
-                instance1.SSN_Picture = fs.url(spf_name)
-
-                # extract ssn id from full ssn
-                ssn = instance1.Ssn
-                instance1.Ssn_id = ssn[7:14]
-
-                qr = qrcode.QRCode(
-                    version=1,
-                    error_correction=qrcode.constants.ERROR_CORRECT_M,
-                    box_size=10,
-                    border=4,
-                )
-                qr.add_data(instance1.Ssn_id)
-                qr.make(fit=True)
-                qrc_id = qr.make_image()
-                img_name = instance1.Ssn_id
-                img_exten = 'png'
-                img = img_name + '.' + img_exten
-                qrc_id.save(img)
-                instance1.save()
-
-                move(os.path.join('',img),os.path.join(set.MEDIA_ROOT,img))
-
-                # get the user id with the email
-                a = form1.cleaned_data.get('email_1')
-                u_id = user.objects.get(email_1=a).user_id
-
-                if form2.is_valid():
-                    instance2 = form2.save(commit=False)
-                    instance2.Patient_id = u_id
-                    instance2.QR_code = fs.url(img)
-                    instance2.save()
-                    return HttpResponseRedirect('/')
-                else:
-                    print('form two')
-                    print(form2.errors)
-        else:
-            print('form one')
-            print(form1.errors)
-    else:
-        form1 = AddUser()
-        form2 = AddPatient()
-        context = {
-            'form1': form1,
-            'form2': form2,
-        }
-        return render(request, 'patientProfile.html', context)
 
 
 def test(request):
@@ -424,3 +425,24 @@ def doctorHome(request):
 
 def patientDoctor(request):
     return render(request,'patientDoctor.html',{})
+
+def pharmacyShowData(request, primary_key):
+    patientData = report.objects.filter(pk = primary_key)
+    for p in patientData:
+        prescriptions = p.prescription.Disease_name
+        print(patientData)
+
+    return render(request,'pharmacyShowData.html',{'prescriptions' : prescriptions})
+
+def pharmacySubmitPatientMedicine(request,forMedicine):
+    getAppropiriatePatient = patient.objects.filter(pk = forMedicine)
+    for patientData in getAppropiriatePatient:
+        data = patientData.patient_medicine.all()
+
+    context = {
+        'medicine_name': data.all_medicine.medicine_name,
+    }
+    print(data)
+    return render(request,'pharmacySubmitPatientMedicine.html',context)
+
+

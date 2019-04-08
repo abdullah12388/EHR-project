@@ -37,6 +37,7 @@ class DB_functions:
 
     def get_final_all_reports(self):
         return self.__final_all_reports
+
     def patient_login(self, request):
         temp_is_exist = temp_register.objects.filter(email__iexact=self.__patient_email).exists()
         user_is_exist = user.objects.filter(email_1__iexact=self.__patient_email).exists()

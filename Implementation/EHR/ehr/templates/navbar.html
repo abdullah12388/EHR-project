@@ -87,14 +87,18 @@
                                                 <li class="active"><a href="{% url 'patient:home'%}">Home</a></li>
                                                 <li><a href="about.html">About Us</a></li>
                                                 <li><a href="services.html">Services</a></li>
-                                                {% if 'patient_id' not in request.session %}
+                                                {% if 'patient_id' not in request.session and 'doctor_id' not in request.session%}
                                                 <li><a href="{% url 'patient:login'%}">Login</a></li>
                                                 <li><a href="{% url 'patient:signup'%}">Register</a></li>
                                                 {% endif %}
-                                                {% if 'patient_id' in request.session %}
+                                                {% if 'patient_id' in request.session%}
                                                 <li><a href="{% url 'patient:patientHistory'%}">History</a></li>
                                                 <li><a href="#">Profile</a></li>
                                                 <li><a href="{% url 'patient:logout'%}">Logout</a></li>
+                                                {%elif 'doctor_id' in request.session%}
+                                                <li><a href="#">Profile</a></li>
+                                                <li><a href="{% url 'patient:logout'%}">Logout</a></li>
+                                                <li><a href="{% url 'doctor:patiant_id'%}">Enter A Patiant</a></li>
                                                 {% endif %}
                                             </ul>
                                         </nav>

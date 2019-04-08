@@ -61,8 +61,6 @@ class DB_functions:
             password_db = get.New_Password
             user_Type_number = get.User_type
             if user_Type_number == 2:
-                print(user_Type_number)
-                print(user_id)
                 doctor_id  = doctor.objects.get (Doc=user_id).id
             else:
                 patient_id = patient.objects.get(Patient_id=user_id).id
@@ -71,6 +69,7 @@ class DB_functions:
                 if user_Type_number == 2:
                     request.session['doctor_id'] = doctor_id
                     request.session['user_T'] = user_Type_number
+                    request.session['Doctor_Patiant_ID']  = 0
                 else:
                     request.session['patient_id'] = patient_id
                     request.session['user_type'] = 'registered_patient'

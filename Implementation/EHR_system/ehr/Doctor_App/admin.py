@@ -1,8 +1,9 @@
 from django.contrib import admin
 from App_1.models import (hospital,organization,doctor,patient_rays,patient_chronic
 ,patient_medicine,patient_analytics,all_medicine,all_rays,all_analytics,report,prescription
-,multi_rays,multi_analytics,multi_medecines)
+,multi_rays,multi_analytics,multi_medecines,user)
 # Register your models here.
+admin.site.register(user)
 admin.site.register(hospital)
 admin.site.register(organization)
 admin.site.register(doctor)

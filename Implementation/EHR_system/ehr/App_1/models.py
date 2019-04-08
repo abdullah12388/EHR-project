@@ -64,6 +64,9 @@ class user(models.Model):
     SSN_Picture = models.ImageField()
     User_type = models.IntegerField()
     Create_date = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.first_name
+
 
 
 class patient(models.Model):
@@ -162,6 +165,8 @@ class doctor(models.Model):
     doc_rate = models.IntegerField()
     hospital = models.ForeignKey(hospital, blank=True, null=True, on_delete=models.CASCADE)
     clinic = models.ForeignKey(organization, blank=True, null=True, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.Doc.first_name
 
 
 class prescription(models.Model):

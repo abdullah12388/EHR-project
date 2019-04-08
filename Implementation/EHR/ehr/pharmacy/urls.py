@@ -4,5 +4,6 @@ from pharmacy import views
 
 urlpatterns = [
     path('', views.pharmacy, name='pharmacy'),
-    path('medicines/',views.medicineListView.as_view(), name = 'medicines'),
+    path('medicines/',views.medicineListView, name = 'medicineListView'),
+
 ]

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block patientMedicineList %}
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px"></h2>
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66); font-size: 22px;">
+
+        <div class="row" style="border:solid 2px #32c69a">
+            <div class="col-sm-8">
+                <div class="row" style="margin: 10px 0px;">
+                    <div class="col-sm">
+                        Medicine Name:
+                    </div>
+                </div>
+                <div class="row" style="margin: 10px 0px;">
+                    <div class="col-sm">
+                        Number Of Potions:
+                    </div>
+                </div>
+                <div class="row" style="margin: 10px 0px;">
+                    <div class="col-sm">
+                        Number Of Pills:
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <BUTTON class="btn btn-primary">Submit</BUTTON>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock patientMedicineList %}
+{#<h1>Medicine List</h1>#}
+{#  {% if medicineList %}#}
+{#  <ul>#}
+{#    {% for medicine in medicineList %}#}
+{#        {{ medicine.number_of_pills }}#}
+{#        <li>#}
+{##}
+{#          {{ medicine.med.medicine_name }}#}
+{#          {{ medicine.number_of_pills }}#}
+{#          {{ medicine.number_of_potions }}#}
+{#        <button type="submit" value="{{  medicine.pharmacy = '1' }}>Submit</button>#}
+{#      </li>#}
+{#    {% endfor %}#}
+{##}
+{#  </ul>#}
+{##}
+{#{% else %}#}
+{#    <p>There are no books in the library.</p>#}
+{#  {% endif %}#}

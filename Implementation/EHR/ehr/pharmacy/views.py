@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.http import request, HttpResponseRedirect
+from django.http import request, HttpResponseRedirect, HttpResponseNotFound, HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.template import context
 from django.views import generic
@@ -19,36 +19,59 @@ from patient.forms import patientLoginToPharmacyForm
 #         return False
 
 
-
 def pharmacy(request):
     if request.method == 'POST':
         form = patientLoginToPharmacyForm(request.POST or None)
         if form.is_valid():
-            id = form.cleaned_data.get('QR_code')
-            patientData = get_object_or_404(patient,QR_code= id)
-            if patientData:
-                for p in patientData.report_set.all():
-                    print(p.report)
 
-
-                return HttpResponseRedirect('/medicines/')
-
-            else:
-                print('obaaa')
-                return HttpResponseRedirect('login.html')
+            request.session['patientData']=4
+            request.session['pharmacyId']=1
+            return HttpResponseRedirect('pharmacy/medicines/')
     else:
         form = patientLoginToPharmacyForm()
-        context={ 'form' : form }
-    return render(request, 'pharmacy/pharmacy.html', context)
+    context={ 'form' : form }
+    return render(request, 'pharmacy/../templates/pharmacy.html', context)
 
-class medicineListView(generic.ListView):
-    model = patient_medicine
-    context_object_name = 'medicine_list'
-    template_name = 'pharmacy/patientMedicineToBeSubmit.html'
+# class medicineListView(generic.ListView):
+#     model = patient_medicine
+#     print(all_medicine.medicine_id[1])
+#     # print(patient_medicine.med.medicine_name)
+#     context_object_name = 'medicine_list'
+#     template_name = 'pharmacy/patientMedicineToBeSubmit.html'
+#
+#     def get_queryset(self):
+#         patientFound = patient_medicine.objects.filter(pat_id__exact='4').exists()
+#         if patientFound:
+#             if patient_medicine.objects.filter(pharmacy__isnull=True).exists():
+#                 return patient_medicine.objects.filter(pharmacy__isnull=True)
+#             else:
+#                 return HttpResponse("You don't have any medicines")
+#         else:
+#             HttpResponseNotFound('<h1>patient not found</h1>')
 
-    def get_queryset(self):
-        return patient_medicine.objects.filter(medicine_submit=False)
 
+def medicineListView(request):
+    session1= request.session['patientData'] = 4
+    session2 = request.session['pharmacyId'] = 1
+    patientFoundRealData = patient_medicine.objects.filter(pat_id__exact=session1)
+    # print(patientFoundRealData)
+    patientFoundTrueAndFalse = patient_medicine.objects.filter(pat_id__exact=session1).exists()
+    # print(patientFoundTrueAndFalse)
+    if patientFoundTrueAndFalse:
+        pharmacyFound = patient_medicine.objects.filter(pharmacy__isnull=True).exists()
+        if pharmacyFound:
+            # return patient_medicine.objects.filter(pharmacy__isnull=True)
+            print('lsakasdlkaslkamflkmaelkdmlakemdlka')
+        else:
+            return HttpResponse("You don't have any medicines")
+    else:
+            HttpResponseNotFound('<h1>patient not found</h1>')
+    context = {
+        'medicineList': patientFoundRealData,
+        'session1':session1,
+        'session2': session2,
+    }
+    return render(request, 'patientMedicineToBeSubmit.html', context)
 
 
 

@@ -32,6 +32,8 @@ class prescription(models.Model):
     Doctor_signature = models.CharField(max_length=500)
     next_appointment = models.DateTimeField()
 
+    def __str__(self):
+        return self.Disease_name
 
 class report(models.Model):
     report = models.AutoField(primary_key=True)
@@ -41,6 +43,9 @@ class report(models.Model):
     clinic = models.ForeignKey(organization, on_delete=models.CASCADE, blank=True, null=True)
     hospital = models.ForeignKey(hospital, on_delete=models.CASCADE, blank=True, null=True)
     Submit_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.Submit_date
 
 
 class all_analytics(models.Model):
@@ -85,6 +90,7 @@ class patient_medicine(models.Model):
     number_of_pills = models.IntegerField()
     medicine_submit = models.BooleanField(default=False)
     pharmacy = models.ForeignKey(organization, on_delete=models.CASCADE)
+
 
 
 class patient_rays(models.Model):

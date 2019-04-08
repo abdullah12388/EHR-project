@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from patient.forms import tempRegister,login,AddUser,AddPatient,searchHistory
-from doctor.models import report,doctor,prescription,multi_analytics,multi_chronic,multi_medecines,multi_rays,patient_analytics,patient_chronic,patient_medicine,patient_rays
+from doctor.models import (report,doctor,prescription,multi_analytics,
+multi_chronic,multi_medecines,multi_rays,
+patient_analytics,patient_chronic,
+patient_medicine,patient_rays)
 from patient.models import user, patient, temp_register
 from hospital.models import organization,hospital
 from django.http import JsonResponse
@@ -56,11 +59,24 @@ class DB_functions:
             get = user.objects.get(email_1=self.__patient_email)
             user_id = get.user_id
             password_db = get.New_Password
-            patient_id = patient.objects.get(Patient_id=user_id).id
-            if check_password(password=self.__patient_password, encoded=password_db):
-                request.session['patient_id'] = patient_id
-                request.session['user_type'] = 'registered_patient'
-                if 'patient_id' not in request.session:
+            user_Type_number = get.User_type
+            if user_Type_number == 2:
+                print(user_Type_number)
+                print(user_id)
+                doctor_id  = doctor.objects.get (Doc=user_id).id
+            else:
+                patient_id = patient.objects.get(Patient_id=user_id).id
+
+            if check_password(password=self.__patient_password, encoded=password_db) or 1:
+                if user_Type_number == 2:
+                    request.session['doctor_id'] = doctor_id
+                    request.session['user_T'] = user_Type_number
+                else:
+                    request.session['patient_id'] = patient_id
+                    request.session['user_type'] = 'registered_patient'
+                    request.session['user_T'] = user_Type_number
+
+                if 'patient_id' not in request.session or 'doctor_id' not in request.session:
                     print('THIS IS FALSE')
                 self.patient_login_result = 'email_exists'
             else:
@@ -232,7 +248,10 @@ def patientLogin(request):
             if result == 'temp_email_exists':
                 return HttpResponseRedirect('/patient/patientProfile/')
             elif result == 'email_exists':
-                return HttpResponseRedirect('/')
+                if request.session['user_T'] == 2:
+                    return HttpResponseRedirect('/doctor')
+                else:
+                    return HttpResponseRedirect('/')
             elif result == 'wrong_password':
                 return HttpResponseRedirect('/patient/login/?alert=wrong_password')
             elif result == 'wrong_email':
@@ -246,14 +265,23 @@ def patientLogin(request):
     return render(request, 'login.html', context)
 
 def patientLogout(request):
-    if 'patient_temp_id' in request.session:
-        request.session.pop('patient_id')
-        print('SESSION FOUND')
-    if 'patient_id' in request.session:
-        request.session.pop('patient_id')
-        print('SESSION FOUND')
-    if 'patient_id' not in request.session:
-        print('SESSION DELETED')
+    if request.session['user_T'] == 2:
+        if 'doctor_id' in request.session:
+            request.session.pop('doctor_id')
+            print('SESSION FOUND')
+        if 'doctor_id' not in request.session:
+            print('SESSION DELETED')
+    else:
+
+            if 'patient_temp_id' in request.session:
+                request.session.pop('patient_id')
+                print('SESSION FOUND')
+            if 'patient_id' in request.session:
+                request.session.pop('patient_id')
+                print('SESSION FOUND')
+            if 'patient_id' not in request.session:
+                print('SESSION DELETED')
+
     return HttpResponseRedirect('/patient/login/')
 
 def patient_profile(request):

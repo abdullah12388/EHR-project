@@ -41,6 +41,9 @@ class user(models.Model):
     User_type = models.IntegerField()
     Create_date = models.DateTimeField(auto_now_add=True)
 
+    def __str__ (self):
+        return self.first_name
+
 
 class patient(models.Model):
     Patient = models.ForeignKey(user, on_delete=models.CASCADE)

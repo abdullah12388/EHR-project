@@ -3,15 +3,15 @@ from django.db import models
 # Create your models here.
 
 
-class admin(models.Model):
-    id = models.AutoField(primary_key=True)
-    email = models.EmailField(max_length=255)
-    password = models.CharField(max_length=255)
+# class admin(models.Model):
+#     id = models.AutoField(primary_key=True)
+#     email = models.EmailField(max_length=255)
+#     password = models.CharField(max_length=255)
 
-class temp(models.Model):
-    temp = models.ForeignKey(admin, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+# class temp(models.Model):
+#     temp = models.ForeignKey(admin, on_delete=models.CASCADE)
+#     first_name = models.CharField(max_length=255)
+#     last_name = models.CharField(max_length=255)
 
 class manager(models.Model):
     id = models.AutoField(primary_key=True)

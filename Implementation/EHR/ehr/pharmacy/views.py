@@ -18,6 +18,18 @@ from patient.forms import patientLoginToPharmacyForm
 #     else:
 #         return False
 
+def pharmacyLogin(request):
+    if request.method == 'POST':
+        print(request.POST['pat_id'])
+        request.session['ssn_id'] = request.POST['pat_id']
+        ssn_id = request.session['ssn_id']
+        user_id = user.objects.filter(Ssn_id=ssn_id)
+        print(user_id)
+        return HttpResponseRedirect('medicines/')
+    else:
+        return render(request,'pharmacyIndex.html',{})
+
+
 
 def pharmacy(request):
     if request.method == 'POST':

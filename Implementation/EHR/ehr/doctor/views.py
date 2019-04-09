@@ -3,5 +3,5 @@ from django.shortcuts import render
 # Create your views here.
 
 
-def doctor(request):
-    return render(request, 'test.html', {})
+def home(request):
+    return render(request, 'doctorIndex.html', {})

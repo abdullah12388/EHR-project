@@ -58,6 +58,22 @@ class login(forms.ModelForm):
         model = temp_register
         fields = ['email', 'password']
 
+
+
+class patientLoginToPharmacyForm(forms.ModelForm):
+    Ssn_id = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'class' : 'form-control',
+        'placeholder' : 'Enter Patient Code',
+        'required' : 'required',
+        'maxlength' : 7,
+    }))
+
+    class Meta:
+        model = patient
+        fields = ['QR_code']
+
+
+
 class AddUser(forms.ModelForm):
 
     first_name = forms.CharField(widget=forms.TextInput(attrs={
@@ -316,3 +332,4 @@ class searchHistory(forms.ModelForm):
     class Meta:
         model = report
         fields = ['search_content']
+

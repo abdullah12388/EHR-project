@@ -65,6 +65,9 @@ class user(models.Model):
     User_type = models.IntegerField()
     Create_date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.first_name
+
 
 class patient(models.Model):
     Patient = models.ForeignKey(user, on_delete=models.CASCADE)
@@ -75,6 +78,9 @@ class patient(models.Model):
     weight = models.FloatField()
     Blood_type = models.CharField(max_length=500)
     Chronic_diseases = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.Emergency_contact
 
 
 class hospital(models.Model):
@@ -137,6 +143,9 @@ class organization(models.Model):
     hr_password = models.CharField(max_length=100)
     creation_date = models.DateField(auto_now_add=True)
     org_rate = models.IntegerField()
+    # 1 for lab
+    # 2 for pharmacy
+    # 3 for hospital
     Type = models.IntegerField()
     hospital = models.ForeignKey(hospital, blank=True, null=True, on_delete=models.CASCADE)
 
@@ -180,7 +189,7 @@ class report(models.Model):
     doctor = models.ForeignKey(doctor, on_delete=models.CASCADE)
     clinic = models.ForeignKey(organization, on_delete=models.CASCADE, blank=True, null=True)
     hospital = models.ForeignKey(hospital, on_delete=models.CASCADE, blank=True, null=True)
-    Submit_date = models.DateTimeField(auto_now_add=True)
+    Submit_date = models.DateTimeField(auto_now=False, auto_now_add=True)
 
 
 class all_analytics(models.Model):
@@ -270,3 +279,13 @@ class blocked_organizations(models.Model):
 class blocked_users(models.Model):
     manager = models.ForeignKey(manager, on_delete=models.CASCADE)
     user = models.ForeignKey(user, on_delete=models.CASCADE)
+
+class comments(models.Model):
+    comment = models.TextField(null=False)
+    role = models.IntegerField(null=False)
+    to_whom_id_doctor = models.ForeignKey(doctor,blank=True,null=True, on_delete=models.CASCADE)
+    to_whom_id_hospital = models.ForeignKey(hospital, blank=True, null=True, on_delete=models.CASCADE)
+    to_whom_id_pharmacy = models.ForeignKey(organization, blank=True, null=True, on_delete=models.CASCADE)
+    comment_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    user_foreign_key = models.ForeignKey(patient,on_delete=models.CASCADE)
+

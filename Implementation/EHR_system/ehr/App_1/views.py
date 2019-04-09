@@ -1,10 +1,15 @@
 from django.http import HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+=======
+
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
+>>>>>>> Stashed changes
 from .form import AddManager,AddUser
-from .models import admin
+from .models import admin , user , patient
 from django.shortcuts import render
 from .form import *
-from .models import admin, user, temp_register, report
+from .models import admin, user, temp_register, report, patient, prescription, patient_medicine
 from django.core.files.storage import FileSystemStorage
 import qrcode,shutil,os
 from django.conf import settings as set
@@ -150,6 +155,10 @@ from django.contrib.auth.hashers import check_password
 #         else:
 #             return False
 
+
+
+
+
 def home(request):
     return render(request, 'home.html', {})
 
@@ -238,6 +247,8 @@ def patientLogin(request):
         'form': form
     }
     return render(request, 'login.html', context)
+
+
 
 def patientLogout(request):
     if 'patient_id' in request.session:
@@ -358,7 +369,66 @@ def test(request):
     return render(request, 'test.html', context)
 
 
+
 def move(src, dest):
     shutil.move(src, dest)
+
+def patientData(request):
+    id = request.GET.get('id', None)
+    context = {}
+    isFound = patient.objects.filter(id__iexact = id).exists()
+    if isFound:
+        data = patient.objects.get(pk=id)
+        age = DB_functions.calculateAge(data.Patient.Date_of_birth)
+        #khan = date.today().year - data.Patient.Date_of_birth.year - ((date.today().month, date.today().day) < (data.Patient.Date_of_birth.month, data.Patient.Date_of_birth.day))
+        context = {
+            'data': data,
+            'age' : age
+        }
+    else:
+        context.update({'data':'not_found'})
+    return render(request,'patientData.html',context)
+# 1 for doctor
+# 2 for clinic
+# 3 for hospital
+# 4 for hospital
+def doctorHome(request):
+    id = request.GET.get('id', None)
+    context = {}
+    commentArray = []
+    # role = comments.objects.get(pk=id).role
+    data = comments.objects.filter(role__exact=1)
+    for i in data:
+        if i.role==1 :
+            commentArray.append(i.comment)
+            context.update({'data': commentArray})
+            print(commentArray)
+        elif i.role==2:
+            commentArray.append(i.comment)
+            context.update({'data': commentArray})
+        elif i.role==3:
+            commentArray.append(i.comment)
+            context.update({'data': commentArray})
+    return render(request,'doctorHome.html',context)
+
 def patientDoctor(request):
     return render(request,'patientDoctor.html',{})
+
+def pharmacyShowData(request, primary_key):
+    patientData = report.objects.filter(pk = primary_key)
+    for p in patientData:
+        prescriptions = p.prescription.Disease_name
+        print(patientData)
+
+    return render(request,'pharmacyShowData.html',{'prescriptions' : prescriptions})
+
+def pharmacySubmitPatientMedicine(request,forMedicine):
+    getAppropiriatePatient = patient.objects.filter(pk = forMedicine)
+    for patientData in getAppropiriatePatient:
+        data = patientData.patient_medicine.all()
+
+    context = {
+        'medicine_name': data.all_medicine.medicine_name,
+    }
+    print(data)
+    return render(request,'pharmacySubmitPatientMedicine.html',context)

@@ -1,7 +1,9 @@
-from django.conf.urls import url
+from django.urls import path
 from pharmacy import views
 
 
 urlpatterns = [
-    url(r'^$', views.pharmacy, name='pharmacy'),
+    path('', views.pharmacy, name='pharmacy'),
+    path('medicines/',views.medicineListView, name = 'medicineListView'),
+
 ]

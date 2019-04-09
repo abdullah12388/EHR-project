@@ -1,6 +1,7 @@
 from django.db import models
 from patient.models import user,patient
 from hospital.models import hospital,organization
+from django.core.urlresolvers import reverse
 # Create your models here.
 
 
@@ -23,6 +24,8 @@ class doctor(models.Model):
     hospital = models.ForeignKey(hospital, blank=True, null=True, on_delete=models.CASCADE)
     clinic = models.ForeignKey(organization, blank=True, null=True, on_delete=models.CASCADE)
 
+    def __str__ (self):
+        return self.Doc.first_name
 
 class prescription(models.Model):
     prescription_id = models.AutoField(primary_key=True)
@@ -32,6 +35,11 @@ class prescription(models.Model):
     Doctor_signature = models.CharField(max_length=500)
     next_appointment = models.DateTimeField()
 
+    def __str__ (self):
+        return self.Disease_name
+
+    def get_absolute_url (self):
+        return reverse("doctor:prescriptiondetial" , kwargs={'pk':self.pk})
 
 class report(models.Model):
     report = models.AutoField(primary_key=True)
@@ -41,7 +49,8 @@ class report(models.Model):
     clinic = models.ForeignKey(organization, on_delete=models.CASCADE, blank=True, null=True)
     hospital = models.ForeignKey(hospital, on_delete=models.CASCADE, blank=True, null=True)
     Submit_date = models.DateTimeField(auto_now_add=True)
-
+    def __str__ (self):
+        return self.prescription.Disease_name
 
 class all_analytics(models.Model):
     analytics_id = models.AutoField(primary_key=True)

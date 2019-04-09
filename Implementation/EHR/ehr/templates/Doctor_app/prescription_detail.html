@@ -1,0 +1,21 @@
+{% extends 'Doctor_app/Doctor_base.html' %}
+{% block home_content %}
+
+<div class="info">
+    <div class="container">
+        <div class="row row-eq-height">
+          <ol>
+            <ol>
+              <h2><li>{{presc_detial.Disease_name}}</li></h2>
+              <h2><li>{{presc_detial.Disease_level}}</li></h2>
+              <h2><li>{{presc_detial.Disease_disc}}</li></h2>
+              <h2><li>{{presc_detial.Doctor_signature}}</li></h2>
+              <h2><li>{{presc_detial.next_appointment}}</li></h2>
+            </ol>
+          </ol>
+          <p><a class="btn btn-warning" href="{% url 'doctor:update' pk=presc_detial.pk%}">Update</a></p>
+        </div>
+    </div>
+</div>
+
+{% endblock home_content %}

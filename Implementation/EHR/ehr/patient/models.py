@@ -54,3 +54,6 @@ class patient(models.Model):
     weight = models.FloatField()
     Blood_type = models.CharField(max_length=500)
     Chronic_diseases = models.BooleanField(default=False)
+
+    def __str__ (self):
+        return self.Patient.first_name

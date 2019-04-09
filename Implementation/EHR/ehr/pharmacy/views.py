@@ -30,7 +30,7 @@ def pharmacy(request):
     else:
         form = patientLoginToPharmacyForm()
     context={ 'form' : form }
-    return render(request, 'pharmacy/../templates/pharmacy.html', context)
+    return render(request, 'pharmacy.html', context)
 
 # class medicineListView(generic.ListView):
 #     model = patient_medicine
@@ -60,8 +60,13 @@ def medicineListView(request):
     if patientFoundTrueAndFalse:
         pharmacyFound = patient_medicine.objects.filter(pharmacy__isnull=True).exists()
         if pharmacyFound:
-            # return patient_medicine.objects.filter(pharmacy__isnull=True)
+            pharmacyData = patient_medicine.objects.filter(pharmacy__isnull=True)
+            context = {
+                'DataNotSubmitted': pharmacyData
+            }
             print('lsakasdlkaslkamflkmaelkdmlakemdlka')
+            return render(request, 'patientMedicineToBeSubmit.html', context)
+
         else:
             return HttpResponse("You don't have any medicines")
     else:

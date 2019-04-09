@@ -1,11 +1,14 @@
 
 <h1>home</h1>
-{% if medicine %}
-    {% for m in medicine %}
-            {{ m.pat_id }}
-    {%  endfor %}
+{% if DataNotSubmitted %}
+    {{ DataNotSubmitted }}
+    {% for data in DataNotSubmitted %}
+        {{ data.number_of_pills }}
+        {{ data.number_of_potions }}
+        {{ data.med.medicine_name }}
+    {% endfor %}
 {% else %}
-    <p>hello</p>
-    <br>
+    hahahahhahkajkdjkj
 {% endif %}
-{{ session1 }}
+
+<br>

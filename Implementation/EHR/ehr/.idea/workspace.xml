@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d8ec0d3-e378-4bab-aa60-45a1fc63fd41" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/patientMedicineToBeSubmit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pharmacy/templates/pharmacy/patientMedicineToBeSubmit.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pharmacy/templates/pharmacy/pharmacy.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pharmacy.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pharmacy/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/pharmacy/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pharmacy/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pharmacy/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_pro/our_static/styles/main_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_pro/our_static/styles/main_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pharmacy/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="63" column="12" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="12" />
+            <state relative-caret-position="406">
+              <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
               </folding>
@@ -40,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/doctor/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
-              <caret line="90" column="41" lean-forward="true" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="45" />
+              <caret line="90" column="41" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="45" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -78,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/templates/patientProfile.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3806">
-              <caret line="173" column="6" lean-forward="true" selection-start-line="9" selection-end-line="173" selection-end-column="6" />
+              <caret line="173" column="6" selection-start-line="9" selection-end-line="173" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -87,7 +79,7 @@
         <entry file="file://$PROJECT_DIR$/templates/patientHistory.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="308">
-              <caret line="14" column="19" lean-forward="true" selection-end-line="129" selection-end-column="38" />
+              <caret line="14" column="19" selection-end-line="129" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -134,10 +126,10 @@
         <option value="$PROJECT_DIR$/pharmacy/templates/pharmacy/patientMedicineToBeSubmit.html" />
         <option value="$PROJECT_DIR$/pharmacy/urls.py" />
         <option value="$PROJECT_DIR$/templates/test.html" />
-        <option value="$PROJECT_DIR$/pharmacy/views.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/patientMedicineToBeSubmit.html" />
         <option value="$PROJECT_DIR$/static_in_pro/our_static/styles/main_styles.css" />
+        <option value="$PROJECT_DIR$/pharmacy/views.py" />
       </list>
     </option>
   </component>
@@ -288,7 +280,7 @@
       <option name="presentableId" value="Default" />
       <updated>1554666125247</updated>
       <workItem from="1554666137202" duration="4187000" />
-      <workItem from="1554700971887" duration="36429000" />
+      <workItem from="1554700971887" duration="36943000" />
     </task>
     <task id="LOCAL-00001" summary="on the way">
       <created>1554725365252</created>
@@ -297,17 +289,24 @@
       <option name="project" value="LOCAL" />
       <updated>1554725365252</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="on the way">
+      <created>1554767976986</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1554767976986</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40616000" />
+    <option name="totallyTimeSpent" value="41130000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1600257" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1600257" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -570,7 +569,7 @@
     <entry file="file://$PROJECT_DIR$/templates/patientHistory.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
-          <caret line="14" column="19" lean-forward="true" selection-end-line="129" selection-end-column="38" />
+          <caret line="14" column="19" selection-end-line="129" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -584,14 +583,14 @@
     <entry file="file://$PROJECT_DIR$/templates/patientProfile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3806">
-          <caret line="173" column="6" lean-forward="true" selection-start-line="9" selection-end-line="173" selection-end-column="6" />
+          <caret line="173" column="6" selection-start-line="9" selection-end-line="173" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/doctor/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="90" column="41" lean-forward="true" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="45" />
+          <caret line="90" column="41" selection-start-line="90" selection-start-column="33" selection-end-line="90" selection-end-column="45" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -639,8 +638,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pharmacy/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="63" column="12" selection-start-line="63" selection-start-column="12" selection-end-line="63" selection-end-column="12" />
+        <state relative-caret-position="406">
+          <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
           </folding>

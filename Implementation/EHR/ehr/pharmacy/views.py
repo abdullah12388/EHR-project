@@ -30,7 +30,7 @@ def pharmacy(request):
     else:
         form = patientLoginToPharmacyForm()
     context={ 'form' : form }
-    return render(request, 'pharmacy/../templates/pharmacy.html', context)
+    return render(request, 'pharmacy.html', context)
 
 # class medicineListView(generic.ListView):
 #     model = patient_medicine

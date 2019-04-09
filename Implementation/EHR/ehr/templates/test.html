@@ -1,5 +1,11 @@
 
-<!--{{ a }}<br>-->
-<!--{{ email_list }}<br><br>-->
-<!--{{ pk_list }}<br><br>-->
 <h1>home</h1>
+{% if medicine %}
+    {% for m in medicine %}
+            {{ m.pat_id }}
+    {%  endfor %}
+{% else %}
+    <p>hello</p>
+    <br>
+{% endif %}
+{{ session1 }}

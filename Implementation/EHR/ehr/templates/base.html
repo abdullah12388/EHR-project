@@ -23,17 +23,22 @@
         {# Profile body#}
             {% block patientProfile %}
             {% endblock patientProfile %}
+        {# patientMedicineList body#}
+            {% block patientMedicineList %}
+            {% endblock patientMedicineList %}
             </div>
 
         {# All Patient History #}
             {% block patient_history_content %}
             {% endblock patient_history_content %}
+
         {# Home Body #}
             {% block home_content %}
             {% endblock home_content %}
         {# patientDoctor body#}
             {% block patientDoctor %}
             {% endblock patientDoctor %}
+
     {# The Footer #}
         {% include "footer.html" %}
     </div>

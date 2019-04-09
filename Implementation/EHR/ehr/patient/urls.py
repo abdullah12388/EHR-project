@@ -1,4 +1,5 @@
 from django.conf.urls import url
+
 from patient import views as view
 from django.conf import settings
 from django.conf.urls.static import static
@@ -15,6 +16,7 @@ urlpatterns = [
     url(r'^ajax/valid_email/$', view.valid_email, name='valid_email'),
     url(r'^patientHistory/$', view.patientHistory, name='patientHistory'),
     url(r'^patientDoctor/$', view.patientDoctor, name='patientDoctor'),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

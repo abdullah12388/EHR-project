@@ -1,0 +1,10 @@
+<form method='POST' action=''>
+    <div class="home_text">
+    {% csrf_token %}
+        <div class="mydiv">
+            <label class="mylabel">user</label>
+                {{ form.QR_code }}
+        </div>
+        <button  type="submit" class="button home_button">Submit</button>
+    </div>
+</form>

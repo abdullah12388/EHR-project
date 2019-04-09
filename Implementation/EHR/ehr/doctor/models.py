@@ -32,6 +32,8 @@ class prescription(models.Model):
     Doctor_signature = models.CharField(max_length=500)
     next_appointment = models.DateTimeField()
 
+    def __str__(self):
+        return self.Disease_name
 
 class report(models.Model):
     report = models.AutoField(primary_key=True)
@@ -41,6 +43,9 @@ class report(models.Model):
     clinic = models.ForeignKey(organization, on_delete=models.CASCADE, blank=True, null=True)
     hospital = models.ForeignKey(hospital, on_delete=models.CASCADE, blank=True, null=True)
     Submit_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.Submit_date
 
 
 class all_analytics(models.Model):
@@ -68,7 +73,7 @@ class patient_analytics(models.Model):
     pat = models.ForeignKey(patient, on_delete=models.CASCADE)
     analy = models.ForeignKey(all_analytics, on_delete=models.CASCADE)
     analytics_result = models.TextField()
-    lab = models.ForeignKey(organization, on_delete=models.CASCADE)
+    lab = models.ForeignKey(organization, on_delete=models.CASCADE,null=True,blank=True)
 
 
 class patient_chronic(models.Model):
@@ -83,8 +88,8 @@ class patient_medicine(models.Model):
     med = models.ForeignKey(all_medicine, on_delete=models.CASCADE)
     number_of_potions = models.IntegerField()
     number_of_pills = models.IntegerField()
-    medicine_submit = models.BooleanField(default=False)
-    pharmacy = models.ForeignKey(organization, on_delete=models.CASCADE)
+    pharmacy = models.ForeignKey(organization, on_delete=models.CASCADE,null=True,blank=True)
+
 
 
 class patient_rays(models.Model):
@@ -92,7 +97,7 @@ class patient_rays(models.Model):
     pat = models.ForeignKey(patient, on_delete=models.CASCADE)
     ray = models.ForeignKey(all_rays, on_delete=models.CASCADE)
     rays_result = models.TextField()
-    lab = models.ForeignKey(organization, on_delete=models.CASCADE)
+    lab = models.ForeignKey(organization, on_delete=models.CASCADE,null=True,blank=True)
 
 
 class multi_analytics(models.Model):

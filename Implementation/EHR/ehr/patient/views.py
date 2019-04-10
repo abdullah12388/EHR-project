@@ -179,7 +179,7 @@ class DB_functions:
             return False
 
 def home(request):
-    return render(request, 'home.html', {})
+    return render(request, 'patientIndex.html', {})
 
 def temp_Register(request):
     if request.method == 'POST':

@@ -33,7 +33,7 @@
     {% else %} home
     {% endif %}
     " style="
-    {% if request.get_full_path == '/doctor/' %} height:170px
+    {% if request.get_full_path == '/patient/' %} height:170px
     {% endif %}
     ">
     <div class="
@@ -45,7 +45,7 @@
     {% else %}
         {% if request.get_full_path == '/patientProfile/?c=1' %} height:120%;
         {% endif %}
-        {% if request.get_full_path == '/doctor/' %} display:none;
+        {% if request.get_full_path == '/patient/' %} display:none;
         {% endif %}
     {% endif %}
     "></div>

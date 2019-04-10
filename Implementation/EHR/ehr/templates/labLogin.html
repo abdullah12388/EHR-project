@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block labLogin %}
+
+<div class="home_container" style="top:30%">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="home_content">
+                    <div class="home_title">Lab Login</div>
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="home_text">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="lab_name" aria-describedby="emailHelp" placeholder="Enter Username" required="required">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="lab_pass" aria-describedby="emailHelp" placeholder="Enter Password" required="required">
+                            </div>
+                            <button type="submit" class="button home_button">Login</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock labLogin %}

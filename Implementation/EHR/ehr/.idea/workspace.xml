@@ -16,7 +16,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pharmacy/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
+            <state relative-caret-position="968">
               <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
               <folding>
                 <element signature="e#0#57#0" expanded="true" />
@@ -37,7 +37,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/patient/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
+            <state relative-caret-position="4026">
               <caret line="193" column="43" selection-start-line="193" selection-start-column="23" selection-end-line="193" selection-end-column="43" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -51,15 +51,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
               <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
-              <folding>
-                <element signature="e#135#196#0#HTML" expanded="true" />
-                <element signature="e#249#359#0#HTML" expanded="true" />
-                <element signature="e#386#457#0#HTML" expanded="true" />
-                <element signature="e#528#553#0#HTML" expanded="true" />
-                <element signature="e#820#845#0#HTML" expanded="true" />
-                <element signature="e#1127#1152#0#HTML" expanded="true" />
-                <element signature="e#1450#1470#0#HTML" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -124,6 +115,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ehr" type="cbb8eebc:String" user="ehr" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="ehr" type="cbb8eebc:String" user="ehr" />
+              <item name="ehr" type="cbb8eebc:String" user="ehr" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -171,22 +178,6 @@
               <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
               <item name="ehr" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <expand>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="ehr" type="cbb8eebc:String" user="ehr" />
-            </path>
-            <path>
-              <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="ehr" type="cbb8eebc:String" user="ehr" />
-              <item name="ehr" type="cbb8eebc:String" user="ehr" />
             </path>
           </expand>
           <select />
@@ -253,7 +244,8 @@
       <option name="presentableId" value="Default" />
       <updated>1554666125247</updated>
       <workItem from="1554666137202" duration="4187000" />
-      <workItem from="1554700971887" duration="41017000" />
+      <workItem from="1554700971887" duration="40747000" />
+      <workItem from="1554838893216" duration="679000" />
     </task>
     <task id="LOCAL-00001" summary="on the way">
       <created>1554725365252</created>
@@ -273,12 +265,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45204000" />
+    <option name="totallyTimeSpent" value="45613000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1600257" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16195373" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -569,12 +561,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/patient/views.py">
+    <entry file="file://$PROJECT_DIR$/pharmacy/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="506">
-          <caret line="193" column="43" selection-start-line="193" selection-start-column="23" selection-end-line="193" selection-end-column="43" />
+        <state relative-caret-position="968">
+          <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
           <folding>
-            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#0#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -586,12 +578,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pharmacy/views.py">
+    <entry file="file://$PROJECT_DIR$/patient/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="53" column="48" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
+        <state relative-caret-position="4026">
+          <caret line="193" column="43" selection-start-line="193" selection-start-column="23" selection-end-line="193" selection-end-column="43" />
           <folding>
-            <element signature="e#0#57#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>

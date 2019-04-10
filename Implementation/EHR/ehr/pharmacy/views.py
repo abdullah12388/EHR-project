@@ -19,18 +19,53 @@ from patient.forms import patientLoginToPharmacyForm
 #         return False
 
 
-def pharmacy(request):
-    if request.method == 'POST':
-        form = patientLoginToPharmacyForm(request.POST or None)
-        if form.is_valid():
 
-            request.session['patientData']=4
-            request.session['pharmacyId']=1
-            return HttpResponseRedirect('pharmacy/medicines/')
+def pharmacyLogin(request):
+    if request.method == 'POST':
+        pharmacyName = request.POST['pharm_name']
+        pharmacyPass = request.POST['pharm_pass']
+        pharmacyUserFound = organization.objects.filter(hr_username__exact=pharmacyName).exists()
+        pharmacyPassFound = organization.objects.filter(hr_password__exact=pharmacyPass).exists()
+        if pharmacyUserFound:
+            if pharmacyPassFound:
+                organ_id = organization.objects.get(hr_username=pharmacyName).org_id
+                request.session['org_id'] = organ_id
+                return HttpResponseRedirect('pharmacyPatientLogin/')
+            else:
+                print('wrong pass')
+                return HttpResponse("You entered wrong pass")
+        else:
+            print('phar not exist')
+            return HttpResponseNotFound('<h1>Pharmacy not found</h1>')
     else:
-        form = patientLoginToPharmacyForm()
-    context={ 'form' : form }
-    return render(request, 'pharmacy.html', context)
+        return render(request,'pharmacyLogin.html',{})
+
+
+
+
+def pharmacyPatientLogin(request):
+    if request.method == 'POST':
+        ssn_id = request.POST['pat_id']
+        u_id = user.objects.get(Ssn_id=ssn_id).user_id
+        request.session['patient_id'] = u_id
+        return HttpResponseRedirect('medicines/')
+    else:
+        return render(request,'pharmacyIndex.html',{})
+
+
+
+# def pharmacy(request):
+#     if request.method == 'POST':
+#         form = patientLoginToPharmacyForm(request.POST or None)
+#         if form.is_valid():
+#
+#             request.session['patientData']=4
+#             request.session['pharmacyId']=1
+#             return HttpResponseRedirect('pharmacy/medicines/')
+#     else:
+#         form = patientLoginToPharmacyForm()
+#     context={ 'form' : form }
+#     return render(request, 'pharmacy.html', context)
 
 # class medicineListView(generic.ListView):
 #     model = patient_medicine
@@ -51,35 +86,39 @@ def pharmacy(request):
 
 
 def medicineListView(request):
-    session1= request.session['patientData'] = 4
-    session2 = request.session['pharmacyId'] = 1
-    patientFoundRealData = patient_medicine.objects.filter(pat_id__exact=session1)
-    # print(patientFoundRealData)
-    patientFoundTrueAndFalse = patient_medicine.objects.filter(pat_id__exact=session1).exists()
-    # print(patientFoundTrueAndFalse)
+    patient_id= request.session['patient_id']
+    pharmacy_id = request.session['org_id']
+    patientFoundTrueAndFalse = patient_medicine.objects.filter(pat_id__exact=patient_id).exists()
     if patientFoundTrueAndFalse:
-        pharmacyFound = patient_medicine.objects.filter(pharmacy__isnull=True).exists()
-        if pharmacyFound:
-            pharmacyData = patient_medicine.objects.filter(pharmacy__isnull=True)
+        medicineFound = patient_medicine.objects.filter(pharmacy__isnull=True).exists()
+        if medicineFound:
+            medicineData = patient_medicine.objects.filter(pharmacy__isnull=True)
+            if request.method == 'POST':
+                medicineInsert = patient_medicine(P_M_id=request.POST['med_id'])
+                medicineInsert.pharmacy_id = pharmacy_id
+                medicineInsert.pat_id = patient_id
+                medicineInsert.med_id = request.POST['id_of_med']
+                medicineInsert.number_of_pills = request.POST['num_of_pot']
+                medicineInsert.number_of_potions = request.POST['num_of_pil']
+                medicineInsert.save()
+            else:
+                print('error')
             context = {
-                'DataNotSubmitted': pharmacyData
+                'DataNotSubmitted': medicineData,
+                'ph_id': pharmacy_id,
             }
-            print('lsakasdlkaslkamflkmaelkdmlakemdlka')
             return render(request, 'patientMedicineToBeSubmit.html', context)
 
         else:
             return HttpResponse("You don't have any medicines")
     else:
             HttpResponseNotFound('<h1>patient not found</h1>')
-    context = {
-        'medicineList': patientFoundRealData,
-        'session1':session1,
-        'session2': session2,
-    }
-    return render(request, 'patientMedicineToBeSubmit.html', context)
 
 
 
-
+# def medicineListView(request):
+#     patient_id = request.session['patient_id']
+#     pharmacy_id = request.session['org_id']
+#
 
 

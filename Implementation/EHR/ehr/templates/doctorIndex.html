@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block DoctorIndex %}
+
+<div class="container">
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);color:#32c69a;margin-top:30px;color: #FFF">
+        <div class="row">
+            <div class="col-sm-6">
+                <div>
+                    <p class="para">Last Report</p>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="bord">Created at:</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="bord">12/12/1996</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="bord">Next at:</label>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="bord">12/12/1996</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="bord txer" disabled>Descreption</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="bord txer" disabled>Medicines</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="bord txer" disabled>Analytics</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="bord txer" disabled>Rays</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="para">Top Doctor</p>
+                        <div class="topdiv" style="overflow: auto;">
+                            <div class="row" style="text-align: center;width: 100%">
+                                <div class="col-sm-4">
+                                    <img class="ima" src="{% static 'images/info_1.jpg' %}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Abdullah Muhammed</label>
+                                </div>
+                                <div class="col-sm-2" style="margin: auto 0px auto 0px;">
+                                    <i class="fa fa-star fa-lg">5</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="para">Top hospital</p>
+                        <div class="topdiv" style="overflow: auto;">
+                            <div class="row" style="text-align: center;width: 100%">
+                                <div class="col-sm-4">
+                                    <img class="ima" src="{% static 'images/info_1.jpg' %}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Abdullah Muhammed</label>
+                                </div>
+                                <div class="col-sm-2" style="margin: auto 0px auto 0px;">
+                                    <i class="fa fa-star fa-lg">5</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p class="para">Top Pharmacy</p>
+                        <div class="topdiv" style="overflow: auto;">
+                            <div class="row" style="text-align: center;width: 100%">
+                                <div class="col-sm-4">
+                                    <img class="ima" src="{% static 'images/info_1.jpg' %}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Abdullah Muhammed</label>
+                                </div>
+                                <div class="col-sm-2" style="margin: auto 0px auto 0px;">
+                                    <i class="fa fa-star fa-lg">5</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="para">top Lab</p>
+                        <div class="topdiv" style="overflow: auto;">
+                            <div class="row" style="text-align: center;width: 100%">
+                                <div class="col-sm-4">
+                                    <img class="ima" src="{% static 'images/info_1.jpg' %}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Abdullah Muhammed</label>
+                                </div>
+                                <div class="col-sm-2" style="margin: auto 0px auto 0px;">
+                                    <i class="fa fa-star fa-lg">5</i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div>
+                    <p class="para">Partners</p>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="bord txer" disabled>Hospitals</div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="bord txer" disabled>Pharmacies</div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="bord txer" disabled>Labs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock DoctorIndex %}

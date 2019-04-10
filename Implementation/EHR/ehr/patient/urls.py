@@ -1,5 +1,4 @@
 from django.conf.urls import url
-
 from patient import views as view
 from django.conf import settings
 from django.conf.urls.static import static

@@ -32,6 +32,9 @@
     {% if request.get_full_path == '/patientHistory/' %} home_2
     {% else %} home
     {% endif %}
+    " style="
+    {% if request.get_full_path == '/doctor/' %} height:170px
+    {% endif %}
     ">
     <div class="
     {% if request.get_full_path == '/patientHistory/' %}
@@ -40,7 +43,9 @@
     " style="
     {% if request.get_full_path == '/patientProfile/' %} height:120%;
     {% else %}
-        {% if request.get_full_path == '/patientProfile/?c=1' %} height:120%
+        {% if request.get_full_path == '/patientProfile/?c=1' %} height:120%;
+        {% endif %}
+        {% if request.get_full_path == '/doctor/' %} display:none;
         {% endif %}
     {% endif %}
     "></div>

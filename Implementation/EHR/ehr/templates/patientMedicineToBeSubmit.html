@@ -15,7 +15,7 @@
                                     <div class="col-sm-6">
                                         Medicine Name:
                                     </div>
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6" style="color: #FFF">
                                         {{ data.med.medicine_name }}
                                     </div>
                                 </div>
@@ -53,22 +53,3 @@
 </div>
 
 {% endblock patientMedicineList %}
-{#<h1>Medicine List</h1>#}
-{#  {% if medicineList %}#}
-{#  <ul>#}
-{#    {% for medicine in medicineList %}#}
-{#        {{ medicine.number_of_pills }}#}
-{#        <li>#}
-{##}
-{#          {{ medicine.med.medicine_name }}#}
-{#          {{ medicine.number_of_pills }}#}
-{#          {{ medicine.number_of_potions }}#}
-{#        <button type="submit" value="{{  medicine.pharmacy = '1' }}>Submit</button>#}
-{#      </li>#}
-{#    {% endfor %}#}
-{##}
-{#  </ul>#}
-{##}
-{#{% else %}#}
-{#    <p>There are no books in the library.</p>#}
-{#  {% endif %}#}

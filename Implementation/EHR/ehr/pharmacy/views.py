@@ -20,7 +20,7 @@ def pharmacyLogin(request):
             if pharmacyPassFound:
                 organ_id = organization.objects.get(hr_username=pharmacyName).org_id
                 request.session['org_id'] = organ_id
-                return HttpResponseRedirect('labPatientLogin/')
+                return HttpResponseRedirect('pharmacyPatientLogin/')
             else:
                 print('wrong pass')
                 return HttpResponse("You entered wrong pass")
@@ -31,6 +31,16 @@ def pharmacyLogin(request):
         return render(request,'pharmacyLogin.html',{})
 
 
+# def pharmacyLogout(request):
+#     if 'org_id' in request.session:
+#         request.session.pop('org_id')
+#         print('SESSION FOUND')
+#     if 'patient_id' in request.session:
+#         request.session.pop('patient_id')
+#         print('SESSION FOUND')
+#     if 'org_id' not in request.session:
+#         print('SESSION DELETED')
+#     return HttpResponseRedirect('pharmacy/pharmacyPatientLogin/')
 
 
 def pharmacyPatientLogin(request):

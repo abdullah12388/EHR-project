@@ -8,7 +8,8 @@ patient_medicine,all_medicine,multi_rays,multi_analytics
 from django.http import HttpResponseRedirect
 from django.contrib.auth.hashers import check_password
 from django.views.generic import (View,TemplateView,DeleteView,DetailView,ListView,CreateView,FormView,UpdateView)
-from django.core.urlresolvers import reverse
+# from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 
 def Doctor(request):

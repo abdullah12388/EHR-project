@@ -1,0 +1,31 @@
+{% extends 'Doctor_app/Doctor_base.html' %}
+{% block home_content %}
+
+<div class="info">
+    <div class="container">
+        <div class="row row-eq-height">
+          <div class="jumbotron">
+            {% if not form.instance.pk %}
+            <h1>Create</h1>
+            <form method="post">
+                {%csrf_token%}
+                {{form.as_p}}
+                <input type="submit" class="btn btn-primary" value="Create">
+            </form>
+            {%else%}
+
+                <h1>Update</h1>
+                <form method="post">
+                    {%csrf_token%}
+                    {{form.as_p}}
+                    <input type="submit" class="btn btn-warning" value="Update">
+                </form>
+
+
+            {% endif %}
+          </div>
+        </div>
+    </div>
+</div>
+
+{% endblock home_content %}

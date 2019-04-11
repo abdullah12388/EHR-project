@@ -1,0 +1,20 @@
+{% extends 'Doctor_app/Doctor_base.html' %}
+{% block home_content %}
+
+<div class="info">
+    <div class="container">
+        <div class="row row-eq-height">
+          <ol>
+            <ol>
+              <h2><li>{{med_p_detial.med.medicine_name}}</li></h2>
+              <h2><li>{{med_p_detial.number_of_potions}}</li></h2>
+              <h2><li>{{med_p_detial.number_of_pills}}</li></h2>
+              <p><a class="btn btn-warning" href="{% url 'doctor:medupdate' pk=med_p_detial.P_M_id%}">Update</a></p>
+            </ol>
+          </ol>
+
+        </div>
+    </div>
+</div>
+
+{% endblock home_content %}

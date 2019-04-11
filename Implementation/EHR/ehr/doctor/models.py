@@ -65,7 +65,8 @@ class all_chronic(models.Model):
 class all_medicine(models.Model):
     medicine_id = models.AutoField(primary_key=True)
     medicine_name = models.CharField(max_length=250)
-
+    def __str__(self):
+        return self.medicine_name
 
 class all_rays(models.Model):
     ray_id = models.AutoField(primary_key=True)
@@ -92,9 +93,13 @@ class patient_medicine(models.Model):
     med = models.ForeignKey(all_medicine, on_delete=models.CASCADE)
     number_of_potions = models.IntegerField()
     number_of_pills = models.IntegerField()
-    medicine_submit = models.BooleanField(default=False)
+    #medicine_submit = models.BooleanField(default=False)
     pharmacy = models.ForeignKey(organization, on_delete=models.CASCADE)
+    def __str__ (self):
+        return self.pat.Patient.first_name
 
+    def get_absolute_url (self):
+        return reverse("doctor:meddital" , kwargs={'pk':self.pk})
 
 class patient_rays(models.Model):
     P_R_id = models.AutoField(primary_key=True)
@@ -117,6 +122,7 @@ class multi_chronic(models.Model):
 class multi_medecines(models.Model):
     report = models.ForeignKey(report, on_delete=models.CASCADE)
     P_M = models.ForeignKey(patient_medicine, on_delete=models.CASCADE)
+
 
 
 class multi_rays(models.Model):

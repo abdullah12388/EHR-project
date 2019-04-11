@@ -179,6 +179,8 @@ class MedicenFormView (FormView):
         instance.pat = patient.objects.get(Patient=Doctor_Patiant_ID)
         instance.save()
         P_mdecine_instance = patient_medicine.objects.last()
+        print(self.kwargs['pk'])
         report_Instance = report.objects.get(report=self.kwargs['pk'])
         create_Med_report = multi_medecines.objects.create(report=report_Instance ,P_M=P_mdecine_instance)
+        print(self.kwargs['pk'])
         return HttpResponseRedirect(reverse('doctor:medlist', kwargs={'pk': self.kwargs['pk']}))

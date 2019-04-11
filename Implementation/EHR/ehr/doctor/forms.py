@@ -1,6 +1,6 @@
 from django import forms
 from patient.models import patient
-from doctor.models import report,user,prescription,patient_medicine
+from doctor.models import report,user,prescription,patient_medicine,patient_rays
 from django.contrib.auth.hashers import make_password
 
 class GetPatianTIDForm (forms.ModelForm):
@@ -17,3 +17,8 @@ class AddmedicenForm (forms.ModelForm):
     class Meta():
         model = patient_medicine
         fields = ('med','number_of_potions','number_of_pills')
+
+class AddRaysForm (forms.ModelForm):
+    class Meta():
+        model = patient_rays
+        fields = ['ray']

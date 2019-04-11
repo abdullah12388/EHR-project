@@ -1,0 +1,24 @@
+{% extends 'Doctor_app/Doctor_base.html' %}
+{% block home_content %}
+
+<div class="info">
+    <div class="container">
+        <div class="row row-eq-height">
+          <ol>
+            <ol>
+              <h2><li>{{ray_p_detial.ray.ray_name}}</li></h2>
+              {%if ray_p_detial.rays_result %}
+              <h2><li>{{ray_p_detial.rays_result}}</li></h2>
+              {%else%}
+              <h2><li>No Result Add Yet</li></h2>
+              {%endif%}
+
+              <p><a class="btn btn-warning" href="{% url 'doctor:raysupdate' pk=ray_p_detial.P_R_id%}">Update</a></p>
+            </ol>
+          </ol>
+
+        </div>
+    </div>
+</div>
+
+{% endblock home_content %}

@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from .forms import GetPatianTIDForm,PrescriptionForm,AddmedicenForm
+from .forms import GetPatianTIDForm,PrescriptionForm,AddmedicenForm,AddRaysForm
 from patient.views import DB_functions
 from patient.models import user,patient
 from .models import (prescription,report,doctor,multi_medecines,
-patient_medicine,all_medicine)
+patient_medicine,all_medicine,multi_rays,multi_analytics,patient_rays,all_rays)
 from django.http import HttpResponseRedirect
 from django.contrib.auth.hashers import check_password
 from django.views.generic import (View,TemplateView,DeleteView,DetailView,ListView,CreateView,FormView,UpdateView)
@@ -184,3 +184,63 @@ class MedicenFormView (FormView):
         create_Med_report = multi_medecines.objects.create(report=report_Instance ,P_M=P_mdecine_instance)
         print(self.kwargs['pk'])
         return HttpResponseRedirect(reverse('doctor:medlist', kwargs={'pk': self.kwargs['pk']}))
+
+class rays_List(ListView):
+    model = multi_rays
+    context_object_name = 'rays'
+    template_name = 'Doctor_app/multi_rays_list.html'
+    def get_queryset(self):
+        return multi_rays.objects.filter(report_id=self.kwargs['pk'])
+
+    def render_to_response(self , redirect_url):
+        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
+            return HttpResponseRedirect('/patient/login/')
+        elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
+            return HttpResponseRedirect('/')
+        else:
+           return super().render_to_response(redirect_url)
+
+class rays_DetialView(DetailView):
+    model = patient_rays
+    context_object_name = 'ray_p_detial'
+    template_name = 'Doctor_app/patient_rays_detail.html'
+    redirect_url = '/doctor/patiant/prescription/'
+    #self.kwargs['pk']
+
+    def render_to_response(self , redirect_url):
+        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
+            return HttpResponseRedirect('/patient/login/')
+        elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
+            return HttpResponseRedirect('/')
+        else:
+           return super().render_to_response(redirect_url)
+
+class rays_UPDATE (UpdateView):
+    fields =  ['ray']
+    model = patient_rays
+    template_name = 'Doctor_app/patient_rays_form.html'
+
+    def render_to_response(self , redirect_url):
+        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
+            return HttpResponseRedirect('/patient/login/')
+        elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
+            return HttpResponseRedirect('/')
+        else:
+           return super().render_to_response(redirect_url)
+
+class raysFormView (FormView):
+    template_name = 'Doctor_app/patient_rays_form.html'
+    form_class = AddRaysForm
+
+    def form_valid(self, form):
+        if 'Doctor_Patiant_ID' in self.request.session:
+            Doctor_Patiant_ID = self.request.session['Doctor_Patiant_ID']
+        instance = form.save(commit=False)
+        instance.pat = patient.objects.get(Patient=Doctor_Patiant_ID)
+        instance.save()
+        P_ray_instance = patient_rays.objects.last()
+        print(self.kwargs['pk'])
+        report_Instance = report.objects.get(report=self.kwargs['pk'])
+        create_Med_report = multi_rays.objects.create(report=report_Instance ,P_R=P_ray_instance)
+        print(self.kwargs['pk'])
+        return HttpResponseRedirect(reverse('doctor:rayslist', kwargs={'pk': self.kwargs['pk']}))

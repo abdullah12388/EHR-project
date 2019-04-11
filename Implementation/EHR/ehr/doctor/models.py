@@ -72,6 +72,8 @@ class all_rays(models.Model):
     ray_id = models.AutoField(primary_key=True)
     ray_name = models.CharField(max_length=250)
 
+    def __str__(self):
+        return self.ray_name
 
 class patient_analytics(models.Model):
     P_A_id = models.AutoField(primary_key=True)
@@ -107,7 +109,11 @@ class patient_rays(models.Model):
     ray = models.ForeignKey(all_rays, on_delete=models.CASCADE)
     rays_result = models.TextField()
     lab = models.ForeignKey(organization, on_delete=models.CASCADE)
+    def __str__ (self):
+        return self.pat.Patient.first_name
 
+    def get_absolute_url(self):
+        return reverse("doctor:raydetial",kwargs={'pk':self.pk})
 
 class multi_analytics(models.Model):
     report = models.ForeignKey(report, on_delete=models.CASCADE)

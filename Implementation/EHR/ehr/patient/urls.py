@@ -12,9 +12,10 @@ urlpatterns = [
     url(r'^patientProfile/$', view.patient_profile, name='patient_profile'),
     url(r'^signup/$', view.temp_Register, name='signup'),
     url(r'^ajax/validate_email/$', view.validate_email, name='validate_email'),
-    url(r'^ajax/valid_email/$', view.valid_email, name='valid_email'),
+    url(r'^profile/valid_email/$', view.valid_email, name='valid_email'),
     url(r'^patientHistory/$', view.patientHistory, name='patientHistory'),
-    url(r'^patientDoctor/$', view.patientDoctor, name='patientDoctor'),
+    url(r'^patientCard/$', view.patientCard, name='patientCard'),
+    # url(r'^patientDoctor/$', view.patientDoctor, name='patientDoctor'),
 
 ]
 if settings.DEBUG:

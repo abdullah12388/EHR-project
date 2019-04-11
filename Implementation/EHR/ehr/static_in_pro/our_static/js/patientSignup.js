@@ -50,7 +50,7 @@ email_.keyup(function () {
 email_2.keyup(function () {
    var email2 = $(this).val();
    $.ajax({
-       url: "/patient/ajax/validate_email_2/",
+       url: "/patient/profile/valid_email/",
        data: {
            'email_1' : email2
        },

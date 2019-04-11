@@ -94,11 +94,7 @@ class AddUser(forms.ModelForm):
         'placeholder': 'Last name',
         'required': 'required'
     }))
-    gender = forms.IntegerField(widget=forms.NumberInput(attrs={
-        'class': 'form-control',
-        'placeholder': '1-M 2-F',
-        'required': 'required'
-    }), min_value=1, max_value=2)
+    gender = forms.CharField()
     country = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'pattern': '[a-z]{3,}',
@@ -153,24 +149,19 @@ class AddUser(forms.ModelForm):
         'required': 'required',
         'type': 'date'
     }),input_formats=['%Y-%m-%d','%m/%d/%Y','%m/%d/%y','%d-%m-%Y'])
-    marital_status = forms.CharField(widget=forms.TextInput(attrs={
+    marital_status = forms.CharField()
+    Child_num = forms.IntegerField(widget=forms.NumberInput(attrs={
         'class': 'form-control',
-        'pattern': '[a-z]{5,}',
-        'placeholder': 'Marital Status',
+        'placeholder': 'children',
         'required': 'required'
-    }))
-    Child_num = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control',
-        'pattern': '[0-9]{1,2}',
-        'placeholder': 'Children',
-        'required': 'required'
-    }))
+    }), min_value=0, max_value=20)
     email_1 = forms.EmailField(widget=forms.EmailInput(attrs={
         'class': 'form-control',
         'pattern': '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$',
         'placeholder': 'First E-mail',
         'required': 'required',
-        'id': 'id_email_2'
+        'id': 'id_email_2',
+        'name':'email_1'
     }))
     email_2 = forms.EmailField(widget=forms.EmailInput(attrs={
         'class': 'form-control',
@@ -289,9 +280,7 @@ class AddPatient(forms.ModelForm):
         'value': 'QR123213123123',
         'type': 'hidden'
     }))
-    Disability_status = forms.BooleanField(required=False,widget=forms.CheckboxInput(attrs={
-        'style': 'width:1.5em;height:1.5em',
-    }))
+    Disability_status = forms.CharField()
     Height = forms.FloatField(widget=forms.NumberInput(attrs={
         'class': 'form-control',
         'placeholder': 'Height in cm',
@@ -302,14 +291,8 @@ class AddPatient(forms.ModelForm):
         'placeholder': 'Weight in kg',
         'required': 'required'
     }),min_value=1,max_value=400)
-    Blood_type = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control',
-        'placeholder': 'Blood type',
-        'required': 'required'
-    }))
-    Chronic_diseases = forms.BooleanField(required=False,widget=forms.CheckboxInput(attrs={
-        'style': 'width:1.5em;height:1.5em',
-    }))
+    Blood_type = forms.CharField()
+    Chronic_diseases = forms.CharField()
 
     class Meta:
         model = patient

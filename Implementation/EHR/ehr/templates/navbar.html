@@ -29,21 +29,24 @@
 
 <!-- Home -->
 <div class="
-    {% if request.get_full_path == '/patientHistory/' %} home_2
+    {% if request.get_full_path == '/patient/patientHistory/' %} home_2
     {% else %} home
     {% endif %}
     " style="
-    {% if request.get_full_path == '/patient/' %} height:170px
+    {% if request.get_full_path == '/patient/' %} height:170px;
+    {% else %}
+        {% if request.get_full_path == '/patient/patientProfile/' %} height:950px;
+        {% endif %}
     {% endif %}
     ">
     <div class="
-    {% if request.get_full_path == '/patientHistory/' %}
+    {% if request.get_full_path == '/patient/patientHistory/' %}
     {% else %} background_image
     {% endif %}
     " style="
-    {% if request.get_full_path == '/patientProfile/' %} height:120%;
+    {% if request.get_full_path == '/patient/patientProfile/' %} height:120%;
     {% else %}
-        {% if request.get_full_path == '/patientProfile/?c=1' %} height:120%;
+        {% if request.get_full_path == '/patient/patientProfile/?c=1' %} height:120%;
         {% endif %}
         {% if request.get_full_path == '/patient/' %} display:none;
         {% endif %}

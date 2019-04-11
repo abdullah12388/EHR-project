@@ -17,143 +17,143 @@ from django.http import JsonResponse
 from django.contrib.auth.hashers import check_password
 # Create your views here.
 
-# class DB_functions:
-#     __patient_email = ''
-#     __patient_password = ''
-#     __final_all_reports = []
-#     patient_login_result = ''
-#
-#     def set_patient_email(self, email):
-#         self.__patient_email = email
-#     def set_patient_password(self, password):
-#         self.__patient_password = password
-#     def get_final_all_reports(self):
-#         return self.__final_all_reports
-#
-#     def patient_login(self, request):
-#         user_is_exist = temp_register.objects.filter(email__iexact=self.__patient_email).exists()
-#         if user_is_exist:
-#             id = temp_register.objects.get(email=self.__patient_email).id
-#             password_db = temp_register.objects.get(email=self.__patient_email).password
-#             if self.__patient_password == password_db:
-#                 request.session['patient_id'] = id
-#                 if 'patient_id' not in request.session:
-#                     print('THIS IS FALSE')
-#                 self.patient_login_result = 'email_exists'
-#             else:
-#                 self.patient_login_result = 'wrong_password'
-#         else:
-#             self.patient_login_result = 'wrong_email'
-#         return self.patient_login_result
-#
-#     def patient_report_data(self):
-#         pk_list = []
-#         doctor_id = []
-#         patient_id = []
-#         prescription_id = []
-#         Submit_date = []
-#         clinic_id = []
-#         hospital_id = []
-#         doctor_names = []
-#         prescription_detail = []
-#         clinic_names = []
-#         hospital_names = []
-#         report_data = report.objects.order_by('-Submit_date')
-#         if report_data.exists():
-#             for instance in report_data:
-#                 pk_list.append(instance.pk)
-#                 doctor_id.append(instance.doctor_id)
-#                 patient_id.append(instance.patient_id)
-#                 prescription_id.append(instance.prescription_id)
-#                 Submit_date.append(instance.Submit_date)
-#                 clinic_id.append(instance.clinic_id)
-#                 hospital_id.append(instance.hospital_id)
-#                 user_id = doctor.objects.get(id=instance.doctor_id).Doc_id
-#                 doctor_name = user.objects.get(user_id=user_id).first_name + " " + user.objects.get(user_id=user_id).last_name
-#                 doctor_names.append(doctor_name)
-#                 prescription_detail.append(prescription.objects.get(prescription_id=instance.prescription_id).Disease_disc)
-#                 if instance.clinic_id == None:
-#                     clinic_names.append(False)
-#                 else:
-#                     clinic_names.append(organization.objects.get(org_id=instance.clinic_id).org_name)
-#                 if instance.hospital_id == None:
-#                     hospital_names.append(False)
-#                 else:
-#                     hospital_names.append(hospital.objects.get(h_id=1).h_name)
-#             all_report_data = [pk_list, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id, doctor_names, prescription_detail, clinic_names, hospital_names]
-#             return all_report_data
-#         else:
-#             return False
-#
-#     def get_multi(self):
-#         report_data = self.patient_report_data()
-#         if not report_data == False:
-#             report_id = report_data[0]
-#             print("report_id",report_id)
-#             i=0
-#             p_a_id, p_c_id, p_m_id, p_r_id  = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))]
-#             p_a_id_, p_c_id_, p_m_id_, p_r_id_  = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))]
-#
-#             for i in range(0, len(report_id)):
-#                 multi_analytics_data = multi_analytics.objects.filter(report_id__exact=report_id[i]).exists()
-#                 multi_chronic_data = multi_chronic.objects.filter(report_id__exact=report_id[i]).exists()
-#                 multi_medicines_data = multi_medecines.objects.filter(report_id__exact=report_id[i]).exists()
-#                 multi_rays_data = multi_rays.objects.filter(report_id__exact=report_id[i]).exists()
-#                 if multi_analytics_data:
-#                     j=0
-#                     analytics_list = multi_analytics.objects.filter(report_id__exact=report_id[i])
-#                     for instance in analytics_list:
-#                         p_a_id[i].insert(j, instance.P_A_id)
-#                         j = j+1
-#                     # print("p_a_id = " , p_a_id)
-#                 if multi_chronic_data:
-#                     j=0
-#                     chronic_list = multi_chronic.objects.filter(report_id__exact=report_id[i])
-#                     for instance in chronic_list:
-#                         p_c_id[i].insert(j, instance.P_C_id)
-#                         j = j + 1
-#                     # print("p_c_id = ", p_c_id)
-#                 if multi_medicines_data:
-#                     j=0
-#                     medicines_list = multi_medecines.objects.filter(report_id__exact=report_id[i])
-#                     for instance in medicines_list:
-#                         p_m_id[i].insert(j, instance.P_M_id)
-#                         j = j + 1
-#                     # print("p_m_id = ", p_m_id)
-#                 if multi_rays_data:
-#                     j=0
-#                     rays_list = multi_rays.objects.filter(report_id__exact=report_id[i])
-#                     for instance in rays_list:
-#                         p_r_id[i].insert(j, instance.P_R_id)
-#                         j = j + 1
-#                     # print("p_r_id = ", p_r_id)
-#             result = [p_a_id, p_c_id, p_m_id, p_r_id]
-#             for i in range(len(report_id)):
-#                 j, k, l, m = 0, 0, 0, 0
-#                 for j in range(len(p_a_id[i])):
-#                     patient_analytics_list = patient_analytics.objects.get(P_A_id=p_a_id[i][j])
-#                     p_a_id_[i].insert(j, patient_analytics_list)
-#                 for k in range(len(p_c_id[i])):
-#                     patient_chronic_list = patient_chronic.objects.get(P_C_id=p_c_id[i][k])
-#                     p_c_id_[i].insert(k, patient_chronic_list)
-#                 for l in range(len(p_m_id[i])):
-#                     patient_medicine_list = patient_medicine.objects.get(P_M_id=p_m_id[i][l])
-#                     p_m_id_[i].insert(l, patient_medicine_list)
-#                 for m in range(len(p_r_id[i])):
-#                     patient_rays_list = patient_rays.objects.get(P_R_id=p_r_id[i][m])
-#                     p_r_id_[i].insert(m, patient_rays_list)
-#             print("p_a_id = ", p_a_id)
-#             print("p_a_id_ = ", p_a_id_)
-#             print("p_c_id = ", p_c_id)
-#             print("p_c_id_ = ", p_c_id_)
-#             print("p_m_id = ", p_m_id)
-#             print("p_m_id_ = ", p_m_id_)
-#             print("p_r_id = ", p_r_id)
-#             print("p_r_id_ = ", p_r_id_)
-#             self.__final_all_reports = [p_a_id_, p_c_id_, p_m_id_, p_r_id_]
-#             return True
-#         else:
-#             return False
+class DB_functions:
+    __patient_email = ''
+    __patient_password = ''
+    __final_all_reports = []
+    patient_login_result = ''
+
+    def set_patient_email(self, email):
+        self.__patient_email = email
+    def set_patient_password(self, password):
+        self.__patient_password = password
+    def get_final_all_reports(self):
+        return self.__final_all_reports
+
+    def patient_login(self, request):
+        user_is_exist = temp_register.objects.filter(email__iexact=self.__patient_email).exists()
+        if user_is_exist:
+            id = temp_register.objects.get(email=self.__patient_email).id
+            password_db = temp_register.objects.get(email=self.__patient_email).password
+            if self.__patient_password == password_db:
+                request.session['patient_id'] = id
+                if 'patient_id' not in request.session:
+                    print('THIS IS FALSE')
+                self.patient_login_result = 'email_exists'
+            else:
+                self.patient_login_result = 'wrong_password'
+        else:
+            self.patient_login_result = 'wrong_email'
+        return self.patient_login_result
+
+    def patient_report_data(self):
+        pk_list = []
+        doctor_id = []
+        patient_id = []
+        prescription_id = []
+        Submit_date = []
+        clinic_id = []
+        hospital_id = []
+        doctor_names = []
+        prescription_detail = []
+        clinic_names = []
+        hospital_names = []
+        report_data = report.objects.order_by('-Submit_date')
+        if report_data.exists():
+            for instance in report_data:
+                pk_list.append(instance.pk)
+                doctor_id.append(instance.doctor_id)
+                patient_id.append(instance.patient_id)
+                prescription_id.append(instance.prescription_id)
+                Submit_date.append(instance.Submit_date)
+                clinic_id.append(instance.clinic_id)
+                hospital_id.append(instance.hospital_id)
+                user_id = doctor.objects.get(id=instance.doctor_id).Doc_id
+                doctor_name = user.objects.get(user_id=user_id).first_name + " " + user.objects.get(user_id=user_id).last_name
+                doctor_names.append(doctor_name)
+                prescription_detail.append(prescription.objects.get(prescription_id=instance.prescription_id).Disease_disc)
+                if instance.clinic_id == None:
+                    clinic_names.append(False)
+                else:
+                    clinic_names.append(organization.objects.get(org_id=instance.clinic_id).org_name)
+                if instance.hospital_id == None:
+                    hospital_names.append(False)
+                else:
+                    hospital_names.append(hospital.objects.get(h_id=1).h_name)
+            all_report_data = [pk_list, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id, doctor_names, prescription_detail, clinic_names, hospital_names]
+            return all_report_data
+        else:
+            return False
+
+    def get_multi(self):
+        report_data = self.patient_report_data()
+        if not report_data == False:
+            report_id = report_data[0]
+            print("report_id",report_id)
+            i=0
+            p_a_id, p_c_id, p_m_id, p_r_id  = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))]
+            p_a_id_, p_c_id_, p_m_id_, p_r_id_  = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))]
+
+            for i in range(0, len(report_id)):
+                multi_analytics_data = multi_analytics.objects.filter(report_id__exact=report_id[i]).exists()
+                multi_chronic_data = multi_chronic.objects.filter(report_id__exact=report_id[i]).exists()
+                multi_medicines_data = multi_medecines.objects.filter(report_id__exact=report_id[i]).exists()
+                multi_rays_data = multi_rays.objects.filter(report_id__exact=report_id[i]).exists()
+                if multi_analytics_data:
+                    j=0
+                    analytics_list = multi_analytics.objects.filter(report_id__exact=report_id[i])
+                    for instance in analytics_list:
+                        p_a_id[i].insert(j, instance.P_A_id)
+                        j = j+1
+                    # print("p_a_id = " , p_a_id)
+                if multi_chronic_data:
+                    j=0
+                    chronic_list = multi_chronic.objects.filter(report_id__exact=report_id[i])
+                    for instance in chronic_list:
+                        p_c_id[i].insert(j, instance.P_C_id)
+                        j = j + 1
+                    # print("p_c_id = ", p_c_id)
+                if multi_medicines_data:
+                    j=0
+                    medicines_list = multi_medecines.objects.filter(report_id__exact=report_id[i])
+                    for instance in medicines_list:
+                        p_m_id[i].insert(j, instance.P_M_id)
+                        j = j + 1
+                    # print("p_m_id = ", p_m_id)
+                if multi_rays_data:
+                    j=0
+                    rays_list = multi_rays.objects.filter(report_id__exact=report_id[i])
+                    for instance in rays_list:
+                        p_r_id[i].insert(j, instance.P_R_id)
+                        j = j + 1
+                    # print("p_r_id = ", p_r_id)
+            result = [p_a_id, p_c_id, p_m_id, p_r_id]
+            for i in range(len(report_id)):
+                j, k, l, m = 0, 0, 0, 0
+                for j in range(len(p_a_id[i])):
+                    patient_analytics_list = patient_analytics.objects.get(P_A_id=p_a_id[i][j])
+                    p_a_id_[i].insert(j, patient_analytics_list)
+                for k in range(len(p_c_id[i])):
+                    patient_chronic_list = patient_chronic.objects.get(P_C_id=p_c_id[i][k])
+                    p_c_id_[i].insert(k, patient_chronic_list)
+                for l in range(len(p_m_id[i])):
+                    patient_medicine_list = patient_medicine.objects.get(P_M_id=p_m_id[i][l])
+                    p_m_id_[i].insert(l, patient_medicine_list)
+                for m in range(len(p_r_id[i])):
+                    patient_rays_list = patient_rays.objects.get(P_R_id=p_r_id[i][m])
+                    p_r_id_[i].insert(m, patient_rays_list)
+            print("p_a_id = ", p_a_id)
+            print("p_a_id_ = ", p_a_id_)
+            print("p_c_id = ", p_c_id)
+            print("p_c_id_ = ", p_c_id_)
+            print("p_m_id = ", p_m_id)
+            print("p_m_id_ = ", p_m_id_)
+            print("p_r_id = ", p_r_id)
+            print("p_r_id_ = ", p_r_id_)
+            self.__final_all_reports = [p_a_id_, p_c_id_, p_m_id_, p_r_id_]
+            return True
+        else:
+            return False
 
 
 

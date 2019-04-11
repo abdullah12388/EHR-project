@@ -20,6 +20,10 @@ urlpatterns = [
     url(r'^patiant/prescription/rays/update/(?P<pk>[-\w]+)/$' , views.rays_UPDATE.as_view(),name='raysupdate'),
     url(r'^patiant/prescription/rays/newcreate/(?P<pk>[-\w]+)/$',views.raysFormView.as_view(),name='newray'),
 
+    url(r'^patiant/prescription/(?P<pk>[-\w]+)/analytics/$',views.analytics_List.as_view(),name='analyticslist'),
+    url(r'^patiant/prescription/analytics/(?P<pk>[-\w]+)/$',views.analytics_DetialView.as_view(),name='analyticsdetial'),
+    url(r'^patiant/prescription/analytics/update/(?P<pk>[-\w]+)/$' , views.analytics_UPDATE.as_view(),name='analyticssupdate'),
+    url(r'^patiant/prescription/analytics/newcreate/(?P<pk>[-\w]+)/$',views.analyticsFormView.as_view(),name='newanalytics'),
 
 
 

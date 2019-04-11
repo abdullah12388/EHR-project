@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from .forms import GetPatianTIDForm,PrescriptionForm,AddmedicenForm,AddRaysForm
+from .forms import GetPatianTIDForm,PrescriptionForm,AddmedicenForm,AddRaysForm,AddanalyticsForm
 from patient.views import DB_functions
 from patient.models import user,patient
 from .models import (prescription,report,doctor,multi_medecines,
-patient_medicine,all_medicine,multi_rays,multi_analytics,patient_rays,all_rays)
+patient_medicine,all_medicine,multi_rays,multi_analytics
+,patient_rays,all_rays,patient_analytics,multi_analytics)
 from django.http import HttpResponseRedirect
 from django.contrib.auth.hashers import check_password
 from django.views.generic import (View,TemplateView,DeleteView,DetailView,ListView,CreateView,FormView,UpdateView)
@@ -244,3 +245,79 @@ class raysFormView (FormView):
         create_Med_report = multi_rays.objects.create(report=report_Instance ,P_R=P_ray_instance)
         print(self.kwargs['pk'])
         return HttpResponseRedirect(reverse('doctor:rayslist', kwargs={'pk': self.kwargs['pk']}))
+
+        def render_to_response(self , redirect_url):
+            if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
+                return HttpResponseRedirect('/patient/login/')
+            elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
+                return HttpResponseRedirect('/')
+            else:
+               return super().render_to_response(redirect_url)
+
+class analytics_List(ListView):
+    model = multi_analytics
+    context_object_name = 'analytics'
+    template_name = 'Doctor_app/multi_analytics_list.html'
+    def get_queryset(self):
+        return multi_analytics.objects.filter(report_id=self.kwargs['pk'])
+
+    def render_to_response(self , redirect_url):
+        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
+            return HttpResponseRedirect('/patient/login/')
+        elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
+            return HttpResponseRedirect('/')
+        else:
+           return super().render_to_response(redirect_url)
+
+class analytics_DetialView(DetailView):
+    model = patient_analytics
+    context_object_name = 'analytics_p_detial'
+    template_name = 'Doctor_app/patient_analytics_detail.html'
+    redirect_url = '/doctor/patiant/prescription/'
+    #self.kwargs['pk']
+
+    def render_to_response(self , redirect_url):
+        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
+            return HttpResponseRedirect('/patient/login/')
+        elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
+            return HttpResponseRedirect('/')
+        else:
+           return super().render_to_response(redirect_url)
+
+class analytics_UPDATE (UpdateView):
+    fields =  ['analy']
+    model = patient_analytics
+    template_name = 'Doctor_app/patient_analytics_form.html'
+
+    def render_to_response(self , redirect_url):
+        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
+            return HttpResponseRedirect('/patient/login/')
+        elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
+            return HttpResponseRedirect('/')
+        else:
+           return super().render_to_response(redirect_url)
+
+class analyticsFormView (FormView):
+    template_name = 'Doctor_app/patient_analytics_form.html'
+    form_class = AddanalyticsForm
+
+    def form_valid(self, form):
+        if 'Doctor_Patiant_ID' in self.request.session:
+            Doctor_Patiant_ID = self.request.session['Doctor_Patiant_ID']
+        instance = form.save(commit=False)
+        instance.pat = patient.objects.get(Patient=Doctor_Patiant_ID)
+        instance.save()
+        P_analytics_instance = patient_analytics.objects.last()
+        print(self.kwargs['pk'])
+        report_Instance = report.objects.get(report=self.kwargs['pk'])
+        create_Med_report = multi_analytics.objects.create(report=report_Instance ,P_A=P_analytics_instance)
+        print(self.kwargs['pk'])
+        return HttpResponseRedirect(reverse('doctor:analyticslist', kwargs={'pk': self.kwargs['pk']}))
+
+        def render_to_response(self , redirect_url):
+            if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
+                return HttpResponseRedirect('/patient/login/')
+            elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
+                return HttpResponseRedirect('/')
+            else:
+               return super().render_to_response(redirect_url)

@@ -56,6 +56,8 @@ class all_analytics(models.Model):
     analytics_id = models.AutoField(primary_key=True)
     analytics_name = models.CharField(max_length=250)
 
+    def __str__(self):
+        return self.analytics_name
 
 class all_chronic(models.Model):
     chronic_id = models.AutoField(primary_key=True)
@@ -81,7 +83,11 @@ class patient_analytics(models.Model):
     analy = models.ForeignKey(all_analytics, on_delete=models.CASCADE)
     analytics_result = models.TextField()
     lab = models.ForeignKey(organization, on_delete=models.CASCADE)
+    def __str__ (self):
+        return self.pat.Patient.first_name
 
+    def get_absolute_url (self):
+        return reverse("doctor:analyticsdetial" , kwargs={'pk':self.pk})
 
 class patient_chronic(models.Model):
     P_C_id = models.AutoField(primary_key=True)

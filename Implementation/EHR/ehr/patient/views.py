@@ -85,7 +85,7 @@ class DB_functions:
             self.patient_login_result = 'wrong_email'
         return self.patient_login_result
 
-    def patient_report_data(self):
+    def patient_report_data(self, request):
         pk_list = []
         doctor_id = []
         patient_id = []
@@ -97,7 +97,8 @@ class DB_functions:
         prescription_detail = []
         clinic_names = []
         hospital_names = []
-        report_data = report.objects.order_by('-Submit_date')
+        patient_id_session = request.session['patient_id']
+        report_data = report.objects.filter(patient_id__exact=patient_id_session).order_by('-Submit_date')
         if report_data.exists():
             for instance in report_data:
                 pk_list.append(instance.pk)
@@ -118,14 +119,14 @@ class DB_functions:
                 if instance.hospital_id == None:
                     hospital_names.append(False)
                 else:
-                    hospital_names.append(hospital.objects.get(h_id=1).h_name)
+                    hospital_names.append(hospital.objects.get(h_id=instance.hospital_id).h_name)
             all_report_data = [pk_list, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id, doctor_names, prescription_detail, clinic_names, hospital_names]
             return all_report_data
         else:
             return False
 
-    def get_multi(self):
-        report_data = self.patient_report_data()
+    def get_multi(self, request):
+        report_data = self.patient_report_data(request=request)
         if not report_data == False:
             report_id = report_data[0]
             print("report_id",report_id)
@@ -356,11 +357,13 @@ def patientHistory(request):
     else:
         form = searchHistory()
     context = {'form': form}
+    print("User_Session = ", request.session['patient_id'])
     db = DB_functions()
-    mix_1 = db.patient_report_data()
-    mix_2 = db.get_multi()
+    mix_1 = db.patient_report_data(request=request)
+    mix_2 = db.get_multi(request=request)
     mix_2_1 = db.get_final_all_reports()
     if not mix_1 == False and mix_2 == True:
+        print("report_data = ", mix_1)
         mix_1_1 = zip(mix_1[0], mix_1[1], mix_1[2], mix_1[3], mix_1[4], mix_1[5], mix_1[6], mix_1[7], mix_1[8], mix_1[9], mix_1[10], mix_2_1[0], mix_2_1[1], mix_2_1[2], mix_2_1[3])
         context.update({
             'mix_1': mix_1_1,

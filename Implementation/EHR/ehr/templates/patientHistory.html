@@ -2,7 +2,7 @@
 {% block patient_history_content %}
 
 <div style="width:10px;height:175px"></div>
-<div>
+<div style="background-color: darkgreen">
 
 
     <div class="container">
@@ -57,16 +57,16 @@
                             Potions
                         </div>
                     </div>
-                    {% for i in p_a_id %}
+                    {% for i in p_m_id %}
                     <div class="row medicine_elem">
                         <div class="col-4">
-                    {{i.analytics_result}}
+                    {{i.med_id.medicine_name}}
                         </div>
                         <div class="col-4">
-                    {{i.analytics_result}}
+                    {{i.number_of_pills}}
                         </div>
                         <div class="col-4">
-                    {{i.analytics_result}}
+                    {{i.number_of_potions}}
                         </div>
                     </div>
                     {%endfor%}
@@ -83,7 +83,7 @@
                     {% for i in p_a_id %}
                     <div class="row medicine_elem">
                         <div class="col-6">
-                    {{i.analytics_result}}
+                    {{i.analy_id}}
                         </div>
                         <div class="col-6">
                     {{i.analytics_result}}
@@ -100,13 +100,13 @@
                             Result
                         </div>
                     </div>
-                    {% for i in p_a_id %}
+                    {% for i in p_r_id %}
                     <div class="row medicine_elem">
                         <div class="col-6">
-                    {{i.analytics_result}}
+                    {{i.ray_id}}
                         </div>
                         <div class="col-6">
-                    {{i.analytics_result}}
+                    {{i.rays_result }}
                         </div>
                     </div>
                     {%endfor%}

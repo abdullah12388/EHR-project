@@ -478,7 +478,6 @@ def move(src, dest):
 # def patientDoctor(request):
 #     return render(request,'patientDoctor.html',{})
 
-
 def patientCard(request):
     Profile_picture = user.objects.get(user_id=request.session['user_id']).Profile_picture
     first_name = user.objects.get(user_id=request.session['user_id']).first_name

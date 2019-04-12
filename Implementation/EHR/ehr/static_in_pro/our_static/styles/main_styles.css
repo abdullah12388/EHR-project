@@ -1841,11 +1841,15 @@ Patient History
     font-size: 22px;
 }
 .bord{
-    border: solid 2px #32c69a;
+    border: solid 3px #FFF;
     border-radius: 15px;
     width: 100%;
     text-align: center;
     margin: 5px;
+}
+.bord:hover{
+    border: solid 3px #32c69a;
+    transition-duration: 0.5s;
 }
 .ima{
     width: 45px;
@@ -1856,8 +1860,19 @@ Patient History
 .txer{
     height: 200px;
     width: 100%;
+    font-size: 20px;
 }
 .topdiv{
     height: 320px;
     width: 100%;
+}
+.tops{
+    color: #FFF;
+}
+.tops:hover{
+    color: #32c69a;
+}
+.topName{
+    margin: auto;
+    font-weight: bold;
 }

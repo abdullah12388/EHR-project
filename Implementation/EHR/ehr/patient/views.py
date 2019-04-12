@@ -271,7 +271,7 @@ def patientLogin(request):
             if result == 'temp_email_exists':
                 return HttpResponseRedirect('/patient/patientProfile/')
             elif result == 'email_exists':
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect('/patient/')
             elif result == 'wrong_password':
                 return HttpResponseRedirect('/patient/login/?alert=wrong_password')
             elif result == 'wrong_email':

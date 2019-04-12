@@ -6,7 +6,7 @@
 
 
     <div class="container">
-        <h1 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Patient History</h1>
+        <h1 style="text-align:center;color:#32c69a;margin:20px 0px 30px 0px">Patient History</h1>
         <div class="search_bar">
             <form action='' method="POST">
                 {% csrf_token %}
@@ -32,8 +32,8 @@
         <!--</div>-->
         <!--</div>-->
         {% for pk, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id, doctor_name, prescription_detail, clinic_name, hospital_name, p_a_id, p_c_id, p_m_id, p_r_id in mix_1 %}
-        <div class="history_details">
-            <div class="history_date"><p>{{ Submit_date|date:'m-d-Y h:i a' }}</p></div>
+        <div class="history_details" style="border: solid 30px #32c69a">
+            <div class="history_date"><p style="color: #32c69a">{{ Submit_date|date:'m-d-Y h:i a' }}</p></div>
             <div class="row text-center report_header">
                 <a class="col-sm-3 elements">Prescription</a>
                 <a class="col-sm-3 elements">Medicines</a>
@@ -113,12 +113,12 @@
                 </div>
             </div>
             <div class="by">
-                <h4 class="" style="color: white"><b>By:</b></h4>
-                <p><b style="color: white">Doctor: </b> {{doctor_name}}</p>
+                <h4 class="" style="color: #32c69a"><b style="color: #32c69a">By:</b></h4>
+                <p style="color: #32c69a"><b style="color: #32c69a">Doctor: </b> {{doctor_name}}</p>
                 {% if clinic_name == False %}
-                    <p><b style="color: white">Hospital: </b> {{hospital_name}}</p>
+                    <p style="color: #32c69a"><b style="color: #32c69a">Hospital: </b> {{hospital_name}}</p>
                 {% elif hospital_name == False %}
-                    <p><b style="color: white">Clinic: </b> {{clinic_name}}</p>
+                    <p style="color: #32c69a"><b style="color: #32c69a">Clinic: </b> {{clinic_name}}</p>
                 {% endif %}
             </div>
 

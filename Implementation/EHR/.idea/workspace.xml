@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98b4bc68-539c-449a-951a-192927208516" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/patient/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/patient/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/patient/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/patient/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/patient/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/patient/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/patient/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/patient/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/js/patientSignup.js" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/js/patientSignup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/templates/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/templates/patientData.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/patientData.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/templates/patientProfile.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/patientProfile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/js/patientSignup.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/js/patientSignup.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../EHR_system/ehr/App_1/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../EHR_system/ehr/App_1/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/templates/patientHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/patientHistory.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,13 +73,34 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ehr/templates/navbar.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="275">
               <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ehr/templates/patientHistory.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2950">
+              <caret line="118" column="85" selection-start-line="118" selection-start-column="85" selection-end-line="118" selection-end-column="85" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="e#68#99#0#HTML" expanded="true" />
+                <element signature="e#155#216#0#HTML" expanded="true" />
+                <element signature="e#1660#1694#0#HTML" expanded="true" />
+                <element signature="e#1702#1724#0#HTML" expanded="true" />
+                <element signature="e#2401#2425#0#HTML" expanded="true" />
+                <element signature="e#5159#5181#0#HTML" expanded="true" />
+                <element signature="e#5162#5184#0#HTML" expanded="true" />
+                <element signature="e#5185#5207#0#HTML" expanded="true" />
+                <element signature="e#5243#5265#0#HTML" expanded="true" />
+                <element signature="e#5290#5312#0#HTML" expanded="true" />
+                <element signature="e#5394#5416#0#HTML" expanded="true" />
+                <element signature="e#5403#5425#0#HTML" expanded="true" />
+                <element signature="e#5576#5598#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -134,6 +143,7 @@
         <option value="$PROJECT_DIR$/ehr/patient/views.py" />
         <option value="$PROJECT_DIR$/ehr/templates/patientData.html" />
         <option value="$PROJECT_DIR$/ehr/templates/navbar.html" />
+        <option value="$PROJECT_DIR$/ehr/templates/patientHistory.html" />
       </list>
     </option>
   </component>
@@ -254,16 +264,15 @@
       <workItem from="1554745928803" duration="2210000" />
       <workItem from="1554816361862" duration="8299000" />
       <workItem from="1554857211700" duration="25195000" />
-      <workItem from="1554966847126" duration="33365000" />
+      <workItem from="1554966847126" duration="35899000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="93552000" />
+    <option name="totallyTimeSpent" value="96086000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16152816" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -453,11 +462,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/patientHistory.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2733" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ehr/lab/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -618,8 +622,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="38" column="19" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/patientHistory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2950">
+          <caret line="118" column="85" selection-start-line="118" selection-start-column="85" selection-end-line="118" selection-end-column="85" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="e#68#99#0#HTML" expanded="true" />
+            <element signature="e#155#216#0#HTML" expanded="true" />
+            <element signature="e#1660#1694#0#HTML" expanded="true" />
+            <element signature="e#1702#1724#0#HTML" expanded="true" />
+            <element signature="e#2401#2425#0#HTML" expanded="true" />
+            <element signature="e#5159#5181#0#HTML" expanded="true" />
+            <element signature="e#5162#5184#0#HTML" expanded="true" />
+            <element signature="e#5185#5207#0#HTML" expanded="true" />
+            <element signature="e#5243#5265#0#HTML" expanded="true" />
+            <element signature="e#5290#5312#0#HTML" expanded="true" />
+            <element signature="e#5394#5416#0#HTML" expanded="true" />
+            <element signature="e#5403#5425#0#HTML" expanded="true" />
+            <element signature="e#5576#5598#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

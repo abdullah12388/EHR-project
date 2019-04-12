@@ -1,4 +1,6 @@
 from django.conf.urls import url
+from django.urls import path
+
 from patient import views as view
 from django.conf import settings
 from django.conf.urls.static import static
@@ -6,7 +8,7 @@ from django.conf.urls.static import static
 app_name = 'patient'
 
 urlpatterns = [
-    url(r'^$', view.home, name='home'),
+    path('', view.home, name='home'),
     url(r'^login/$', view.patientLogin, name='login'),
     url(r'^logout/$', view.patientLogout, name='logout'),
     url(r'^patientProfile/$', view.patient_profile, name='patient_profile'),

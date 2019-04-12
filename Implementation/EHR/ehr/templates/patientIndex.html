@@ -9,108 +9,187 @@
             <div class="col-sm-6">
                 <div>
                     <p class="para">Last Report</p>
+                    {% if patientReport %}
+                        {# creation date #}
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="bord">Created at:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="bord">{{ patientReport.Submit_date }}</label>
+                            </div>
+                        </div>
+                        {# upcoming appointments #}
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="bord">Next at:</label>
+                            </div>
+                            {% if patientReport.prescription.next_appointment %}
+                                <div class="col-sm-6">
+                                    <label class="bord">{{ patientReport.prescription.next_appointment }}</label>
+                                </div>
+                            {% else %}
+                                <div class="col-sm-6">
+                                    <label class="bord">No Coming Appointment</label>
+                                </div>
+                            {% endif %}
+                        </div>
+                        {# description #}
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="bord txer" disabled style="overflow: auto"><P>Description</P> {{ patientReport.prescription.Disease_disc }}</div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {# medicines and analytics #}
                     <div class="row">
                         <div class="col-sm-6">
-                            <label class="bord">Created at:</label>
+                            {% if lastMedicineInReport %}
+                                <div class="bord txer" disabled style="overflow: auto"><P>Medicines</P> {{ lastMedicineInReport.P_M.med.medicine_name }}</div>
+                            {% else %}
+                                 <div class="bord txer" disabled ><P>Medicines </P> there's Nothing To Show</div>
+                            {% endif %}
                         </div>
                         <div class="col-sm-6">
-                            <label class="bord">12/12/1996</label>
+                            {% if lastAnalyticsInReport  %}
+                                <div class="bord txer" disabled style="overflow: auto"><P>Analytics </P>{{ lastAnalyticsInReport.P_A.analytics_result }}</div>
+                            {% else %}
+                                <div class="bord txer" disabled><P>Analytics </P> there's Nothing To Show</div>
+                            {% endif %}
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <label class="bord">Next at:</label>
-                        </div>
-                        <div class="col-sm-6">
-                            <label class="bord">12/12/1996</label>
-                        </div>
-                    </div>
+                    {# rays #}
                     <div class="row">
                         <div class="col-sm">
-                            <div class="bord txer" disabled>Descreption</div>
+                            {% if lastRaysInReport%}
+                                <div class="bord txer" disabled style="overflow: auto"><P>Rays</P> {{ lastRaysInReport.P_R.rays_result }}</div>
+                            {% else %}
+                                <div class="bord txer" disabled ><P>Rays</P> there's Nothing To Show</div>
+                           {% endif %}
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="bord txer" disabled>Medicines</div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="bord txer" disabled>Analytics</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm">
-                            <div class="bord txer" disabled>Rays</div>
-                        </div>
+
                     </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="row">
+                   <div class="col-sm-6">
+                       <p class="para">Top Doctors</p>
+                       <div class="topdiv" style="overflow: auto;">
+                           {% if topDoctor %}
+                               {% for doctor in topDoctor %}
+                                   <div class="row" style="text-align: center;width: 100%">
+                                        {#profile Picture area#}
+                                        {# adallah l sora ana m4 3arf nta 3aml fiin bt3ml save ll swr mmkn t3dlha w lma t5ls ems7 l comment #}
+                                        <div class="col-sm-4">
+                                            <img class="ima" src="{{ doctor.Doc.Profile_picture }}">
+                                        </div>
+                                        {# doctor name area#}
+                                        <div class="col-sm-6">
+                                            <label>{{ doctor.Doc.first_name }}</label>
+                                            <label>{{ doctor.Doc.last_name }}</label>
+                                        </div>
+                                        {# doctor rate area #}
+                                        <div class="col-sm-2" style="margin: auto 0px auto 0px;">
+                                            <i class="fa fa-star fa-lg">{{ doctor.doc_rate }}</i>
+                                        </div>
+                                    </div>
+                               {% endfor %}
+                           {% else %}
+                                <div class="row" style="text-align: center;width: 100%">
+                                    <div class="col">
+                                        <label>there's no top Doctors at this time. please try again Later</label>
+                                    </div>
+                                </div>
+                           {% endif %}
+                       </div>
+                   </div>
                     <div class="col-sm-6">
-                        <p class="para">Top Doctor</p>
+                        <p class="para">Top hospitals</p>
                         <div class="topdiv" style="overflow: auto;">
-                            <div class="row" style="text-align: center;width: 100%">
-                                <div class="col-sm-4">
-                                    <img class="ima" src="{% static 'images/info_1.jpg' %}">
-                                </div>
-                                <div class="col-sm-6">
-                                    <label>Abdullah Muhammed</label>
-                                </div>
-                                <div class="col-sm-2" style="margin: auto 0px auto 0px;">
-                                    <i class="fa fa-star fa-lg">5</i>
-                                </div>
+                            {% if topHospital %}
+                                {% for hospital in topHospital %}
+                                    <div class="row" style="text-align: center;width: 100%">
+                                        {# hospital image #}
+                                        <div class="col-sm-4">
+                                            <img class="ima" src="{{ hospital.logo }}">
+                                        </div>
+                                        {# hospital name #}
+                                        <div class="col-sm-6">
+                                            <label>{{ hospital.h_name }}</label>
+                                        </div>
+                                        {# hospital rate #}
+                                        <div class="col-sm-2" style="margin: auto 0px auto 0px;">
+                                            <i class="fa fa-star fa-lg">{{ hospital.hos_rate }}</i>
+                                        </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <p class="para">Top hospital</p>
-                        <div class="topdiv" style="overflow: auto;">
-                            <div class="row" style="text-align: center;width: 100%">
-                                <div class="col-sm-4">
-                                    <img class="ima" src="{% static 'images/info_1.jpg' %}">
+                                {% endfor %}
+                            {% else %}
+                                <div class="row" style="text-align: center;width: 100%">
+                                    <div class="col">
+                                        <label>there's no top hospitals at this time. please try again Later</label>
+                                    </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <label>Abdullah Muhammed</label>
-                                </div>
-                                <div class="col-sm-2" style="margin: auto 0px auto 0px;">
-                                    <i class="fa fa-star fa-lg">5</i>
-                                </div>
-                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
-                        <p class="para">Top Pharmacy</p>
+                        <p class="para">Top Pharmacies</p>
                         <div class="topdiv" style="overflow: auto;">
-                            <div class="row" style="text-align: center;width: 100%">
-                                <div class="col-sm-4">
-                                    <img class="ima" src="{% static 'images/info_1.jpg' %}">
+                            {% if topPharmacy %}
+                                {% for pharmacy in topPharmacy %}
+                                    <div class="row" style="text-align: center;width: 100%">
+                                        {# pharmacy image #}
+                                        <div class="col-sm-4">
+                                            <img class="ima" src="{{ pharmacy.org_logo }}">
+                                        </div>
+                                        {# pharmacy name #}
+                                        <div class="col-sm-6">
+                                            <label>{{ pharmacy.org_name }}</label>
+                                        </div>
+                                        {# pharmacy rate #}
+                                        <div class="col-sm-2" style="margin: auto 0px auto 0px;">
+                                            <i class="fa fa-star fa-lg">{{ pharmacy.org_rate }}</i>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="row" style="text-align: center;width: 100%">
+                                    <div class="col">
+                                        <label>there's no top pharmacies at this time. please try again Later</label>
+                                    </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <label>Abdullah Muhammed</label>
-                                </div>
-                                <div class="col-sm-2" style="margin: auto 0px auto 0px;">
-                                    <i class="fa fa-star fa-lg">5</i>
-                                </div>
-                            </div>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <p class="para">top Lab</p>
+                        <p class="para">top Labs</p>
                         <div class="topdiv" style="overflow: auto;">
-                            <div class="row" style="text-align: center;width: 100%">
-                                <div class="col-sm-4">
-                                    <img class="ima" src="{% static 'images/info_1.jpg' %}">
+                            {% if topLab %}
+                                {% for lab in topLab %}
+                                    <div class="row" style="text-align: center;width: 100%">
+                                        {# lab logo #}
+                                        <div class="col-sm-4">
+                                            <img class="ima" src="{{ lab.org_logo }}">
+                                        </div>
+                                        {# lab name #}
+                                        <div class="col-sm-6">
+                                            <label>{{ lab.org_name }}</label>
+                                        </div>
+                                        <div class="col-sm-2" style="margin: auto 0px auto 0px;">
+                                            <i class="fa fa-star fa-lg">{{ lab.org_rate }}</i>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="row" style="text-align: center;width: 100%">
+                                    <div class="col">
+                                        <label>there's no top Labs at this time. please try again Later</label>
+                                    </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <label>Abdullah Muhammed</label>
-                                </div>
-                                <div class="col-sm-2" style="margin: auto 0px auto 0px;">
-                                    <i class="fa fa-star fa-lg">5</i>
-                                </div>
-                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -122,13 +201,31 @@
                     <p class="para">Partners</p>
                     <div class="row">
                         <div class="col-sm-4">
-                            <div class="bord txer" disabled>Hospitals</div>
+                            {% if hospitals %}
+                                {% for hospital in hospitals %}
+                                    <div class="bord txer" disabled style="overflow: auto"><p>Hospitals</p>{{ hospital.h_name }}</div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="bord txer" disabled><p>Hospitals</p> We Don't Have Hospitals yet</div>
+                            {% endif %}
                         </div>
                         <div class="col-sm-4">
-                            <div class="bord txer" disabled>Pharmacies</div>
+                            {% if pharmacies %}
+                                {% for pharmacy in pharmacies %}
+                                    <div class="bord txer" disabled style="overflow: auto"><p>Pharmacies</p>{{ pharmacy.org_name }}</div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="bord txer" disabled><p>Pharmacies</p> We Don't Have Pharmacies yet</div>
+                            {% endif %}
                         </div>
                         <div class="col-sm-4">
-                            <div class="bord txer" disabled>Labs</div>
+                            {% if labs %}
+                                {% for lab in labs %}
+                                    <div class="bord txer" disabled style="overflow: auto"><p>Labs</p> {{ lab.org_name }}</div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="bord txer" disabled><p>Labs</p> We Don't Have Labs yet</div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

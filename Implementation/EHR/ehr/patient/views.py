@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect,HttpResponseNotFound
+from django.http import HttpResponseRedirect, HttpResponse
 from patient.forms import tempRegister,login,AddUser,AddPatient,searchHistory
 from doctor.models import report,doctor,prescription,multi_analytics,multi_chronic,multi_medecines,multi_rays,patient_analytics,patient_chronic,patient_medicine,patient_rays
 from patient.models import user, patient, temp_register
@@ -180,7 +180,46 @@ class DB_functions:
             return False
 
 def home(request):
-    return render(request, 'patientIndex.html', {})
+    #after finishing please change the comment below to get everything from session
+    # patient_id = request.session['patient_id']
+    patient_id = 5
+    topDoctor = doctor.objects.order_by('doc_rate')[:5]
+    topHospital = hospital.objects.order_by('hos_rate')[:5]
+    topLab = organization.objects.filter(Type__exact='1').order_by('org_rate')[:5]
+    topPharmacy = organization.objects.filter(Type__exact='2').order_by('org_rate')[:5]
+    patientReport = report.objects.filter(patient_id__exact=patient_id).order_by('-Submit_date')[0]
+    pharmacies = organization.objects.filter(Type__exact='2')
+    labs = organization.objects.filter(Type__exact='1')
+    hospitals = hospital.objects.all()
+    context = {
+        'topDoctor': topDoctor,
+        'topHospital': topHospital,
+        'topLab': topLab,
+        'topPharmacy': topPharmacy,
+        'patientReport': patientReport,
+        'pharmacies' : pharmacies,
+        'labs' : labs,
+        'hospitals' : hospitals,
+    }
+    if patientReport:
+        lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(report__exact=patientReport.report).exists()
+        if lastMedicineInReportTrueOrFalse:
+            lastMedicineInReport = multi_medecines.objects.get(report__exact=patientReport.report)
+            context.update({'lastMedicineInReport' : lastMedicineInReport})
+
+        lastAnalyticsInReportTrueOrFalse = multi_analytics.objects.filter(report__exact=patientReport.report).exists()
+        if lastAnalyticsInReportTrueOrFalse:
+            lastAnalyticsInReport = multi_analytics.objects.get(report__exact=patientReport.report)
+            context.update({'lastAnalyticsInReport': lastAnalyticsInReport})
+
+        lastRaysInReportTrueOrFalse = multi_rays.objects.filter(report__exact=patientReport.report).exists()
+        if lastRaysInReportTrueOrFalse:
+            lastRaysInReport = multi_rays.objects.get(report__exact=patientReport.report)
+            context.update({'lastRaysInReport': lastRaysInReport})
+    else:
+        return HttpResponse('there is no patient')
+
+    return render(request, 'patientIndex.html', context)
 
 def temp_Register(request):
     if request.method == 'POST':

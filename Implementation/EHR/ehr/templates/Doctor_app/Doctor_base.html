@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+{# Make modifiable head elements #}
+<head>
+    {% include "Doctor_app/header.html" %}
+</head>
+<body class="{% if request.get_full_path == '/patientHistory/' %} body_color
+ {% else %}body
+ {% endif %}">
+<div>
+    <div class="super_container">
+
+    {# Navigation Menu #}
+        {% include "Doctor_app/navbar.html" %}
+
+    {# The Document Body #}
+        {# Login Body #}
+            {% block login_content %}
+            {% endblock login_content %}
+        {# Login Body #}
+            {% block signup_content %}
+            {% endblock signup_content %}
+        {# Profile body#}
+            {% block patientProfile %}
+            {% endblock patientProfile %}
+            </div>
+
+        {# All Patient History #}
+            {% block patient_history_content %}
+            {% endblock patient_history_content %}
+        {# Home Body #}
+            {% block home_content %}
+            {% endblock home_content %}
+        {# patientDoctor body#}
+            {% block patientDoctor %}
+            {% endblock patientDoctor %}
+    {# The Footer #}
+        {% include "footer.html" %}
+    </div>
+{% block javascript %}
+{% endblock javascript %}
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends 'Doctor_app/Doctor_base.html' %}
+{% block home_content %}
+
+<div class="info">
+    <div class="container">
+        <div class="row row-eq-height">
+            {% if not form.instance.pk %}
+            <form method="post">
+                {%csrf_token%}
+                {{form.as_p}}
+                <input type="submit" class="btn btn-primary" value="Create">
+            </form>
+            {%else%}
+            <form method="post">
+                {%csrf_token%}
+                {{form.as_p}}
+                <input type="submit" class="btn btn-warning" value="Update">
+            </form>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock home_content %}

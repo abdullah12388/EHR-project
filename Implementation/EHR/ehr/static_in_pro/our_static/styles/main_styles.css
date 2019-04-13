@@ -1756,6 +1756,7 @@ Patient History
     text-align: center;
     border-radius: 18px;
     height: 41px;
+    display: inline-flex;
 }
 .search_bar form input, .search_bar form button {
     height: 92%;

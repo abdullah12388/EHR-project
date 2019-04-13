@@ -31,7 +31,7 @@
         <!--<a class="col-sm-3 elements" href="#">Rays</a>-->
         <!--</div>-->
         <!--</div>-->
-        {% for pk, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id, doctor_name, prescription_detail, clinic_name, hospital_name, p_a_id, p_c_id, p_m_id, p_r_id in mix_1 %}
+        {% for pk, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id, doctor_name, prescription_detail, clinic_name, hospital_name, p_a_id, p_c_id, p_m_id, p_r_id, analytics_name, chronic_name, medicine_name, ray_name in mix_1 %}
         <div class="history_details">
             <div class="history_date"><p>{{ Submit_date|date:'m-d-Y h:i a' }}</p></div>
             <div class="row text-center report_header">
@@ -57,10 +57,12 @@
                             Potions
                         </div>
                     </div>
+                    {% load index %}
+                {% with test_med=medicine_name|reverse %}
                     {% for i in p_m_id %}
                     <div class="row medicine_elem">
                         <div class="col-4">
-                    {{i.med_id.medicine_name}}
+                    {{ test_med|index:forloop.counter0}}
                         </div>
                         <div class="col-4">
                     {{i.number_of_pills}}
@@ -70,6 +72,7 @@
                         </div>
                     </div>
                     {%endfor%}
+                {% endwith %}
                 </div>
                 <div id="analytics" class="container-fluid text-center medicine_body" style="overflow-x: auto">
                     <div class="row medicine_head">
@@ -80,16 +83,18 @@
                             Result
                         </div>
                     </div>
+                {% with test_analytic=analytics_name|reverse %}
                     {% for i in p_a_id %}
                     <div class="row medicine_elem">
                         <div class="col-6">
-                    {{i.analy_id}}
+                    {{analytics_name|index:forloop.counter0}}
                         </div>
                         <div class="col-6">
                     {{i.analytics_result}}
                         </div>
                     </div>
                     {%endfor%}
+                {% endwith %}
                 </div>
                 <div id="rays" class="container-fluid text-center medicine_body" style="overflow-x: auto">
                     <div class="row medicine_head">
@@ -100,16 +105,20 @@
                             Result
                         </div>
                     </div>
+                {% with test_ray=ray_name|reverse %}
                     {% for i in p_r_id %}
                     <div class="row medicine_elem">
                         <div class="col-6">
-                    {{i.ray_id}}
+                    {{test_ray|index:forloop.counter0}}
+{#                    {{test_ray}}#}
                         </div>
                         <div class="col-6">
+{#                            <a href="{{ i.rays_result }}">result{{ forloop.counter }}</a>#}
                     {{i.rays_result }}
                         </div>
                     </div>
                     {%endfor%}
+                {% endwith %}
                 </div>
             </div>
             <div class="by">
@@ -121,10 +130,8 @@
                     <p><b style="color: white">Clinic: </b> {{clinic_name}}</p>
                 {% endif %}
             </div>
-
-
         </div>
-        {% endfor %}
+     {% endfor %}
     </div>
 </div>
 {% endblock patient_history_content %}

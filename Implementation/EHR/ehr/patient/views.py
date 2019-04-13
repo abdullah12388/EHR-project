@@ -4,7 +4,7 @@ from patient.forms import tempRegister,login,AddUser,AddPatient,searchHistory
 from doctor.models import (report,doctor,prescription,multi_analytics,
 multi_chronic,multi_medecines,multi_rays,
 patient_analytics,patient_chronic,
-patient_medicine,patient_rays)
+patient_medicine,patient_rays, all_analytics, all_medicine, all_rays, all_chronic)
 from patient.models import user, patient, temp_register
 from hospital.models import organization,hospital
 from django.http import JsonResponse
@@ -129,11 +129,11 @@ class DB_functions:
         report_data = self.patient_report_data(request=request)
         if not report_data == False:
             report_id = report_data[0]
-            print("report_id",report_id)
+            # print("report_id",report_id)
             i=0
             p_a_id, p_c_id, p_m_id, p_r_id  = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))]
             p_a_id_, p_c_id_, p_m_id_, p_r_id_  = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))]
-
+            analytics_name, medicine_name, ray_name, chronic_name = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))]
             for i in range(0, len(report_id)):
                 multi_analytics_data = multi_analytics.objects.filter(report_id__exact=report_id[i]).exists()
                 multi_chronic_data = multi_chronic.objects.filter(report_id__exact=report_id[i]).exists()
@@ -173,27 +173,44 @@ class DB_functions:
                 for j in range(len(p_a_id[i])):
                     patient_analytics_list = patient_analytics.objects.get(P_A_id=p_a_id[i][j])
                     p_a_id_[i].insert(j, patient_analytics_list)
+                    analytic_name_ = all_analytics.objects.get(analytics_id=patient_analytics_list.analy_id).analytics_name
+                    analytics_name[i].insert(j, analytic_name_)
                 for k in range(len(p_c_id[i])):
                     patient_chronic_list = patient_chronic.objects.get(P_C_id=p_c_id[i][k])
                     p_c_id_[i].insert(k, patient_chronic_list)
+                    chronic_name_ = all_chronic.objects.get(chronic_id=patient_chronic_list.chr_id).chronic_name
+                    chronic_name[i].insert(j, chronic_name_)
                 for l in range(len(p_m_id[i])):
                     patient_medicine_list = patient_medicine.objects.get(P_M_id=p_m_id[i][l])
                     p_m_id_[i].insert(l, patient_medicine_list)
+                    medicine_name_ = all_medicine.objects.get(medicine_id=patient_medicine_list.med_id).medicine_name
+                    medicine_name[i].insert(j, medicine_name_)
                 for m in range(len(p_r_id[i])):
                     patient_rays_list = patient_rays.objects.get(P_R_id=p_r_id[i][m])
                     p_r_id_[i].insert(m, patient_rays_list)
-            print("p_a_id = ", p_a_id)
-            print("p_a_id_ = ", p_a_id_)
-            print("p_c_id = ", p_c_id)
-            print("p_c_id_ = ", p_c_id_)
-            print("p_m_id = ", p_m_id)
-            print("p_m_id_ = ", p_m_id_)
-            print("p_r_id = ", p_r_id)
-            print("p_r_id_ = ", p_r_id_)
-            self.__final_all_reports = [p_a_id_, p_c_id_, p_m_id_, p_r_id_]
+                    ray_name_ = all_rays.objects.get(ray_id=patient_rays_list.ray_id).ray_name
+                    ray_name[i].insert(j, ray_name_)
+            # print("p_a_id = ", p_a_id)
+            # print("p_a_id_ = ", p_a_id_)
+            # print("p_c_id = ", p_c_id)
+            # print("p_c_id_ = ", p_c_id_)
+            # print("p_m_id = ", p_m_id)
+            # print("p_m_id_ = ", p_m_id_)
+            # print("p_r_id = ", p_r_id)
+            # print("p_r_id_ = ", p_r_id_)
+            # print("p_a_id = ", p_a_id)
+            # print("analytics_name = ", analytics_name)
+            # print("p_c_id = ", p_c_id)
+            # print("chronic_name = ", chronic_name)
+            # print("p_m_id = ", p_m_id)
+            # print("medicine_name = ", medicine_name)
+            # print("p_r_id = ", p_r_id)
+            print("ray_name = ", ray_name)
+            self.__final_all_reports = [p_a_id_, p_c_id_, p_m_id_, p_r_id_, analytics_name, chronic_name, medicine_name, ray_name]
             return True
         else:
             return False
+
 
 def home(request):
     return render(request, 'home.html', {})
@@ -207,10 +224,10 @@ def temp_Register(request):
             re_password = form.cleaned_data.get('re_password')
             if check_password(re_password, password):
                 instance.save()
-                print("password = ", password)
+                # print("password = ", password)
                 return HttpResponseRedirect('/patient/login/')
             else:
-                print(False)
+                # print(False)
                 return HttpResponseRedirect('/patient/signup/?a=1')
     else:
         form = tempRegister()
@@ -229,7 +246,7 @@ def validate_email(request):
 
 def valid_email(request):
     email1 = request.GET.get('email_1', None)
-    print(email1)
+    # print(email1)
     data = {
         # 'is_taken' : admin.objects.filter(email__iexact = email).exists()
         'is_taken': user.objects.filter(email_1__iexact = email1).exists()
@@ -357,14 +374,19 @@ def patientHistory(request):
     else:
         form = searchHistory()
     context = {'form': form}
-    print("User_Session = ", request.session['patient_id'])
     db = DB_functions()
     mix_1 = db.patient_report_data(request=request)
     mix_2 = db.get_multi(request=request)
     mix_2_1 = db.get_final_all_reports()
+
     if not mix_1 == False and mix_2 == True:
-        print("report_data = ", mix_1)
-        mix_1_1 = zip(mix_1[0], mix_1[1], mix_1[2], mix_1[3], mix_1[4], mix_1[5], mix_1[6], mix_1[7], mix_1[8], mix_1[9], mix_1[10], mix_2_1[0], mix_2_1[1], mix_2_1[2], mix_2_1[3])
+        mix_1_1 = zip(mix_1[0], mix_1[1], mix_1[2], mix_1[3], mix_1[4], mix_1[5], mix_1[6], mix_1[7], mix_1[8],
+                      mix_1[9], mix_1[10], mix_2_1[0], mix_2_1[1], mix_2_1[2], mix_2_1[3],
+                      mix_2_1[4], mix_2_1[5], mix_2_1[6], mix_2_1[7])
+
+        print('report = ', mix_1[0])
+        print('NORMAL = ', mix_2_1[6])
+        print('REVERSED = ', list(reversed(mix_2_1[6])))
         context.update({
             'mix_1': mix_1_1,
         })

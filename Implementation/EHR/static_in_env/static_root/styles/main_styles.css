@@ -1756,6 +1756,7 @@ Patient History
     text-align: center;
     border-radius: 18px;
     height: 41px;
+    display: inline-flex;
 }
 .search_bar form input, .search_bar form button {
     height: 92%;
@@ -1777,7 +1778,7 @@ Patient History
     background-color: #FFF;
     position: relative;
     bottom: 33px;
-    width: 159px;
+    width: 170px;
     padding-left: 7px;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;

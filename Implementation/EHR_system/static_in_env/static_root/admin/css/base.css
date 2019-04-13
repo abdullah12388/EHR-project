@@ -187,11 +187,22 @@ p.mini {
     margin-top: -3px;
 }
 
+<<<<<<< Updated upstream
 .help, p.help, form p.help {
+=======
+.help, p.help, form p.help, div.help, form div.help, div.help li {
+>>>>>>> Stashed changes
     font-size: 11px;
     color: #999;
 }
 
+<<<<<<< Updated upstream
+=======
+div.help ul {
+     margin-bottom: 0;
+}
+
+>>>>>>> Stashed changes
 .help-tooltip {
     cursor: help;
 }
@@ -369,6 +380,7 @@ table thead th.sorted .sortoptions a.sortremove:after {
     font-weight: 200;
     font-size: 18px;
     color: #999;
+<<<<<<< Updated upstream
 }
 
 table thead th.sorted .sortoptions a.sortremove:focus:after,
@@ -376,6 +388,15 @@ table thead th.sorted .sortoptions a.sortremove:hover:after {
     color: #447e9b;
 }
 
+=======
+}
+
+table thead th.sorted .sortoptions a.sortremove:focus:after,
+table thead th.sorted .sortoptions a.sortremove:hover:after {
+    color: #447e9b;
+}
+
+>>>>>>> Stashed changes
 table thead th.sorted .sortoptions a.sortremove:focus,
 table thead th.sorted .sortoptions a.sortremove:hover {
     background-position: 0 -14px;
@@ -409,6 +430,12 @@ input, textarea, select, .form-row p, form .button {
     font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
     font-weight: normal;
     font-size: 13px;
+<<<<<<< Updated upstream
+=======
+}
+.form-row div.help {
+    padding: 2px 3px;
+>>>>>>> Stashed changes
 }
 
 textarea {
@@ -731,7 +758,11 @@ a.deletelink:focus, a.deletelink:hover {
 
 .object-tools a.viewsitelink, .object-tools a.golink,.object-tools a.addlink {
     background-repeat: no-repeat;
+<<<<<<< Updated upstream
     background-position: 93% center;
+=======
+    background-position: right 7px center;
+>>>>>>> Stashed changes
     padding-right: 26px;
 }
 

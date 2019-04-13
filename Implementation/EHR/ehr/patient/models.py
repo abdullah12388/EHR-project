@@ -15,7 +15,7 @@ class user(models.Model):
     first_name = models.CharField(max_length=100)
     middle_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    gender = models.IntegerField()
+    gender = models.CharField(max_length=10)
     country = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
@@ -25,8 +25,8 @@ class user(models.Model):
     home_phone_number = models.CharField(max_length=100)
     work_phone_number = models.CharField(max_length=100)
     Date_of_birth = models.DateField()
-    marital_status = models.CharField(max_length=100)
-    Child_num = models.CharField(max_length=100)
+    marital_status = models.CharField(max_length=20)
+    Child_num = models.IntegerField()
     email_1 = models.EmailField(max_length=100)
     email_2 = models.EmailField(max_length=100)
     Nationality = models.CharField(max_length=100)
@@ -41,7 +41,7 @@ class user(models.Model):
     User_type = models.IntegerField()
     Create_date = models.DateTimeField(auto_now_add=True)
 
-    def __str__ (self):
+    def __str__(self):
         return self.first_name
 
 
@@ -49,11 +49,12 @@ class patient(models.Model):
     Patient = models.ForeignKey(user, on_delete=models.CASCADE)
     Emergency_contact = models.CharField(max_length=50)
     QR_code = models.CharField(max_length=500)
-    Disability_status = models.BooleanField(default=False)
+    Disability_status = models.CharField(max_length=10)
     Height = models.FloatField()
     weight = models.FloatField()
-    Blood_type = models.CharField(max_length=500)
-    Chronic_diseases = models.BooleanField(default=False)
+    Blood_type = models.CharField(max_length=5)
+    Chronic_diseases = models.CharField(max_length=10)
 
-    def __str__ (self):
+
+    def __str__(self):
         return self.Patient.first_name

@@ -1,4 +1,4 @@
-@charset "utf-8";
+jumbotron@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -1833,4 +1833,32 @@ Patient History
     display: none;
     margin-top: 10px;
     padding-bottom: 7px;
+}
+/***************Doctor Index***************************/
+.para{
+    text-align: center;
+    color: #32c69a;
+    font-weight: bold;
+    font-size: 22px;
+}
+.bord{
+    border: solid 2px #32c69a;
+    border-radius: 15px;
+    width: 100%;
+    text-align: center;
+    margin: 5px;
+}
+.ima{
+    width: 45px;
+    height: 45px;
+    border: solid 1px #32c69a;
+    border-radius: 50%;
+}
+.txer{
+    height: 200px;
+    width: 100%;
+}
+.topdiv{
+    height: 320px;
+    width: 100%;
 }

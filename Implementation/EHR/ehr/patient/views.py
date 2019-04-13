@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from patient.forms import tempRegister,login,AddUser,AddPatient,searchHistory
 from doctor.models import (report,doctor,prescription,multi_analytics,
 multi_chronic,multi_medecines,multi_rays,
@@ -10,6 +10,7 @@ from hospital.models import organization,hospital
 from django.http import JsonResponse
 from django.core.files.storage import FileSystemStorage
 import qrcode,shutil,os
+from datetime import date
 from django.conf import settings as set
 from django.contrib.auth.hashers import check_password
 
@@ -213,7 +214,46 @@ class DB_functions:
 
 
 def home(request):
-    return render(request, 'home.html', {})
+    #after finishing please change the comment below to get everything from session
+    # patient_id = request.session['patient_id']
+    patient_id = 5
+    topDoctor = doctor.objects.order_by('doc_rate')[:5]
+    topHospital = hospital.objects.order_by('hos_rate')[:5]
+    topLab = organization.objects.filter(Type__exact='1').order_by('org_rate')[:5]
+    topPharmacy = organization.objects.filter(Type__exact='2').order_by('org_rate')[:5]
+    patientReport = report.objects.filter(patient_id__exact=patient_id).order_by('-Submit_date')[0]
+    pharmacies = organization.objects.filter(Type__exact='2')
+    labs = organization.objects.filter(Type__exact='1')
+    hospitals = hospital.objects.all()
+    context = {
+        'topDoctor': topDoctor,
+        'topHospital': topHospital,
+        'topLab': topLab,
+        'topPharmacy': topPharmacy,
+        'patientReport': patientReport,
+        'pharmacies' : pharmacies,
+        'labs' : labs,
+        'hospitals' : hospitals,
+    }
+    if patientReport:
+        lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(report__exact=patientReport.report).exists()
+        if lastMedicineInReportTrueOrFalse:
+            lastMedicineInReport = multi_medecines.objects.get(report__exact=patientReport.report)
+            context.update({'lastMedicineInReport' : lastMedicineInReport})
+
+        lastAnalyticsInReportTrueOrFalse = multi_analytics.objects.filter(report__exact=patientReport.report).exists()
+        if lastAnalyticsInReportTrueOrFalse:
+            lastAnalyticsInReport = multi_analytics.objects.get(report__exact=patientReport.report)
+            context.update({'lastAnalyticsInReport': lastAnalyticsInReport})
+
+        lastRaysInReportTrueOrFalse = multi_rays.objects.filter(report__exact=patientReport.report).exists()
+        if lastRaysInReportTrueOrFalse:
+            lastRaysInReport = multi_rays.objects.get(report__exact=patientReport.report)
+            context.update({'lastRaysInReport': lastRaysInReport})
+    else:
+        return HttpResponse('there is no patient')
+
+    return render(request, 'patientIndex.html', context)
 
 def temp_Register(request):
     if request.method == 'POST':
@@ -248,7 +288,6 @@ def valid_email(request):
     email1 = request.GET.get('email_1', None)
     # print(email1)
     data = {
-        # 'is_taken' : admin.objects.filter(email__iexact = email).exists()
         'is_taken': user.objects.filter(email_1__iexact = email1).exists()
     }
     return JsonResponse(data)
@@ -302,6 +341,7 @@ def patientLogout(request):
 
     return HttpResponseRedirect('/patient/login/')
 
+# patient profile functions
 def patient_profile(request):
     if request.method == 'POST':
         form1 = AddUser(request.POST or None)
@@ -320,8 +360,8 @@ def patient_profile(request):
                 fs = FileSystemStorage()
                 ppf_name = fs.save(profile_picture_file.name,profile_picture_file)
                 spf_name = fs.save(ssn_picture_file.name,ssn_picture_file)
-                instance1.Profile_picture = fs.url(ppf_name)
-                instance1.SSN_Picture = fs.url(spf_name)
+                instance1.Profile_picture = '/patient' + fs.url(ppf_name)
+                instance1.SSN_Picture = '/patient' + fs.url(spf_name)
                 # extract ssn id from full ssn
                 ssn = instance1.Ssn
                 instance1.Ssn_id = ssn[7:14]
@@ -338,19 +378,44 @@ def patient_profile(request):
                 img_exten = 'png'
                 img = img_name + '.' + img_exten
                 qrc_id.save(img)
+
+                genderMessage = gender(request.POST['gender'])
+                maritalStatusMessage = maritalStatus(request.POST['marital_status'])
+                if genderMessage == 'error':
+                    return HttpResponseRedirect('/patient/patientProfile/')
+                elif maritalStatusMessage == 'error':
+                    return HttpResponseRedirect('/patient/patientProfile/')
+                else:
+                    instance1.gender = genderMessage
+                    instance1.marital_status = maritalStatusMessage
                 instance1.save()
                 move(os.path.join('',img),os.path.join(set.MEDIA_ROOT,img))
                 # get the user id with the email
                 a = form1.cleaned_data.get('email_1')
                 u_id = user.objects.get(email_1=a).user_id
+                request.session['user_id'] = u_id
                 if form2.is_valid():
                     instance2 = form2.save(commit=False)
                     instance2.Patient_id = u_id
-                    instance2.QR_code = fs.url(img)
+                    instance2.QR_code = '/patient' + fs.url(img)
+                    bloodTypeMessage = bloodType(request.POST['Blood_type'])
+                    disabilityStatusMessage = disabilityStatus(request.POST['Disability_status'])
+                    chronicDiseasesMessage = chronicDiseases(request.POST['Chronic_diseases'])
+                    if bloodTypeMessage == 'error':
+                        return HttpResponseRedirect('/patient/patientProfile/')
+                    elif disabilityStatusMessage == 'error':
+                        return HttpResponseRedirect('/patient/patientProfile/')
+                    elif chronicDiseasesMessage == 'error':
+                        return HttpResponseRedirect('/patient/patientProfile/')
+                    else:
+                        instance2.Blood_type = bloodTypeMessage
+                        instance2.Disability_status = disabilityStatusMessage
+                        instance2.Chronic_diseases = chronicDiseasesMessage
                     instance2.save()
                     db = DB_functions()
                     db.remove_from_temp(id=request.session['patient_temp_id'])
-                    return HttpResponseRedirect('/')
+                    print('iam here')
+                    return HttpResponseRedirect('/patient/patientCard/')
                 else:
                     print('form two')
                     print(form2.errors)
@@ -365,6 +430,69 @@ def patient_profile(request):
             'form2': form2,
         }
         return render(request, 'patientProfile.html', context)
+
+def gender(num):
+    if num == '1':
+        return 'male'
+    elif num == '2':
+        return 'female'
+    elif num == '3':
+        return 'other'
+    else:
+        return 'error'
+
+def maritalStatus(num):
+    if num == '1':
+        return 'single'
+    elif num == '2':
+        return 'married'
+    elif num == '3':
+        return 'separated'
+    elif num == '4':
+        return 'divorced'
+    elif num == '5':
+        return 'widowed'
+    else:
+        return 'error'
+
+def bloodType(num):
+    if num == '1':
+        return 'A+'
+    elif num == '2':
+        return 'A-'
+    elif num == '3':
+        return 'B+'
+    elif num == '4':
+        return 'B-'
+    elif num == '5':
+        return 'AB+'
+    elif num == '6':
+        return 'AB-'
+    elif num == '7':
+        return 'O+'
+    elif num == '8':
+        return 'O-'
+    elif num == '9':
+        return 'other'
+    else:
+        return 'error'
+
+def disabilityStatus(num):
+    if num == '1':
+        return 'disabled'
+    elif num == '2':
+        return 'none'
+    else:
+        return 'error'
+
+def chronicDiseases(num):
+    if num == '1':
+        return 'have'
+    elif num == '2':
+        return 'none'
+    else:
+        return 'error'
+# end of patient profile
 
 def patientHistory(request):
     global mix_1_1
@@ -402,3 +530,31 @@ def move(src, dest):
 
 def patientDoctor(request):
     return render(request,'patientDoctor.html',{})
+# def patientDoctor(request):
+#     return render(request,'patientDoctor.html',{})
+
+def patientCard(request):
+    Profile_picture = user.objects.get(user_id=request.session['user_id']).Profile_picture
+    first_name = user.objects.get(user_id=request.session['user_id']).first_name
+    middle_name = user.objects.get(user_id=request.session['user_id']).middle_name
+    last_name = user.objects.get(user_id=request.session['user_id']).last_name
+    phone_number = user.objects.get(user_id=request.session['user_id']).phone_number
+    Create_date = user.objects.get(user_id=request.session['user_id']).Create_date
+    birthdate = user.objects.get(user_id=request.session['user_id']).Date_of_birth
+    days_in_year = 365.2425
+    age = int((date.today() - birthdate).days / days_in_year)
+    QR_code = patient.objects.get(Patient=request.session['user_id']).QR_code
+    if age:
+        context={
+            'Profile_picture': Profile_picture,
+            'first_name': first_name,
+            'middle_name': middle_name,
+            'last_name': last_name,
+            'phone_number': phone_number,
+            'Create_date': Create_date,
+            'QR_code': QR_code,
+            'age' : age,
+        }
+        return render(request,'patientData.html',context)
+    else:
+        print('error')

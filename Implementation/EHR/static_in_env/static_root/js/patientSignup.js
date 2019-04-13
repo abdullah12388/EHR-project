@@ -1,4 +1,3 @@
-
 var warn = $("#warn");
 // var warn = document.getElementById('warn');
 var warn2 = $("#warn2");
@@ -12,7 +11,7 @@ var signPassword, signEmail = false;
 email_.keyup(function () {
    var email = $(this).val();
    $.ajax({
-       url: "/ajax/validate_email/",
+       url: "/patient/ajax/validate_email/",
        data: {
            'email' : email
        },
@@ -51,7 +50,7 @@ email_.keyup(function () {
 email_2.keyup(function () {
    var email2 = $(this).val();
    $.ajax({
-       url: "/ajax/validate_email_2/",
+       url: "/patient/profile/valid_email/",
        data: {
            'email_1' : email2
        },
@@ -90,7 +89,7 @@ email_2.keyup(function () {
 re_pass.keyup(function () {
    var email = email_.val();
    $.ajax({
-       url: "/ajax/validate_email/",
+       url: "/patient/ajax/validate_email/",
        data: {
            'email' : email
        },

@@ -13,8 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import url
 from django.contrib import admin
+from django.urls import path, include
+
 from patient import views
 
 urlpatterns = [
@@ -22,7 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^doctor/', include('doctor.urls')),
     url(r'^patient/', include('patient.urls')),
-    url(r'^lab/', include('lab.urls')),
-    url(r'^pharmacy/', include('pharmacy.urls')),
     url(r'^hospital/', include('hospital.urls')),
+    path('pharmacy/', include('pharmacy.urls')),
+    path('lab/', include('lab.urls')),
 ]

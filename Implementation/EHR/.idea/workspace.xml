@@ -60,7 +60,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ehr/patient/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
+            <state relative-caret-position="1682">
               <caret line="271" column="62" selection-start-line="271" selection-start-column="62" selection-end-line="271" selection-end-column="62" />
               <folding>
                 <element signature="e#986#1020#0" />
@@ -203,16 +203,15 @@
       <workItem from="1554816361862" duration="8299000" />
       <workItem from="1554857211700" duration="25195000" />
       <workItem from="1554966847126" duration="35899000" />
-      <workItem from="1555055473880" duration="11893000" />
+      <workItem from="1555055473880" duration="11981000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107979000" />
+    <option name="totallyTimeSpent" value="108067000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16353887" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -581,7 +580,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ehr/patient/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
+        <state relative-caret-position="1682">
           <caret line="271" column="62" selection-start-line="271" selection-start-column="62" selection-end-line="271" selection-end-column="62" />
           <folding>
             <element signature="e#986#1020#0" />

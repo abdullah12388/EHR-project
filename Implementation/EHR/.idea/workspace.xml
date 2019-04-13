@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f20bd85-0923-43cc-9679-36dd3fb25b5a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/ehr/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/ehr/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/patient/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/patient/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/main_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/main_styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ehr/templates/patientHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/patientHistory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/main_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/styles/main_styles.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,8 +63,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ehr/templates/patientHistory.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="111" column="45" selection-start-line="111" selection-start-column="45" selection-end-line="111" selection-end-column="45" />
+            <state relative-caret-position="64">
+              <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
               <folding>
                 <element signature="e#112#147#0#HTML" expanded="true" />
                 <element signature="e#2677#2701#0#HTML" expanded="true" />
@@ -307,12 +302,12 @@
       <option name="presentableId" value="Default" />
       <updated>1555085834568</updated>
       <workItem from="1555085841053" duration="2359000" />
-      <workItem from="1555088554293" duration="36706000" />
+      <workItem from="1555088554293" duration="37101000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36718000" />
+    <option name="totallyTimeSpent" value="37113000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -481,8 +476,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ehr/templates/patientHistory.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="111" column="45" selection-start-line="111" selection-start-column="45" selection-end-line="111" selection-end-column="45" />
+        <state relative-caret-position="64">
+          <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
           <folding>
             <element signature="e#112#147#0#HTML" expanded="true" />
             <element signature="e#2677#2701#0#HTML" expanded="true" />

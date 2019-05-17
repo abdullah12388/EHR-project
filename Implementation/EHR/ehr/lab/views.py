@@ -62,7 +62,8 @@ def labPatientLogin(request):
 
 
 def AnalyticsListView(request):
-    patient_id = request.session['patient_id']
+    # patient_id = request.session['patient_id']
+    patient_id = patient.objects.get(Patient_id=request.session['patient_id']).id
     lab_id = request.session['org_id']
     patientFoundTrueAndFalse = patient_analytics.objects.filter(pat_id__exact=patient_id).exists()
     if patientFoundTrueAndFalse:
@@ -93,7 +94,8 @@ def AnalyticsListView(request):
 
 
 def RaysListView(request):
-    patient_id = request.session['patient_id']
+    # patient_id = request.session['patient_id']
+    patient_id = patient.objects.get(Patient_id=request.session['patient_id']).id
     lab_id = request.session['org_id']
     patientFoundTrueAndFalse = patient_rays.objects.filter(pat_id__exact=patient_id).exists()
     if patientFoundTrueAndFalse:
@@ -120,4 +122,4 @@ def RaysListView(request):
         else:
             return HttpResponse("You don't have any Rays")
     else:
-            return HttpResponseNotFound('<h1>patient not found</h1>')
+        return HttpResponseNotFound('<h1>patient not found</h1>')

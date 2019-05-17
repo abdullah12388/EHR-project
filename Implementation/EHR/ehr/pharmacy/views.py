@@ -54,15 +54,20 @@ def pharmacyPatientLogin(request):
 
 
 def medicineListView(request):
-    patient_id= request.session['patient_id']
     pharmacy_id = request.session['org_id']
+    # user_id = request.session['patient_id']
+    # print(user_id)
+    patient_id = patient.objects.get(Patient_id=request.session['patient_id']).id
+    # print(patient_id)
     patientFoundTrueAndFalse = patient_medicine.objects.filter(pat_id__exact=patient_id).exists()
+    print(patientFoundTrueAndFalse)
     if patientFoundTrueAndFalse:
         medicineFound = patient_medicine.objects.filter(pharmacy__isnull=True).exists()
         if medicineFound:
             medicineData = patient_medicine.objects.filter(pharmacy__isnull=True)
             if request.method == 'POST':
                 medicineInsert = patient_medicine(P_M_id=request.POST['med_id'])
+                # print(medicineData)
                 medicineInsert.pharmacy_id = pharmacy_id
                 medicineInsert.pat_id = patient_id
                 medicineInsert.med_id = request.POST['id_of_med']
@@ -80,4 +85,4 @@ def medicineListView(request):
         else:
             return HttpResponse("You don't have any medicines")
     else:
-            HttpResponseNotFound('<h1>patient not found</h1>')
+        return HttpResponseNotFound('<h1>patient not found</h1>')

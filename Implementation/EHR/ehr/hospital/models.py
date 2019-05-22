@@ -62,7 +62,7 @@ class organization(models.Model):
     hr_username = models.CharField(max_length=100)
     hr_password = models.CharField(max_length=100)
     creation_date = models.DateField(auto_now_add=True)
-    org_rate = models.IntegerField()
+    org_rate = models.IntegerField(blank=True, null=True)
     #0 for hospital
     #1 for lab
     #2 for pharmacy

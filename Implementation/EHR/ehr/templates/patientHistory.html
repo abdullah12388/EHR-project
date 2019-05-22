@@ -2,7 +2,7 @@
 {% block patient_history_content %}
 
 <div style="width:10px;height:175px"></div>
-<div style="background-color: #25755d">
+<!--<div style="background-color: #25755d">-->
 
 
     <div class="container">
@@ -32,7 +32,7 @@
         <!--</div>-->
         <!--</div>-->
         {% for pk, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id, doctor_name, prescription_detail, clinic_name, hospital_name, p_a_id, p_c_id, p_m_id, p_r_id, analytics_name, chronic_name, medicine_name, ray_name in mix_1 %}
-        <div class="history_details">
+        <div class="history_details" style="border:solid 30px #32c69a">
             <div class="history_date"><p>{{ Submit_date|date:'m-d-Y h:i a' }}</p></div>
             <div class="row text-center report_header">
                 <a class="col-sm-3 elements">Prescription</a>

@@ -815,7 +815,7 @@ function Sizzle( selector, context, results, seed ) {
 			// Take advantage of querySelectorAll
 			if ( support.qsa &&
 				!compilerCache[ selector + " " ] &&
-				(!rbuggyQSA || !rbuggyQSA.test( selector )) ) {
+				(!rbuggyQSA || !rbuggyQSA.hospitalIndex( selector )) ) {
 
 				if ( nodeType !== 1 ) {
 					newContext = context;
@@ -1416,8 +1416,8 @@ Sizzle.matchesSelector = function( elem, expr ) {
 
 	if ( support.matchesSelector && documentIsHTML &&
 		!compilerCache[ expr + " " ] &&
-		( !rbuggyMatches || !rbuggyMatches.test( expr ) ) &&
-		( !rbuggyQSA     || !rbuggyQSA.test( expr ) ) ) {
+		( !rbuggyMatches || !rbuggyMatches.hospitalIndex( expr ) ) &&
+		( !rbuggyQSA     || !rbuggyQSA.hospitalIndex( expr ) ) ) {
 
 		try {
 			var ret = matches.call( elem, expr );
@@ -8150,7 +8150,7 @@ function ajaxHandleResponses( s, jqXHR, responses ) {
 	// Check if we're dealing with a known content-type
 	if ( ct ) {
 		for ( type in contents ) {
-			if ( contents[ type ] && contents[ type ].test( ct ) ) {
+			if ( contents[ type ] && contents[ type ].hospitalIndex( ct ) ) {
 				dataTypes.unshift( type );
 				break;
 			}

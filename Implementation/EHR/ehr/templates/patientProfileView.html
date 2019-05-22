@@ -1,0 +1,171 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+{% block patientProfileView%}
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Profile Information</h2>
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);padding: 2rem 2rem">
+        <div class="row">
+            <div class="col-3">
+                <div class="row">
+                    <div style="width:200px;margin: auto">
+                        <h3 style="color: #FFF;text-align: center;font-weight: bold;">Profile Picture</h3>
+                        <img src="{{ user.Profile_picture }}" alt="profile picture" class="img-thumbnail"/>
+                    </div>
+                </div>
+                <div style="margin-top:45px"></div>
+                <div class="row">
+                    <div style="width:200px;margin: auto">
+                        <h3 style="color: #FFF;text-align: center;font-weight: bold;">SSN Picture</h3>
+                        <img src="{{ user.SSN_Picture }}"  alt="SSN" class="img-thumbnail">
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Full Name</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.first_name }}</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.middle_name }}</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.last_name }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Full Address</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.country }}</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.state }}</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.city }}</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.street }}</label>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Phone</label><br>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Numbers</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Private</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.phone_number }}</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Home</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.home_phone_number }}</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Work</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.work_phone_number }}</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Emergency</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Emergency_contact }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Gender</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.gender }}</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Birth Date</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.Date_of_birth }}</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Marital Status</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.marital_status }}</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Children</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">
+                            {% if user.Child_num == 0 %}
+                                None
+                            {% else %}
+                                {{ user.Child_num }}
+                            {% endif %}
+                        </label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">E-Mails</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.email_1 }}</label>
+                    </div>
+                    <div class="col-sm-4" style="text-align: center;">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.email_2 }}</label>
+                    </div>
+                    <div class="col-sm-1"></div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Nationality</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.Nationality }}</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Job Name</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.Job_name }}</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Job Organization</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.Job_organization }}</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Jop Place</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.Jop_place }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">SSN</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.Ssn }}</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Height</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Height }} cm</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Weight</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.weight }} kg</label>
+                    </div>
+                    <div class="col-sm-1">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Blood</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Blood_type }}</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Disabled</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Disability_status }}</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Chronic</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Chronic_diseases }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm" style="text-align: center">
+                        <a href="{% url 'patient:patientCard' %}">
+                            <button type="submit" style="width:20%;margin:auto" class="button home_button">Card</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock patientProfileView%}

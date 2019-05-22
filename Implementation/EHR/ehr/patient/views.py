@@ -1,19 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
-from patient.forms import tempRegister,login,AddUser,AddPatient,searchHistory
-from doctor.models import (report,doctor,prescription,multi_analytics,
-multi_chronic,multi_medecines,multi_rays,
-patient_analytics,patient_chronic,
-patient_medicine,patient_rays, all_analytics, all_medicine, all_rays, all_chronic)
+from patient.forms import tempRegister, login, AddUser, AddPatient, searchHistory
+from doctor.models import (report, doctor, prescription, multi_analytics,
+                           multi_chronic, multi_medecines, multi_rays,
+                           patient_analytics, patient_chronic,
+                           patient_medicine, patient_rays, all_analytics, all_medicine, all_rays, all_chronic)
 from patient.models import user, patient, temp_register
-from hospital.models import organization,hospital
+from hospital.models import organization, hospital
 from django.http import JsonResponse
 from django.core.files.storage import FileSystemStorage
-import qrcode,shutil,os
+import qrcode, shutil, os
 from datetime import date
 from django.conf import settings as set
 from django.contrib.auth.hashers import check_password
-
 
 
 # Create your views here.
@@ -27,8 +26,10 @@ class DB_functions:
 
     def set_patient_email(self, email):
         self.__patient_email = email
+
     def set_patient_password(self, password):
         self.__patient_password = password
+
     def remove_from_temp(self, id):
         check = temp_register.objects.filter(id__iexact=id).exists()
         if check:
@@ -63,7 +64,7 @@ class DB_functions:
             password_db = get.New_Password
             user_Type_number = get.User_type
             if user_Type_number == 2:
-                doctor_id  = doctor.objects.get (Doc=user_id).id
+                doctor_id = doctor.objects.get(Doc=user_id).id
             else:
                 patient_id = patient.objects.get(Patient_id=user_id).id
 
@@ -71,7 +72,7 @@ class DB_functions:
                 if user_Type_number == 2:
                     request.session['doctor_id'] = doctor_id
                     request.session['user_T'] = user_Type_number
-                    request.session['Doctor_Patiant_ID']  = 0
+                    request.session['Doctor_Patiant_ID'] = 0
                 else:
                     request.session['patient_id'] = patient_id
                     request.session['user_type'] = 'registered_patient'
@@ -110,9 +111,11 @@ class DB_functions:
                 clinic_id.append(instance.clinic_id)
                 hospital_id.append(instance.hospital_id)
                 user_id = doctor.objects.get(id=instance.doctor_id).Doc_id
-                doctor_name = user.objects.get(user_id=user_id).first_name + " " + user.objects.get(user_id=user_id).last_name
+                doctor_name = user.objects.get(user_id=user_id).first_name + " " + user.objects.get(
+                    user_id=user_id).last_name
                 doctor_names.append(doctor_name)
-                prescription_detail.append(prescription.objects.get(prescription_id=instance.prescription_id).Disease_disc)
+                prescription_detail.append(
+                    prescription.objects.get(prescription_id=instance.prescription_id).Disease_disc)
                 if instance.clinic_id == None:
                     clinic_names.append(False)
                 else:
@@ -121,7 +124,8 @@ class DB_functions:
                     hospital_names.append(False)
                 else:
                     hospital_names.append(hospital.objects.get(h_id=instance.hospital_id).h_name)
-            all_report_data = [pk_list, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id, doctor_names, prescription_detail, clinic_names, hospital_names]
+            all_report_data = [pk_list, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id,
+                               doctor_names, prescription_detail, clinic_names, hospital_names]
             return all_report_data
         else:
             return False
@@ -131,38 +135,50 @@ class DB_functions:
         if not report_data == False:
             report_id = report_data[0]
             # print("report_id",report_id)
-            i=0
-            p_a_id, p_c_id, p_m_id, p_r_id  = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))]
-            p_a_id_, p_c_id_, p_m_id_, p_r_id_  = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))]
-            analytics_name, medicine_name, ray_name, chronic_name = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [[] for y in range(len(report_id))]
+            i = 0
+            p_a_id, p_c_id, p_m_id, p_r_id = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [
+                [] for y in range(len(report_id))], [[] for y in range(len(report_id))]
+            p_a_id_, p_c_id_, p_m_id_, p_r_id_ = [[] for y in range(len(report_id))], [[] for y in
+                                                                                       range(len(report_id))], [[] for y
+                                                                                                                in
+                                                                                                                range(
+                                                                                                                    len(
+                                                                                                                        report_id))], [
+                                                     [] for y in range(len(report_id))]
+            analytics_name, medicine_name, ray_name, chronic_name = [[] for y in range(len(report_id))], [[] for y in
+                                                                                                          range(len(
+                                                                                                              report_id))], [
+                                                                        [] for y in range(len(report_id))], [[] for y in
+                                                                                                             range(len(
+                                                                                                                 report_id))]
             for i in range(0, len(report_id)):
                 multi_analytics_data = multi_analytics.objects.filter(report_id__exact=report_id[i]).exists()
                 multi_chronic_data = multi_chronic.objects.filter(report_id__exact=report_id[i]).exists()
                 multi_medicines_data = multi_medecines.objects.filter(report_id__exact=report_id[i]).exists()
                 multi_rays_data = multi_rays.objects.filter(report_id__exact=report_id[i]).exists()
                 if multi_analytics_data:
-                    j=0
+                    j = 0
                     analytics_list = multi_analytics.objects.filter(report_id__exact=report_id[i])
                     for instance in analytics_list:
                         p_a_id[i].insert(j, instance.P_A_id)
-                        j = j+1
+                        j = j + 1
                     # print("p_a_id = " , p_a_id)
                 if multi_chronic_data:
-                    j=0
+                    j = 0
                     chronic_list = multi_chronic.objects.filter(report_id__exact=report_id[i])
                     for instance in chronic_list:
                         p_c_id[i].insert(j, instance.P_C_id)
                         j = j + 1
                     # print("p_c_id = ", p_c_id)
                 if multi_medicines_data:
-                    j=0
+                    j = 0
                     medicines_list = multi_medecines.objects.filter(report_id__exact=report_id[i])
                     for instance in medicines_list:
                         p_m_id[i].insert(j, instance.P_M_id)
                         j = j + 1
                     # print("p_m_id = ", p_m_id)
                 if multi_rays_data:
-                    j=0
+                    j = 0
                     rays_list = multi_rays.objects.filter(report_id__exact=report_id[i])
                     for instance in rays_list:
                         p_r_id[i].insert(j, instance.P_R_id)
@@ -174,7 +190,8 @@ class DB_functions:
                 for j in range(len(p_a_id[i])):
                     patient_analytics_list = patient_analytics.objects.get(P_A_id=p_a_id[i][j])
                     p_a_id_[i].insert(j, patient_analytics_list)
-                    analytic_name_ = all_analytics.objects.get(analytics_id=patient_analytics_list.analy_id).analytics_name
+                    analytic_name_ = all_analytics.objects.get(
+                        analytics_id=patient_analytics_list.analy_id).analytics_name
                     analytics_name[i].insert(j, analytic_name_)
                 for k in range(len(p_c_id[i])):
                     patient_chronic_list = patient_chronic.objects.get(P_C_id=p_c_id[i][k])
@@ -207,21 +224,27 @@ class DB_functions:
             # print("medicine_name = ", medicine_name)
             # print("p_r_id = ", p_r_id)
             print("ray_name = ", ray_name)
-            self.__final_all_reports = [p_a_id_, p_c_id_, p_m_id_, p_r_id_, analytics_name, chronic_name, medicine_name, ray_name]
+            self.__final_all_reports = [p_a_id_, p_c_id_, p_m_id_, p_r_id_, analytics_name, chronic_name, medicine_name,
+                                        ray_name]
             return True
         else:
             return False
 
 
 def home(request):
-    #after finishing please change the comment below to get everything from session
+    # after finishing please change the comment below to get everything from session
     # patient_id = request.session['patient_id']
-    patient_id = 5
-    topDoctor = doctor.objects.order_by('doc_rate')[:5]
-    topHospital = hospital.objects.order_by('hos_rate')[:5]
-    topLab = organization.objects.filter(Type__exact='1').order_by('org_rate')[:5]
-    topPharmacy = organization.objects.filter(Type__exact='2').order_by('org_rate')[:5]
-    patientReport = report.objects.filter(patient_id__exact=patient_id).order_by('-Submit_date')[0]
+    patient_id = request.session['patient_id']
+    topDoctor = doctor.objects.order_by('-doc_rate')
+    topHospital = hospital.objects.order_by('-hos_rate')
+    topLab = organization.objects.filter(Type__exact='1').order_by('-org_rate')
+    topPharmacy = organization.objects.filter(Type__exact='2').order_by('-org_rate')
+    ch = report.objects.filter(patient_id=patient_id).exists()
+    print(ch)
+    if(ch):
+        patientReport = report.objects.filter(patient_id__exact=patient_id).order_by('-Submit_date')[0]
+    else:
+        patientReport = report.objects.filter(patient_id__isnull=True)
     pharmacies = organization.objects.filter(Type__exact='2')
     labs = organization.objects.filter(Type__exact='1')
     hospitals = hospital.objects.all()
@@ -231,15 +254,15 @@ def home(request):
         'topLab': topLab,
         'topPharmacy': topPharmacy,
         'patientReport': patientReport,
-        'pharmacies' : pharmacies,
-        'labs' : labs,
-        'hospitals' : hospitals,
+        'pharmacies': pharmacies,
+        'labs': labs,
+        'hospitals': hospitals,
     }
     if patientReport:
         lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(report__exact=patientReport.report).exists()
         if lastMedicineInReportTrueOrFalse:
             lastMedicineInReport = multi_medecines.objects.get(report__exact=patientReport.report)
-            context.update({'lastMedicineInReport' : lastMedicineInReport})
+            context.update({'lastMedicineInReport': lastMedicineInReport})
 
         lastAnalyticsInReportTrueOrFalse = multi_analytics.objects.filter(report__exact=patientReport.report).exists()
         if lastAnalyticsInReportTrueOrFalse:
@@ -251,9 +274,23 @@ def home(request):
             lastRaysInReport = multi_rays.objects.get(report__exact=patientReport.report)
             context.update({'lastRaysInReport': lastRaysInReport})
     else:
-        return HttpResponse('there is no patient')
+        context={
+            'topDoctor': topDoctor,
+            'topHospital': topHospital,
+            'topLab': topLab,
+            'topPharmacy': topPharmacy,
+            # 'patientReport': 'false',
+            'pharmacies': pharmacies,
+            'labs': labs,
+            'hospitals': hospitals,
+            # 'lastMedicineInReport': 'False',
+            # 'lastAnalyticsInReport': 'False',
+            # 'lastRaysInReport': 'False',
+        }
+        return render(request, 'patientIndex.html', context)
 
     return render(request, 'patientIndex.html', context)
+
 
 def temp_Register(request):
     if request.method == 'POST':
@@ -276,21 +313,24 @@ def temp_Register(request):
     }
     return render(request, 'signup.html', context)
 
+
 def validate_email(request):
     email = request.GET.get('email', None)
     data = {
         # 'is_taken' : admin.objects.filter(email__iexact = email).exists()
-        'is_taken' : temp_register.objects.filter(email__iexact = email).exists()
+        'is_taken': temp_register.objects.filter(email__iexact=email).exists()
     }
     return JsonResponse(data)
+
 
 def valid_email(request):
     email1 = request.GET.get('email_1', None)
     # print(email1)
     data = {
-        'is_taken': user.objects.filter(email_1__iexact = email1).exists()
+        'is_taken': user.objects.filter(email_1__iexact=email1).exists()
     }
     return JsonResponse(data)
+
 
 def patientLogin(request):
     if request.method == 'POST':
@@ -308,7 +348,7 @@ def patientLogin(request):
                 if request.session['user_T'] == 2:
                     return HttpResponseRedirect('/doctor')
                 else:
-                    return HttpResponseRedirect('/')
+                    return HttpResponseRedirect('/patient')
             elif result == 'wrong_password':
                 return HttpResponseRedirect('/patient/login/?alert=wrong_password')
             elif result == 'wrong_email':
@@ -321,6 +361,7 @@ def patientLogin(request):
     }
     return render(request, 'login.html', context)
 
+
 def patientLogout(request):
     if request.session['user_T'] == 2:
         if 'doctor_id' in request.session:
@@ -330,16 +371,17 @@ def patientLogout(request):
             print('SESSION DELETED')
     else:
 
-            if 'patient_temp_id' in request.session:
-                request.session.pop('patient_id')
-                print('SESSION FOUND')
-            if 'patient_id' in request.session:
-                request.session.pop('patient_id')
-                print('SESSION FOUND')
-            if 'patient_id' not in request.session:
-                print('SESSION DELETED')
+        if 'patient_temp_id' in request.session:
+            request.session.pop('patient_id')
+            print('SESSION FOUND')
+        if 'patient_id' in request.session:
+            request.session.pop('patient_id')
+            print('SESSION FOUND')
+        if 'patient_id' not in request.session:
+            print('SESSION DELETED')
 
     return HttpResponseRedirect('/patient/login/')
+
 
 # patient profile functions
 def patient_profile(request):
@@ -358,8 +400,8 @@ def patient_profile(request):
                 profile_picture_file = request.FILES['Profile_picture']
                 ssn_picture_file = request.FILES['SSN_Picture']
                 fs = FileSystemStorage()
-                ppf_name = fs.save(profile_picture_file.name,profile_picture_file)
-                spf_name = fs.save(ssn_picture_file.name,ssn_picture_file)
+                ppf_name = fs.save(profile_picture_file.name, profile_picture_file)
+                spf_name = fs.save(ssn_picture_file.name, ssn_picture_file)
                 instance1.Profile_picture = '/patient' + fs.url(ppf_name)
                 instance1.SSN_Picture = '/patient' + fs.url(spf_name)
                 # extract ssn id from full ssn
@@ -389,7 +431,7 @@ def patient_profile(request):
                     instance1.gender = genderMessage
                     instance1.marital_status = maritalStatusMessage
                 instance1.save()
-                move(os.path.join('',img),os.path.join(set.MEDIA_ROOT,img))
+                move(os.path.join('', img), os.path.join(set.MEDIA_ROOT, img))
                 # get the user id with the email
                 a = form1.cleaned_data.get('email_1')
                 u_id = user.objects.get(email_1=a).user_id
@@ -430,7 +472,6 @@ def patient_profile(request):
             'form2': form2,
         }
         return render(request, 'patientProfile.html', context)
-
 def gender(num):
     if num == '1':
         return 'male'
@@ -440,7 +481,6 @@ def gender(num):
         return 'other'
     else:
         return 'error'
-
 def maritalStatus(num):
     if num == '1':
         return 'single'
@@ -454,7 +494,6 @@ def maritalStatus(num):
         return 'widowed'
     else:
         return 'error'
-
 def bloodType(num):
     if num == '1':
         return 'A+'
@@ -476,7 +515,6 @@ def bloodType(num):
         return 'other'
     else:
         return 'error'
-
 def disabilityStatus(num):
     if num == '1':
         return 'disabled'
@@ -484,7 +522,6 @@ def disabilityStatus(num):
         return 'none'
     else:
         return 'error'
-
 def chronicDiseases(num):
     if num == '1':
         return 'have'
@@ -492,7 +529,19 @@ def chronicDiseases(num):
         return 'none'
     else:
         return 'error'
+def move(src, dest):
+    shutil.move(src, dest)
 # end of patient profile
+
+
+def patient_profile_view(request):
+    patientdata = patient.objects.get(id=request.session['patient_id'])
+    userdata = user.objects.get(user_id=patientdata.Patient_id)
+    context ={
+        'user': userdata,
+        'patient': patientdata,
+    }
+    return render(request, 'patientProfileView.html',context)
 
 def patientHistory(request):
     global mix_1_1
@@ -512,9 +561,9 @@ def patientHistory(request):
                       mix_1[9], mix_1[10], mix_2_1[0], mix_2_1[1], mix_2_1[2], mix_2_1[3],
                       mix_2_1[4], mix_2_1[5], mix_2_1[6], mix_2_1[7])
 
-        print('report = ', mix_1[0])
-        print('NORMAL = ', mix_2_1[6])
-        print('REVERSED = ', list(reversed(mix_2_1[6])))
+        # print('report = ', mix_1[0])
+        # print('NORMAL = ', mix_2_1[6])
+        # print('REVERSED = ', list(reversed(mix_2_1[6])))
         context.update({
             'mix_1': mix_1_1,
         })
@@ -525,13 +574,11 @@ def patientHistory(request):
     #     })
     return render(request, 'patientHistory.html', context)
 
-def move(src, dest):
-    shutil.move(src, dest)
+
 
 def patientDoctor(request):
-    return render(request,'patientDoctor.html',{})
-# def patientDoctor(request):
-#     return render(request,'patientDoctor.html',{})
+    return render(request, 'patientDoctor.html', {})
+
 
 def patientCard(request):
     Profile_picture = user.objects.get(user_id=request.session['user_id']).Profile_picture
@@ -545,7 +592,7 @@ def patientCard(request):
     age = int((date.today() - birthdate).days / days_in_year)
     QR_code = patient.objects.get(Patient=request.session['user_id']).QR_code
     if age:
-        context={
+        context = {
             'Profile_picture': Profile_picture,
             'first_name': first_name,
             'middle_name': middle_name,
@@ -553,8 +600,8 @@ def patientCard(request):
             'phone_number': phone_number,
             'Create_date': Create_date,
             'QR_code': QR_code,
-            'age' : age,
+            'age': age,
         }
-        return render(request,'patientData.html',context)
+        return render(request, 'patientData.html', context)
     else:
-        print('error')
+        return HttpResponse('age:fail to calculate')

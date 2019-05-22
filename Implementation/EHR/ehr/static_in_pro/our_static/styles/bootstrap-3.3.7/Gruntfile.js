@@ -89,7 +89,7 @@ module.exports = function (grunt) {
         src: '<%= jshint.core.src %>'
       },
       test: {
-        src: '<%= jshint.test.src %>'
+        src: '<%= jshint.hospitalIndex.html.src %>'
       },
       assets: {
         options: {
@@ -380,7 +380,7 @@ module.exports = function (grunt) {
         tasks: ['jshint:core', 'qunit', 'concat']
       },
       test: {
-        files: '<%= jshint.test.src %>',
+        files: '<%= jshint.hospitalIndex.html.src %>',
         tasks: ['jshint:test', 'qunit']
       },
       less: {
@@ -467,7 +467,7 @@ module.exports = function (grunt) {
     testSubtasks.push('connect');
     testSubtasks.push('saucelabs-qunit');
   }
-  grunt.registerTask('test', testSubtasks);
+  grunt.registerTask('hospitalIndex.html', testSubtasks);
   grunt.registerTask('test-js', ['jshint:core', 'jshint:test', 'jshint:grunt', 'jscs:core', 'jscs:test', 'jscs:grunt', 'qunit']);
 
   // JS distribution task.
@@ -481,7 +481,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
 
   // Default task.
-  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'test']);
+  grunt.registerTask('default', ['clean:dist', 'copy:fonts', 'hospitalIndex.html']);
 
   grunt.registerTask('build-glyphicons-data', function () { generateGlyphiconsData.call(this, grunt); });
 

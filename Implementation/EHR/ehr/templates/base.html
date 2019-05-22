@@ -6,7 +6,17 @@
 </head>
 <body class="{% if request.get_full_path == '/patientHistory/' %} body_color
  {% else %}body
- {% endif %}">
+ {% endif %}"
+      style="{% if request.get_full_path == '/hospital/AddDoctor/' or request.get_full_path == '/hospital/AddPharmacy/' or request.get_full_path == '/hospital/AddLab/' or request.get_full_path == '/hospital/Index/' %}background-image: url('/static/images/index_hero.jpg');
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 148%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center center;
+          {% else %}
+          {% endif %}">
 <div>
     <div class="super_container">
 
@@ -26,6 +36,9 @@
         {# labLogin Body #}
             {% block labLogin %}
             {% endblock labLogin %}
+        {# hospitalLogin Body #}
+            {% block hospitalLogin %}
+            {% endblock hospitalLogin %}
         {# patientCard Body #}
             {% block patientCard %}
             {% endblock patientCard %}
@@ -38,6 +51,9 @@
         {# patientProfile body#}
             {% block patientProfile %}
             {% endblock patientProfile %}
+        {# patientProfileView body#}
+            {% block patientProfileView%}
+            {% endblock patientProfileView%}
         {# patientMedicineList body#}
             {% block patientMedicineList %}
             {% endblock patientMedicineList %}
@@ -55,13 +71,24 @@
         {# Doctor Index body#}
             {% block patientIndex %}
             {% endblock patientIndex %}
+        {# Doctor Index body#}
+            {% block hospitalIndex %}
+            {% endblock hospitalIndex %}
         {# Home Body #}
             {% block home_content %}
             {% endblock home_content %}
         {# patientDoctor body#}
             {% block patientDoctor %}
             {% endblock patientDoctor %}
-
+        {# doctorProfile body#}
+            {% block doctorProfile %}
+            {% endblock doctorProfile %}
+        {# addOragnization body#}
+            {% block addPharmacy %}
+            {% endblock addPharmacy %}
+        {# addOragnization body#}
+            {% block addLab %}
+            {% endblock addLab %}
     {# The Footer #}
         {% include "footer.html" %}
     </div>

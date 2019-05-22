@@ -15,9 +15,15 @@
                             <div class="col-sm-6">
                                 <label class="bord">Created at:</label>
                             </div>
-                            <div class="col-sm-6">
-                                <label class="bord">{{ patientReport.Submit_date }}</label>
-                            </div>
+                            {% if patientReport.Submit_date %}
+                                <div class="col-sm-6">
+                                    <label class="bord">{{ patientReport.Submit_date }}</label>
+                                </div>
+                            {% else %}
+                                <div class="col-sm-6">
+                                    <label class="bord">No Created Data Yet</label>
+                                </div>
+                            {% endif %}
                         </div>
                         {# upcoming appointments #}
                         <div class="row">
@@ -43,6 +49,34 @@
                                 </div>
                             </div>
                         </div>
+                    {% else %}
+                        {# creation date #}
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="bord">Created at:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="bord">No Created Data Yet</label>
+                            </div>
+                        </div>
+                        {# upcoming appointments #}
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label class="bord">Next at:</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="bord">No Coming Appointment</label>
+                            </div>
+                        </div>
+                        {# description #}
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="bord txer" disabled style="overflow: auto">
+                                    <P style="font-size: 20px;color: #32c69a;font-weight: bold;">Description</P>
+                                    You Have No Description Yet
+                                </div>
+                            </div>
+                        </div>
                     {% endif %}
                     {# medicines and analytics #}
                     <div class="row">
@@ -54,8 +88,8 @@
                                 </div>
                             {% else %}
                                  <div class="bord txer" disabled >
-                                     <P style="font-size: 20px;color: #32c69a;font-weight: bold;">Medicines </P>
-                                     there's Nothing To Show
+                                    <P style="font-size: 20px;color: #32c69a;font-weight: bold;">Medicines </P>
+                                    You Have No Medicines Yet
                                  </div>
                             {% endif %}
                         </div>
@@ -68,7 +102,7 @@
                             {% else %}
                                 <div class="bord txer" disabled>
                                     <P style="font-size: 20px;color: #32c69a;font-weight: bold;">Analytics </P>
-                                    there's Nothing To Show
+                                    You Have No Analytics Yet
                                 </div>
                             {% endif %}
                         </div>
@@ -84,7 +118,7 @@
                             {% else %}
                                 <div class="bord txer" disabled >
                                     <P style="font-size: 20px;color: #32c69a;font-weight: bold;">Rays</P>
-                                    there's Nothing To Show
+                                    You Have No Rays Yet
                                 </div>
                            {% endif %}
                         </div>
@@ -99,21 +133,21 @@
                            {% if topDoctor %}
                                {% for doctor in topDoctor %}
                                    <a class="tops" href="#">
-                                       <div class="row" style="text-align: center;width: 100%">
+                                       <div class="row" style="text-align: center;width: 100%;margin-bottom: 3px;">
                                         {#profile Picture area#}
-                                        <div class="col-sm-4">
-                                            <img class="ima" src="{{ doctor.Doc.Profile_picture }}">
-                                        </div>
+                                            <div class="col-sm-4">
+                                                <img class="ima" src="{{ doctor.Doc.Profile_picture }}">
+                                            </div>
                                         {# doctor name area#}
-                                        <div class="col-sm-6 topName">
-                                            <label>{{ doctor.Doc.first_name }}</label>
-                                            <label>{{ doctor.Doc.last_name }}</label>
-                                        </div>
+                                            <div class="col-sm-6 topName">
+                                                <label>{{ doctor.Doc.first_name }}</label>
+                                                <label>{{ doctor.Doc.last_name }}</label>
+                                            </div>
                                         {# doctor rate area #}
-                                        <div class="col-sm-2" style="margin: auto 0px auto 0px;">
-                                            <i class="fa fa-star fa-lg">{{ doctor.doc_rate }}</i>
+                                            <div class="col-sm-2" style="margin: auto 0px auto 0px;">
+                                                <i class="fa fa-star fa-lg">{{ doctor.doc_rate }}</i>
+                                            </div>
                                         </div>
-                                   </div>
                                    </a>
                                {% endfor %}
                            {% else %}
@@ -131,20 +165,20 @@
                             {% if topHospital %}
                                 {% for hospital in topHospital %}
                                     <a class="tops" href="#">
-                                        <div class="row" style="text-align: center;width: 100%">
+                                        <div class="row" style="text-align: center;width: 100%;margin-bottom: 3px;">
                                         {# hospital image #}
-                                        <div class="col-sm-4">
-                                            <img class="ima" src="{{ hospital.logo }}">
-                                        </div>
+                                            <div class="col-sm-4">
+                                                <img class="ima" src="{{ hospital.logo }}">
+                                            </div>
                                         {# hospital name #}
-                                        <div class="col-sm-6 topName">
-                                            <label>{{ hospital.h_name }}</label>
-                                        </div>
+                                            <div class="col-sm-6 topName">
+                                                <label>{{ hospital.h_name }}</label>
+                                            </div>
                                         {# hospital rate #}
-                                        <div class="col-sm-2" style="margin: auto 0px auto 0px;">
-                                            <i class="fa fa-star fa-lg">{{ hospital.hos_rate }}</i>
+                                            <div class="col-sm-2" style="margin: auto 0px auto 0px;">
+                                                <i class="fa fa-star fa-lg">{{ hospital.hos_rate }}</i>
+                                            </div>
                                         </div>
-                            </div>
                                     </a>
                                 {% endfor %}
                             {% else %}
@@ -164,20 +198,20 @@
                             {% if topPharmacy %}
                                 {% for pharmacy in topPharmacy %}
                                     <a class="tops" href="#">
-                                        <div class="row" style="text-align: center;width: 100%">
+                                        <div class="row" style="text-align: center;width: 100%;margin-bottom: 3px;">
                                         {# pharmacy image #}
-                                        <div class="col-sm-4">
-                                            <img class="ima" src="{{ pharmacy.org_logo }}">
-                                        </div>
+                                            <div class="col-sm-4">
+                                                <img class="ima" src="{{ pharmacy.org_logo }}">
+                                            </div>
                                         {# pharmacy name #}
-                                        <div class="col-sm-6 topName">
-                                            <label>{{ pharmacy.org_name }}</label>
-                                        </div>
+                                            <div class="col-sm-6 topName">
+                                                <label>{{ pharmacy.org_name }}</label>
+                                            </div>
                                         {# pharmacy rate #}
-                                        <div class="col-sm-2" style="margin: auto 0px auto 0px;">
-                                            <i class="fa fa-star fa-lg">{{ pharmacy.org_rate }}</i>
+                                            <div class="col-sm-2" style="margin: auto 0px auto 0px;">
+                                                <i class="fa fa-star fa-lg">{{ pharmacy.org_rate }}</i>
+                                            </div>
                                         </div>
-                                    </div>
                                     </a>
                                 {% endfor %}
                             {% else %}
@@ -195,19 +229,20 @@
                             {% if topLab %}
                                 {% for lab in topLab %}
                                     <a class="tops" href="#">
-                                        <div class="row" style="text-align: center;width: 100%">
+                                        <div class="row" style="text-align: center;width: 100%;margin-bottom: 3px;">
                                         {# lab logo #}
-                                        <div class="col-sm-4">
-                                            <img class="ima" src="{{ lab.org_logo }}">
-                                        </div>
+                                            <div class="col-sm-4">
+                                                <img class="ima" src="{{ lab.org_logo }}">
+                                            </div>
                                         {# lab name #}
-                                        <div class="col-sm-6 topName">
-                                            <label>{{ lab.org_name }}</label>
+                                            <div class="col-sm-6 topName">
+                                                <label>{{ lab.org_name }}</label>
+                                            </div>
+                                        {# lab rate #}
+                                            <div class="col-sm-2" style="margin: auto 0px auto 0px;">
+                                                <i class="fa fa-star fa-lg">{{ lab.org_rate }}</i>
+                                            </div>
                                         </div>
-                                        <div class="col-sm-2" style="margin: auto 0px auto 0px;">
-                                            <i class="fa fa-star fa-lg">{{ lab.org_rate }}</i>
-                                        </div>
-                                    </div>
                                     </a>
                                 {% endfor %}
                             {% else %}

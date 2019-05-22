@@ -1,0 +1,73 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+{% block addLab %}
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Lab Profile Creation</h2>
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66)">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-3">
+                    <div class="row">
+                        <div style="width:200px;margin: auto">
+                            <img src="{% static 'images/user.png' %}" alt="profile picture" class="img-thumbnail"/>
+                        </div>
+                    </div>
+                    <div class="row">
+{#                        {{ form1.Profile_picture }}#}
+                        <input type="file" name="org_logo" class="inputfile" id="file1" required="required">
+                        <label for="file1">Choose a file</label>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col-sm">
+                            <input type="text" name="org_name" class="form-control" pattern="[A-Za-z]{3,}" placeholder="Name" required="">
+                        </div>
+                        <div class="col-sm">
+                            <input type="url" name="org_website" class="form-control" placeholder="Website" required="">
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col-sm">
+                            <input type="text" name="org_country" class="form-control" pattern="[A-Za-z]{3,}" placeholder="Country" required="">
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" name="org_state" class="form-control" pattern="[A-Za-z]{3,}" placeholder="State" required="">
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" name="org_city" class="form-control" pattern="[A-Za-z]{3,}" placeholder="City" required="">
+                        </div>
+                        <div class="col-sm">
+                            <input type="text" name="org_zipcode" class="form-control" pattern="[0-9]{5}" placeholder="Zip code" required="">
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col-sm">
+                            <input type="text" name="org_phone_num" class="form-control" pattern="[0-9]{11}" placeholder="Phone number" required="">
+                        </div>
+                        <div class="col-sm">
+                            <input type="email" name="org_email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="E-mail" required="">
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col-sm">
+                            <input type="text" name="hr_username" class="form-control" pattern="[A-Za-z]{3,}" placeholder="User Account" required="">
+                        </div>
+                        <div class="col-sm">
+                            <input type="password" name="hr_password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" required="">
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col-sm" style="text-align: center">
+                            <button id="id_signup_submit" type="submit" style="width:30%;margin:auto" class="button home_button">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock addLab %}

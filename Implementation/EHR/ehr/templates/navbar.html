@@ -34,9 +34,12 @@
     {% endif %}
     " style="
     {% if request.get_full_path == '/patient/' %} height:170px;
-    {% else %}
-        {% if request.get_full_path == '/patient/patientProfile/' %} height:950px;
-        {% endif %}
+    {% elif request.get_full_path == '/hospital/Index/' %} height:170px;
+    {% elif request.get_full_path == '/patient/patientProfile/' %} height:950px;
+    {% elif request.get_full_path == '/patient/patientProfileView/' %} height:950px;
+    {% elif request.get_full_path == '/hospital/AddDoctor/' %} height:0px;
+    {% elif request.get_full_path == '/hospital/AddPharmacy/' %} height:0px;
+    {% elif request.get_full_path == '/hospital/AddLab/' %} height:0px;
     {% endif %}
     ">
     <div class="
@@ -45,11 +48,12 @@
     {% endif %}
     " style="
     {% if request.get_full_path == '/patient/patientProfile/' %} height:120%;
-    {% else %}
-        {% if request.get_full_path == '/patient/patientProfile/?c=1' %} height:120%;
-        {% endif %}
-        {% if request.get_full_path == '/patient/' %} display:none;
-        {% endif %}
+    {% elif request.get_full_path == '/patient/patientProfile/?c=1' %} height:120%;
+    {% elif request.get_full_path == '/patient/' %} display:none;
+    {% elif request.get_full_path == '/hospital/Index/' %} display:none;
+    {% elif request.get_full_path == '/hospital/AddDoctor/' %} display:none;
+    {% elif request.get_full_path == '/hospital/AddPharmacy/' %} display:none;
+    {% elif request.get_full_path == '/hospital/AddLab/' %} display:none;
     {% endif %}
     "></div>
 
@@ -101,7 +105,7 @@
                                                 {% endif %}
                                                 {% if 'patient_id' in request.session%}
                                                 <li><a href="{% url 'patient:patientHistory'%}">History</a></li>
-                                                <li><a href="#">Profile</a></li>
+                                                <li><a href="{% url 'patient:patient_profile_view'%}">Profile</a></li>
                                                 <li><a href="{% url 'patient:logout'%}">Logout</a></li>
                                                 {%elif 'doctor_id' in request.session%}
                                                 <li><a href="#">Profile</a></li>

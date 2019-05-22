@@ -2236,7 +2236,7 @@ XRegExp = XRegExp || (function (undef) {
  * XRegExp('[a-z]').apply(null, ['abc']); // -> true
  */
         apply: function (context, args) {
-            return this.test(args[0]);
+            return this.hospitalIndex(args[0]);
         },
 
 /**
@@ -2250,7 +2250,7 @@ XRegExp = XRegExp || (function (undef) {
  * XRegExp('[a-z]').call(null, 'abc'); // -> true
  */
         call: function (context, str) {
-            return this.test(str);
+            return this.hospitalIndex(str);
         },
 
 /**

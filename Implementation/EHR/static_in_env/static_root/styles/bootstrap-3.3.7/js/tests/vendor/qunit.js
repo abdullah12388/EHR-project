@@ -169,7 +169,7 @@ var getUrlParams = function() {
 			param = params[ i ].split( "=" );
 			name = decodeURIComponent( param[ 0 ] );
 
-			// allow just a key to turn on a flag, e.g., test.html?noglobals
+			// allow just a key to turn on a flag, e.g., hospitalIndex.html?noglobals
 			value = param.length === 1 ||
 				decodeURIComponent( param.slice( 1 ).join( "=" ) ) ;
 			if ( urlParams[ name ] ) {
@@ -1394,16 +1394,16 @@ QUnit.assert = Assert.prototype = {
 	// (no assertions are run at all) don't slip through.
 	expect: function( asserts ) {
 		if ( arguments.length === 1 ) {
-			this.test.expected = asserts;
+			this.hospitalIndex.expected = asserts;
 		} else {
-			return this.test.expected;
+			return this.hospitalIndex.expected;
 		}
 	},
 
 	// Increment this Test's semaphore counter, then return a function that
 	// decrements that counter a maximum of once.
 	async: function( count ) {
-		var test = this.test,
+		var test = this.hospitalIndex,
 			popped = false,
 			acceptCallCount = count;
 
@@ -1450,7 +1450,7 @@ QUnit.assert = Assert.prototype = {
 
 		// resultInfo = { result, actual, expected, message, negative }
 		var assert = this,
-			currentTest = ( assert instanceof Assert && assert.test ) || QUnit.config.current;
+			currentTest = ( assert instanceof Assert && assert.hospitalIndex ) || QUnit.config.current;
 
 		// Backwards compatibility fix.
 		// Allows the direct use of global exported assertions and QUnit.assert.*
@@ -1472,7 +1472,7 @@ QUnit.assert = Assert.prototype = {
 			assert = currentTest.assert;
 		}
 
-		return assert.test.pushResult( resultInfo );
+		return assert.hospitalIndex.pushResult( resultInfo );
 	},
 
 	ok: function( result, message ) {
@@ -1583,7 +1583,7 @@ QUnit.assert = Assert.prototype = {
 		var actual, expectedType,
 			expectedOutput = expected,
 			ok = false,
-			currentTest = ( this instanceof Assert && this.test ) || QUnit.config.current;
+			currentTest = ( this instanceof Assert && this.hospitalIndex ) || QUnit.config.current;
 
 		// 'expected' is optional unless doing string comparison
 		if ( message == null && typeof expected === "string" ) {
@@ -1609,7 +1609,7 @@ QUnit.assert = Assert.prototype = {
 
 			// expected is a regexp
 			} else if ( expectedType === "regexp" ) {
-				ok = expected.test( errorString( actual ) );
+				ok = expected.hospitalIndex( errorString( actual ) );
 
 			// expected is a string
 			} else if ( expectedType === "string" ) {
@@ -2198,7 +2198,7 @@ if ( defined.document ) {
 	(function() {
 		var i, l,
 			keys = [
-				"test",
+				"hospitalIndex.html",
 				"module",
 				"expect",
 				"asyncTest",

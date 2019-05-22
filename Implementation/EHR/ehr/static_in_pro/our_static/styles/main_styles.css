@@ -1767,14 +1767,14 @@ Patient History
     border-radius: 18px;
     padding: 10px;
 }
-.history_details {
+.history_details{
     padding: 18px;
-    border-width: 4px;
+    border-width: 30px;
     border-style: solid;
-    border-color: #e7e7e7;
+    border-color: #32c69a;
 	margin-bottom: 25px;
 }
-.history_date {
+.history_date{
     background-color: #FFF;
     position: relative;
     bottom: 33px;

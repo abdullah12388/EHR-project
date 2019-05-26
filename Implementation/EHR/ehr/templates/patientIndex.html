@@ -145,7 +145,11 @@
                                             </div>
                                         {# doctor rate area #}
                                             <div class="col-sm-2" style="margin: auto 0px auto 0px;">
-                                                <i class="fa fa-star fa-lg">{{ doctor.doc_rate }}</i>
+                                                {% if doctor.doc_rate == null %}
+                                                    <i class="fa fa-star fa-lg">0</i>
+                                                {% else %}
+                                                    <i class="fa fa-star fa-lg">{{ doctor.doc_rate }}</i>
+                                                {% endif %}
                                             </div>
                                         </div>
                                    </a>
@@ -176,7 +180,11 @@
                                             </div>
                                         {# hospital rate #}
                                             <div class="col-sm-2" style="margin: auto 0px auto 0px;">
-                                                <i class="fa fa-star fa-lg">{{ hospital.hos_rate }}</i>
+                                                {% if hospital.hos_rate == null %}
+                                                    <i class="fa fa-star fa-lg">0</i>
+                                                {% else %}
+                                                    <i class="fa fa-star fa-lg">{{ hospital.hos_rate }}</i>
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </a>
@@ -209,7 +217,11 @@
                                             </div>
                                         {# pharmacy rate #}
                                             <div class="col-sm-2" style="margin: auto 0px auto 0px;">
-                                                <i class="fa fa-star fa-lg">{{ pharmacy.org_rate }}</i>
+                                                {% if pharmacy.org_rate == null %}
+                                                    <i class="fa fa-star fa-lg">0</i>
+                                                {% else %}
+                                                    <i class="fa fa-star fa-lg">{{ pharmacy.org_rate }}</i>
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </a>
@@ -240,7 +252,11 @@
                                             </div>
                                         {# lab rate #}
                                             <div class="col-sm-2" style="margin: auto 0px auto 0px;">
-                                                <i class="fa fa-star fa-lg">{{ lab.org_rate }}</i>
+                                                {% if lab.org_rate == null %}
+                                                    <i class="fa fa-star fa-lg">0</i>
+                                                {% else %}
+                                                    <i class="fa fa-star fa-lg">{{ lab.org_rate }}</i>
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </a>
@@ -262,16 +278,16 @@
                 <div>
                     <p class="para">Partners</p>
                     <div class="row">
-                        <div class="col-sm-4">
+                        <div class="col-sm">
                             {% if hospitals %}
-                                {% for hospital in hospitals %}
-                                    <div class="bord txer" disabled style="overflow: auto">
-                                        <p style="font-size: 20px;color: #32c69a;font-weight: bold;">Hospitals</p>
+                                <div class="bord txer" disabled style="overflow: auto">
+                                    <p style="font-size: 20px;color: #32c69a;font-weight: bold;">Hospitals</p>
+                                    {% for hospital in hospitals %}
                                         <a class="tops" href="#">
                                             {{ hospital.h_name }}
-                                        </a>
-                                    </div>
-                                {% endfor %}
+                                        </a><br>
+                                    {% endfor %}
+                                </div>
                             {% else %}
                                 <div class="bord txer" disabled>
                                     <p style="font-size: 20px;color: #32c69a;font-weight: bold;">Hospitals</p>
@@ -279,16 +295,33 @@
                                 </div>
                             {% endif %}
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm">
+                            {% if clinics %}
+                                <div class="bord txer" disabled style="overflow: auto">
+                                    <p style="font-size: 20px;color: #32c69a;font-weight: bold;">Clinics</p>
+                                    {% for clinic in clinics %}
+                                        <a class="tops" href="#">
+                                            {{ clinics.org_name }}
+                                        </a><br>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <div class="bord txer" disabled>
+                                    <p style="font-size: 20px;color: #32c69a;font-weight: bold;">Clinics</p>
+                                    We Don't Have Clinics yet
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-sm">
                             {% if pharmacies %}
-                                {% for pharmacy in pharmacies %}
-                                    <div class="bord txer" disabled style="overflow: auto">
-                                        <p style="font-size: 20px;color: #32c69a;font-weight: bold;">Pharmacies</p>
+                                <div class="bord txer" disabled style="overflow: auto">
+                                    <p style="font-size: 20px;color: #32c69a;font-weight: bold;">Pharmacies</p>
+                                    {% for pharmacy in pharmacies %}
                                         <a class="tops" href="#">
                                             {{ pharmacy.org_name }}
-                                        </a>
-                                    </div>
-                                {% endfor %}
+                                        </a><br>
+                                    {% endfor %}
+                                </div>
                             {% else %}
                                 <div class="bord txer" disabled>
                                     <p style="font-size: 20px;color: #32c69a;font-weight: bold;">Pharmacies</p>
@@ -296,16 +329,16 @@
                                 </div>
                             {% endif %}
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm">
                             {% if labs %}
-                                {% for lab in labs %}
-                                    <div class="bord txer" disabled style="overflow: auto">
-                                        <p style="font-size: 20px;color: #32c69a;font-weight: bold;">Labs</p>
+                                <div class="bord txer" disabled style="overflow: auto">
+                                    <p style="font-size: 20px;color: #32c69a;font-weight: bold;">Labs</p>
+                                    {% for lab in labs %}
                                         <a class="tops" href="#">
                                             {{ lab.org_name }}
-                                        </a>
-                                    </div>
-                                {% endfor %}
+                                        </a><br>
+                                    {% endfor %}
+                                </div>
                             {% else %}
                                 <div class="bord txer" disabled>
                                     <p style="font-size: 20px;color: #32c69a;font-weight: bold;">Labs</p>

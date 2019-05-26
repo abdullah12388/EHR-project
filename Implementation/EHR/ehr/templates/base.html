@@ -7,7 +7,7 @@
 <body class="{% if request.get_full_path == '/patientHistory/' %} body_color
  {% else %}body
  {% endif %}"
-      style="{% if request.get_full_path == '/hospital/AddDoctor/' or request.get_full_path == '/hospital/AddPharmacy/' or request.get_full_path == '/hospital/AddLab/' or request.get_full_path == '/hospital/Index/' %}background-image: url('/static/images/index_hero.jpg');
+      style="{% if request.get_full_path == '/hospital/AddDoctor/' or request.get_full_path == '/hospital/AddPharmacy/' or request.get_full_path == '/hospital/AddLab/' or request.get_full_path == '/hospital/Index/' or request.get_full_path == '/patient/Index/' or request.get_full_path == '/patient/patientProfileView/' or request.get_full_path == '/hospital/hospitalProfileView/' or request.get_full_path == '/patient/patientCard/' %}background-image: url('/static/images/index_hero.jpg');
           top: 0;
           left: 0;
           width: 100%;
@@ -39,9 +39,6 @@
         {# hospitalLogin Body #}
             {% block hospitalLogin %}
             {% endblock hospitalLogin %}
-        {# patientCard Body #}
-            {% block patientCard %}
-            {% endblock patientCard %}
         {# labIndex Body #}
             {% block labIndex %}
             {% endblock labIndex %}
@@ -51,9 +48,6 @@
         {# patientProfile body#}
             {% block patientProfile %}
             {% endblock patientProfile %}
-        {# patientProfileView body#}
-            {% block patientProfileView%}
-            {% endblock patientProfileView%}
         {# patientMedicineList body#}
             {% block patientMedicineList %}
             {% endblock patientMedicineList %}
@@ -65,6 +59,15 @@
             {% endblock patientRaysList %}
             </div>
 
+        {# patientProfileView body#}
+            {% block patientProfileView%}
+            {% endblock patientProfileView%}
+        {# hospitalProfileView body#}
+            {% block hospitalProfileView%}
+            {% endblock hospitalProfileView %}
+        {# patientCard Body #}
+            {% block patientCard %}
+            {% endblock patientCard %}
         {# All Patient History #}
             {% block patient_history_content %}
             {% endblock patient_history_content %}
@@ -83,6 +86,9 @@
         {# doctorProfile body#}
             {% block doctorProfile %}
             {% endblock doctorProfile %}
+        {# updateDoctorProfile body#}
+            {% block updateDoctorProfile %}
+            {% endblock updateDoctorProfile %}
         {# addOragnization body#}
             {% block addPharmacy %}
             {% endblock addPharmacy %}

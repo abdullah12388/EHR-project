@@ -11,7 +11,9 @@
                     {% if hospital %}
                     <div class="col-sm-2" style="margin: auto 0px auto 0px;"></div>
                     <div class="col-sm-3" style="margin-bottom: 10px">
-                        <img class="ima" src="{{ hospital.logo }}" style="width: 70px;height: 70px">
+                        <a href="{% url 'hospital:hospital_profile_view' %}">
+                            <img class="ima" src="{{ hospital.logo }}" style="width: 70px;height: 70px">
+                        </a>
                     </div>
                     <div class="col-sm-3 topName" style="margin: auto 0px;">
                         <label style="font-size: 22px">{{ hospital.h_name }}</label>
@@ -62,7 +64,7 @@
                                     <label style="font-size: 22px;margin: auto;">{{ doct.Doc.last_name }}</label>
                                 </div>
                                 <div class="col-sm" style="text-align: center;">
-                                    <a href="#">
+                                    <a href="{% url 'hospital:update_doctor' Docid=doct.Doc_id %}">
                                         <button type="submit" style="width: 55%;height: 40px;margin-top: 10px;font-size: 18px;border-radius: 50px;" class="button home_button">Update</button>
                                     </a>
                                 </div>

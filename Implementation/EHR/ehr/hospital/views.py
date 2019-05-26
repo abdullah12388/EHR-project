@@ -23,6 +23,7 @@ def hospitalLogin(request):
             if hospitalPassFound:
                 hos_id = hospital.objects.get(hr_username=hospitalName).h_id
                 request.session['hospital_id'] = hos_id
+                request.session['type'] = 'hospital'
                 return HttpResponseRedirect('Index/')
             else:
                 print('wrong password')
@@ -31,7 +32,20 @@ def hospitalLogin(request):
             print('hospital not exists')
             return HttpResponseNotFound('<h1>Hospital not found</h1>')
     else:
+        request.session['type'] = 'hospital'
         return render(request,'hospitalLogin.html',{})
+
+
+def hospitalLogout(request):
+    if request.session['type'] == 'hospital':
+        if 'hospital_id' in request.session:
+            request.session.pop('hospital_id')
+            print('SESSION FOUND')
+        if 'hospital_id' not in request.session:
+            print('SESSION DELETED')
+    else:
+        print('there is no hospital entered')
+    return HttpResponseRedirect('/hospital/')
 
 
 def Index(request):
@@ -148,15 +162,91 @@ def Index(request):
     return render(request, 'hospitalIndex.html',context)
 
 
+def update_doctor(request,Docid):
+    if request.method == 'POST':
+        usr = user.objects.filter(user_id=Docid)
+        # upload profile,ssn pictures and save paths to database
+        fs = FileSystemStorage()
+        if 'Profile_picture' in request.FILES:
+            profile_picture_file = request.FILES['Profile_picture']
+            ppf_name = fs.save(profile_picture_file.name, profile_picture_file)
+            Pro_pic = '/hospital' + fs.url(ppf_name)
+            usr.update(Profile_picture=Pro_pic)
+        if 'SSN_Picture' in request.FILES:
+            ssn_picture_file = request.FILES['SSN_Picture']
+            spf_name = fs.save(ssn_picture_file.name, ssn_picture_file)
+            SSN_Pic = '/hospital' + fs.url(spf_name)
+            usr.update(SSN_Picture=SSN_Pic)
+        usr.update(first_name=request.POST['first_name'])
+        usr.update(middle_name=request.POST['middle_name'])
+        usr.update(last_name=request.POST['last_name'])
+        usr.update(country=request.POST['country'])
+        usr.update(state=request.POST['state'])
+        usr.update(city=request.POST['city'])
+        usr.update(street=request.POST['street'])
+        usr.update(zip_code=request.POST['zip_code'])
+        usr.update(phone_number=request.POST['phone_number'])
+        usr.update(home_phone_number=request.POST['home_phone_number'])
+        usr.update(work_phone_number=request.POST['work_phone_number'])
+        usr.update(Date_of_birth=request.POST['Date_of_birth'])
+        usr.update(Child_num=request.POST['Child_num'])
+        usr.update(email_1=request.POST['email_1'])
+        usr.update(email_2=request.POST['email_2'])
+        usr.update(Nationality=request.POST['Nationality'])
+        usr.update(Jop_place=request.POST['Jop_place'])
+        usr.update(Job_name=request.POST['Job_name'])
+        usr.update(Job_organization=request.POST['Job_organization'])
+        usr.update(Ssn=request.POST['Ssn'])
+        ssn = request.POST['Ssn']
+        ssn_id = ssn[7:14]
+        usr.update(Ssn_id=ssn_id)
+        genderMessage = gender(request.POST['gender'])
+        maritalStatusMessage = maritalStatus(request.POST['marital_status'])
+        if genderMessage == 'error':
+            return HttpResponseRedirect('/hospital/updateDoctor/')
+        elif maritalStatusMessage == 'error':
+            return HttpResponseRedirect('/hospital/updateDoctor/')
+        else:
+            usr.update(gender=genderMessage)
+            usr.update(marital_status=maritalStatusMessage)
+        usr.update(User_type=2)
+        #########################################################
+        # form 2
+        doct = doctor.objects.filter(Doc_id=Docid)
+        doct.update(Registration_num=request.POST['Registration_num'])
+        doct.update(Specialization=request.POST['Specialization'])
+        doct.update(Registration_date=request.POST['Registration_date'])
+        doct.update(licence=request.POST['licence'])
+        doct.update(Last_date_payment=request.POST['Last_date_payment'])
+        doct.update(End_date=request.POST['End_date'])
+        doct.update(Specialization_type=request.POST['Specialization_type'])
+        doct.update(University=request.POST['University'])
+        doct.update(Work_place=request.POST['Work_place'])
+        doct.update(Sub_syndicate=request.POST['Sub_syndicate'])
+        doct.update(General_secretary=request.POST['General_secretary'])
+        doct.update(Working_till=request.POST['Working_till'])
+        doct.update(Graduation_year=request.POST['Graduation_year'])
+        ########################################################
+        return HttpResponseRedirect('/hospital/Index/')
+    else:
+        doctorData = doctor.objects.get(Doc_id=Docid)
+        userData = user.objects.get(user_id=Docid)
+        context={
+            'doctorData':doctorData,
+            'userData':userData,
+        }
+        return render(request, 'updateDoctor.html',context)
+
+
 # patient doctor functions
 def add_doctor(request):
     if request.method == 'POST':
-        form1 = AddUser(request.POST or None)
-        if form1.is_valid():
+        formu = AddUser(request.POST or None)
+        if formu.is_valid():
             # stop save in database
-            instance1 = form1.save(commit=False)
-            password = form1.cleaned_data.get('New_Password')
-            con_password = form1.cleaned_data.get('Confirm_Pass')
+            instance1 = formu.save(commit=False)
+            password = formu.cleaned_data.get('New_Password')
+            con_password = formu.cleaned_data.get('Confirm_Pass')
             if not check_password(con_password, password):
                 return HttpResponseRedirect('/AddDoctor/?c=1')
             else:
@@ -183,9 +273,8 @@ def add_doctor(request):
                 instance1.User_type = 2
                 instance1.save()
                 # get the user id with the email
-                a = form1.cleaned_data.get('email_1')
-                u_id = user.objects.get(email_1=a).user_id
-                request.session['user_id'] = u_id
+                ef = formu.cleaned_data.get('email_1')
+                u_id = user.objects.get(email_1=ef).user_id
                 # form 2
                 doc = doctor()
                 doc.Doc_id = u_id
@@ -207,11 +296,10 @@ def add_doctor(request):
                 return HttpResponseRedirect('/hospital/Index/')
         else:
             print('form one')
-            print(form1.errors)
+            print(formu.errors)
     else:
         form1 = AddUser()
         B_Doctor = doctor.objects.filter(hospital_id__isnull=True)
-        print(B_Doctor)
         context = {
             'form1': form1,
             'b_d': B_Doctor,
@@ -304,21 +392,23 @@ def delete_pharmacy_lab(request,ph_lb_id,ph_lb_type):
     return HttpResponseRedirect('/hospital/Index/')
 
 def unblock_doctor(request,ssn):
-    print(ssn)
     docId = user.objects.get(Ssn=ssn).user_id
-    print(docId)
     hosId = request.session['hospital_id']
-    print(hosId)
     doctor.objects.filter(Doc_id=docId).update(hospital_id=hosId)
     return HttpResponseRedirect('/hospital/Index/')
 
 
+def hospital_profile_view(request):
+    hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
+    context ={
+        'hospital': hospitaldata,
+    }
+    return render(request, 'hospitalProfileView.html',context)
 
 
-
-
-
-
+def reset_doc_passowrd(request,id):
+    user.objects.filter(user_id=id).update(New_Password='123456789')
+    return HttpResponseRedirect('/hospital/Index/')
 
 
 

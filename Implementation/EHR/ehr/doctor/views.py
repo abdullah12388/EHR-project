@@ -14,7 +14,7 @@ from django.urls import reverse
 
 def Doctor(request):
     if 'doctor_id' not in request.session:
-        return HttpResponseRedirect('/patient/login/')
+        return HttpResponseRedirect('/patient/')
     else:
         user_type = request.session['user_T']
         user_id = request.session['doctor_id']
@@ -24,7 +24,7 @@ def Doctor(request):
 
 def GetPatianTID (request):
     if 'doctor_id' not in request.session:
-        return HttpResponseRedirect('/patient/login/')
+        return HttpResponseRedirect('/patient/')
     else:
         if request.method == 'POST':
             Get_PatianT_ID_Form = GetPatianTIDForm(request.POST)
@@ -247,13 +247,13 @@ class raysFormView (FormView):
         print(self.kwargs['pk'])
         return HttpResponseRedirect(reverse('doctor:rayslist', kwargs={'pk': self.kwargs['pk']}))
 
-        def render_to_response(self , redirect_url):
-            if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-                return HttpResponseRedirect('/patient/login/')
-            elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
-                return HttpResponseRedirect('/')
-            else:
-               return super().render_to_response(redirect_url)
+    def render_to_response(self , redirect_url):
+        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
+            return HttpResponseRedirect('/patient/login/')
+        elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
+            return HttpResponseRedirect('/')
+        else:
+           return super().render_to_response(redirect_url)
 
 class analytics_List(ListView):
     model = multi_analytics
@@ -315,10 +315,20 @@ class analyticsFormView (FormView):
         print(self.kwargs['pk'])
         return HttpResponseRedirect(reverse('doctor:analyticslist', kwargs={'pk': self.kwargs['pk']}))
 
-        def render_to_response(self , redirect_url):
-            if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-                return HttpResponseRedirect('/patient/login/')
-            elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
-                return HttpResponseRedirect('/')
-            else:
-               return super().render_to_response(redirect_url)
+    def render_to_response(self , redirect_url):
+        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
+            return HttpResponseRedirect('/patient/login/')
+        elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
+            return HttpResponseRedirect('/')
+        else:
+           return super().render_to_response(redirect_url)
+
+def doctor_profile_view(request):
+    docid = doctor.objects.get(id=request.session['doctor_id']).Doc_id
+    doctordata = doctor.objects.get(Doc_id=docid)
+    userdata = user.objects.get(user_id=docid)
+    context ={
+        'user': userdata,
+        'doctor': doctordata,
+    }
+    return render(request, 'doctorProfileView.html',context)

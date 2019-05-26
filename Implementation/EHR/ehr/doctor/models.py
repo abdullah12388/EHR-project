@@ -22,7 +22,7 @@ class doctor(models.Model):
     Sub_syndicate = models.CharField(max_length=500)
     General_secretary = models.CharField(max_length=500)
     Working_till = models.DateField()
-    Graduation_year = models.CharField(max_length=50)
+    Graduation_year = models.DateField()
     doc_rate = models.IntegerField(blank=True, null=True)
     hospital = models.ForeignKey(hospital, blank=True, null=True, on_delete=models.CASCADE)
     clinic = models.ForeignKey(organization, blank=True, null=True, on_delete=models.CASCADE)

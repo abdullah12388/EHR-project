@@ -79,27 +79,27 @@ WSGI_APPLICATION = 'ehr.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Oabw9z00VD',
-        'HOST': 'remotemysql.com',
-        'PORT': '3306',
-        'USER': 'Oabw9z00VD',
-        'PASSWORD': 'ys2ICbkieB',
-    },
-}
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'oabw9z00vd',
-#         'USER': 'root',
-#         'PASSWORD': '',
-#         'HOST': 'localhost',
-#         'PORT': '3306'
-#     }
+#         'NAME': 'Oabw9z00VD',
+#         'HOST': 'remotemysql.com',
+#         'PORT': '3306',
+#         'USER': 'Oabw9z00VD',
+#         'PASSWORD': 'ys2ICbkieB',
+#     },
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'ehr',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306'
+    }
+}
 
 
 # Password validation

@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^patiant/prescription/analytics/update/(?P<pk>[-\w]+)/$' , views.analytics_UPDATE.as_view(),name='analyticssupdate'),
     url(r'^patiant/prescription/analytics/newcreate/(?P<pk>[-\w]+)/$',views.analyticsFormView.as_view(),name='newanalytics'),
 
-
+    url(r'^doctorProfileView/$', views.doctor_profile_view, name='doctor_profile_view'),
 
 
 ]

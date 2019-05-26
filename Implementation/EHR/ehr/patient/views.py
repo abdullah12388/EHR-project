@@ -13,6 +13,7 @@ import qrcode, shutil, os
 from datetime import date
 from django.conf import settings as set
 from django.contrib.auth.hashers import check_password
+from django.db.models import Count
 
 
 # Create your views here.
@@ -235,18 +236,19 @@ def home(request):
     # after finishing please change the comment below to get everything from session
     # patient_id = request.session['patient_id']
     patient_id = request.session['patient_id']
-    topDoctor = doctor.objects.order_by('-doc_rate')
-    topHospital = hospital.objects.order_by('-hos_rate')
-    topLab = organization.objects.filter(Type__exact='1').order_by('-org_rate')
-    topPharmacy = organization.objects.filter(Type__exact='2').order_by('-org_rate')
+    topDoctor = doctor.objects.annotate(Count('doc_rate')).order_by('-doc_rate')[:1]
+    topHospital = hospital.objects.annotate(Count('hos_rate')).order_by('-hos_rate')[:1]
+    topLab = organization.objects.filter(Type__exact='1').annotate(Count('org_rate')).order_by('-org_rate')[:1]
+    topPharmacy = organization.objects.filter(Type__exact='2').annotate(Count('org_rate')).order_by('-org_rate')[:1]
     ch = report.objects.filter(patient_id=patient_id).exists()
-    print(ch)
+    # print(ch)
     if(ch):
         patientReport = report.objects.filter(patient_id__exact=patient_id).order_by('-Submit_date')[0]
     else:
         patientReport = report.objects.filter(patient_id__isnull=True)
-    pharmacies = organization.objects.filter(Type__exact='2')
-    labs = organization.objects.filter(Type__exact='1')
+    pharmacies = organization.objects.filter(Type__exact='1')
+    labs = organization.objects.filter(Type__exact='2')
+    clinics = organization.objects.filter(Type__exact='3')
     hospitals = hospital.objects.all()
     context = {
         'topDoctor': topDoctor,
@@ -257,6 +259,7 @@ def home(request):
         'pharmacies': pharmacies,
         'labs': labs,
         'hospitals': hospitals,
+        'clinics':clinics,
     }
     if patientReport:
         lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(report__exact=patientReport.report).exists()
@@ -302,7 +305,7 @@ def temp_Register(request):
             if check_password(re_password, password):
                 instance.save()
                 # print("password = ", password)
-                return HttpResponseRedirect('/patient/login/')
+                return HttpResponseRedirect('/patient/')
             else:
                 # print(False)
                 return HttpResponseRedirect('/patient/signup/?a=1')
@@ -348,11 +351,11 @@ def patientLogin(request):
                 if request.session['user_T'] == 2:
                     return HttpResponseRedirect('/doctor')
                 else:
-                    return HttpResponseRedirect('/patient')
+                    return HttpResponseRedirect('/patient/Index/')
             elif result == 'wrong_password':
-                return HttpResponseRedirect('/patient/login/?alert=wrong_password')
+                return HttpResponseRedirect('/patient/?alert=wrong_password')
             elif result == 'wrong_email':
-                return HttpResponseRedirect('/patient/login/?alert=wrong_email')
+                return HttpResponseRedirect('/patient/?alert=wrong_email')
 
     else:
         form = login()
@@ -380,7 +383,7 @@ def patientLogout(request):
         if 'patient_id' not in request.session:
             print('SESSION DELETED')
 
-    return HttpResponseRedirect('/patient/login/')
+    return HttpResponseRedirect('/patient/')
 
 
 # patient profile functions
@@ -420,7 +423,6 @@ def patient_profile(request):
                 img_exten = 'png'
                 img = img_name + '.' + img_exten
                 qrc_id.save(img)
-
                 genderMessage = gender(request.POST['gender'])
                 maritalStatusMessage = maritalStatus(request.POST['marital_status'])
                 if genderMessage == 'error':
@@ -537,6 +539,7 @@ def move(src, dest):
 def patient_profile_view(request):
     patientdata = patient.objects.get(id=request.session['patient_id'])
     userdata = user.objects.get(user_id=patientdata.Patient_id)
+    request.session['user_id'] = userdata.user_id
     context ={
         'user': userdata,
         'patient': patientdata,
@@ -575,12 +578,12 @@ def patientHistory(request):
     return render(request, 'patientHistory.html', context)
 
 
-
 def patientDoctor(request):
     return render(request, 'patientDoctor.html', {})
 
 
 def patientCard(request):
+    # print(request.session['user_id'])
     Profile_picture = user.objects.get(user_id=request.session['user_id']).Profile_picture
     first_name = user.objects.get(user_id=request.session['user_id']).first_name
     middle_name = user.objects.get(user_id=request.session['user_id']).middle_name
@@ -590,6 +593,14 @@ def patientCard(request):
     birthdate = user.objects.get(user_id=request.session['user_id']).Date_of_birth
     days_in_year = 365.2425
     age = int((date.today() - birthdate).days / days_in_year)
+    # print(Profile_picture)
+    # print(first_name)
+    # print(middle_name)
+    # print(last_name)
+    # print(phone_number)
+    # print(Create_date)
+    # print(birthdate)
+    # print(age)
     QR_code = patient.objects.get(Patient=request.session['user_id']).QR_code
     if age:
         context = {

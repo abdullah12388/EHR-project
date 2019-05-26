@@ -7,7 +7,7 @@ app_name = 'pharmacy'
 
 urlpatterns = [
     path('', views.pharmacyLogin, name='pharmacyLogin'),
-    # path('pharmacylogout/', views.pharmacyLogout, name='Logout'),
+    path('logout/', views.pharmacyLogout, name='pharmacyLogout'),
     path('pharmacyPatientLogin/', views.pharmacyPatientLogin, name='pharmacyPatientLogin'),
     path('pharmacyPatientLogin/medicines/',views.medicineListView, name = 'medicineListView'),
 ]

@@ -94,20 +94,6 @@ display: block;
                     <div style="margin-top:45px"></div>
                     <div class="row">
                         <div class="col-sm">
-{#                            <label style="font-size: 1.25em;font-weight: 700;width: 80%;text-align: center;margin: auto;color: white;display: inline-block;">Un Block Doctors</label>#}
-{#                            <input list="b_doc" class="form-control" placeholder="Enter SSN">#}
-{#                            <datalist id="b_doc">#}
-{#                                {% for bd in b_d %}#}
-{#                                    <a href="{% url 'hospital:unblock_doctor' ssn=bd.Doc.Ssn%}">#}
-{#                                        <option value="{{ bd.Doc.Ssn }}">#}
-{#                                            {{ bd.Doc.first_name }} {{ bd.Doc.middle_name }} {{ bd.Doc.last_name }}#}
-{#                                        </option>#}
-{#                                    </a>#}
-{#                                {% endfor %}#}
-{#                            </datalist>#}
-{#                            <a href="{% url 'hospital:unblock_doctor' %}">#}
-{#                                <button type="button" style="border-radius: 50px;margin-top:10px" class="button home_button">UnBlock</button>#}
-{#                            </a>#}
                             <div class="dropdown">
                                 <button onclick="myFunction()" class="dropbtn">Un Block Doctors</button>
                                 <div id="myDropdown" class="dropdown-content">

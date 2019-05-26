@@ -1,0 +1,260 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+{% block hospitalProfileView%}
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Hospital Profile Information</h2>
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);padding: 2rem 2rem">
+        <div class="row">
+        {% if hospital %}
+            <div class="col-sm-3">
+                <div class="row">
+                    <div style="width:200px;margin: auto">
+                        <h3 style="color: #FFF;text-align: center;font-weight: bold;">Logo</h3>
+                        <img src="{{ hospital.logo }}" alt="profile picture" class="img-thumbnail"/>
+                    </div>
+                </div>
+                <div style="margin-top:45px"></div>
+                <div class="row">
+                    <div style="width:200px;margin: auto">
+                        <h3 style="color: #FFF;text-align: center;font-weight: bold;">Rate</h3>
+                        <h1 style="color: #32c69a;text-align: center;font-weight: bold;">{{ hospital.hos_rate }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Name</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_name }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Phone</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_phone_num }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Website</label>
+                    </div>
+                    <div class="col-sm-8" style="max-height: 60px;overflow: hidden">
+                        <a href="{{ hospital.website }}" style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.website }}</a>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Country</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_country }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">State</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_state }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">City</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_city }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Street</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_street }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Zip Code</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_zipcode }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">E-Mail</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.email }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Type</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_type }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Emergency</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">
+                            {% if hospital.h_emergency_service == 1 %}
+                                Support
+                            {% else %}
+                                None
+                            {% endif %}
+                        </label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Establishment</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_date }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Ownership</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_ownership }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <h3 style="color: #FFF;text-align: center;font-weight: bold;">Departments</h3>
+                <ul class="list-group">
+                    {% if hospital.internal_medicine <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Internal Medicine</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Internal Medicine - {{ hospital.internal_medicine }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.cardiology <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Cardiology</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Cardiology - {{ hospital.cardiology }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.endocrinology <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Endocrinology</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Endocrinology - {{ hospital.endocrinology }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.hematology <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Hematology</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Hematology - {{ hospital.hematology }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.nephrology <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Nephrology</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Nephrology - {{ hospital.nephrology }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.surgery <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Surgery</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Surgery - {{ hospital.surgery }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.pediatric <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Pediatric</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Pediatric - {{ hospital.pediatric }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.obstertics_genacology <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Obstertics Genacology</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Obstertics Genacology - {{ hospital.obstertics_genacology }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.ophthalmologist <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Ophthalmologist</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Ophthalmologist - {{ hospital.ophthalmologist }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.neurology <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Neurology</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Neurology - {{ hospital.neurology }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.Ear_nose_threat <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Ear Nose Threat</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Ear Nose Threat - {{ hospital.Ear_nose_threat }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.urology <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Urology</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Urology - {{ hospital.urology }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.dermatology <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Dermatology</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Dermatology - {{ hospital.dermatology }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.hepatology <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Hepatology</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Hepatology - {{ hospital.hepatology }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.Radiology <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Radiology</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Radiology - {{ hospital.Radiology }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.psychiatry <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Psychiatry</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Psychiatry - {{ hospital.psychiatry }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.dentistry <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Dentistry</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Dentistry - {{ hospital.dentistry }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.forensic_medicine <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Forensic Medicine</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Forensic Medicine - {{ hospital.forensic_medicine }} bed</li>
+                    {% endif %}
+
+                    {% if hospital.enatony <= 0 %}
+                        <li class="list-group-item list-group-item-danger">Enatony</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-success">Enatony - {{ hospital.enatony }} bed</li>
+                    {% endif %}
+                </ul>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock hospitalProfileView %}

@@ -22,8 +22,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    url(r'^Doctor/$', views.doctor_index),
-    url(r'^admin/', include(admin.site.urls)),
+    # url(r'^admin/', include(admin.site.urls)),
     url(r'^patientHistory/', view.patientHistory, name='patientHistory'),
     url(r'^$', view.home, name='home'),
     url(r'^login/$', view.patientLogin, name='login'),
@@ -36,6 +35,11 @@ urlpatterns = [
     url(r'^test/$', view.test, name='test'),
     url(r'^patientHistory/$', view.patientHistory, name='patientHistory'),
     url(r'^patientDoctor/$', view.patientDoctor, name='patientDoctor'),
+    url(r'^pharmacy/(?P<primary_key>[0-9]+)/$',view.pharmacyShowData ,name = 'pharmacyShowData'),
+    url(r'^pharmacy/(?P<forPatient>[0-9]+)/(?P<forMedicine>[0-9]+)/$',view.pharmacySubmitPatientMedicine ,name = 'pharmacySubmitPatientMedicine')
+
+
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

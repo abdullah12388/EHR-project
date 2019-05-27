@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block patientMedicineList %}
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Discharge Medicines</h2>
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66); font-size: 22px;padding: 2rem 2rem;overflow: auto;height: 650px;">
+            {% if DataNotSubmitted %}
+                {% for data in DataNotSubmitted %}
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                            <div class="row" style="border:solid 5px #32c69a;border-radius: 10px;margin-bottom: 5px">
+                            <div class="col-sm-10">
+                                <div class="row" style="margin: 10px 0px;">
+                                    <div class="col-sm-6">
+                                        Medicine Name:
+                                    </div>
+                                    <div class="col-sm-6" style="color: #FFF">
+                                        {{ data.med.medicine_name }}
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 10px 0px;">
+                                    <div class="col-sm-6">
+                                        Number Of Potions:
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" style="width: 15%;" name="num_of_pot" value="{{ data.number_of_potions }}">
+                                        <label>potion per day</label>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin: 10px 0px;">
+                                    <div class="col-sm-6">
+                                        Number Of Pills:
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" style="width: 15%;" name="num_of_pil" value="{{ data.number_of_pills }}">
+                                        <label>pill per day</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2" style="margin: auto">
+                                <input type="hidden" name="med_id" value="{{ data.P_M_id }}">
+                                <input type="hidden" name="id_of_med" value="{{ data.med.medicine_id }}">
+                                <BUTTON class="btn btn-success" type="submit">Submit</BUTTON>
+                            </div>
+                        </div>
+                    </form>
+                {% endfor %}
+            {% else %}
+                <h1 style="text-align: center">You Have no Discharge Medicines</h1>
+            {% endif %}
+    </div>
+</div>
+
+{% endblock patientMedicineList %}

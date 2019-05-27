@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+{# Make modifiable head elements #}
+<head>
+    {% include "header.html" %}
+</head>
+<body class="{% if request.get_full_path == '/patientHistory/' %} body_color
+ {% else %}body
+ {% endif %}"
+      style="{% if request.get_full_path == '/hospital/AddDoctor/' or request.get_full_path == '/hospital/AddPharmacy/' or request.get_full_path == '/hospital/AddLab/' or request.get_full_path == '/hospital/Index/' or request.get_full_path == '/patient/Index/' or '/patient/patientProfileView/' in request.get_full_path or '/hospital/updateDoctor/' in request.get_full_path or '/hospital/updatePharmacy/' in request.get_full_path or '/hospital/hospitalProfileView/' in request.get_full_path or request.get_full_path == '/patient/patientCard/' or '/doctor/doctorProfileView/' in request.get_full_path%}background-image: url('/static/images/index_hero.jpg');
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 148%;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center center;
+          {% else %}
+          {% endif %}">
+<div>
+    <div class="super_container">
+
+    {# Navigation Menu #}
+        {% include "navbar.html" %}
+
+    {# The Document Body #}
+        {# Login Body #}
+            {% block login_content %}
+            {% endblock login_content %}
+        {# pharmacyIndex Body #}
+            {% block pharmacyIndex %}
+            {% endblock pharmacyIndex %}
+        {# pharmacyLogin Body #}
+            {% block pharmacyLogin %}
+            {% endblock pharmacyLogin %}
+        {# labLogin Body #}
+            {% block labLogin %}
+            {% endblock labLogin %}
+        {# hospitalLogin Body #}
+            {% block hospitalLogin %}
+            {% endblock hospitalLogin %}
+        {# labIndex Body #}
+            {% block labIndex %}
+            {% endblock labIndex %}
+        {# signup_content Body #}
+            {% block signup_content %}
+            {% endblock signup_content %}
+        {# patientProfile body#}
+            {% block patientProfile %}
+            {% endblock patientProfile %}
+        {# patientMedicineList body#}
+            {% block patientMedicineList %}
+            {% endblock patientMedicineList %}
+        {# patientAnalyticsList body#}
+            {% block patientAnalyticsList %}
+            {% endblock patientAnalyticsList %}
+        {# patientRaysList body#}
+            {% block patientRaysList %}
+            {% endblock patientRaysList %}
+            </div>
+
+        {# DoctorProfileView body#}
+            {% block DoctorProfileView %}
+            {% endblock DoctorProfileView %}
+        {# patientProfileView body#}
+            {% block patientProfileView%}
+            {% endblock patientProfileView%}
+        {# hospitalProfileView body#}
+            {% block hospitalProfileView%}
+            {% endblock hospitalProfileView %}
+        {# patientCard Body #}
+            {% block patientCard %}
+            {% endblock patientCard %}
+        {# All Patient History #}
+            {% block patient_history_content %}
+            {% endblock patient_history_content %}
+        {# Doctor Index body#}
+            {% block patientIndex %}
+            {% endblock patientIndex %}
+        {# Doctor Index body#}
+            {% block hospitalIndex %}
+            {% endblock hospitalIndex %}
+        {# Home Body #}
+            {% block home_content %}
+            {% endblock home_content %}
+        {# patientDoctor body#}
+            {% block patientDoctor %}
+            {% endblock patientDoctor %}
+        {# doctorProfile body#}
+            {% block doctorProfile %}
+            {% endblock doctorProfile %}
+        {# updateDoctorProfile body#}
+            {% block updateDoctorProfile %}
+            {% endblock updateDoctorProfile %}
+        {# addPharmacy body#}
+            {% block addPharmacy %}
+            {% endblock addPharmacy %}
+        {# updatePharmacy body#}
+            {% block updatePharmacy %}
+            {% endblock updatePharmacy %}
+        {# addLab body#}
+            {% block addLab %}
+            {% endblock addLab %}
+    {# The Footer #}
+        {% include "footer.html" %}
+    </div>
+{% block javascript %}
+{% endblock javascript %}
+</body>
+</html>

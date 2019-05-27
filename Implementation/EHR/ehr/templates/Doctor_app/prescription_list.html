@@ -1,0 +1,18 @@
+{% extends 'Doctor_app/Doctor_base.html' %}
+{% block home_content %}
+
+<div class="info">
+    <div class="container">
+        <div class="row row-eq-height">
+          <ol>
+            {% for p in prescription %}
+                <h2>{{ 115 }}</h2>
+            <h2><li>Report : <a href="{{p.report}}">{{p.prescription.Disease_name}}</a></li></h2>
+            {%endfor%}
+            <p><a class="btn btn-primary"href="{% url 'doctor:presc_create'%}">Create</a></p>
+          </ol>
+        </div>
+    </div>
+</div>
+
+{% endblock home_content %}

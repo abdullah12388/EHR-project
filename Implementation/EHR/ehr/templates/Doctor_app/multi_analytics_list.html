@@ -1,0 +1,19 @@
+{% extends 'Doctor_app/Doctor_base.html' %}
+{% block home_content %}
+
+<div class="info">
+    <div class="container">
+        <div class="row row-eq-height">
+          <ol>
+            {% for m in analytics %}
+            <h2><li>rays : <a href="{% url 'doctor:analyticsdetial' pk=m.P_A_id%}">{{m.P_A.analy.analytics_name}}</a></li></h2>
+            <p {% if forloop.last %}><a  class="btn btn-primary"href="{% url 'doctor:newanalytics' pk=m.report.report%}">CreateAnalytics{% endif %}</a></p>
+            <p {% if forloop.last %}><a  class="btn btn-primary"href="{% url 'doctor:newray' pk=m.report.report%}">Create Rays{% endif %}</a></p>
+            {%endfor%}
+            <p><a class="btn btn-primary" href="{% url 'doctor:prescriptionlist'%}">Prescription List</a></p>
+          </ol>
+        </div>
+    </div>
+</div>
+
+{% endblock home_content %}

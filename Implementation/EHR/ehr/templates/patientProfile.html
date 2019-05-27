@@ -1,0 +1,211 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+{% block patientProfile%}
+
+{% if request.GET.c == "1" %}
+<script>
+    alert('passwords not matched')
+</script>
+{% endif %}
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Profile Creation</h2>
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66)">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-3">
+                    <div class="row">
+                        <div style="width:200px;margin: auto">
+                            <img src="{% static 'images/user.png' %}" alt="profile picture" class="img-thumbnail"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {{ form1.Profile_picture }}
+                        <label for="file1">Choose a file</label>
+                    </div>
+                    <div style="margin-top:45px"></div>
+                    <div class="row">
+                        <div style="width:200px;margin: auto">
+                            <img src="{% static 'images/SSN.png' %}"  alt="SSN" class="img-thumbnail">
+                        </div>
+                    </div>
+                    <div class="row">
+                        {{ form1.SSN_Picture }}
+                        <label for="file2">Upload SSN</label>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+                            {{ form1.first_name }}
+                        </div>
+                        <div class="col">
+                            {{ form1.middle_name }}
+                        </div>
+                        <div class="col">
+                            {{ form1.last_name }}
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+                            {{ form1.country }}
+                        </div>
+                        <div class="col">
+                            {{ form1.state }}
+                        </div>
+                        <div class="col">
+                            {{ form1.city }}
+                        </div>
+                        <div class="col">
+                            {{ form1.street }}
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+                            {{ form1.zip_code }}
+                        </div>
+                        <div class="col">
+                            {{ form1.phone_number }}
+                        </div>
+                        <div class="col">
+                            {{ form1.home_phone_number }}
+                        </div>
+                        <div class="col">
+                            {{ form1.work_phone_number }}
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+{#                            {{ form1.gender }}#}
+                            <select class="form-control" name="gender" required>
+                                <option value="" selected disabled>Gender</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">Other</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            {{ form1.Date_of_birth }}
+                        </div>
+                        <div class="col">
+{#                            {{ form1.marital_status}}#}
+                            <select class="form-control" name="marital_status" required>
+                                <option value="" selected disabled>Marital Status</option>
+                                <option value="1">Single</option>
+                                <option value="2">Married</option>
+                                <option value="3">Separated</option>
+                                <option value="4">Divorced</option>
+                                <option value="5">Widowed</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            {{ form1.Child_num }}
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+                            {{ form1.email_1 }}
+                            <b id="warn" class="hide">
+                                <i class="fa fa-warning" aria-hidden="true"></i>
+                                email already exist
+                            </b>
+                        </div>
+                        <div class="col">
+                            {{ form1.email_2 }}
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+                            {{ form1.Nationality }}
+                        </div>
+                        <div class="col">
+                            {{ form1.Job_name }}
+                        </div>
+                        <div class="col">
+                            {{ form1.Job_organization }}
+                        </div>
+                        <div class="col">
+                            {{ form1.Jop_place }}
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col-6">
+                            {{ form1.Ssn }}
+                        </div>
+                        <div class="col">
+                            {{ form1.New_Password }}
+                            <b id="warn1" class="hide">
+                                <i class="fa fa-warning" aria-hidden="true"></i>
+                                not matched
+                            </b>
+                        </div>
+                        <div class="col">
+                            {{ form1.Confirm_Pass }}
+                            <b id="warn2" class="hide">
+                                <i class="fa fa-warning" aria-hidden="true"></i>
+                                not matched
+                            </b>
+                        </div>
+                        {{ form1.Ssn_id }}
+                        {{ form1.User_type }}
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+                            {{ form2.Emergency_contact }}
+                        </div>
+                        <div class="col">
+                            {{ form2.Height }}
+                        </div>
+                        <div class="col">
+                            {{ form2.weight }}
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+{#                            {{ form2.Blood_type }}#}
+                            <select class="form-control" name="Blood_type" required>
+                                <option value="" selected disabled>Blood Type</option>
+                                <option value="1">A+</option>
+                                <option value="2">A-</option>
+                                <option value="3">B+</option>
+                                <option value="4">B-</option>
+                                <option value="5">AB+</option>
+                                <option value="6">AB-</option>
+                                <option value="7">O+</option>
+                                <option value="8">O-</option>
+                                <option value="9">Other</option>
+                            </select>
+                        </div>
+                        <div class="col" style="text-align:center">
+{#                            {{ form2.Disability_status }}#}
+{#                            <label style="font-size:2em;color:#32c69a" for="id_Disability_status">Disability</label>#}
+                            <select class="form-control" name="Disability_status" required>
+                                <option value="" selected disabled>Disability Status</option>
+                                <option value="1">Disabled</option>
+                                <option value="2">None</option>
+                            </select>
+                        </div>
+                        <div class="col" style="text-align:center">
+{#                            {{ form2.Chronic_diseases }}#}
+{#                            <label style="font-size:2em;color:#32c69a" for="id_Chronic_diseases">Chronic</label>#}
+                            <select class="form-control" name="Chronic_diseases" required>
+                                <option value="" selected disabled>Chronic Diseases</option>
+                                <option value="1">Have</option>
+                                <option value="2">None</option>
+                            </select>
+                        </div>
+                        {{ form2.QR_code }}
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <button id="id_signup_submit" type="submit" style="width:20%;margin:auto" class="button home_button">Submit</button>
+            </div>
+            <!--<input type="submit" class="form-control" style="width:20%;margin:40px auto 0px auto" value="Submit">-->
+        </form>
+    </div>
+</div>
+{% endblock patientProfile%}

@@ -236,7 +236,7 @@ def home(request):
     # after finishing please change the comment below to get everything from session
     # patient_id = request.session['patient_id']
     patient_id = request.session['patient_id']
-    topDoctor = doctor.objects.annotate(Count('doc_rate')).order_by('-doc_rate')[:1]
+    topDoctor = doctor.objects.annotate(Count('doc_rate')).order_by('-doc_rate')[:50]
     topHospital = hospital.objects.annotate(Count('hos_rate')).order_by('-hos_rate')[:1]
     topLab = organization.objects.filter(Type__exact='1').annotate(Count('org_rate')).order_by('-org_rate')[:1]
     topPharmacy = organization.objects.filter(Type__exact='2').annotate(Count('org_rate')).order_by('-org_rate')[:1]

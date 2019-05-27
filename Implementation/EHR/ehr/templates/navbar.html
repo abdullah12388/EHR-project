@@ -36,12 +36,15 @@
     {% if request.get_full_path == '/patient/Index/' %} height:170px;
     {% elif request.get_full_path == '/hospital/Index/' %} height:170px;
     {% elif request.get_full_path == '/patient/patientProfile/' %} height:950px;
-    {% elif request.get_full_path == '/patient/patientProfileView/' %} height:0px;
+    {% elif '/patient/patientProfileView/' in request.get_full_path %} height:0px;
     {% elif request.get_full_path == '/hospital/AddDoctor/' %} height:0px;
     {% elif request.get_full_path == '/hospital/AddPharmacy/' %} height:0px;
     {% elif request.get_full_path == '/hospital/AddLab/' %} height:0px;
-    {% elif request.get_full_path == '/hospital/hospitalProfileView/' %} height:0px;
+    {% elif '/hospital/hospitalProfileView/' in request.get_full_path %} height:0px;
     {% elif request.get_full_path == '/patient/patientCard/' %} height:0px;
+    {% elif '/doctor/doctorProfileView/' in request.get_full_path %} height:0px;
+    {% elif '/hospital/updateDoctor/' in request.get_full_path %} height:0px;
+    {% elif '/hospital/updatePharmacy/' in request.get_full_path %} height:0px;
     {% endif %}">
     <div class="
     {% if request.get_full_path == '/patient/patientHistory/' %}
@@ -55,9 +58,12 @@
     {% elif request.get_full_path == '/hospital/AddDoctor/' %} display:none;
     {% elif request.get_full_path == '/hospital/AddPharmacy/' %} display:none;
     {% elif request.get_full_path == '/hospital/AddLab/' %} display:none;
-    {% elif request.get_full_path == '/hospital/hospitalProfileView/' %} display:none;
-    {% elif request.get_full_path == '/patient/patientProfileView/' %} display:none;
+    {% elif '/hospital/hospitalProfileView/' in request.get_full_path %} display:none;
+    {% elif '/patient/patientProfileView/' in request.get_full_path %} display:none;
     {% elif request.get_full_path == '/patient/patientCard/' %} display:none;
+    {% elif '/doctor/doctorProfileView/' in request.get_full_path %} display:none;
+    {% elif '/hospital/updateDoctor/' in request.get_full_path %} display:none;
+    {% elif '/hospital/updatePharmacy/' in request.get_full_path %} display:none;
     {% endif %}
     "></div>
 
@@ -103,7 +109,7 @@
                                                 {% elif 'patient_id' in request.session %}
                                                     <li><a href="{% url 'patient:home'%}">Home</a></li>
                                                 {% elif 'doctor_id' in request.session %}
-                                                    <li><a href="{% url 'doctor:patiant_id'%}">Home</a></li>
+                                                    <li><a href="{% url 'doctor:doctor'%}">Home</a></li>
                                                 {% elif 'hospital_id' in request.session %}
                                                     <li><a href="{% url 'hospital:Index'%}">Home</a></li>
                                                 {% elif 'pharmacy_id' in request.session %}
@@ -124,10 +130,10 @@
                                                     <li><a href="{% url 'patient:logout'%}">Logout</a></li>
                                                 {% elif 'doctor_id' in request.session %}
                                                     <li><a href="{% url 'doctor:patiant_id'%}">Enter A Patiant</a></li>
-                                                    <li><a href="#">Profile</a></li>
+{#                                                    <li><a href="{% url 'doctor:doctor_profile_view' docid=ID %}">Profile</a></li>#}
                                                     <li><a href="{% url 'patient:logout' %}">Logout</a></li>
                                                 {% elif 'hospital_id' in request.session %}
-                                                    <li><a href="{% url 'hospital:hospital_profile_view' %}">Profile</a></li>
+                                                    <li><a href="{% url 'hospital:hospital_profile_view' hosid=hospital.h_id%}">Profile</a></li>
                                                     <li><a href="{% url 'hospital:hospitalLogout'%}">Logout</a></li>
                                                 {% elif 'pharmacy_id' in request.session %}
                                                     <li><a href="#">Profile</a></li>

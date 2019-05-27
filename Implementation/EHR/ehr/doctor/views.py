@@ -53,7 +53,7 @@ def GetPatianTID (request):
                     return HttpResponseRedirect('/doctor/patiant/?alert=wrong_password')
         else:
             Get_PatianT_ID_Form = GetPatianTIDForm()
-            return render(request,'Doctor_app/Patiant_ID_singup.html',{'Patiant_form':Get_PatianT_ID_Form})
+            return render(request,'Doctor_app/Patiant_ID_singup.html',{'ID':request.session['doctor_id'],'Patiant_form':Get_PatianT_ID_Form})
 
 class ReportListView(ListView):
     model = report
@@ -323,10 +323,10 @@ class analyticsFormView (FormView):
         else:
            return super().render_to_response(redirect_url)
 
-def doctor_profile_view(request):
-    docid = doctor.objects.get(id=request.session['doctor_id']).Doc_id
-    doctordata = doctor.objects.get(Doc_id=docid)
-    userdata = user.objects.get(user_id=docid)
+def doctor_profile_view(request,docid):
+    id = doctor.objects.get(id=docid).Doc_id
+    doctordata = doctor.objects.get(Doc_id=id)
+    userdata = user.objects.get(user_id=id)
     context ={
         'user': userdata,
         'doctor': doctordata,

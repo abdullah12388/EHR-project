@@ -132,7 +132,7 @@
                        <div class="topdiv" style="overflow: auto;">
                            {% if topDoctor %}
                                {% for doctor in topDoctor %}
-                                   <a class="tops" href="#">
+                                   <a class="tops" href="{% url 'doctor:doctor_profile_view' docid=doctor.id %}">
                                        <div class="row" style="text-align: center;width: 100%;margin-bottom: 3px;">
                                         {#profile Picture area#}
                                             <div class="col-sm-4">
@@ -168,7 +168,7 @@
                         <div class="topdiv" style="overflow: auto;">
                             {% if topHospital %}
                                 {% for hospital in topHospital %}
-                                    <a class="tops" href="#">
+                                    <a class="tops" href="{% url 'hospital:hospital_profile_view' hosid=hospital.h_id%}">
                                         <div class="row" style="text-align: center;width: 100%;margin-bottom: 3px;">
                                         {# hospital image #}
                                             <div class="col-sm-4">
@@ -283,7 +283,7 @@
                                 <div class="bord txer" disabled style="overflow: auto">
                                     <p style="font-size: 20px;color: #32c69a;font-weight: bold;">Hospitals</p>
                                     {% for hospital in hospitals %}
-                                        <a class="tops" href="#">
+                                        <a class="tops" href="{% url 'hospital:hospital_profile_view' hosid=hospital.h_id%}">
                                             {{ hospital.h_name }}
                                         </a><br>
                                     {% endfor %}

@@ -330,6 +330,37 @@ def maritalStatus(num):
 # end of doctor profile
 
 
+def update_pharmacy(request,pharid,hosid):
+    if request.method == 'POST':
+        phr = organization.objects.filter(Type=1).filter(hospital_id=hosid).filter(org_id=pharid)
+        # upload profile,ssn pictures and save paths to database
+        fs = FileSystemStorage()
+        if 'org_logo' in request.FILES:
+            profile_picture_file = request.FILES['org_logo']
+            ppf_name = fs.save(profile_picture_file.name, profile_picture_file)
+            or_log = '/hospital' + fs.url(ppf_name)
+            phr.update(org_logo=or_log)
+        phr.update(org_name=request.POST['org_name'])
+        phr.update(org_website=request.POST['org_website'])
+        phr.update(org_country=request.POST['org_country'])
+        phr.update(org_state=request.POST['org_state'])
+        phr.update(org_city=request.POST['org_city'])
+        phr.update(org_zipcode=request.POST['org_zipcode'])
+        phr.update(org_phone_num=request.POST['org_phone_num'])
+        phr.update(org_email=request.POST['org_email'])
+        phr.update(hr_username=request.POST['hr_username'])
+        phr.update(hr_password=request.POST['hr_password'])
+        return HttpResponseRedirect('/hospital/Index/')
+    else:
+        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
+        pharmacyData = organization.objects.filter(Type=1).filter(hospital_id=hosid).get(org_id=pharid)
+        context={
+            'hospital': hospitaldata,
+            'pharmacyData':pharmacyData,
+        }
+        return render(request, 'updatePharmacy.html',context)
+
+
 def add_pharmacy(request):
     if request.method == 'POST':
         # upload profile,ssn pictures and save paths to database
@@ -398,8 +429,9 @@ def unblock_doctor(request,ssn):
     return HttpResponseRedirect('/hospital/Index/')
 
 
-def hospital_profile_view(request):
-    hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
+def hospital_profile_view(request,hosid):
+    # hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
+    hospitaldata = hospital.objects.get(h_id=hosid)
     context ={
         'hospital': hospitaldata,
     }

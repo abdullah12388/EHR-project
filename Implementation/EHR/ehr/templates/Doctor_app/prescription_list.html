@@ -1,20 +1,84 @@
 {% extends 'Doctor_app/Doctor_base.html' %}
 {% block home_content %}
 
-<div class="info">
-    <div class="container">
-        <div class="row row-eq-height">
-          <ol>
-
-            {% for p in prescription %}
-            <h2><li>Report : <a href="{{p.report}}">{{p.prescription.Disease_name}}</a></li></h2>
-                <h2> 55 {{ p.patient.Patient.Profile_picture }}</h2>
-            {%endfor%}
-            <p><a class="btn btn-primary"href="{% url 'doctor:presc_create'%}">Create</a></p>
-
-          </ol>
-        </div>
+{#<div class="info">#}
+{#    <div class="container">#}
+{#        <div class="row row-eq-height">#}
+{#          <ol>#}
+{##}
+{#            {% for p in prescription %}#}
+{#            <h2><li>Report : <a href="{{p.report}}">{{p.prescription.Disease_name}}</a></li></h2>#}
+{#                <h2> 55 {{ p.patient.Patient.Profile_picture }}</h2>#}
+{#            {%endfor%}#}
+{#            <p><a class="btn btn-primary"href="{% url 'doctor:presc_create'%}">Create</a></p>#}
+{##}
+{#          </ol>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+<div class="container">
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);margin-top:30px;color: #FFF">
+        {% if prescription %}
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="row" style="border-bottom: solid 5px #32c69a">
+                        <div class="col-sm-2" style="margin: auto 0px auto 0px;"></div>
+                        <div class="col-sm-3" style="margin-bottom: 10px">
+                            <a href="#">
+                                {% with report=prescription|first %}
+                                    <img class="ima" src="{{ report.patient.Patient.Profile_picture }}" style="width: 70px;height: 70px">
+                                {% endwith %}
+                            </a>
+                        </div>
+                        <div class="col-sm-7 topName" style="margin: auto 0px;">
+                            {% with report=prescription|first %}
+                                <label style="font-size: 22px">{{ report.patient.Patient.first_name }}</label>
+                                <label style="font-size: 22px">{{ report.patient.Patient.middle_name }}</label>
+                                <label style="font-size: 22px">{{ report.patient.Patient.last_name }}</label>
+                            {% endwith %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4" style="text-align: center">
+                    <a href="{% url 'doctor:presc_create'%}">
+                        <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Create</button>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col-sm" style="text-align: center">
+                            <label style="font-size: 30px;font-weight: bold;margin: 10px;border-bottom: solid 5px #32c69a;">Prescriptions</label>
+                        </div>
+                    </div>
+                    {% for p in prescription|slice:':10' %}
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h3>{{ p.Submit_date }}</h3>
+                            </div>
+                            <div class="col-sm-3">
+                                <h3>{{ p.prescription.Disease_name|upper }}</h3>
+                            </div>
+                            <div class="col-sm-2">
+                                <h3>{{ p.prescription.Doctor_signature|upper }}</h3>
+                            </div>
+                            <div class="col-sm-2">
+                                <a href="{% url 'doctor:update'  pk=p.pk %}">
+                                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Update</button>
+                                </a>
+                            </div>
+                            <div class="col-sm-2">
+                                <a href="{{ p.report }}">
+                                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Details</button>
+                                </a>
+                            </div>
+                        </div>
+                    {%endfor%}
+                </div>
+            </div>
+        {% endif %}
     </div>
 </div>
-
 {% endblock home_content %}
+{% url 'doctor:update'  pk=presc_detial.pk%}

@@ -45,6 +45,7 @@
     {% elif '/doctor/doctorProfileView/' in request.get_full_path %} height:0px;
     {% elif '/hospital/updateDoctor/' in request.get_full_path %} height:0px;
     {% elif '/hospital/updatePharmacy/' in request.get_full_path %} height:0px;
+    {% elif '/hospital/updateLab/' in request.get_full_path %} height:0px;
     {% endif %}">
     <div class="
     {% if request.get_full_path == '/patient/patientHistory/' %}
@@ -64,6 +65,7 @@
     {% elif '/doctor/doctorProfileView/' in request.get_full_path %} display:none;
     {% elif '/hospital/updateDoctor/' in request.get_full_path %} display:none;
     {% elif '/hospital/updatePharmacy/' in request.get_full_path %} display:none;
+    {% elif '/hospital/updateLab/' in request.get_full_path %} display:none;
     {% endif %}
     "></div>
 
@@ -136,7 +138,7 @@
                                                     <li><a href="{% url 'hospital:hospital_profile_view' hosid=hospital.h_id %}">Profile</a></li>
                                                     <li><a href="{% url 'hospital:hospitalLogout'%}">Logout</a></li>
                                                 {% elif 'pharmacy_id' in request.session %}
-                                                    <li><a href="#">Profile</a></li>
+                                                    <li><a href="{% url 'pharmacy:pharmacy_profile_view' %}">Profile</a></li>
                                                     <li><a href="{% url 'pharmacy:pharmacyLogout'%}">Logout</a></li>
                                                 {% elif 'lab_id' in request.session %}
                                                     <li><a href="#">Profile</a></li>

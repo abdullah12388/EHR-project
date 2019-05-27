@@ -3,7 +3,7 @@ from django.http import request, HttpResponseRedirect, HttpResponseNotFound, Htt
 from django.shortcuts import render, get_object_or_404
 from django.template import context
 from django.views import generic
-from hospital.models import organization
+from hospital.models import organization,hospital
 from patient.models import patient, user
 from doctor.models import report, all_medicine, prescription, patient_medicine
 from patient.forms import patientLoginToPharmacyForm
@@ -89,3 +89,21 @@ def medicineListView(request):
             return HttpResponse("You don't have any medicines")
     else:
         return HttpResponseNotFound('<h1>patient not found</h1>')
+
+# def pharmacy_profile_view(request):
+#     # hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
+#     pharmacyData = organization.objects.filter(Type=1).filter(hospital_id=hosid).get(org_id=pharid)
+#     hospitaldata = hospital.objects.get(h_id=hosid)
+#     context ={
+#         'hospital': hospitaldata,
+#         'pharmacy':pharmacyData,
+#     }
+#     return render(request, 'pharmacyProfileView.html',context)
+
+def pharmacy_profile_view(request,pharid):
+    # pharmacyData = organization.objects.filter(Type=1).get(org_id=request.session['pharmacy_id'])
+    pharmacyData = organization.objects.filter(Type=1).get(org_id=pharid)
+    context ={
+        'pharmacy': pharmacyData,
+    }
+    return render(request, 'pharmacyProfileView.html',context)

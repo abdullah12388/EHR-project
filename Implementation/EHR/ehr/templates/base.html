@@ -7,7 +7,7 @@
 <body class="{% if request.get_full_path == '/patientHistory/' %} body_color
  {% else %}body
  {% endif %}"
-      style="{% if request.get_full_path == '/hospital/AddDoctor/' or request.get_full_path == '/hospital/AddPharmacy/' or request.get_full_path == '/hospital/AddLab/' or request.get_full_path == '/hospital/Index/' or request.get_full_path == '/patient/Index/' or '/patient/patientProfileView/' in request.get_full_path or '/hospital/updateDoctor/' in request.get_full_path or '/hospital/updatePharmacy/' in request.get_full_path or '/hospital/hospitalProfileView/' in request.get_full_path or request.get_full_path == '/patient/patientCard/' or '/doctor/doctorProfileView/' in request.get_full_path%}background-image: url('/static/images/index_hero.jpg');
+      style="{% if request.get_full_path == '/hospital/AddDoctor/' or request.get_full_path == '/hospital/AddPharmacy/' or request.get_full_path == '/hospital/AddLab/' or request.get_full_path == '/hospital/Index/' or request.get_full_path == '/patient/Index/' or '/patient/patientProfileView/' in request.get_full_path or '/hospital/updateDoctor/' in request.get_full_path or '/hospital/updatePharmacy/' in request.get_full_path or '/hospital/updateLab/' in request.get_full_path or '/hospital/hospitalProfileView/' in request.get_full_path or request.get_full_path == '/patient/patientCard/' or '/doctor/doctorProfileView/' in request.get_full_path%}background-image: url('/static/images/index_hero.jpg');
           top: 0;
           left: 0;
           width: 100%;
@@ -68,6 +68,9 @@
         {# hospitalProfileView body#}
             {% block hospitalProfileView%}
             {% endblock hospitalProfileView %}
+        {# pharmacyProfileView body#}
+            {% block pharmacyProfileView%}
+            {% endblock pharmacyProfileView %}
         {# patientCard Body #}
             {% block patientCard %}
             {% endblock patientCard %}
@@ -98,6 +101,9 @@
         {# updatePharmacy body#}
             {% block updatePharmacy %}
             {% endblock updatePharmacy %}
+        {# updateLab body#}
+            {% block updateLab %}
+            {% endblock updateLab %}
         {# addLab body#}
             {% block addLab %}
             {% endblock addLab %}

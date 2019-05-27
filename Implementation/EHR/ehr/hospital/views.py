@@ -414,11 +414,12 @@ def update_lab(request,labid,hosid):
     else:
         hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
         labData = organization.objects.filter(Type=2).filter(hospital_id=hosid).get(org_id=labid)
+        print(labData.org_name)
         context={
             'hospital': hospitaldata,
             'labData':labData,
         }
-        return render(request, 'updatePharmacy.html',context)
+        return render(request, 'updateLab.html',context)
 
 def add_Lab(request):
     if request.method == 'POST':

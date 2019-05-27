@@ -1,3 +1,4 @@
+from django.conf.urls import url
 from django.urls import path
 from pharmacy import views
 from django.conf import settings
@@ -10,6 +11,7 @@ urlpatterns = [
     path('logout/', views.pharmacyLogout, name='pharmacyLogout'),
     path('pharmacyPatientLogin/', views.pharmacyPatientLogin, name='pharmacyPatientLogin'),
     path('pharmacyPatientLogin/medicines/',views.medicineListView, name = 'medicineListView'),
+    path('hospitalProfileView/', views.pharmacy_profile_view, name='pharmacy_profile_view'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

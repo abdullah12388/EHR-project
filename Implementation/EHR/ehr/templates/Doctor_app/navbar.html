@@ -126,7 +126,7 @@
                                                     <li><a href="{% url 'patient:logout'%}">Logout</a></li>
                                                 {% elif 'doctor_id' in request.session %}
                                                     <li><a href="{% url 'doctor:patiant_id'%}">Enter A Patiant</a></li>
-                                                    <li><a href="{% url 'doctor:doctor_profile_view' docid=ID %}">Profile</a></li>
+                                                    <li><a href="{% url 'doctor:doctor_profile_view' %}">Profile</a></li>
                                                     <li><a href="{% url 'patient:logout' %}">Logout</a></li>
                                                 {% elif 'hospital_id' in request.session %}
                                                     <li><a href="{% url 'hospital:hospital_profile_view' %}">Profile</a></li>

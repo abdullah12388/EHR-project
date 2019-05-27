@@ -64,8 +64,10 @@ class ReportListView(ListView):
     def get_queryset (self):
         if 'Doctor_Patiant_ID' in self.request.session:
             Doctor_Patiant_ID = self.request.session['Doctor_Patiant_ID']
+            print(Doctor_Patiant_ID);
         else:
             print("not Found");
+
         return report.objects.filter(patient=Doctor_Patiant_ID)
 
     def render_to_response(self , redirect_url):
@@ -323,8 +325,8 @@ class analyticsFormView (FormView):
         else:
            return super().render_to_response(redirect_url)
 
-def doctor_profile_view(request,docid):
-    id = doctor.objects.get(id=docid).Doc_id
+def doctor_profile_view(request):
+    id = doctor.objects.get(id=request.session['doctor_id']).Doc_id
     doctordata = doctor.objects.get(Doc_id=id)
     userdata = user.objects.get(user_id=id)
     context ={

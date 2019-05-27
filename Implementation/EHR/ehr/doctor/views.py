@@ -37,6 +37,8 @@ def GetPatianTID (request):
                 if user_is_exist:
                     get = user.objects.get(email_1=Email)
                     user_id = get.user_id
+                    patientget = patient.objects.get(Patient_id = user_id)
+                    p_id = patientget.id
                     print(user_id)
                     password_db = get.New_Password
                     print(password_db)
@@ -46,7 +48,7 @@ def GetPatianTID (request):
                     if user_Type_number != 1:
                         return HttpResponseRedirect('/doctor/patiant/?alert=Not A Patiant')
                     if user_Type_number == 1:
-                        request.session['Doctor_Patiant_ID']  = user_id
+                        request.session['Doctor_Patiant_ID']  = p_id
                         print(request.session['Doctor_Patiant_ID'])
                         return HttpResponseRedirect('/doctor/patiant/prescription/')
                 else:
@@ -103,7 +105,7 @@ class prescriptionFormView (FormView):
         if 'doctor_id' in self.request.session:
             D_ID = self.request.session['doctor_id']
         Prescription_Instance = prescription.objects.last()
-        patient_instance = patient.objects.get(Patient=Doctor_Patiant_ID)
+        patient_instance = patient.objects.get(id=Doctor_Patiant_ID)
         Doc_instance = doctor.objects.get(id=D_ID)
         create_report = report.objects.create(prescription=Prescription_Instance,doctor=Doc_instance,patient=patient_instance)
         return HttpResponseRedirect(reverse('doctor:newmed', kwargs={'pk':create_report.report}))
@@ -180,7 +182,7 @@ class MedicenFormView (FormView):
         if 'Doctor_Patiant_ID' in self.request.session:
             Doctor_Patiant_ID = self.request.session['Doctor_Patiant_ID']
         instance = form.save(commit=False)
-        instance.pat = patient.objects.get(Patient=Doctor_Patiant_ID)
+        instance.pat = patient.objects.get(id=Doctor_Patiant_ID)
         instance.save()
         P_mdecine_instance = patient_medicine.objects.last()
         print(self.kwargs['pk'])
@@ -240,7 +242,7 @@ class raysFormView (FormView):
         if 'Doctor_Patiant_ID' in self.request.session:
             Doctor_Patiant_ID = self.request.session['Doctor_Patiant_ID']
         instance = form.save(commit=False)
-        instance.pat = patient.objects.get(Patient=Doctor_Patiant_ID)
+        instance.pat = patient.objects.get(id=Doctor_Patiant_ID)
         instance.save()
         P_ray_instance = patient_rays.objects.last()
         print(self.kwargs['pk'])
@@ -308,7 +310,7 @@ class analyticsFormView (FormView):
         if 'Doctor_Patiant_ID' in self.request.session:
             Doctor_Patiant_ID = self.request.session['Doctor_Patiant_ID']
         instance = form.save(commit=False)
-        instance.pat = patient.objects.get(Patient=Doctor_Patiant_ID)
+        instance.pat = patient.objects.get(id=Doctor_Patiant_ID)
         instance.save()
         P_analytics_instance = patient_analytics.objects.last()
         print(self.kwargs['pk'])

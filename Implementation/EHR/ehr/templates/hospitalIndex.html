@@ -56,7 +56,7 @@
                             {% for doct in doctor %}
                             <div class="row" style="margin-bottom: 5px">
                                 <div class="col-sm" style="text-align: center;margin: auto;">
-                                    <a href="{% url 'doctor:doctor_profile_view' docid=doct.id %}">
+                                    <a href="{% url 'doctor:doctor_profile_view' %}">
                                         <img class="ima" src="{{ doct.Doc.Profile_picture }}" style="width: 50px;height: 50px">
                                     </a>
                                 </div>
@@ -130,7 +130,7 @@
                                         <label style="font-size: 22px;margin: auto;">{{ lb.org_name }}</label>
                                     </div>
                                     <div class="col-sm" style="text-align: center;">
-                                        <a href="#">
+                                        <a href="{% url 'hospital:update_lab' labid=lb.org_id hosid=hospital.h_id %}">
                                             <button type="submit" style="width: 55%;height: 40px;margin-top: 10px;font-size: 18px;border-radius: 50px;" class="button home_button">Update</button>
                                         </a>
                                     </div>

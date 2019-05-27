@@ -39,7 +39,6 @@ def GetPatianTID (request):
                     user_id = get.user_id
                     patientget = patient.objects.get(Patient_id = user_id)
                     p_id = patientget.id
-                    print(p_id)
                     print(user_id)
                     password_db = get.New_Password
                     print(password_db)
@@ -107,7 +106,6 @@ class prescriptionFormView (FormView):
             D_ID = self.request.session['doctor_id']
         Prescription_Instance = prescription.objects.last()
         patient_instance = patient.objects.get(id=Doctor_Patiant_ID)
-        print(Doctor_Patiant_ID);
         Doc_instance = doctor.objects.get(id=D_ID)
         create_report = report.objects.create(prescription=Prescription_Instance,doctor=Doc_instance,patient=patient_instance)
         return HttpResponseRedirect(reverse('doctor:newmed', kwargs={'pk':create_report.report}))

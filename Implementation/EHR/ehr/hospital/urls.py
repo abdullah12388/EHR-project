@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^AddDoctor/$', views.add_doctor, name='add_doctor'),
     url(r'^updateDoctor/(?P<Docid>\w+)/$', views.update_doctor, name='update_doctor'),
     url(r'^updatePharmacy/(?P<pharid>\w+)/(?P<hosid>\w+)/$', views.update_pharmacy, name='update_pharmacy'),
+    url(r'^updateLab/(?P<labid>\w+)/(?P<hosid>\w+)/$', views.update_lab, name='update_lab'),
     url(r'^resetDocPassowrd/(?P<id>\w+)/$', views.reset_doc_passowrd, name='reset_doc_passowrd'),
     url(r'^AddPharmacy/$', views.add_pharmacy, name='add_pharmacy'),
     url(r'^AddLab/$', views.add_Lab, name='add_Lab'),

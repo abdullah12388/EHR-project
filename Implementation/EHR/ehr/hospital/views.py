@@ -364,7 +364,6 @@ def update_pharmacy(request,pharid,hosid):
         }
         return render(request, 'updatePharmacy.html',context)
 
-
 def add_pharmacy(request):
     if request.method == 'POST':
         # upload profile,ssn pictures and save paths to database
@@ -390,6 +389,36 @@ def add_pharmacy(request):
     else:
         hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
         return render(request, 'addPharmacy.html',{'hospital': hospitaldata,})
+
+def update_lab(request,labid,hosid):
+    if request.method == 'POST':
+        labor = organization.objects.filter(Type=2).filter(hospital_id=hosid).filter(org_id=labid)
+        # upload profile,ssn pictures and save paths to database
+        fs = FileSystemStorage()
+        if 'org_logo' in request.FILES:
+            profile_picture_file = request.FILES['org_logo']
+            ppf_name = fs.save(profile_picture_file.name, profile_picture_file)
+            or_log = '/hospital' + fs.url(ppf_name)
+            labor.update(org_logo=or_log)
+        labor.update(org_name=request.POST['org_name'])
+        labor.update(org_website=request.POST['org_website'])
+        labor.update(org_country=request.POST['org_country'])
+        labor.update(org_state=request.POST['org_state'])
+        labor.update(org_city=request.POST['org_city'])
+        labor.update(org_zipcode=request.POST['org_zipcode'])
+        labor.update(org_phone_num=request.POST['org_phone_num'])
+        labor.update(org_email=request.POST['org_email'])
+        labor.update(hr_username=request.POST['hr_username'])
+        labor.update(hr_password=request.POST['hr_password'])
+        return HttpResponseRedirect('/hospital/Index/')
+    else:
+        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
+        labData = organization.objects.filter(Type=2).filter(hospital_id=hosid).get(org_id=labid)
+        context={
+            'hospital': hospitaldata,
+            'labData':labData,
+        }
+        return render(request, 'updatePharmacy.html',context)
 
 def add_Lab(request):
     if request.method == 'POST':

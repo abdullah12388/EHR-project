@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ee7bb95e-92ac-4fdd-8d7d-d7cb004bdf89" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/patient/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/patient/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/patient/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/patient/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/login.html" afterDir="false" />
-    </list>
+    <list default="true" id="ee7bb95e-92ac-4fdd-8d7d-d7cb004bdf89" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,7 +319,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="314974000" />
+    <option name="totallyTimeSpent" value="315275000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

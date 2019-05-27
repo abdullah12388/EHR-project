@@ -27,32 +27,25 @@ def GetPatianTID (request):
         return HttpResponseRedirect('/patient/')
     else:
         if request.method == 'POST':
-            Get_PatianT_ID_Form = GetPatianTIDForm(request.POST)
-            if Get_PatianT_ID_Form.is_valid():
-                Email = Get_PatianT_ID_Form.cleaned_data.get('email_1')
-                print(Email)
-                password = Get_PatianT_ID_Form.cleaned_data.get('New_Password')
-                print(password)
-                user_is_exist = user.objects.filter(email_1__iexact=Email).exists()
-                if user_is_exist:
-                    get = user.objects.get(email_1=Email)
-                    user_id = get.user_id
-                    patientget = patient.objects.get(Patient_id = user_id)
-                    p_id = patientget.id
-                    print(user_id)
-                    password_db = get.New_Password
-                    print(password_db)
-                    user_Type_number = get.User_type
-                    print(user_Type_number)
-                if check_password(password=password , encoded=password_db):
-                    if user_Type_number != 1:
-                        return HttpResponseRedirect('/doctor/patiant/?alert=Not A Patiant')
-                    if user_Type_number == 1:
-                        request.session['Doctor_Patiant_ID']  = p_id
-                        print(request.session['Doctor_Patiant_ID'])
-                        return HttpResponseRedirect('/doctor/patiant/prescription/')
-                else:
-                    return HttpResponseRedirect('/doctor/patiant/?alert=wrong_password')
+            ssn_id = request.POST['pat_id']
+            print(ssn_id)
+            user_is_exist = user.objects.filter(Ssn_id=ssn_id).exists()
+            if user_is_exist:
+                get = user.objects.get(Ssn_id=ssn_id)
+                user_id = get.user_id
+                patientget = patient.objects.get(Patient_id = user_id)
+                p_id = patientget.id
+                print(user_id)
+                user_Type_number = get.User_type
+                print(user_Type_number)
+
+            if user_Type_number != 1:
+                return HttpResponseRedirect('/doctor/patiant/?alert=Not A Patiant')
+            if user_Type_number == 1:
+                request.session['Doctor_Patiant_ID']  = p_id
+                print(request.session['Doctor_Patiant_ID'])
+                return HttpResponseRedirect('/doctor/patiant/prescription/')
+
         else:
             Get_PatianT_ID_Form = GetPatianTIDForm()
             return render(request,'Doctor_app/Patiant_ID_singup.html',{'ID':request.session['doctor_id'],'Patiant_form':Get_PatianT_ID_Form})

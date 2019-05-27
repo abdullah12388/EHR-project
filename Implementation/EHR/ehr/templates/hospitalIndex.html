@@ -56,7 +56,7 @@
                             {% for doct in doctor %}
                             <div class="row" style="margin-bottom: 5px">
                                 <div class="col-sm" style="text-align: center;margin: auto;">
-                                    <a href="{% url 'doctor:doctor_profile_view' docid=doct.id %}">
+                                    <a href="{% url 'doctor:doctor_profile_view' %}">
                                         <img class="ima" src="{{ doct.Doc.Profile_picture }}" style="width: 50px;height: 50px">
                                     </a>
                                 </div>

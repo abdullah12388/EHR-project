@@ -229,9 +229,11 @@ def update_doctor(request,Docid):
         ########################################################
         return HttpResponseRedirect('/hospital/Index/')
     else:
+        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
         doctorData = doctor.objects.get(Doc_id=Docid)
         userData = user.objects.get(user_id=Docid)
         context={
+            'hospital':hospitaldata,
             'doctorData':doctorData,
             'userData':userData,
         }
@@ -298,9 +300,12 @@ def add_doctor(request):
             print('form one')
             print(formu.errors)
     else:
+        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
+        print(hospitaldata)
         form1 = AddUser()
         B_Doctor = doctor.objects.filter(hospital_id__isnull=True)
         context = {
+            'hospital': hospitaldata,
             'form1': form1,
             'b_d': B_Doctor,
         }
@@ -384,7 +389,8 @@ def add_pharmacy(request):
         pharmacy.save()
         return HttpResponseRedirect('/hospital/Index/')
     else:
-        return render(request, 'addPharmacy.html',{})
+        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
+        return render(request, 'addPharmacy.html',{'hospital': hospitaldata,})
 
 def add_Lab(request):
     if request.method == 'POST':
@@ -409,7 +415,8 @@ def add_Lab(request):
         pharmacy.save()
         return HttpResponseRedirect('/hospital/Index/')
     else:
-        return render(request, 'addLab.html',{})
+        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
+        return render(request, 'addLab.html',{'hospital': hospitaldata,})
 
 
 def delete_doctor(request,Did):

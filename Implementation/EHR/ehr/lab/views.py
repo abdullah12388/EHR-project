@@ -1,16 +1,14 @@
-from django.contrib.auth.decorators import login_required
-from django.http import request, HttpResponseRedirect, HttpResponseNotFound, HttpResponse
-from django.shortcuts import render, get_object_or_404
-from django.template import context
-from django.views import generic
 from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponseRedirect, HttpResponseNotFound, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponseNotFound, HttpResponse
+from django.shortcuts import render, redirect
+from doctor.models import patient_analytics, patient_rays
 from hospital.models import organization
+from patient.views import QRCodeScanner
 from patient.models import patient, user
-from doctor.models import report, all_medicine, prescription, patient_analytics,patient_rays
-from patient.forms import patientLoginToPharmacyForm
 
-
-
+globalVariableForScanningQRCode = ''
+data = ""
 def labLogin(request):
     if request.method == 'POST':
         labName = request.POST['lab_name']
@@ -46,8 +44,9 @@ def labLogout(request):
     return HttpResponseRedirect('/lab/')
 
 
-def labPatientLogin(request):
+def labPatientLogin(request ):
     if request.method == 'POST':
+
         ssn_id = request.POST['pat_id']
         u_id = user.objects.get(Ssn_id=ssn_id).user_id
         request.session['patie_id'] = u_id
@@ -60,7 +59,20 @@ def labPatientLogin(request):
         else:
             print('Please Choose right type')
     else:
-        return render(request,'labIndex.html',{})
+        if 'ssnid' not in request.session:
+            return render(request,'labIndex.html',{})
+        else:
+            return render(request, 'labIndex.html', {'SSN_ID': request.session['ssnid']})
+
+
+def QRCodeScanView(request):
+    QRData = QRCodeScanner()
+    QRData = QRData.decode("UTF-8")
+    request.session['ssnid'] = QRData
+    return HttpResponseRedirect('/lab/labPatientLogin/')
+
+
+
 
 
 def AnalyticsListView(request):

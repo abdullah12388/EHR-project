@@ -659,14 +659,7 @@ def QRCodeScanner():
 def QRCodeScanView(request):
     QRData = QRCodeScanner()
     QRData = QRData.decode("UTF-8")
-    # rsplit("'")[1]
-    # print(QRData.decode("UTF-8"))
     get = user.objects.get(Ssn_id=QRData)
-    print(get)
-    print("######################")
-    print(get)
-
-
     if get:
         user_Type_number = get.User_type
         if user_Type_number == 2:
@@ -682,7 +675,7 @@ def QRCodeScanView(request):
             request.session['user_T'] = user_Type_number
             return HttpResponseRedirect('/patient/Index/')
     else:
-        return HttpResponse('This ID IS NOT Found')
+        return HttpResponseRedirect('/patient/')
 
 
 

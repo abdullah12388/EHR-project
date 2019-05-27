@@ -5,11 +5,17 @@ from patient.models import user,patient
 from .models import (prescription,report,doctor,multi_medecines,
 patient_medicine,all_medicine,multi_rays,multi_analytics
 ,patient_rays,all_rays,patient_analytics,multi_analytics)
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.hashers import check_password
 from django.views.generic import (View,TemplateView,DeleteView,DetailView,ListView,CreateView,FormView,UpdateView)
 # from django.core.urlresolvers import reverse
 from django.urls import reverse
+
+
+
+import cv2
+import numpy as np
+import pyzbar.pyzbar as pyzbar
 
 
 def Doctor(request):
@@ -27,6 +33,12 @@ def GetPatianTID (request):
         return HttpResponseRedirect('/patient/')
     else:
         if request.method == 'POST':
+
+            # QRData = patient.views.QRCodeScanner()
+            # QRData = QRData.decode("UTF-8")
+            # if QRData:
+            #     ssn_id = QRData
+            # else:
             ssn_id = request.POST['pat_id']
             print(ssn_id)
             user_is_exist = user.objects.filter(Ssn_id=ssn_id).exists()
@@ -49,6 +61,72 @@ def GetPatianTID (request):
         else:
             Get_PatianT_ID_Form = GetPatianTIDForm()
             return render(request,'Doctor_app/Patiant_ID_singup.html',{'ID':request.session['doctor_id'],'Patiant_form':Get_PatianT_ID_Form})
+
+
+def QRCodeScanner():
+    #to determine which camera you will use
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    #to check if the machine contains a camera
+    if cap is None or not cap.isOpened():
+        print('Warning: unable to open Camera! You might not Have a Camera')
+    else:
+        while True:
+            #to make the camera read and capture frames
+            ret, frame = cap.read()
+            #where QR Code data will be saved
+            decodedObjects = pyzbar.decode(frame)
+            #iterate throw the list which contains QR details
+            for obj in decodedObjects:
+                #if object contains data that means a QR Code is detected
+                if obj.data:
+                    #it waits for a QR Code to be detected
+                    if cv2.waitKey(1):
+                        #it's for stopping the camera and release all resources that we used
+                        if obj.data:
+                            cap.release()
+                            cv2.destroyAllWindows()
+                            #return the QR Code data that we extracted in the for loop
+                            return obj.data
+            #it's to show a frame that contains camera
+            cv2.imshow("Frame", frame)
+            # it waits for a QR Code to be detected
+            if cv2.waitKey(1) :
+                for obj in decodedObjects:
+                    if obj.data:
+                        break
+
+def QRCodeScanView(request):
+    QRData = QRCodeScanner()
+    QRData = QRData.decode("UTF-8")
+    getUser = user.objects.get(Ssn_id=QRData)
+
+
+    if getUser:
+        user_Type_number = getUser.User_type
+
+        ssn_id = QRData
+        print(ssn_id)
+        user_is_exist = user.objects.filter(Ssn_id=ssn_id).exists()
+        if user_is_exist:
+            get = user.objects.get(Ssn_id=ssn_id)
+            user_id = get.user_id
+            patientget = patient.objects.get(Patient_id=user_id)
+            p_id = patientget.id
+            print(user_id)
+            user_Type_number = get.User_type
+            print(user_Type_number)
+
+        if user_Type_number == 1:
+            request.session['Doctor_Patiant_ID'] = p_id
+            print(request.session['Doctor_Patiant_ID'])
+            return HttpResponseRedirect('/doctor/patiant/prescription/')
+        else:
+            return HttpResponseRedirect('/doctor/')
+    else:
+        return HttpResponseRedirect('/doctor/')
+
+
+
 
 class ReportListView(ListView):
     model = report

@@ -1,3 +1,4 @@
+from django.conf.urls import url
 from django.urls import path
 from lab import views
 from django.conf import settings
@@ -11,6 +12,8 @@ urlpatterns = [
     path('labPatientLogin/', views.labPatientLogin, name='labPatientLogin'),
     path('labPatientLogin/Analytics/', views.AnalyticsListView, name='AnalyticsListView'),
     path('labPatientLogin/Rays/', views.RaysListView, name='RaysListView'),
+    url(r'^QRScan/$', views.QRCodeScanView, name='QRCodeScanView'),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

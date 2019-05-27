@@ -6,48 +6,157 @@
     <div class="container">
         <div class="row row-eq-height">
 
-            <!-- Info Box -->
-            <div class="col-lg-4 info_box_col">
-                <div class="info_box">
-                    <div class="info_image"><img src="{% static 'images/info_1.jpg' %}" alt=""></div>
-                    <div class="info_content">
-                        <div class="info_title">Free Consultations</div>
-                        <div class="info_text">Arcu neque, scelerisque eget ligula ac, congue tempor felis. Integer tempor, eros a egestas finibus, dolor risus mollis.</div>
-                        <div class="button info_button"><a href="#"><span>read more</span><span>read more</span></a></div>
-                    </div>
-                </div>
-            </div>
+            	<div class="info">
+		<div class="container" >
+			<div class = "row" style="margin: auto">
+				<div class="col-sm-4 HomeContentStyle ">
+					<h3>last report</h3>
+						<div class="row">
+							<div class="col-sm-6">
+								<label>Created at</label>
+							</div>
+							<div class="col-sm-6">
+								<label>Date</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<label>Next at</label>
+							</div>
+							<div class="col-sm-6">
+								<label>Date</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<label>Description</label>
 
-            <!-- Info Box -->
-            <div class="col-lg-4 info_box_col">
-                <div class="info_box">
-                    <div class="info_image"><img src="{% static 'images/info_2.jpg' %}" alt=""></div>
-                    <div class="info_content">
-                        <div class="info_title">Emergency Care</div>
-                        <div class="info_text">Morbi arcu neque, scelerisque eget ligula ac, congue tempor felis. Integer tempor, eros a egestas finibus, dolor risus.</div>
-                        <div class="button info_button"><a href="#"><span>read more</span><span>read more</span></a></div>
-                    </div>
-                </div>
-            </div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<a  data-toggle="modal" data-target="#loginModal">Medicens</a>
+							</div>
+							<div class="col-sm-6">
+								<a  data-toggle="modal" data-target="#loginModal">Analytics</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm">
+								<a href="" data-toggle="modal" data-target="#loginModal">Rays</a>
 
-            <!-- Info Form -->
-            <div class="col-lg-4 info_box_col">
-                <div class="info_form_container">
-                    <div class="info_form_title">Make an Appointment</div>
-                    <form action="#" class="info_form" id="info_form">
-                        <select name="info_form_dep" id="info_form_dep" class="info_form_dep info_input info_select">
-                            <option>Department</option>
-                            <option>Department</option>
-                            <option>Department</option>
-                        </select>
-                        <select name="info_form_doc" id="info_form_doc" class="info_form_doc info_input info_select">
-                            <option>Doctor</option>
-                            <option>Doctor</option>
-                            <option>Doctor</option>
-                        </select>
-                        <input type="text" class="info_input" placeholder="Name" required="required">
-                        <input type="text" class="info_input" placeholder="Phone No">
-                        <button class="info_form_button">make an appointment</button>
+							</div>
+
+						</div>
+				</div>
+
+				<div class="col-sm-8" >
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="HomeContentStyle">
+							<h3>Top Doctors</h3>
+							<div>
+								<span class="glyphicon glyphicon-user"></span>
+								<span>Name</span>
+								<span>rate</span>
+							</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="HomeContentStyle">
+
+							<h3>Top Hospital</h3>
+							<div>
+								<span class="glyphicon glyphicon-user"></span>
+								<span>Name</span>
+								<span>rate</span>
+							</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-6 ">
+							<div class="HomeContentStyle">
+							<h3>Top pharmacies</h3>
+								<div>
+								<span class="glyphicon glyphicon-user"></span>
+								<span>Name</span>
+								<span>rate</span>
+							</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="HomeContentStyle">
+							<h3>Top Laps</h3>
+							<div>
+								<span class="glyphicon glyphicon-user"></span>
+								<span>Name</span>
+								<span>rate</span>
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+					<div class="col-sm-4">
+						<div class="HomeContentStyle">
+							<h3>Hospital</h3>
+							<div>
+
+								<span>Name</span>
+
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col-sm-4">
+						<div class="HomeContentStyle">
+						<h3>pharmacy</h3>
+						<div>
+
+								<span>Name</span>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-4 ">
+						<div class="HomeContentStyle">
+						<h3>Laps</h3>
+						<div>
+
+								<span>Name</span>
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+        </div>
+    </div>
+</div>
+    <!-- Modal Login -->
+<div class="modal fade" id="loginModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="container_">
+                    <form action="" method="POST">
+                        <div class="row_">
+
+                        </div>
                     </form>
                 </div>
             </div>

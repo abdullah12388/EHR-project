@@ -15,6 +15,9 @@ from django.conf import settings as set
 from django.contrib.auth.hashers import check_password
 from django.db.models import Count
 
+import cv2
+import numpy as np
+import pyzbar.pyzbar as pyzbar
 
 # Create your views here.
 
@@ -616,3 +619,74 @@ def patientCard(request):
         return render(request, 'patientData.html', context)
     else:
         return HttpResponse('age:fail to calculate')
+
+
+
+
+
+def QRCodeScanner():
+    #to determine which camera you will use
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    #to check if the machine contains a camera
+    if cap is None or not cap.isOpened():
+        print('Warning: unable to open Camera! You might not Have a Camera')
+    else:
+        while True:
+            #to make the camera read and capture frames
+            ret, frame = cap.read()
+            #where QR Code data will be saved
+            decodedObjects = pyzbar.decode(frame)
+            #iterate throw the list which contains QR details
+            for obj in decodedObjects:
+                #if object contains data that means a QR Code is detected
+                if obj.data:
+                    #it waits for a QR Code to be detected
+                    if cv2.waitKey(1):
+                        #it's for stopping the camera and release all resources that we used
+                        if obj.data:
+                            cap.release()
+                            cv2.destroyAllWindows()
+                            #return the QR Code data that we extracted in the for loop
+                            return obj.data
+            #it's to show a frame that contains camera
+            cv2.imshow("Frame", frame)
+            # it waits for a QR Code to be detected
+            if cv2.waitKey(1) :
+                for obj in decodedObjects:
+                    if obj.data:
+                        break
+
+def QRCodeScanView(request):
+    QRData = QRCodeScanner()
+    QRData = QRData.decode("UTF-8")
+    # rsplit("'")[1]
+    # print(QRData.decode("UTF-8"))
+    get = user.objects.get(Ssn_id=QRData)
+    print(get)
+    print("######################")
+    print(get)
+
+
+    if get:
+        user_Type_number = get.User_type
+        if user_Type_number == 2:
+            doctor_id = doctor.objects.get(Doc=get).id
+            request.session['doctor_id'] = doctor_id
+            request.session['user_T'] = user_Type_number
+            request.session['Doctor_Patiant_ID'] = 0
+            return HttpResponseRedirect('/doctor')
+        else:
+            patient_id = patient.objects.get(Patient_id=get).id
+            request.session['patient_id'] = patient_id
+            request.session['user_type'] = 'registered_patient'
+            request.session['user_T'] = user_Type_number
+            return HttpResponseRedirect('/patient/Index/')
+    else:
+        return HttpResponse('This ID IS NOT Found')
+
+
+
+
+
+
+

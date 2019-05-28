@@ -26,7 +26,10 @@
                             <span>Login Fast</span>
                         </div>
                         <div class="col-sm-3">
-                            <button type="button" class="button home_button">Scan Id</button>
+                            <a href="{% url 'doctor:QRCodeScanView' %}">
+                                <button type="button" class="button home_button">Scan Id</button>
+                            </a>
+
                         </div>
                     </div>
                 </div>

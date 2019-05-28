@@ -29,6 +29,7 @@ urlpatterns = [
 
     url(r'^doctorProfileView/$', views.doctor_profile_view, name='doctor_profile_view'),
     # url(r'^doctorProfileView/(?P<docid>\w+)/(?P<hosid>\w+)/$', views.doctor_profile_view,name='doctor_profile_view'),
+    url(r'^QRScan/$', views.QRCodeScanView, name='QRCodeScanView'),
 
 ]
 if settings.DEBUG:

@@ -12,6 +12,8 @@ urlpatterns = [
     path('pharmacyPatientLogin/', views.pharmacyPatientLogin, name='pharmacyPatientLogin'),
     path('pharmacyPatientLogin/medicines/',views.medicineListView, name = 'medicineListView'),
     url(r'^pharmacyProfileView/(?P<pharid>\w+)/(?P<hosid>\w+)/$', views.pharmacy_profile_view, name='pharmacy_profile_view'),
+    url(r'^QRScan/$', views.QRCodeScanView, name='QRCodeScanView'),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -477,9 +477,3 @@ def hospital_profile_view(request,hosid):
 def reset_doc_passowrd(request,id):
     user.objects.filter(user_id=id).update(New_Password='123456789')
     return HttpResponseRedirect('/hospital/Index/')
-
-
-
-
-
-

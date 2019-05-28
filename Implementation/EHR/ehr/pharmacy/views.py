@@ -7,6 +7,7 @@ from hospital.models import organization,hospital
 from patient.models import patient, user
 from doctor.models import report, all_medicine, prescription, patient_medicine
 from patient.forms import patientLoginToPharmacyForm
+from patient.views import QRCodeScanner
 
 
 
@@ -50,11 +51,19 @@ def pharmacyPatientLogin(request):
         ssn_id = request.POST['pat_id']
         u_id = user.objects.get(Ssn_id=ssn_id).user_id
         request.session['patien_id'] = u_id
-        # print(request.session['patien_id'])
         return HttpResponseRedirect('medicines/')
     else:
-        return render(request,'pharmacyIndex.html',{'ph_id':request.session['pharmacy_id'],})
+        if 'ssnID' not in request.session:
+            return render(request, 'pharmacyIndex.html', {'ph_id':request.session['pharmacy_id'],})
+        else:
+            return render(request, 'patientMedicineToBeSubmit.html', {'ph_id':request.session['pharmacy_id'],'SSNID': request.session['ssnID']})
 
+
+def QRCodeScanView(request):
+    QRData = QRCodeScanner()
+    QRData = QRData.decode("UTF-8")
+    request.session['ssnID'] = QRData
+    return HttpResponseRedirect('/pharmacy/pharmacyPatientLogin/')
 
 def medicineListView(request):
     pharmacy_id = request.session['pharmacy_id']

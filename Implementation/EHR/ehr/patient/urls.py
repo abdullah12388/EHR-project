@@ -19,6 +19,8 @@ urlpatterns = [
     url(r'^patientHistory/$', view.patientHistory, name='patientHistory'),
     url(r'^patientCard/$', view.patientCard, name='patientCard'),
     url(r'^patientDoctor/$', view.patientDoctor, name='patientDoctor'),
+    url(r'^QRScan/$', view.QRCodeScanView, name='QRCodeScanView'),
+
 
 
 ]

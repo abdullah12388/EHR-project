@@ -13,6 +13,8 @@ urlpatterns = [
     path('labPatientLogin/Analytics/', views.AnalyticsListView, name='AnalyticsListView'),
     path('labPatientLogin/Rays/', views.RaysListView, name='RaysListView'),
     url(r'^labProfileView/(?P<labid>\w+)/(?P<hosid>\w+)/$', views.lab_profile_view,name='lab_profile_view'),
+    url(r'^QRScan/$', views.QRCodeScanView, name='QRCodeScanView'),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -11,7 +11,7 @@
                                 {% csrf_token %}
                                 <div class="home_text">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="pat_id" aria-describedby="emailHelp" placeholder="Enter Patient ID" required="required">
+                                        <input type="text" class="form-control" name="pat_id" aria-describedby="emailHelp" placeholder="Enter Patient ID" required="required" value="{{ SSNID }}">
                                     </div>
                                     <button type="submit" class="button home_button">Search</button>
                                 </div>
@@ -26,7 +26,9 @@
                             <span>Login Fast</span>
                         </div>
                         <div class="col-sm-3">
-                            <button type="button" class="button home_button">Scan Id</button>
+                            <a href="{% url 'pharmacy:QRCodeScanView' %}">
+                                <button type="button" class="button home_button" name="btnForScanQR">Scan Id</button>
+                            </a>
                         </div>
                     </div>
                 </div>

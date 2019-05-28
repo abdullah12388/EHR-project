@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
+from django.views.generic import DetailView
 from patient.forms import tempRegister, login, AddUser, AddPatient, searchHistory
 from doctor.models import (report, doctor, prescription, multi_analytics,
                            multi_chronic, multi_medecines, multi_rays,
@@ -240,9 +241,9 @@ def home(request):
     # patient_id = request.session['patient_id']
     patient_id = request.session['patient_id']
     topDoctor = doctor.objects.annotate(Count('doc_rate')).order_by('-doc_rate')[:50]
-    topHospital = hospital.objects.annotate(Count('hos_rate')).order_by('-hos_rate')[:1]
-    topLab = organization.objects.filter(Type__exact='1').annotate(Count('org_rate')).order_by('-org_rate')[:1]
-    topPharmacy = organization.objects.filter(Type__exact='2').annotate(Count('org_rate')).order_by('-org_rate')[:1]
+    topHospital = hospital.objects.annotate(Count('hos_rate')).order_by('-hos_rate')[:50]
+    topLab = organization.objects.filter(Type__exact='2').annotate(Count('org_rate')).order_by('-org_rate')[:50]
+    topPharmacy = organization.objects.filter(Type__exact='1').annotate(Count('org_rate')).order_by('-org_rate')[:50]
     ch = report.objects.filter(patient_id=patient_id).exists()
     # print(ch)
     if(ch):
@@ -263,6 +264,7 @@ def home(request):
         'labs': labs,
         'hospitals': hospitals,
         'clinics':clinics,
+        'patid':patient_id,
     }
     if patientReport:
         lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(report__exact=patientReport.report).exists()
@@ -292,6 +294,7 @@ def home(request):
             # 'lastMedicineInReport': 'False',
             # 'lastAnalyticsInReport': 'False',
             # 'lastRaysInReport': 'False',
+            'patid': patient_id,
         }
         return render(request, 'patientIndex.html', context)
 
@@ -539,15 +542,29 @@ def move(src, dest):
 # end of patient profile
 
 
-def patient_profile_view(request):
-    patientdata = patient.objects.get(id=request.session['patient_id'])
-    userdata = user.objects.get(user_id=patientdata.Patient_id)
-    request.session['user_id'] = userdata.user_id
-    context ={
-        'user': userdata,
-        'patient': patientdata,
-    }
-    return render(request, 'patientProfileView.html',context)
+# def patient_profile_view(request):
+#     patientdata = patient.objects.get(id=request.session['patient_id'])
+#     userdata = user.objects.get(user_id=patientdata.Patient_id)
+#     request.session['user_id'] = userdata.user_id
+#     context ={
+#         'user': userdata,
+#         'patient': patientdata,
+#     }
+#     return render(request, 'patientProfileView.html',context)
+
+class patientProfileDetialView(DetailView):
+    model = patient
+    template_name = 'patientProfileView.html'
+    context_object_name = 'patient'
+    redirect_url = '/patient/Index/'
+    #self.kwargs['pk']
+    # def render_to_response(self , redirect_url):
+    #     if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
+    #         return HttpResponseRedirect('/patient/login/')
+    #     elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
+    #         return HttpResponseRedirect('/')
+    #     else:
+    #        return super().render_to_response(redirect_url)
 
 def patientHistory(request):
     global mix_1_1
@@ -585,15 +602,50 @@ def patientDoctor(request):
     return render(request, 'patientDoctor.html', {})
 
 
-def patientCard(request):
+# def patientCard(request):
+#     # print(request.session['user_id'])
+#     Profile_picture = user.objects.get(user_id=request.session['user_id']).Profile_picture
+#     first_name = user.objects.get(user_id=request.session['user_id']).first_name
+#     middle_name = user.objects.get(user_id=request.session['user_id']).middle_name
+#     last_name = user.objects.get(user_id=request.session['user_id']).last_name
+#     phone_number = user.objects.get(user_id=request.session['user_id']).phone_number
+#     Create_date = user.objects.get(user_id=request.session['user_id']).Create_date
+#     birthdate = user.objects.get(user_id=request.session['user_id']).Date_of_birth
+#     days_in_year = 365.2425
+#     age = int((date.today() - birthdate).days / days_in_year)
+#     # print(Profile_picture)
+#     # print(first_name)
+#     # print(middle_name)
+#     # print(last_name)
+#     # print(phone_number)
+#     # print(Create_date)
+#     # print(birthdate)
+#     # print(age)
+#     QR_code = patient.objects.get(Patient=request.session['user_id']).QR_code
+#     if age:
+#         context = {
+#             'Profile_picture': Profile_picture,
+#             'first_name': first_name,
+#             'middle_name': middle_name,
+#             'last_name': last_name,
+#             'phone_number': phone_number,
+#             'Create_date': Create_date,
+#             'QR_code': QR_code,
+#             'age': age,
+#         }
+#         return render(request, 'patientData.html', context)
+#     else:
+#         return HttpResponse('age:fail to calculate')
+
+def patientCard(request,userid):
     # print(request.session['user_id'])
-    Profile_picture = user.objects.get(user_id=request.session['user_id']).Profile_picture
-    first_name = user.objects.get(user_id=request.session['user_id']).first_name
-    middle_name = user.objects.get(user_id=request.session['user_id']).middle_name
-    last_name = user.objects.get(user_id=request.session['user_id']).last_name
-    phone_number = user.objects.get(user_id=request.session['user_id']).phone_number
-    Create_date = user.objects.get(user_id=request.session['user_id']).Create_date
-    birthdate = user.objects.get(user_id=request.session['user_id']).Date_of_birth
+    Profile_picture = user.objects.get(user_id=userid).Profile_picture
+    first_name = user.objects.get(user_id=userid).first_name
+    middle_name = user.objects.get(user_id=userid).middle_name
+    last_name = user.objects.get(user_id=userid).last_name
+    phone_number = user.objects.get(user_id=userid).phone_number
+    Create_date = user.objects.get(user_id=userid).Create_date
+    birthdate = user.objects.get(user_id=userid).Date_of_birth
     days_in_year = 365.2425
     age = int((date.today() - birthdate).days / days_in_year)
     # print(Profile_picture)
@@ -619,10 +671,6 @@ def patientCard(request):
         return render(request, 'patientData.html', context)
     else:
         return HttpResponse('age:fail to calculate')
-
-
-
-
 
 def QRCodeScanner():
     #to determine which camera you will use

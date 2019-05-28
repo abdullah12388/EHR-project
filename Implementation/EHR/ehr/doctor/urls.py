@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^Home/$', views.Doctor, name='doctor'),
     url(r'^$',views.GetPatianTID , name='patiant_id'),
     url(r'^patiant/prescription/$',views.ReportListView.as_view() , name='prescriptionlist'),
+    url(r'^doctorProfileView/(?P<pk>[-\w]+)/$',views.doctorProfileDetialView.as_view(), name='doctorProfileView'),
     url(r'^patiant/prescription/(?P<pk>[-\w]+)/$',views.PrescriptionDetialView.as_view() , name='prescriptiondetial'),
     url(r'^prescription/newcreate/$',views.prescriptionFormView.as_view(),name='presc_create'),
     url(r'^prescription/update/(?P<pk>[-\w]+)/$',views.prescriptionUpdate.as_view(),name='update'),
@@ -27,10 +28,9 @@ urlpatterns = [
     url(r'^patiant/prescription/analytics/update/(?P<pk>[-\w]+)/$' , views.analytics_UPDATE.as_view(),name='analyticssupdate'),
     url(r'^patiant/prescription/analytics/newcreate/(?P<pk>[-\w]+)/$',views.analyticsFormView.as_view(),name='newanalytics'),
 
-    url(r'^doctorProfileView/$', views.doctor_profile_view, name='doctor_profile_view'),
-
+    # url(r'^doctorProfileView/$', views.doctor_profile_view, name='doctor_profile_view'),
+    # url(r'^doctorProfileView/(?P<docid>\w+)/$', views.doctor_profile_view,name='doctor_profile_view'),
     url(r'^QRScan/$', views.QRCodeScanView, name='QRCodeScanView'),
-
 
 ]
 if settings.DEBUG:

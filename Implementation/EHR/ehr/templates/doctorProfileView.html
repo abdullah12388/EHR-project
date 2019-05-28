@@ -11,14 +11,14 @@
                 <div class="row">
                     <div style="width:200px;margin: auto">
                         <h3 style="color: #FFF;text-align: center;font-weight: bold;">Profile Picture</h3>
-                        <img src="{{ user.Profile_picture }}" alt="profile picture" class="img-thumbnail"/>
+                        <img src="{{ doctor.Doc.Profile_picture }}" alt="profile picture" class="img-thumbnail"/>
                     </div>
                 </div>
                 <div style="margin-top:45px"></div>
                 <div class="row">
                     <div style="width:200px;margin: auto">
                         <h3 style="color: #FFF;text-align: center;font-weight: bold;">SSN Picture</h3>
-                        <img src="{{ user.SSN_Picture }}"  alt="SSN" class="img-thumbnail">
+                        <img src="{{ doctor.Doc.SSN_Picture }}"  alt="SSN" class="img-thumbnail">
                     </div>
                 </div>
                 <div style="margin-top:45px"></div>
@@ -35,13 +35,13 @@
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">Full Name</label>
                     </div>
                     <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.first_name }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.first_name }}</label>
                     </div>
                     <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.middle_name }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.middle_name }}</label>
                     </div>
                     <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.last_name }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.last_name }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
@@ -49,16 +49,16 @@
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">Full Address</label>
                     </div>
                     <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.country }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.country }}</label>
                     </div>
                     <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.state }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.state }}</label>
                     </div>
                     <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.city }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.city }}</label>
                     </div>
                     <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.street }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.street }}</label>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
@@ -69,37 +69,37 @@
                     </div>
                     <div class="col-sm-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">Private</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.phone_number }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.phone_number }}</label>
                     </div>
                     <div class="col-sm-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">Home</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.home_phone_number }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.home_phone_number }}</label>
                     </div>
                     <div class="col-sm-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">Work</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.work_phone_number }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.work_phone_number }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">Gender</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.gender }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.gender }}</label>
                     </div>
                     <div class="col-sm-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">Birth Date</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.Date_of_birth }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.Date_of_birth }}</label>
                     </div>
                     <div class="col-sm-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">Marital Status</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.marital_status }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.marital_status }}</label>
                     </div>
                     <div class="col-sm-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">Children</label><br>
                         <label style="font-size: 20px;color: #32c69a;font-weight: bold;">
-                            {% if user.Child_num == 0 %}
+                            {% if doctor.Doc.Child_num == 0 %}
                                 None
                             {% else %}
-                                {{ user.Child_num }}
+                                {{ doctor.Doc.Child_num }}
                             {% endif %}
                         </label>
                     </div>
@@ -109,35 +109,35 @@
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">E-Mails</label>
                     </div>
                     <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.email_1 }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.email_1 }}</label>
                     </div>
                     <div class="col-sm-4" style="text-align: center;">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.email_2 }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.email_2 }}</label>
                     </div>
                     <div class="col-sm-1"></div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">Nationality</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.Nationality }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.Nationality }}</label>
                     </div>
                     <div class="col-sm-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">Job Name</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.Job_name }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.Job_name }}</label>
                     </div>
                     <div class="col-sm-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">Job Organization</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.Job_organization }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.Job_organization }}</label>
                     </div>
                     <div class="col-sm-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">Jop Place</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.Jop_place }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.Jop_place }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">SSN</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ user.Ssn }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ doctor.Doc.Ssn }}</label>
                     </div>
                     <div class="col-sm-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;">Registration</label><br>

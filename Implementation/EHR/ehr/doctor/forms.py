@@ -9,9 +9,46 @@ class GetPatianTIDForm (forms.ModelForm):
         fields = ['Ssn_id']
 
 class PrescriptionForm (forms.ModelForm):
+    Disease_name = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'pattern': '[a-z]{3,}',
+        'placeholder': 'Disease Name',
+        'required': 'required'
+    }))
+    Disease_level = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'pattern': '[0-9]{1,}',
+        'placeholder': 'Disease Level',
+        'required': 'required'
+    }))
+    Disease_disc = forms.CharField(widget=forms.Textarea(attrs={
+        'class': 'form-control',
+        'pattern': '[a-z]{3,}',
+        'placeholder': 'Disease Discription',
+        'required': 'required'
+    }))
+    Doctor_signature = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'pattern': '[a-z]{3,}',
+        'placeholder': 'Doctor Signature',
+        'required': 'required'
+    }))
+    next_appointment = forms.DateTimeField(widget=forms.DateTimeInput(attrs={
+        'class': 'form-control',
+        'type':'datetime-local',
+        'placeholder': 'Next Appointment',
+        'required': 'required'
+    }))
     class Meta():
         model = prescription
-        exclude = ['prescription_id']
+        # exclude = ['prescription_id']
+        fields = (
+            'Disease_name',
+            'Disease_level',
+            'Disease_disc',
+            'Doctor_signature',
+            'next_appointment',
+        )
 
 class AddmedicenForm (forms.ModelForm):
     class Meta():

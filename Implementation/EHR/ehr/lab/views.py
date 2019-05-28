@@ -1,7 +1,8 @@
 from django.core.files.storage import FileSystemStorage
+from hospital.models import organization,hospital
 from django.http import HttpResponseRedirect, HttpResponseNotFound, HttpResponse
 from django.http import HttpResponseRedirect, HttpResponseNotFound, HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from doctor.models import patient_analytics, patient_rays
 from hospital.models import organization
 from patient.views import QRCodeScanner
@@ -60,18 +61,15 @@ def labPatientLogin(request ):
             print('Please Choose right type')
     else:
         if 'ssnid' not in request.session:
-            return render(request,'labIndex.html',{})
+            return render(request,'labIndex.html',{'lab_id':request.session['lab_id']})
         else:
-            return render(request, 'labIndex.html', {'SSN_ID': request.session['ssnid']})
-
+            return render(request, 'labIndex.html', {'lab_id':request.session['lab_id'],'SSN_ID': request.session['ssnid'],})
 
 def QRCodeScanView(request):
     QRData = QRCodeScanner()
     QRData = QRData.decode("UTF-8")
     request.session['ssnid'] = QRData
     return HttpResponseRedirect('/lab/labPatientLogin/')
-
-
 
 
 
@@ -137,3 +135,32 @@ def RaysListView(request):
             return HttpResponse("You don't have any Rays")
     else:
         return HttpResponseNotFound('<h1>patient not found</h1>')
+
+
+# def lab_profile_view(request,labid,hosid):
+#     # pharmacyData = organization.objects.filter(Type=1).get(org_id=request.session['pharmacy_id'])
+#     labData = organization.objects.filter(Type=2).get(org_id=labid)
+#     hospitaldata = hospital.objects.get(h_id=hosid)
+#     context ={
+#         'lab': labData,
+#         'lab_id':labData.org_id,
+#         'hospital':hospitaldata,
+#     }
+#     return render(request, 'labProfileView.html',context)
+
+# def lab_profile_view(request):
+#     id = request.session['lab_id']
+#     labData = organization.objects.filter(Type=2).get(org_id=id)
+#     context ={
+#         'lab': labData,
+#         'lab_id':labData.org_id,
+#     }
+#     return render(request, 'labProfileView.html',context)
+
+def lab_profile_view(request,labid=None):
+    labData = get_object_or_404(organization,org_id=labid)
+    context ={
+        'lab': labData,
+        'lab_id':labData.org_id,
+    }
+    return render(request, 'labProfileView.html',context)

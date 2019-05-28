@@ -56,7 +56,7 @@
                             {% for doct in doctor %}
                             <div class="row" style="margin-bottom: 5px">
                                 <div class="col-sm" style="text-align: center;margin: auto;">
-                                    <a href="{% url 'doctor:doctor_profile_view' %}">
+                                    <a href="{% url 'doctor:doctorProfileView' pk=doct.id%}">
                                         <img class="ima" src="{{ doct.Doc.Profile_picture }}" style="width: 50px;height: 50px">
                                     </a>
                                 </div>
@@ -92,7 +92,9 @@
                             {% for phar in pharmacy %}
                                 <div class="row" style="margin-bottom: 5px">
                                     <div class="col-sm" style="text-align: center;margin: auto;">
-                                        <img class="ima" src="{{ phar.org_logo }}" style="width: 50px;height: 50px">
+                                        <a href="{% url 'pharmacy:pharmacy_profile_view' pharid=phar.org_id %}">
+                                            <img class="ima" src="{{ phar.org_logo }}" style="width: 50px;height: 50px">
+                                        </a>
                                     </div>
                                     <div class="col-sm" style="text-align: center;margin: auto;">
                                         <label style="font-size: 22px;margin: auto;">{{ phar.org_name }}</label>
@@ -124,7 +126,9 @@
                             {% for lb in lab %}
                                 <div class="row" style="margin-bottom: 5px">
                                     <div class="col-sm" style="text-align: center;margin: auto;">
-                                        <img class="ima" src="{{ lb.org_logo }}" style="width: 50px;height: 50px">
+                                        <a href="{% url 'lab:lab_profile_view' labid=lb.org_id %}">
+                                            <img class="ima" src="{{ lb.org_logo }}" style="width: 50px;height: 50px">
+                                        </a>
                                     </div>
                                     <div class="col-sm" style="text-align: center;margin: auto;">
                                         <label style="font-size: 22px;margin: auto;">{{ lb.org_name }}</label>

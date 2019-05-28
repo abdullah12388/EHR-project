@@ -157,3 +157,8 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'media_roo
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_URL = '/patient/login/'
+
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type("text/javascript", ".js", True)
+    mimetypes.add_type("application/javascript", ".js", True)

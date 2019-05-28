@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d8ec0d3-e378-4bab-aa60-45a1fc63fd41" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/Doctor_app/prescription_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Doctor_app/prescription_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Doctor_app/prescription_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Doctor_app/prescription_form.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Doctor_app/prescription_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Doctor_app/prescription_list.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -113,8 +111,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/Doctor_app/prescription_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="78" column="30" lean-forward="true" selection-start-line="78" selection-start-column="30" selection-end-line="78" selection-end-column="30" />
+            <state relative-caret-position="101">
+              <caret line="49" column="50" lean-forward="true" selection-start-line="49" selection-start-column="50" selection-end-line="49" selection-end-column="53" />
+              <folding>
+                <element signature="n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" />
+                <element signature="n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" />
+                <element signature="n#div#2;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" />
+                <element signature="n#div#3;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" />
+                <element signature="n#div#4;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -315,7 +320,7 @@
       <workItem from="1554951537455" duration="11350000" />
       <workItem from="1554985309328" duration="9006000" />
       <workItem from="1555006984026" duration="18321000" />
-      <workItem from="1559022243217" duration="29441000" />
+      <workItem from="1559022243217" duration="30523000" />
     </task>
     <task id="LOCAL-00001" summary="on the way">
       <created>1554725365252</created>
@@ -335,7 +340,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117934000" />
+    <option name="totallyTimeSpent" value="119016000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -718,8 +723,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/Doctor_app/prescription_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="78" column="30" lean-forward="true" selection-start-line="78" selection-start-column="30" selection-end-line="78" selection-end-column="30" />
+        <state relative-caret-position="101">
+          <caret line="49" column="50" lean-forward="true" selection-start-line="49" selection-start-column="50" selection-end-line="49" selection-end-column="53" />
+          <folding>
+            <element signature="n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" />
+            <element signature="n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" />
+            <element signature="n#div#2;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" />
+            <element signature="n#div#3;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" />
+            <element signature="n#div#4;n#div#2;n#div#0;n#div#1;n#div#0;n#div#1;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>

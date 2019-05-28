@@ -7,10 +7,12 @@
           <ol>
             {% for m in analytics %}
             <h2><li>rays : <a href="{% url 'doctor:analyticsdetial' pk=m.P_A_id%}">{{m.P_A.analy.analytics_name}}</a></li></h2>
-            <p {% if forloop.last %}><a  class="btn btn-primary"href="{% url 'doctor:newanalytics' pk=m.report.report%}">CreateAnalytics{% endif %}</a></p>
-            <p {% if forloop.last %}><a  class="btn btn-primary"href="{% url 'doctor:newray' pk=m.report.report%}">Create Rays{% endif %}</a></p>
+            <p {% if forloop.last %}><a  class="btn btn-primary"href="{% url 'doctor:newanalytics' pk=m.report.prescription.prescription_id%}">CreateAnalytics{% endif %}</a></p>
+            <p {% if forloop.last %}><a  class="btn btn-primary"href="{% url 'doctor:newray' pk=m.report.prescription.prescription_id%}">Create Rays{% endif %}</a></p>
+            <p {% if forloop.last %}><a  class="btn btn-primary"href="{% url 'doctor:newmed' pk=m.report.prescription.prescription_id%}">Create Medicins{% endif %}</a></p>
+            <p {% if forloop.last %}><a class="btn btn-primary" href="{% url 'doctor:prescriptiondetial' pk=m.report.prescription.prescription_id%}">Prescription {% endif %}</a></p>
             {%endfor%}
-            <p><a class="btn btn-primary" href="{% url 'doctor:prescriptionlist'%}">Prescription List</a></p>
+
           </ol>
         </div>
     </div>

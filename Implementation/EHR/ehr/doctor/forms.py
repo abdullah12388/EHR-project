@@ -50,9 +50,21 @@ class PrescriptionForm (forms.ModelForm):
         )
 
 class AddmedicenForm (forms.ModelForm):
+    number_of_potions = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Number of Potions',
+        'required': 'required'
+    }), min_value=0)
+    number_of_pills = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Number of Pills',
+        'required': 'required'
+    }), min_value=0)
     class Meta():
         model = patient_medicine
-        fields = ('med','number_of_potions','number_of_pills')
+        fields = ('med',
+                  'number_of_potions',
+                  'number_of_pills')
 
 class AddRaysForm (forms.ModelForm):
     class Meta():

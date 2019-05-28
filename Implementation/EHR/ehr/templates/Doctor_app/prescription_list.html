@@ -56,24 +56,25 @@
 {#                    {% for p in prescription|slice:':10' reversed %}#}
                     {% for p in prescription reversed %}
                         <div class="row">
-                        <div class="col-sm-3">
-                            <h3>{{ p.Submit_date }}</h3>
-                        </div>
-                        <div class="col-sm-3">
-                            <h3>{{ p.prescription.Disease_name|upper }}</h3>
-                        </div>
-                        <div class="col-sm-2">
-                            <h3>{{ p.prescription.Doctor_signature|upper }}</h3>
-                        </div>
-                        <div class="col-sm-2">
-                            <a href="{% url 'doctor:update'  pk=p.prescription.prescription_id %}">
-                                <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Update</button>
-                            </a>
-                        </div>
-                        <div class="col-sm-2">
-                            <a href="{{ p.prescription.prescription_id }}">
-                                <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Details</button>
-                            </a>
+                            <div class="col-sm-3">
+                                <h3>{{ p.Submit_date }}</h3>
+                            </div>
+                            <div class="col-sm-3">
+                                <h3>{{ p.prescription.Disease_name|upper }}</h3>
+                            </div>
+                            <div class="col-sm-2">
+                                <h3>{{ p.prescription.Doctor_signature|upper }}</h3>
+                            </div>
+                            <div class="col-sm-2">
+                                <a href="{% url 'doctor:update'  pk=p.prescription.prescription_id %}">
+                                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Update</button>
+                                </a>
+                            </div>
+                            <div class="col-sm-2">
+                                <a href="{{ p.prescription.prescription_id }}">
+                                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Details</button>
+                                </a>
+                            </div>
                         </div>
                     {%endfor%}
                 </div>

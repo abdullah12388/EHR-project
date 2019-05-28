@@ -1,87 +1,87 @@
 {% extends 'Doctor_app/Doctor_base.html' %}
 {% block home_content %}
 
-{#<div style="width:10px;height:175px"></div>#}
-{#<div class="info">#}
-{#    <div class="container">#}
-{#        <div class="row row-eq-height">#}
-{#          <ol>#}
-{#            <ol>#}
-{#              <h2><li>{{presc_detial.Disease_name}}</li></h2>#}
-{#              <h2><li>{{presc_detial.Disease_level}}</li></h2>#}
-{#              <h2><li>{{presc_detial.Disease_disc}}</li></h2>#}
-{#              <h2><li>{{presc_detial.Doctor_signature}}</li></h2>#}
-{#              <h2><li>{{presc_detial.next_appointment}}</li></h2>#}
-{#            </ol>#}
-{#          </ol>#}
-{#          <p><a class="btn btn-warning" href="{% url 'doctor:update'  pk=presc_detial.pk%}">Update</a></p>#}
-{#          <p><a class="btn btn-primary" href="{% url 'doctor:prescriptiondetial'  pk=presc_detial.pk%}medecines">medecines</a></p>#}
-{#          <p><a class="btn btn-primary" href="{% url 'doctor:prescriptiondetial'  pk=presc_detial.pk%}rays">Rays</a></p>#}
-{#          <p><a class="btn btn-primary" href="{% url 'doctor:prescriptiondetial'  pk=presc_detial.pk%}analytics">Analytics</a></p>#}
-{#        </div>#}
-{#    </div>#}
-{#</div>#}
-
 <div style="width:10px;height:175px"></div>
-<div class="container">
-    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);margin-top:30px;color: #FFF">
-        <div class="row" style="border-bottom: solid 5px #32c69a">
-            <div class="col-sm-3" style="text-align: center">
-                <a href="{% url 'doctor:prescriptiondetial'  pk=presc_detial.pk%}medecines">
-                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Medecines</button>
-                </a>
-            </div>
-            <div class="col-sm-3" style="text-align: center">
-                <a href="{% url 'doctor:prescriptiondetial'  pk=presc_detial.pk%}analytics">
-                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Analytics</button>
-                </a>
-            </div>
-            <div class="col-sm-3" style="text-align: center">
-                <a href="{% url 'doctor:prescriptiondetial'  pk=presc_detial.pk%}rays">
-                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Rays</button>
-                </a>
-            </div>
-            <div class="col-sm-3" style="text-align: center">
-                <a href="{% url 'doctor:update'  pk=presc_detial.pk%}">
-                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Update</button>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm">
-                <div class="row">
-                    <div class="col-sm" style="text-align: center">
-                        <label style="font-size: 30px;font-weight: bold;margin: 10px;border-bottom: solid 5px #32c69a;">Prescriptions</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <h3>{{presc_detial.Disease_name}}</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <h3>{{presc_detial.Disease_level}}</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <h3>{{presc_detial.Disease_disc}}</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <h3>{{presc_detial.Doctor_signature}}</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <h3>{{presc_detial.next_appointment}}</h3>
-                    </div>
-                </div>
-            </div>
+<div class="info">
+    <div class="container">
+        <div class="row row-eq-height">
+          <ol>
+            <ol>
+              <h2><li>{{presc_detial.Disease_name}}</li></h2>
+              <h2><li>{{presc_detial.Disease_level}}</li></h2>
+              <h2><li>{{presc_detial.Disease_disc}}</li></h2>
+              <h2><li>{{presc_detial.Doctor_signature}}</li></h2>
+              <h2><li>{{presc_detial.next_appointment}}</li></h2>
+            </ol>
+          </ol>
+          <p><a class="btn btn-warning" href="{% url 'doctor:update'  pk=presc_detial.pk%}">Update</a></p>
+          <p><a class="btn btn-primary" href="{% url 'doctor:prescriptiondetial'  pk=presc_detial.pk%}medecines">medecines</a></p>
+          <p><a class="btn btn-primary" href="{% url 'doctor:prescriptiondetial'  pk=presc_detial.pk%}rays">Rays</a></p>
+          <p><a class="btn btn-primary" href="{% url 'doctor:prescriptiondetial'  pk=presc_detial.pk%}analytics">Analytics</a></p>
         </div>
     </div>
 </div>
+
+{#<div style="width:10px;height:175px"></div>#}
+{#<div class="container">#}
+{#    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);margin-top:30px;color: #FFF">#}
+{#        <div class="row" style="border-bottom: solid 5px #32c69a">#}
+{#            <div class="col-sm-3" style="text-align: center">#}
+{#                <a href="{% url 'doctor:prescriptiondetial'  pk=presc_detial.pk%}medecines">#}
+{#                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Medecines</button>#}
+{#                </a>#}
+{#            </div>#}
+{#            <div class="col-sm-3" style="text-align: center">#}
+{#                <a href="{% url 'doctor:prescriptiondetial'  pk=presc_detial.pk%}analytics">#}
+{#                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Analytics</button>#}
+{#                </a>#}
+{#            </div>#}
+{#            <div class="col-sm-3" style="text-align: center">#}
+{#                <a href="{% url 'doctor:prescriptiondetial'  pk=presc_detial.pk%}rays">#}
+{#                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Rays</button>#}
+{#                </a>#}
+{#            </div>#}
+{#            <div class="col-sm-3" style="text-align: center">#}
+{#                <a href="{% url 'doctor:update'  pk=presc_detial.pk%}">#}
+{#                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Update</button>#}
+{#                </a>#}
+{#            </div>#}
+{#        </div>#}
+{#        <div class="row">#}
+{#            <div class="col-sm">#}
+{#                <div class="row">#}
+{#                    <div class="col-sm" style="text-align: center">#}
+{#                        <label style="font-size: 30px;font-weight: bold;margin: 10px;border-bottom: solid 5px #32c69a;">Prescriptions</label>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-sm">#}
+{#                        <h3>{{presc_detial.Disease_name}}</h3>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-sm">#}
+{#                        <h3>{{presc_detial.Disease_level}}</h3>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-sm">#}
+{#                        <h3>{{presc_detial.Disease_disc}}</h3>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-sm">#}
+{#                        <h3>{{presc_detial.Doctor_signature}}</h3>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="row">#}
+{#                    <div class="col-sm">#}
+{#                        <h3>{{presc_detial.next_appointment}}</h3>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
 
 {% endblock home_content %}

@@ -35,7 +35,6 @@ class PrescriptionForm (forms.ModelForm):
     }))
     next_appointment = forms.DateTimeField(widget=forms.DateTimeInput(attrs={
         'class': 'form-control',
-        'type':'datetime-local',
         'placeholder': 'Next Appointment',
         'required': 'required'
     }))

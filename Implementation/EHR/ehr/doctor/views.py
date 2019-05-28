@@ -160,7 +160,7 @@ class prescriptionFormView (FormView):
            return super().render_to_response(redirect_url)
 
 class prescriptionUpdate (UpdateView):
-    fields = '__all__'
+    form_class = PrescriptionForm
     model = prescription
     template_name = 'Doctor_app/prescription_form.html'
 

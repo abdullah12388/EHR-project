@@ -656,7 +656,7 @@ def patientCard(request,userid):
     # print(Create_date)
     # print(birthdate)
     # print(age)
-    QR_code = patient.objects.get(Patient=request.session['user_id']).QR_code
+    QR_code = patient.objects.get(Patient=userid).QR_code
     if age:
         context = {
             'Profile_picture': Profile_picture,

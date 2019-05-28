@@ -56,7 +56,7 @@ def pharmacyPatientLogin(request):
         if 'ssnID' not in request.session:
             return render(request, 'pharmacyIndex.html', {'ph_id':request.session['pharmacy_id']})
         else:
-            return render(request, 'patientMedicineToBeSubmit.html', {'ph_id':request.session['pharmacy_id'],'SSNID': request.session['ssnID']})
+            return render(request, 'pharmacyIndex.html', {'ph_id':request.session['pharmacy_id'],'SSNID': request.session['ssnID']})
 
 
 def QRCodeScanView(request):

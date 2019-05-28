@@ -21,7 +21,7 @@ class PrescriptionForm (forms.ModelForm):
         'placeholder': 'Disease Level',
         'required': 'required'
     }))
-    Disease_disc = forms.CharField(widget=forms.TextInput(attrs={
+    Disease_disc = forms.CharField(widget=forms.Textarea(attrs={
         'class': 'form-control',
         'pattern': '[a-z]{3,}',
         'placeholder': 'Disease Discription',
@@ -35,6 +35,7 @@ class PrescriptionForm (forms.ModelForm):
     }))
     next_appointment = forms.DateTimeField(widget=forms.DateTimeInput(attrs={
         'class': 'form-control',
+        'type':'datetime-local',
         'placeholder': 'Next Appointment',
         'required': 'required'
     }))

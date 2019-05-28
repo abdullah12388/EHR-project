@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from .forms import GetPatianTIDForm,PrescriptionForm,AddmedicenForm,AddRaysForm,AddanalyticsForm
 from patient.views import DB_functions
 from patient.models import user,patient
@@ -399,15 +399,23 @@ class analyticsFormView (FormView):
         else:
            return super().render_to_response(redirect_url)
 
-def doctor_profile_view(request):
-    id = doctor.objects.get(id=request.session['doctor_id']).Doc_id
-    doctordata = doctor.objects.get(Doc_id=id)
-    userdata = user.objects.get(user_id=id)
-    context ={
-        'user': userdata,
-        'doctor': doctordata,
-    }
-    return render(request, 'doctorProfileView.html',context)
+# def doctor_profile_view(request):
+#     id = doctor.objects.get(id=request.session['doctor_id']).Doc_id
+#     doctordata = doctor.objects.get(Doc_id=id)
+#     userdata = user.objects.get(user_id=id)
+#     context ={
+#         'user': userdata,
+#         'doctor': doctordata,
+#     }
+#     return render(request, 'doctorProfileView.html',context)
+
+# def doctor_profile_view(request,docid=None):
+#     doctordata = get_object_or_404(doctor,id=docid)
+#     context ={
+#         'doctor': doctordata,
+#         'ID':doctordata.id,
+#     }
+#     return render(request, 'doctorProfileView.html',context)
 
 # def doctor_profile_view(request,docid,hosid):
 #     # pharmacyData = organization.objects.filter(Type=1).get(org_id=request.session['pharmacy_id'])
@@ -422,3 +430,17 @@ def doctor_profile_view(request):
 #         'hospital':hospitaldata,
 #     }
 #     return render(request, 'doctorProfileView.html',context)
+
+class doctorProfileDetialView(DetailView):
+    model = doctor
+    template_name = 'doctorProfileView.html'
+    context_object_name = 'doctor'
+    redirect_url = '/doctor/'
+    #self.kwargs['pk']
+    # def render_to_response(self , redirect_url):
+    #     if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
+    #         return HttpResponseRedirect('/patient/login/')
+    #     elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
+    #         return HttpResponseRedirect('/')
+    #     else:
+    #        return super().render_to_response(redirect_url)

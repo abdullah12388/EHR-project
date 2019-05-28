@@ -10,7 +10,7 @@
             {% csrf_token %}
             {% if labData %}
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-sm-3">
                         <div class="row">
                             <div style="width:200px;margin: auto">
                                 <img src="{{ labData.org_logo }}" alt="profile picture" class="img-thumbnail"/>
@@ -21,7 +21,7 @@
                             <label for="file1">Choose a file</label>
                         </div>
                     </div>
-                    <div class="col-9">
+                    <div class="col-sm-9">
                         <div class="form-row" style="margin-bottom:20px">
                             <div class="col-sm">
                                 <input type="text" name="org_name" value="{{ labData.org_name }}" class="form-control" placeholder="Name">

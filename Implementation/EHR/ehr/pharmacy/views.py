@@ -54,7 +54,7 @@ def pharmacyPatientLogin(request):
         return HttpResponseRedirect('medicines/')
     else:
         if 'ssnID' not in request.session:
-            return render(request, 'pharmacyIndex.html', {'ph_id':request.session['pharmacy_id'],})
+            return render(request, 'pharmacyIndex.html', {'ph_id':request.session['pharmacy_id']})
         else:
             return render(request, 'patientMedicineToBeSubmit.html', {'ph_id':request.session['pharmacy_id'],'SSNID': request.session['ssnID']})
 
@@ -100,13 +100,31 @@ def medicineListView(request):
         return HttpResponseNotFound('<h1>patient not found</h1>')
 
 
-def pharmacy_profile_view(request,pharid,hosid):
-    # pharmacyData = organization.objects.filter(Type=1).get(org_id=request.session['pharmacy_id'])
-    pharmacyData = organization.objects.filter(Type=1).get(org_id=pharid)
-    hospitaldata = hospital.objects.get(h_id=hosid)
+# def pharmacy_profile_view(request,pharid,hosid):
+#     # pharmacyData = organization.objects.filter(Type=1).get(org_id=request.session['pharmacy_id'])
+#     pharmacyData = organization.objects.filter(Type=1).get(org_id=pharid)
+#     hospitaldata = hospital.objects.get(h_id=hosid)
+#     context ={
+#         'pharmacy': pharmacyData,
+#         'ph_id':pharmacyData.org_id,
+#         'hospital':hospitaldata,
+#     }
+#     return render(request, 'pharmacyProfileView.html',context)
+
+# def pharmacy_profile_view(request):
+#     id = request.session['pharmacy_id']
+#     pharmacyData = organization.objects.filter(Type=1).get(org_id=id)
+#     context ={
+#         'pharmacy': pharmacyData,
+#         'ph_id':pharmacyData.org_id,
+#     }
+#     return render(request, 'pharmacyProfileView.html',context)
+
+def pharmacy_profile_view(request,pharid=None):
+    pharmacyData = get_object_or_404(organization,org_id=pharid)
     context ={
         'pharmacy': pharmacyData,
         'ph_id':pharmacyData.org_id,
-        'hospital':hospitaldata,
+        'hos_id':None,
     }
     return render(request, 'pharmacyProfileView.html',context)

@@ -16,6 +16,7 @@
 {#        </div>#}
 {#    </div>#}
 {#</div>#}
+<div style="width:10px;height:175px"></div>
 <div class="container">
     <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);margin-top:30px;color: #FFF">
         {% if prescription %}
@@ -24,11 +25,11 @@
                     <div class="row" style="border-bottom: solid 5px #32c69a">
                         <div class="col-sm-2" style="margin: auto 0px auto 0px;"></div>
                         <div class="col-sm-3" style="margin-bottom: 10px">
-                            <a href="#">
-                                {% with report=prescription|first %}
+                            {% with report=prescription|first %}
+                                <a href="{% url 'patient:patientProfileView' pk=report.patient.id%}">
                                     <img class="ima" src="{{ report.patient.Patient.Profile_picture }}" style="width: 70px;height: 70px">
-                                {% endwith %}
-                            </a>
+                                </a>
+                            {% endwith %}
                         </div>
                         <div class="col-sm-7 topName" style="margin: auto 0px;">
                             {% with report=prescription|first %}

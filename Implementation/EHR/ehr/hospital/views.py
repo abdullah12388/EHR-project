@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from .models import hospital,organization
 from doctor.models import doctor
 from patient.forms import AddUser
@@ -155,6 +155,7 @@ def Index(request):
     labdata = organization.objects.filter(Type=2).filter(hospital_id=request.session['hospital_id']);
     context = {
         'hospital': hospitaldata,
+        'hos_id':hospitaldata.h_id,
         'doctor': doctordata,
         'pharmacy': pharmacydata,
         'lab': labdata,
@@ -234,6 +235,7 @@ def update_doctor(request,Docid):
         userData = user.objects.get(user_id=Docid)
         context={
             'hospital': hospitaldata,
+            'hos_id': hospitaldata.h_id,
             'doctorData':doctorData,
             'userData':userData,
         }
@@ -305,6 +307,7 @@ def add_doctor(request):
         B_Doctor = doctor.objects.filter(hospital_id__isnull=True)
         context = {
             'hospital': hospitaldata,
+            'hos_id': hospitaldata.h_id,
             'form1': form1,
             'b_d': B_Doctor,
         }
@@ -360,6 +363,7 @@ def update_pharmacy(request,pharid,hosid):
         pharmacyData = organization.objects.filter(Type=1).filter(hospital_id=hosid).get(org_id=pharid)
         context={
             'hospital': hospitaldata,
+            'hos_id': hospitaldata.h_id,
             'pharmacyData':pharmacyData,
         }
         return render(request, 'updatePharmacy.html',context)
@@ -388,7 +392,7 @@ def add_pharmacy(request):
         return HttpResponseRedirect('/hospital/Index/')
     else:
         hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
-        return render(request, 'addPharmacy.html',{'hospital': hospitaldata,})
+        return render(request, 'addPharmacy.html',{'hospital': hospitaldata,'hos_id':hospitaldata.h_id,})
 
 def update_lab(request,labid,hosid):
     if request.method == 'POST':
@@ -417,6 +421,7 @@ def update_lab(request,labid,hosid):
         print(labData.org_name)
         context={
             'hospital': hospitaldata,
+            'hos_id': hospitaldata.h_id,
             'labData':labData,
         }
         return render(request, 'updateLab.html',context)
@@ -445,7 +450,7 @@ def add_Lab(request):
         return HttpResponseRedirect('/hospital/Index/')
     else:
         hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
-        return render(request, 'addLab.html',{'hospital': hospitaldata,})
+        return render(request, 'addLab.html',{'hospital': hospitaldata,'hos_id':hospitaldata.h_id,})
 
 
 def delete_doctor(request,Did):
@@ -465,14 +470,13 @@ def unblock_doctor(request,ssn):
     return HttpResponseRedirect('/hospital/Index/')
 
 
-def hospital_profile_view(request,hosid):
-    # hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
-    hospitaldata = hospital.objects.get(h_id=hosid)
+def hospital_profile_view(request,hosid=None):
+    hospitaldata = get_object_or_404(hospital,h_id=hosid)
     context ={
         'hospital': hospitaldata,
+        'hos_id': hospitaldata.h_id,
     }
     return render(request, 'hospitalProfileView.html',context)
-
 
 def reset_doc_passowrd(request,id):
     user.objects.filter(user_id=id).update(New_Password='123456789')

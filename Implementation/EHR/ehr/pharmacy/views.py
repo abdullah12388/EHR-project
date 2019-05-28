@@ -67,6 +67,8 @@ def QRCodeScanView(request):
 
 def medicineListView(request):
     pharmacy_id = request.session['pharmacy_id']
+    if 'ssnID' in request.session:
+        request.session.pop('ssnID')
     # user_id = request.session['patient_id']
     # print(user_id)
     patient_id = patient.objects.get(Patient_id=request.session['patien_id']).id

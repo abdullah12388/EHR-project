@@ -110,11 +110,11 @@
                     <div class="row medicine_elem">
                         <div class="col-6">
                     {{test_ray|index:forloop.counter0}}
-{#                    {{test_ray}}#}
+                {#  {{test_ray}}#}
                         </div>
                         <div class="col-6">
-{#                            <a href="{{ i.rays_result }}">result{{ forloop.counter }}</a>#}
-                    {{i.rays_result }}
+                <a href="{{ i.rays_result }}">result{{ forloop.counter }}</a>
+                    {% comment %} {{i.rays_result }} {% endcomment %}
                         </div>
                     </div>
                     {%endfor%}
@@ -131,7 +131,7 @@
                 {% endif %}
             </div>
         </div>
-     {% endfor %}
+        {% endfor %}
     </div>
 </div>
 {% endblock patient_history_content %}

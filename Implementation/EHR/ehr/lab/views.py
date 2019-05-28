@@ -75,6 +75,9 @@ def QRCodeScanView(request):
 
 def AnalyticsListView(request):
     # patient_id = request.session['patient_id']
+    #This will delete the SSN ID after loggin by the patient
+    if 'ssnid' in request.session:
+        request.session.pop('ssnid')
     patient_id = patient.objects.get(Patient_id=request.session['patie_id']).id
     lab_id = request.session['lab_id']
     patientFoundTrueAndFalse = patient_analytics.objects.filter(pat_id__exact=patient_id).exists()
@@ -107,6 +110,9 @@ def AnalyticsListView(request):
 
 def RaysListView(request):
     # patient_id = request.session['patient_id']
+    # This will delete the SSN ID after loggin by the patient
+    if 'ssnid' in request.session:
+        request.session.pop('ssnid')
     patient_id = patient.objects.get(Patient_id=request.session['patie_id']).id
     lab_id = request.session['lab_id']
     patientFoundTrueAndFalse = patient_rays.objects.filter(pat_id__exact=patient_id).exists()

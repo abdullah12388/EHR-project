@@ -33,27 +33,27 @@
                     <div class="col-sm">
                         <div class="form-row" style="margin-bottom:20px">
                             <div class="col-sm">
-                                {{ form.Disease_name }}
+                                <input type="text" name="Disease_name" class="form-control" pattern="[a-z]{3,}" placeholder="Disease Name" required id="id_Disease_name" />
                             </div>
                         </div>
                         <div class="form-row" style="margin-bottom:20px">
                             <div class="col-sm">
-                                {{ form.Disease_level }}
+                                <input type="text" name="Disease_level" class="form-control" pattern="[0-9]{1,}" placeholder="Disease Level" required id="id_Disease_level" />
                             </div>
                         </div>
                         <div class="form-row" style="margin-bottom:20px">
                             <div class="col-sm">
-                                {{ form.Disease_disc }}
+                                <textarea name="Disease_disc" cols="40" rows="10" class="form-control" pattern="[a-z]{3,}" placeholder="Disease Discription" required id="id_Disease_disc"></textarea>
                             </div>
                         </div>
                         <div class="form-row" style="margin-bottom:20px">
                             <div class="col-sm">
-                                {{ form.Doctor_signature }}
+                                <input type="text" name="Doctor_signature" class="form-control" pattern="[a-z]{3,}" placeholder="Doctor Signature" required id="id_Doctor_signature" />
                             </div>
                         </div>
                         <div class="form-row" style="margin-bottom:20px">
                             <div class="col-sm">
-                                {{ form.next_appointment }}
+                                <input type="datetime-local" name="next_appointment" class="form-control" placeholder="Next Appointment" required id="id_next_appointment" />
                             </div>
                         </div>
                         <div class="form-row" style="margin-bottom:20px">
@@ -63,10 +63,78 @@
                         </div>
                     </div>
                 </div>
+{#                <div class="row">#}
+{#                    <div class="col-sm">#}
+{#                        <div class="form-row" style="margin-bottom:20px">#}
+{#                            <div class="col-sm">#}
+{#                                {{ form.Disease_name }}#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-row" style="margin-bottom:20px">#}
+{#                            <div class="col-sm">#}
+{#                                {{ form.Disease_level }}#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-row" style="margin-bottom:20px">#}
+{#                            <div class="col-sm">#}
+{#                                {{ form.Disease_disc }}#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-row" style="margin-bottom:20px">#}
+{#                            <div class="col-sm">#}
+{#                                {{ form.Doctor_signature }}#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-row" style="margin-bottom:20px">#}
+{#                            <div class="col-sm">#}
+{#                                {{ form.next_appointment }}#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-row" style="margin-bottom:20px">#}
+{#                            <div class="col-sm" style="text-align: center">#}
+{#                                <input type="submit" style="width:30%;margin:auto" class="button home_button" value="Create">#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
             </form>
-        {%else %}
+        {% else %}
             <form method="POST">
                 {% csrf_token %}
+{#                <div class="row">#}
+{#                    <div class="col-sm">#}
+{#                        <div class="form-row" style="margin-bottom:20px">#}
+{#                            <div class="col-sm">#}
+{#                                <input type="text" name="Disease_name" class="form-control" pattern="[a-z]{3,}" placeholder="Disease Name" required id="id_Disease_name" />#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-row" style="margin-bottom:20px">#}
+{#                            <div class="col-sm">#}
+{#                                <input type="text" name="Disease_level" class="form-control" pattern="[0-9]{1,}" placeholder="Disease Level" required id="id_Disease_level" />#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-row" style="margin-bottom:20px">#}
+{#                            <div class="col-sm">#}
+{#                                <textarea name="Disease_disc" cols="40" rows="10" class="form-control" pattern="[a-z]{3,}" placeholder="Disease Discription" required id="id_Disease_disc"></textarea>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-row" style="margin-bottom:20px">#}
+{#                            <div class="col-sm">#}
+{#                                <input type="text" name="Doctor_signature" class="form-control" pattern="[a-z]{3,}" placeholder="Doctor Signature" required id="id_Doctor_signature" />#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-row" style="margin-bottom:20px">#}
+{#                            <div class="col-sm">#}
+{#                                <input type="datetime-local" name="next_appointment" class="form-control" placeholder="Next Appointment" required id="id_next_appointment" />#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-row" style="margin-bottom:20px">#}
+{#                            <div class="col-sm" style="text-align: center">#}
+{#                                <input type="submit" style="width:30%;margin:auto" class="button home_button" value="Update">#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
                 <div class="row">
                     <div class="col-sm">
                         <div class="form-row" style="margin-bottom:20px">

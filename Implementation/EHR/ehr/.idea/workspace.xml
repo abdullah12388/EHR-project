@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d8ec0d3-e378-4bab-aa60-45a1fc63fd41" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/EHR.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/EHR.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospital/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospital/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pharmacy/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/pharmacy/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pharmacy/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pharmacy/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Doctor_app/Patiant_ID_singup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Doctor_app/Patiant_ID_singup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/labIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/labIndex.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pharmacyIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pharmacyIndex.html" afterDir="false" />
-    </list>
+    <list default="true" id="4d8ec0d3-e378-4bab-aa60-45a1fc63fd41" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -357,7 +338,7 @@
       <workItem from="1554951537455" duration="11350000" />
       <workItem from="1554985309328" duration="9006000" />
       <workItem from="1555006984026" duration="18321000" />
-      <workItem from="1559022243217" duration="275000" />
+      <workItem from="1559022243217" duration="661000" />
     </task>
     <task id="LOCAL-00001" summary="on the way">
       <created>1554725365252</created>
@@ -377,7 +358,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88768000" />
+    <option name="totallyTimeSpent" value="89154000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />

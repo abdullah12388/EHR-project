@@ -83,7 +83,7 @@
                         </div>
                         <div class="form-row" style="margin-bottom:20px">
                             <div class="col-sm">
-                                <select class="form-control" name="gender">
+                                <select class="form-control" style="height: auto" name="gender">
                                     <option value="" disabled>Gender</option>
                                     {% if userData.gender == 'male' %}
                                         <option value="1" selected>Male</option>
@@ -108,7 +108,7 @@
                                 <input type="date" name="Date_of_birth" class="form-control" placeholder="Birth Date" value="{{ userData.Date_of_birth|date:'Y-m-d' }}"/>
                             </div>
                             <div class="col-sm">
-                                <select class="form-control" name="marital_status">
+                                <select class="form-control" style="height: auto" name="marital_status">
                                     <option value="" disabled>Marital Status</option>
                                     {% if userData.marital_status == 'single' %}
                                         <option value="1" selected>Single</option>

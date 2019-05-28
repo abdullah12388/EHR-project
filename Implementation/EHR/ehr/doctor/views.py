@@ -160,9 +160,9 @@ class prescriptionFormView (FormView):
            return super().render_to_response(redirect_url)
 
 class prescriptionUpdate (UpdateView):
-    fields = '__all__'
     model = prescription
     template_name = 'Doctor_app/prescription_form.html'
+    form_class = PrescriptionForm
 
     def render_to_response(self , redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:

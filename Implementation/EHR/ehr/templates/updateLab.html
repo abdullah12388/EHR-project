@@ -1,0 +1,74 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+{% block updateLab %}
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Lab Profile Update</h2>
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66)">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if labData %}
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="row">
+                            <div style="width:200px;margin: auto">
+                                <img src="{{ labData.org_logo }}" alt="profile picture" class="img-thumbnail"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="file" name="org_logo" class="inputfile" id="file1">
+                            <label for="file1">Choose a file</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="text" name="org_name" value="{{ labData.org_name }}" class="form-control" placeholder="Name">
+                            </div>
+                            <div class="col-sm">
+                                <input type="url" name="org_website" value="{{ labData.org_website }}" class="form-control" placeholder="Website" required="">
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="text" name="org_country" value="{{ labData.org_country }}" class="form-control" pattern="[A-Za-z]{3,}" placeholder="Country">
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="org_state" value="{{ labData.org_state }}" class="form-control" pattern="[A-Za-z]{3,}" placeholder="State">
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="org_city" value="{{ labData.org_city }}" class="form-control" pattern="[A-Za-z]{3,}" placeholder="City">
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="org_zipcode" value="{{ labData.org_zipcode }}" class="form-control" pattern="[0-9]{5}" placeholder="Zip code">
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="text" name="org_phone_num" value="{{ labData.org_phone_num }}" class="form-control" pattern="[0-9]{11}" placeholder="Phone number">
+                            </div>
+                            <div class="col-sm">
+                                <input type="email" name="org_email" value="{{ labData.org_email }}" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="E-mail">
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="text" name="hr_username" value="{{ labData.hr_username }}" class="form-control" pattern="[A-Za-z]{3,}" placeholder="User Account">
+                            </div>
+                            <div class="col-sm">
+                                <input type="password" name="hr_password" value="{{ labData.hr_password }}" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm" style="text-align: center">
+                                <button id="id_signup_submit" type="submit" style="width:30%;margin:auto" class="button home_button">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock updateLab%}

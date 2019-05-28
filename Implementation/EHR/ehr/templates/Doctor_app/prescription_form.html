@@ -1,24 +1,108 @@
 {% extends 'Doctor_app/Doctor_base.html' %}
 {% block home_content %}
 
-<div class="info">
-    <div class="container">
-        <div class="row row-eq-height">
-            {% if not form.instance.pk %}
-            <form method="post">
-                {%csrf_token%}
-                {{form.as_p}}
-                <input type="submit" class="btn btn-primary" value="Create">
-            </form>
-            {%else%}
-            <form method="post">
-                {%csrf_token%}
-                {{form.as_p}}
-                <input type="submit" class="btn btn-warning" value="Update">
-            </form>
-            {% endif %}
+{#<div style="width:10px;height:175px"></div>#}
+{#<div class="info">#}
+{#    <div class="container">#}
+{#        <div class="row row-eq-height">#}
+{#            {% if not form.instance.pk %}#}
+{#            <form method="post">#}
+{#                {%csrf_token%}#}
+{#                {{form.as_p}}#}
+{#                <input type="submit" class="btn btn-primary" value="Create">#}
+{#            </form>#}
+{#            {%else%}#}
+{#            <form method="post">#}
+{#                {%csrf_token%}#}
+{#                {{form.as_p}}#}
+{#                <input type="submit" class="btn btn-warning" value="Update">#}
+{#            </form>#}
+{#            {% endif %}#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
 
-        </div>
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Lab Profile Update</h2>
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66)">
+        {% if not form.instance.pk %}
+            <form method="POST">
+            {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.Disease_name }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.Disease_level }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.Disease_disc }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.Doctor_signature }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.next_appointment }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm" style="text-align: center">
+                                <input type="submit" style="width:30%;margin:auto" class="button home_button" value="Create">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        {%else %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.Disease_name }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.Disease_level }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.Disease_disc }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.Doctor_signature }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.next_appointment }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm" style="text-align: center">
+                                <input type="submit" style="width:30%;margin:auto" class="button home_button" value="Update">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        {% endif %}
     </div>
 </div>
 

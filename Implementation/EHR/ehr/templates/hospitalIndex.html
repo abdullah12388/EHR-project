@@ -11,7 +11,7 @@
                     {% if hospital %}
                     <div class="col-sm-2" style="margin: auto 0px auto 0px;"></div>
                     <div class="col-sm-3" style="margin-bottom: 10px">
-                        <a href="{% url 'hospital:hospital_profile_view' %}">
+                        <a href="{% url 'hospital:hospital_profile_view' hosid=hospital.h_id%}">
                             <img class="ima" src="{{ hospital.logo }}" style="width: 70px;height: 70px">
                         </a>
                     </div>
@@ -56,7 +56,9 @@
                             {% for doct in doctor %}
                             <div class="row" style="margin-bottom: 5px">
                                 <div class="col-sm" style="text-align: center;margin: auto;">
-                                    <img class="ima" src="{{ doct.Doc.Profile_picture }}" style="width: 50px;height: 50px">
+                                    <a href="{% url 'doctor:doctorProfileView' pk=doct.id%}">
+                                        <img class="ima" src="{{ doct.Doc.Profile_picture }}" style="width: 50px;height: 50px">
+                                    </a>
                                 </div>
                                 <div class="col-sm" style="text-align: center;margin: auto;">
                                     <label style="font-size: 22px;margin: auto;">{{ doct.Doc.first_name }}</label>
@@ -90,13 +92,15 @@
                             {% for phar in pharmacy %}
                                 <div class="row" style="margin-bottom: 5px">
                                     <div class="col-sm" style="text-align: center;margin: auto;">
-                                        <img class="ima" src="{{ phar.org_logo }}" style="width: 50px;height: 50px">
+                                        <a href="{% url 'pharmacy:pharmacy_profile_view' pharid=phar.org_id %}">
+                                            <img class="ima" src="{{ phar.org_logo }}" style="width: 50px;height: 50px">
+                                        </a>
                                     </div>
                                     <div class="col-sm" style="text-align: center;margin: auto;">
                                         <label style="font-size: 22px;margin: auto;">{{ phar.org_name }}</label>
                                     </div>
                                     <div class="col-sm" style="text-align: center;">
-                                        <a href="#">
+                                        <a href="{% url 'hospital:update_pharmacy' pharid=phar.org_id hosid=hospital.h_id %}">
                                             <button type="submit" style="width: 55%;height: 40px;margin-top: 10px;font-size: 18px;border-radius: 50px;" class="button home_button">Update</button>
                                         </a>
                                     </div>
@@ -122,13 +126,15 @@
                             {% for lb in lab %}
                                 <div class="row" style="margin-bottom: 5px">
                                     <div class="col-sm" style="text-align: center;margin: auto;">
-                                        <img class="ima" src="{{ lb.org_logo }}" style="width: 50px;height: 50px">
+                                        <a href="{% url 'lab:lab_profile_view' labid=lb.org_id %}">
+                                            <img class="ima" src="{{ lb.org_logo }}" style="width: 50px;height: 50px">
+                                        </a>
                                     </div>
                                     <div class="col-sm" style="text-align: center;margin: auto;">
                                         <label style="font-size: 22px;margin: auto;">{{ lb.org_name }}</label>
                                     </div>
                                     <div class="col-sm" style="text-align: center;">
-                                        <a href="#">
+                                        <a href="{% url 'hospital:update_lab' labid=lb.org_id hosid=hospital.h_id %}">
                                             <button type="submit" style="width: 55%;height: 40px;margin-top: 10px;font-size: 18px;border-radius: 50px;" class="button home_button">Update</button>
                                         </a>
                                     </div>

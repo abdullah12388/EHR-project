@@ -1,0 +1,104 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+{% block labProfileView%}
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Lab Profile Information</h2>
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);padding: 2rem 2rem">
+        <div class="row">
+        {% if lab %}
+            <div class="col-sm-4">
+                <div class="row">
+                    <div style="width:200px;margin: auto">
+                        <h3 style="color: #FFF;text-align: center;font-weight: bold;">Logo</h3>
+                        <img src="{{ lab.org_logo }}" alt="profile picture" class="img-thumbnail"/>
+                    </div>
+                </div>
+                <div style="margin-top:45px"></div>
+                <div class="row">
+                    <div style="width:200px;margin: auto">
+                        <h3 style="color: #FFF;text-align: center;font-weight: bold;">Rate</h3>
+                        <h1 style="color: #32c69a;text-align: center;font-weight: bold;">{{ lab.org_rate }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Name</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ lab.org_name }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Phone</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ lab.org_phone_num }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Website</label>
+                    </div>
+                    <div class="col-sm-8" style="max-height: 60px;overflow: hidden">
+                        <a href="{{ lab.org_website }}" style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ lab.org_website }}</a>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Country</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ lab.org_country }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">State</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ lab.org_state }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">City</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ lab.org_city }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Zip Code</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ lab.org_zipcode }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">E-Mail</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ lab.org_email }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-sm-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Creation Date</label>
+                    </div>
+                    <div class="col-sm-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ lab.creation_date }}</label>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock labProfileView %}

@@ -1,10 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-=======
-
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
->>>>>>> Stashed changes
 from .form import AddManager,AddUser
 from .models import admin , user , patient
 from django.shortcuts import render

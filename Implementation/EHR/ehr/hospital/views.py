@@ -1,5 +1,5 @@
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from .models import hospital,organization
 from doctor.models import doctor
 from patient.forms import AddUser
@@ -155,6 +155,7 @@ def Index(request):
     labdata = organization.objects.filter(Type=2).filter(hospital_id=request.session['hospital_id']);
     context = {
         'hospital': hospitaldata,
+        'hos_id':hospitaldata.h_id,
         'doctor': doctordata,
         'pharmacy': pharmacydata,
         'lab': labdata,
@@ -229,9 +230,12 @@ def update_doctor(request,Docid):
         ########################################################
         return HttpResponseRedirect('/hospital/Index/')
     else:
+        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
         doctorData = doctor.objects.get(Doc_id=Docid)
         userData = user.objects.get(user_id=Docid)
         context={
+            'hospital': hospitaldata,
+            'hos_id': hospitaldata.h_id,
             'doctorData':doctorData,
             'userData':userData,
         }
@@ -298,9 +302,12 @@ def add_doctor(request):
             print('form one')
             print(formu.errors)
     else:
+        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
         form1 = AddUser()
         B_Doctor = doctor.objects.filter(hospital_id__isnull=True)
         context = {
+            'hospital': hospitaldata,
+            'hos_id': hospitaldata.h_id,
             'form1': form1,
             'b_d': B_Doctor,
         }
@@ -330,6 +337,37 @@ def maritalStatus(num):
 # end of doctor profile
 
 
+def update_pharmacy(request,pharid,hosid):
+    if request.method == 'POST':
+        phr = organization.objects.filter(Type=1).filter(hospital_id=hosid).filter(org_id=pharid)
+        # upload profile,ssn pictures and save paths to database
+        fs = FileSystemStorage()
+        if 'org_logo' in request.FILES:
+            profile_picture_file = request.FILES['org_logo']
+            ppf_name = fs.save(profile_picture_file.name, profile_picture_file)
+            or_log = '/hospital' + fs.url(ppf_name)
+            phr.update(org_logo=or_log)
+        phr.update(org_name=request.POST['org_name'])
+        phr.update(org_website=request.POST['org_website'])
+        phr.update(org_country=request.POST['org_country'])
+        phr.update(org_state=request.POST['org_state'])
+        phr.update(org_city=request.POST['org_city'])
+        phr.update(org_zipcode=request.POST['org_zipcode'])
+        phr.update(org_phone_num=request.POST['org_phone_num'])
+        phr.update(org_email=request.POST['org_email'])
+        phr.update(hr_username=request.POST['hr_username'])
+        phr.update(hr_password=request.POST['hr_password'])
+        return HttpResponseRedirect('/hospital/Index/')
+    else:
+        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
+        pharmacyData = organization.objects.filter(Type=1).filter(hospital_id=hosid).get(org_id=pharid)
+        context={
+            'hospital': hospitaldata,
+            'hos_id': hospitaldata.h_id,
+            'pharmacyData':pharmacyData,
+        }
+        return render(request, 'updatePharmacy.html',context)
+
 def add_pharmacy(request):
     if request.method == 'POST':
         # upload profile,ssn pictures and save paths to database
@@ -353,7 +391,40 @@ def add_pharmacy(request):
         pharmacy.save()
         return HttpResponseRedirect('/hospital/Index/')
     else:
-        return render(request, 'addPharmacy.html',{})
+        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
+        return render(request, 'addPharmacy.html',{'hospital': hospitaldata,'hos_id':hospitaldata.h_id,})
+
+def update_lab(request,labid,hosid):
+    if request.method == 'POST':
+        labor = organization.objects.filter(Type=2).filter(hospital_id=hosid).filter(org_id=labid)
+        # upload profile,ssn pictures and save paths to database
+        fs = FileSystemStorage()
+        if 'org_logo' in request.FILES:
+            profile_picture_file = request.FILES['org_logo']
+            ppf_name = fs.save(profile_picture_file.name, profile_picture_file)
+            or_log = '/hospital' + fs.url(ppf_name)
+            labor.update(org_logo=or_log)
+        labor.update(org_name=request.POST['org_name'])
+        labor.update(org_website=request.POST['org_website'])
+        labor.update(org_country=request.POST['org_country'])
+        labor.update(org_state=request.POST['org_state'])
+        labor.update(org_city=request.POST['org_city'])
+        labor.update(org_zipcode=request.POST['org_zipcode'])
+        labor.update(org_phone_num=request.POST['org_phone_num'])
+        labor.update(org_email=request.POST['org_email'])
+        labor.update(hr_username=request.POST['hr_username'])
+        labor.update(hr_password=request.POST['hr_password'])
+        return HttpResponseRedirect('/hospital/Index/')
+    else:
+        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
+        labData = organization.objects.filter(Type=2).filter(hospital_id=hosid).get(org_id=labid)
+        print(labData.org_name)
+        context={
+            'hospital': hospitaldata,
+            'hos_id': hospitaldata.h_id,
+            'labData':labData,
+        }
+        return render(request, 'updateLab.html',context)
 
 def add_Lab(request):
     if request.method == 'POST':
@@ -378,7 +449,8 @@ def add_Lab(request):
         pharmacy.save()
         return HttpResponseRedirect('/hospital/Index/')
     else:
-        return render(request, 'addLab.html',{})
+        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
+        return render(request, 'addLab.html',{'hospital': hospitaldata,'hos_id':hospitaldata.h_id,})
 
 
 def delete_doctor(request,Did):
@@ -398,20 +470,14 @@ def unblock_doctor(request,ssn):
     return HttpResponseRedirect('/hospital/Index/')
 
 
-def hospital_profile_view(request):
-    hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
+def hospital_profile_view(request,hosid=None):
+    hospitaldata = get_object_or_404(hospital,h_id=hosid)
     context ={
         'hospital': hospitaldata,
+        'hos_id': hospitaldata.h_id,
     }
     return render(request, 'hospitalProfileView.html',context)
-
 
 def reset_doc_passowrd(request,id):
     user.objects.filter(user_id=id).update(New_Password='123456789')
     return HttpResponseRedirect('/hospital/Index/')
-
-
-
-
-
-

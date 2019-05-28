@@ -1,15 +1,22 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from .forms import GetPatianTIDForm,PrescriptionForm,AddmedicenForm,AddRaysForm,AddanalyticsForm
 from patient.views import DB_functions
 from patient.models import user,patient
+from hospital.models import hospital
 from .models import (prescription,report,doctor,multi_medecines,
 patient_medicine,all_medicine,multi_rays,multi_analytics
 ,patient_rays,all_rays,patient_analytics,multi_analytics)
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.hashers import check_password
 from django.views.generic import (View,TemplateView,DeleteView,DetailView,ListView,CreateView,FormView,UpdateView)
 # from django.core.urlresolvers import reverse
 from django.urls import reverse
+
+
+
+import cv2
+import numpy as np
+import pyzbar.pyzbar as pyzbar
 
 
 def Doctor(request):
@@ -27,33 +34,100 @@ def GetPatianTID (request):
         return HttpResponseRedirect('/patient/')
     else:
         if request.method == 'POST':
-            Get_PatianT_ID_Form = GetPatianTIDForm(request.POST)
-            if Get_PatianT_ID_Form.is_valid():
-                Email = Get_PatianT_ID_Form.cleaned_data.get('email_1')
-                print(Email)
-                password = Get_PatianT_ID_Form.cleaned_data.get('New_Password')
-                print(password)
-                user_is_exist = user.objects.filter(email_1__iexact=Email).exists()
-                if user_is_exist:
-                    get = user.objects.get(email_1=Email)
-                    user_id = get.user_id
-                    print(user_id)
-                    password_db = get.New_Password
-                    print(password_db)
-                    user_Type_number = get.User_type
-                    print(user_Type_number)
-                if check_password(password=password , encoded=password_db):
-                    if user_Type_number != 1:
-                        return HttpResponseRedirect('/doctor/patiant/?alert=Not A Patiant')
-                    if user_Type_number == 1:
-                        request.session['Doctor_Patiant_ID']  = user_id
-                        print(request.session['Doctor_Patiant_ID'])
-                        return HttpResponseRedirect('/doctor/patiant/prescription/')
-                else:
-                    return HttpResponseRedirect('/doctor/patiant/?alert=wrong_password')
+
+            # QRData = patient.views.QRCodeScanner()
+            # QRData = QRData.decode("UTF-8")
+            # if QRData:
+            #     ssn_id = QRData
+            # else:
+            ssn_id = request.POST['pat_id']
+            print(ssn_id)
+            user_is_exist = user.objects.filter(Ssn_id=ssn_id).exists()
+            if user_is_exist:
+                get = user.objects.get(Ssn_id=ssn_id)
+                user_id = get.user_id
+                patientget = patient.objects.get(Patient_id = user_id)
+                p_id = patientget.id
+                print(user_id)
+                user_Type_number = get.User_type
+                print(user_Type_number)
+
+            if user_Type_number != 1:
+                return HttpResponseRedirect('/doctor/patiant/?alert=Not A Patiant')
+            if user_Type_number == 1:
+                request.session['Doctor_Patiant_ID']  = p_id
+                print(request.session['Doctor_Patiant_ID'])
+                return HttpResponseRedirect('/doctor/patiant/prescription/')
+
         else:
             Get_PatianT_ID_Form = GetPatianTIDForm()
-            return render(request,'Doctor_app/Patiant_ID_singup.html',{'Patiant_form':Get_PatianT_ID_Form})
+            return render(request,'Doctor_app/Patiant_ID_singup.html',{'ID':request.session['doctor_id'],'Patiant_form':Get_PatianT_ID_Form})
+
+
+def QRCodeScanner():
+    #to determine which camera you will use
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    #to check if the machine contains a camera
+    if cap is None or not cap.isOpened():
+        print('Warning: unable to open Camera! You might not Have a Camera')
+    else:
+        while True:
+            #to make the camera read and capture frames
+            ret, frame = cap.read()
+            #where QR Code data will be saved
+            decodedObjects = pyzbar.decode(frame)
+            #iterate throw the list which contains QR details
+            for obj in decodedObjects:
+                #if object contains data that means a QR Code is detected
+                if obj.data:
+                    #it waits for a QR Code to be detected
+                    if cv2.waitKey(1):
+                        #it's for stopping the camera and release all resources that we used
+                        if obj.data:
+                            cap.release()
+                            cv2.destroyAllWindows()
+                            #return the QR Code data that we extracted in the for loop
+                            return obj.data
+            #it's to show a frame that contains camera
+            cv2.imshow("Frame", frame)
+            # it waits for a QR Code to be detected
+            if cv2.waitKey(1) :
+                for obj in decodedObjects:
+                    if obj.data:
+                        break
+
+def QRCodeScanView(request):
+    QRData = QRCodeScanner()
+    QRData = QRData.decode("UTF-8")
+    getUser = user.objects.get(Ssn_id=QRData)
+
+
+    if getUser:
+        user_Type_number = getUser.User_type
+
+        ssn_id = QRData
+        print(ssn_id)
+        user_is_exist = user.objects.filter(Ssn_id=ssn_id).exists()
+        if user_is_exist:
+            get = user.objects.get(Ssn_id=ssn_id)
+            user_id = get.user_id
+            patientget = patient.objects.get(Patient_id=user_id)
+            p_id = patientget.id
+            print(user_id)
+            user_Type_number = get.User_type
+            print(user_Type_number)
+
+        if user_Type_number == 1:
+            request.session['Doctor_Patiant_ID'] = p_id
+            print(request.session['Doctor_Patiant_ID'])
+            return HttpResponseRedirect('/doctor/patiant/prescription/')
+        else:
+            return HttpResponseRedirect('/doctor/')
+    else:
+        return HttpResponseRedirect('/doctor/')
+
+
+
 
 class ReportListView(ListView):
     model = report
@@ -64,8 +138,10 @@ class ReportListView(ListView):
     def get_queryset (self):
         if 'Doctor_Patiant_ID' in self.request.session:
             Doctor_Patiant_ID = self.request.session['Doctor_Patiant_ID']
+            print(Doctor_Patiant_ID);
         else:
             print("not Found");
+
         return report.objects.filter(patient=Doctor_Patiant_ID)
 
     def render_to_response(self , redirect_url):
@@ -101,7 +177,7 @@ class prescriptionFormView (FormView):
         if 'doctor_id' in self.request.session:
             D_ID = self.request.session['doctor_id']
         Prescription_Instance = prescription.objects.last()
-        patient_instance = patient.objects.get(Patient=Doctor_Patiant_ID)
+        patient_instance = patient.objects.get(id=Doctor_Patiant_ID)
         Doc_instance = doctor.objects.get(id=D_ID)
         create_report = report.objects.create(prescription=Prescription_Instance,doctor=Doc_instance,patient=patient_instance)
         return HttpResponseRedirect(reverse('doctor:newmed', kwargs={'pk':create_report.report}))
@@ -178,7 +254,7 @@ class MedicenFormView (FormView):
         if 'Doctor_Patiant_ID' in self.request.session:
             Doctor_Patiant_ID = self.request.session['Doctor_Patiant_ID']
         instance = form.save(commit=False)
-        instance.pat = patient.objects.get(Patient=Doctor_Patiant_ID)
+        instance.pat = patient.objects.get(id=Doctor_Patiant_ID)
         instance.save()
         P_mdecine_instance = patient_medicine.objects.last()
         print(self.kwargs['pk'])
@@ -238,7 +314,7 @@ class raysFormView (FormView):
         if 'Doctor_Patiant_ID' in self.request.session:
             Doctor_Patiant_ID = self.request.session['Doctor_Patiant_ID']
         instance = form.save(commit=False)
-        instance.pat = patient.objects.get(Patient=Doctor_Patiant_ID)
+        instance.pat = patient.objects.get(id=Doctor_Patiant_ID)
         instance.save()
         P_ray_instance = patient_rays.objects.last()
         print(self.kwargs['pk'])
@@ -306,7 +382,7 @@ class analyticsFormView (FormView):
         if 'Doctor_Patiant_ID' in self.request.session:
             Doctor_Patiant_ID = self.request.session['Doctor_Patiant_ID']
         instance = form.save(commit=False)
-        instance.pat = patient.objects.get(Patient=Doctor_Patiant_ID)
+        instance.pat = patient.objects.get(id=Doctor_Patiant_ID)
         instance.save()
         P_analytics_instance = patient_analytics.objects.last()
         print(self.kwargs['pk'])
@@ -323,12 +399,48 @@ class analyticsFormView (FormView):
         else:
            return super().render_to_response(redirect_url)
 
-def doctor_profile_view(request):
-    docid = doctor.objects.get(id=request.session['doctor_id']).Doc_id
-    doctordata = doctor.objects.get(Doc_id=docid)
-    userdata = user.objects.get(user_id=docid)
-    context ={
-        'user': userdata,
-        'doctor': doctordata,
-    }
-    return render(request, 'doctorProfileView.html',context)
+# def doctor_profile_view(request):
+#     id = doctor.objects.get(id=request.session['doctor_id']).Doc_id
+#     doctordata = doctor.objects.get(Doc_id=id)
+#     userdata = user.objects.get(user_id=id)
+#     context ={
+#         'user': userdata,
+#         'doctor': doctordata,
+#     }
+#     return render(request, 'doctorProfileView.html',context)
+
+# def doctor_profile_view(request,docid=None):
+#     doctordata = get_object_or_404(doctor,id=docid)
+#     context ={
+#         'doctor': doctordata,
+#         'ID':doctordata.id,
+#     }
+#     return render(request, 'doctorProfileView.html',context)
+
+# def doctor_profile_view(request,docid,hosid):
+#     # pharmacyData = organization.objects.filter(Type=1).get(org_id=request.session['pharmacy_id'])
+#     id = doctor.objects.get(id=docid).Doc_id
+#     doctorData = doctor.objects.get(Doc_id=id)
+#     hospitaldata = hospital.objects.get(h_id=hosid)
+#     userdata = user.objects.get(user_id=id)
+#     context ={
+#         'doctor': doctorData,
+#         'user': userdata,
+#         'doc_id':doctorData.id,
+#         'hospital':hospitaldata,
+#     }
+#     return render(request, 'doctorProfileView.html',context)
+
+class doctorProfileDetialView(DetailView):
+    model = doctor
+    template_name = 'doctorProfileView.html'
+    context_object_name = 'doctor'
+    redirect_url = '/doctor/'
+    #self.kwargs['pk']
+    # def render_to_response(self , redirect_url):
+    #     if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
+    #         return HttpResponseRedirect('/patient/login/')
+    #     elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
+    #         return HttpResponseRedirect('/')
+    #     else:
+    #        return super().render_to_response(redirect_url)

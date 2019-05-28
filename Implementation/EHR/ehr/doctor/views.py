@@ -149,7 +149,7 @@ class prescriptionFormView (FormView):
         patient_instance = patient.objects.get(id=Doctor_Patiant_ID)
         Doc_instance = doctor.objects.get(id=D_ID)
         create_report = report.objects.create(prescription=Prescription_Instance,doctor=Doc_instance,patient=patient_instance)
-        return HttpResponseRedirect(reverse('doctor:newmed', kwargs={'pk':create_report.report}))
+        return HttpResponseRedirect(reverse('doctor:prescriptiondetial', kwargs={'pk':create_report.prescription.prescription_id}))
 
     def render_to_response(self , redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:

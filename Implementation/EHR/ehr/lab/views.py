@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.template import context
 from django.views import generic
 from django.core.files.storage import FileSystemStorage
-from hospital.models import organization
+from hospital.models import organization,hospital
 from patient.models import patient, user
 from doctor.models import report, all_medicine, prescription, patient_analytics,patient_rays
 from patient.forms import patientLoginToPharmacyForm
@@ -60,7 +60,7 @@ def labPatientLogin(request):
         else:
             print('Please Choose right type')
     else:
-        return render(request,'labIndex.html',{})
+        return render(request,'labIndex.html',{'lab_id':request.session['lab_id']})
 
 
 def AnalyticsListView(request):
@@ -125,3 +125,15 @@ def RaysListView(request):
             return HttpResponse("You don't have any Rays")
     else:
         return HttpResponseNotFound('<h1>patient not found</h1>')
+
+
+def lab_profile_view(request,labid,hosid):
+    # pharmacyData = organization.objects.filter(Type=1).get(org_id=request.session['pharmacy_id'])
+    labData = organization.objects.filter(Type=2).get(org_id=labid)
+    hospitaldata = hospital.objects.get(h_id=hosid)
+    context ={
+        'lab': labData,
+        'lab_id':labData.org_id,
+        'hospital':hospitaldata,
+    }
+    return render(request, 'labProfileView.html',context)

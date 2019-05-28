@@ -53,7 +53,7 @@ def pharmacyPatientLogin(request):
         # print(request.session['patien_id'])
         return HttpResponseRedirect('medicines/')
     else:
-        return render(request,'pharmacyIndex.html',{})
+        return render(request,'pharmacyIndex.html',{'ph_id':request.session['pharmacy_id'],})
 
 
 def medicineListView(request):
@@ -90,20 +90,14 @@ def medicineListView(request):
     else:
         return HttpResponseNotFound('<h1>patient not found</h1>')
 
-# def pharmacy_profile_view(request):
-#     # hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
-#     pharmacyData = organization.objects.filter(Type=1).filter(hospital_id=hosid).get(org_id=pharid)
-#     hospitaldata = hospital.objects.get(h_id=hosid)
-#     context ={
-#         'hospital': hospitaldata,
-#         'pharmacy':pharmacyData,
-#     }
-#     return render(request, 'pharmacyProfileView.html',context)
 
-def pharmacy_profile_view(request,pharid):
+def pharmacy_profile_view(request,pharid,hosid):
     # pharmacyData = organization.objects.filter(Type=1).get(org_id=request.session['pharmacy_id'])
     pharmacyData = organization.objects.filter(Type=1).get(org_id=pharid)
+    hospitaldata = hospital.objects.get(h_id=hosid)
     context ={
         'pharmacy': pharmacyData,
+        'ph_id':pharmacyData.org_id,
+        'hospital':hospitaldata,
     }
     return render(request, 'pharmacyProfileView.html',context)

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import GetPatianTIDForm,PrescriptionForm,AddmedicenForm,AddRaysForm,AddanalyticsForm
 from patient.views import DB_functions
 from patient.models import user,patient
+from hospital.models import hospital
 from .models import (prescription,report,doctor,multi_medecines,
 patient_medicine,all_medicine,multi_rays,multi_analytics
 ,patient_rays,all_rays,patient_analytics,multi_analytics)
@@ -329,3 +330,17 @@ def doctor_profile_view(request):
         'doctor': doctordata,
     }
     return render(request, 'doctorProfileView.html',context)
+
+# def doctor_profile_view(request,docid,hosid):
+#     # pharmacyData = organization.objects.filter(Type=1).get(org_id=request.session['pharmacy_id'])
+#     id = doctor.objects.get(id=docid).Doc_id
+#     doctorData = doctor.objects.get(Doc_id=id)
+#     hospitaldata = hospital.objects.get(h_id=hosid)
+#     userdata = user.objects.get(user_id=id)
+#     context ={
+#         'doctor': doctorData,
+#         'user': userdata,
+#         'doc_id':doctorData.id,
+#         'hospital':hospitaldata,
+#     }
+#     return render(request, 'doctorProfileView.html',context)

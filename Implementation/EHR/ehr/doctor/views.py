@@ -149,7 +149,7 @@ class prescriptionFormView (FormView):
         patient_instance = patient.objects.get(id=Doctor_Patiant_ID)
         Doc_instance = doctor.objects.get(id=D_ID)
         create_report = report.objects.create(prescription=Prescription_Instance,doctor=Doc_instance,patient=patient_instance)
-        return HttpResponseRedirect(reverse('doctor:prescriptiondetial', kwargs={'pk':create_report.prescription.prescription_id}))
+        return HttpResponseRedirect(reverse('doctor:newmed', kwargs={'pk':create_report.prescription.prescription_id}))
 
     def render_to_response(self , redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
@@ -177,7 +177,9 @@ class Medicen_List(ListView):
     context_object_name = 'medecines'
     template_name = 'Doctor_app/multi_medecines_list.html'
     def get_queryset(self):
-        return multi_medecines.objects.filter(report_id=self.kwargs['pk'])
+        reportdata = report.objects.get(prescription=self.kwargs['pk'])
+        reportid = reportdata.report
+        return multi_medecines.objects.filter(report_id=reportid)
 
     def render_to_response(self , redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
@@ -227,7 +229,9 @@ class MedicenFormView (FormView):
         instance.save()
         P_mdecine_instance = patient_medicine.objects.last()
         print(self.kwargs['pk'])
-        report_Instance = report.objects.get(report=self.kwargs['pk'])
+        reportdata = report.objects.get(prescription=self.kwargs['pk'])
+        reportid = reportdata.report
+        report_Instance = report.objects.get(report=reportid)
         create_Med_report = multi_medecines.objects.create(report=report_Instance ,P_M=P_mdecine_instance)
         print(self.kwargs['pk'])
         return HttpResponseRedirect(reverse('doctor:medlist', kwargs={'pk': self.kwargs['pk']}))
@@ -237,7 +241,9 @@ class rays_List(ListView):
     context_object_name = 'rays'
     template_name = 'Doctor_app/multi_rays_list.html'
     def get_queryset(self):
-        return multi_rays.objects.filter(report_id=self.kwargs['pk'])
+        reportdata = report.objects.get(prescription=self.kwargs['pk'])
+        reportid = reportdata.report
+        return multi_rays.objects.filter(report_id=reportid)
 
     def render_to_response(self , redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
@@ -287,7 +293,9 @@ class raysFormView (FormView):
         instance.save()
         P_ray_instance = patient_rays.objects.last()
         print(self.kwargs['pk'])
-        report_Instance = report.objects.get(report=self.kwargs['pk'])
+        reportdata = report.objects.get(prescription=self.kwargs['pk'])
+        reportid = reportdata.report
+        report_Instance = report.objects.get(report=reportid)
         create_Med_report = multi_rays.objects.create(report=report_Instance ,P_R=P_ray_instance)
         print(self.kwargs['pk'])
         return HttpResponseRedirect(reverse('doctor:rayslist', kwargs={'pk': self.kwargs['pk']}))
@@ -305,7 +313,9 @@ class analytics_List(ListView):
     context_object_name = 'analytics'
     template_name = 'Doctor_app/multi_analytics_list.html'
     def get_queryset(self):
-        return multi_analytics.objects.filter(report_id=self.kwargs['pk'])
+        reportdata = report.objects.get(prescription=self.kwargs['pk'])
+        reportid = reportdata.report
+        return multi_analytics.objects.filter(report_id=reportid)
 
     def render_to_response(self , redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
@@ -355,7 +365,9 @@ class analyticsFormView (FormView):
         instance.save()
         P_analytics_instance = patient_analytics.objects.last()
         print(self.kwargs['pk'])
-        report_Instance = report.objects.get(report=self.kwargs['pk'])
+        reportdata = report.objects.get(prescription=self.kwargs['pk'])
+        reportid = reportdata.report
+        report_Instance = report.objects.get(report=reportid)
         create_Med_report = multi_analytics.objects.create(report=report_Instance ,P_A=P_analytics_instance)
         print(self.kwargs['pk'])
         return HttpResponseRedirect(reverse('doctor:analyticslist', kwargs={'pk': self.kwargs['pk']}))

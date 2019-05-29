@@ -40,11 +40,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4" style="text-align: center">
+                {%endif%}
+                <div {%if prescription%} class="col-sm-12" {%else%} class="col-sm-12" {%endif%}style="text-align: center">
                     <a href="{% url 'doctor:presc_create'%}">
                         <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Create</button>
                     </a>
                 </div>
+                {% if prescription %}
             </div>
             <div class="row">
                 <div class="col-sm" style="height:400px;overflow: auto">

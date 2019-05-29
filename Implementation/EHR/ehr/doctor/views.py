@@ -208,7 +208,7 @@ class Medicen_UPDATE (UpdateView):
     fields = ('number_of_potions','number_of_pills','pharmacy')
     model = patient_medicine
     template_name = 'Doctor_app/patient_medicine_form.html'
-
+    # form_class = AddmedicenForm
     def render_to_response(self , redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
             return HttpResponseRedirect('/patient/login/')
@@ -272,7 +272,7 @@ class rays_UPDATE (UpdateView):
     fields =  ['ray']
     model = patient_rays
     template_name = 'Doctor_app/patient_rays_form.html'
-
+    # form_class = AddRaysForm
     def render_to_response(self , redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
             return HttpResponseRedirect('/patient/login/')
@@ -344,7 +344,7 @@ class analytics_UPDATE (UpdateView):
     fields =  ['analy']
     model = patient_analytics
     template_name = 'Doctor_app/patient_analytics_form.html'
-
+    # form_class = AddanalyticsForm
     def render_to_response(self , redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
             return HttpResponseRedirect('/patient/login/')

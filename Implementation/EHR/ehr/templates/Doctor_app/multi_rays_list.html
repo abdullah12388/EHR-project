@@ -1,19 +1,86 @@
 {% extends 'Doctor_app/Doctor_base.html' %}
 {% block home_content %}
 
-<div class="info">
-    <div class="container">
-        <div class="row row-eq-height">
-          <ol>
+{#<div class="info">#}
+{#    <div class="container">#}
+{#        <div class="row row-eq-height">#}
+{#          <ol>#}
+{#            {% for m in rays %}#}
+{#            <h2><li>rays : <a href="{% url 'doctor:raydetial' pk=m.P_R_id%}">{{m.P_R.ray.ray_name}}</a></li></h2>#}
+{#            <p {% if forloop.last %}><a  class="btn btn-primary"href="{% url 'doctor:newanalytics' pk=m.report.prescription.prescription_id%}">CreateAnalytics{% endif %}</a></p>#}
+{#            <p {% if forloop.last %}><a  class="btn btn-primary"href="{% url 'doctor:newray' pk=m.report.prescription.prescription_id%}">Create Rays{% endif %}</a></p>#}
+{#            <p {% if forloop.last %}><a  class="btn btn-primary"href="{% url 'doctor:newmed' pk=m.report.prescription.prescription_id%}">Create Medicins{% endif %}</a></p>#}
+{#            <p {% if forloop.last %}><a class="btn btn-primary" href="{% url 'doctor:prescriptiondetial' pk=m.report.prescription.prescription_id%}">Prescription {% endif %}</a></p>#}
+{#            {%endfor%}#}
+{#            <p><a class="btn btn-primary" href="{% url 'doctor:prescriptionlist'%}">Prescription List</a></p>#}
+{#          </ol>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);margin-top:30px;color: #FFF">
+        <div class="row" style="border-bottom: solid 5px #32c69a">
             {% for m in rays %}
-            <h2><li>rays : <a href="{% url 'doctor:raydetial' pk=m.P_R_id%}">{{m.P_R.ray.ray_name}}</a></li></h2>
-            <p {% if forloop.last %}><a  class="btn btn-primary"href="{% url 'doctor:newanalytics' pk=m.report.prescription.prescription_id%}">CreateAnalytics{% endif %}</a></p>
-            <p {% if forloop.last %}><a  class="btn btn-primary"href="{% url 'doctor:newray' pk=m.report.prescription.prescription_id%}">Create Rays{% endif %}</a></p>
-            <p {% if forloop.last %}><a  class="btn btn-primary"href="{% url 'doctor:newmed' pk=m.report.prescription.prescription_id%}">Create Medicins{% endif %}</a></p>
-                        <p {% if forloop.last %}><a class="btn btn-primary" href="{% url 'doctor:prescriptiondetial' pk=m.report.prescription.prescription_id%}">Prescription {% endif %}</a></p>
+                {% if forloop.last %}
+                    <div class="col-sm" style="text-align: center">
+                        <a href="{% url 'doctor:prescriptiondetial' pk=m.report.prescription.prescription_id%}">
+                            <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Prescriptions</button>
+                        </a>
+                    </div>
+                    <div class="col-sm" style="text-align: center">
+                        <a href="{% url 'doctor:newanalytics' pk=m.report.prescription.prescription_id%}">
+                            <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Create Analytics</button>
+                        </a>
+                    </div>
+                    <div class="col-sm" style="text-align: center">
+                        <a href="{% url 'doctor:newray' pk=m.report.prescription.prescription_id%}">
+                            <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Create Rays</button>
+                        </a>
+                    </div>
+                    <div class="col-sm" style="text-align: center">
+                        <a href="{% url 'doctor:newmed' pk=m.report.prescription.prescription_id%}">
+                            <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Create Medicines</button>
+                        </a>
+                    </div>
+                {% endif %}
             {%endfor%}
-            <p><a class="btn btn-primary" href="{% url 'doctor:prescriptionlist'%}">Prescription List</a></p>
-          </ol>
+        </div>
+        <div class="row">
+            <div class="col-sm" style="text-align: center">
+                <label style="font-size: 30px;font-weight: bold;margin: 10px;border-bottom: solid 5px #32c69a;">Analytics Details</label>
+            </div>
+        </div>
+        <div class="row" style="overflow: auto;height: 300px">
+            <div class="col-sm" style="text-align: center;font-size: 20px">
+                {% for m in rays reversed%}
+                    <div class="row" style="margin-top: 20px;border-bottom: solid 2px #32c69a;padding-bottom: 5px;">
+                        <div class="col-sm">
+                            Name
+                        </div>
+                        <div class="col-sm">
+                            {{m.P_R.ray.ray_name}}
+                        </div>
+                        <div class="col-sm">
+                            Result
+                        </div>
+                        <div class="col-sm">
+                            {% if m.P_R.rays_result %}
+                                <a href="{{m.P_R.rays_result}}">Link</a>
+                            {% else %}
+                                No Result Yet
+                            {% endif %}
+                        </div>
+{#                        <div class="col-sm" style="text-align: center">#}
+{#                            <a href="{% url 'doctor:raysupdate' pk=m.P_R_id %}">#}
+{#                                <button type="submit" style="color: #FFF;background-color: #32c69a;font-size: 18px;border-radius: 50px;" class="btn">Edit</button>#}
+{#                            </a>#}
+{#                        </div>#}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>

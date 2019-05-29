@@ -19,9 +19,16 @@ def pharmacyLogin(request):
         pharmacyPassFound = organization.objects.filter(hr_password__exact=pharmacyPass).exists()
         if pharmacyUserFound:
             if pharmacyPassFound:
-                organ_id = organization.objects.filter(Type=1).filter(hr_password=pharmacyPass).get(hr_username=pharmacyName).org_id
-                request.session['pharmacy_id'] = organ_id
-                request.session['type'] = 'pharmacy'
+                if 'remember_me' in request.POST:
+                    request.session.set_expiry(60 * 60 * 24 * 30)
+                    organ_id = organization.objects.filter(Type=1).filter(hr_password=pharmacyPass).get(hr_username=pharmacyName).org_id
+                    request.session['pharmacy_id'] = organ_id
+                    request.session['type'] = 'pharmacy'
+                else:
+                    organ_id = organization.objects.filter(Type=1).filter(hr_password=pharmacyPass).get(
+                        hr_username=pharmacyName).org_id
+                    request.session['pharmacy_id'] = organ_id
+                    request.session['type'] = 'pharmacy'
                 return HttpResponseRedirect('pharmacyPatientLogin/')
             else:
                 print('wrong pass')

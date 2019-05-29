@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d8ec0d3-e378-4bab-aa60-45a1fc63fd41" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/patient/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Doctor_app/multi_medecines_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Doctor_app/multi_medecines_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../static_in_env/media_root/Top-10-Semantic-Websites.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../static_in_env/media_root/Top-10-Semantic-Websites_IklFExx.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/Doctor_app/prescription_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Doctor_app/prescription_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/doctorProfileView.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/doctorProfileView.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patientProfile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patientProfile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patientProfileView.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patientProfileView.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,16 +41,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/Doctor_app/prescription_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="42" column="8" lean-forward="true" selection-start-line="42" selection-start-column="8" selection-end-line="58" selection-end-column="29" />
+            <state relative-caret-position="381">
+              <caret line="58" column="29" lean-forward="true" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#a#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/Doctor_app/multi_medecines_list.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="190">
@@ -131,8 +132,8 @@
         <option value="$PROJECT_DIR$/patient/views.py" />
         <option value="$PROJECT_DIR$/templates/doctorProfileView.html" />
         <option value="$PROJECT_DIR$/templates/patientProfileView.html" />
-        <option value="$PROJECT_DIR$/templates/Doctor_app/prescription_list.html" />
         <option value="$PROJECT_DIR$/templates/Doctor_app/multi_medecines_list.html" />
+        <option value="$PROJECT_DIR$/templates/Doctor_app/prescription_list.html" />
       </list>
     </option>
   </component>
@@ -288,7 +289,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143674000" />
+    <option name="totallyTimeSpent" value="143969000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -746,17 +747,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Doctor_app/prescription_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="42" column="8" lean-forward="true" selection-start-line="42" selection-start-column="8" selection-end-line="58" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/Doctor_app/multi_medecines_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="40" column="26" lean-forward="true" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Doctor_app/prescription_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="58" column="29" lean-forward="true" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#a#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

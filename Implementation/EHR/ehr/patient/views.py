@@ -355,9 +355,17 @@ def patientLogin(request):
                 return HttpResponseRedirect('/patient/patientProfile/')
             elif result == 'email_exists':
                 if request.session['user_T'] == 2:
-                    return HttpResponseRedirect('/doctor')
+                    if 'remember_me' in request.POST:
+                        request.session.set_expiry(60 * 60 * 24 * 30)
+                        return HttpResponseRedirect('/doctor')
+                    else:
+                        return HttpResponseRedirect('/doctor')
                 else:
-                    return HttpResponseRedirect('/patient/Index/')
+                    if 'remember_me' in request.POST:
+                        request.session.set_expiry(60 * 60 * 24 * 30)
+                        return HttpResponseRedirect('/patient/Index/')
+                    else:
+                        return HttpResponseRedirect('/patient/Index/')
             elif result == 'wrong_password':
                 return HttpResponseRedirect('/patient/?alert=wrong_password')
             elif result == 'wrong_email':

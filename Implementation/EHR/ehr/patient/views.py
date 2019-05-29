@@ -465,7 +465,7 @@ def patient_profile(request):
                     db = DB_functions()
                     db.remove_from_temp(id=request.session['patient_temp_id'])
                     print('iam here')
-                    return HttpResponseRedirect('/patient/patientCard/')
+                    return HttpResponseRedirect('/patient/patientCard/'+str(u_id))
                 else:
                     print('form two')
                     print(form2.errors)

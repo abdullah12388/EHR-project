@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^doctor/', include('doctor.urls')),
     url(r'^patient/', include('patient.urls')),
     url(r'^hospital/', include('hospital.urls')),
+    url(r'^predict/',include('predict_risk.urls')),
     path('pharmacy/', include('pharmacy.urls')),
     path('lab/', include('lab.urls')),
 ]

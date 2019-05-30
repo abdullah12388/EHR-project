@@ -1,48 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d8ec0d3-e378-4bab-aa60-45a1fc63fd41" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/data_provider.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/machine_learning_models/HealthData.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/machine_learning_models/Log_ROC.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/machine_learning_models/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/machine_learning_models/decision_tree.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/machine_learning_models/logistic_regression.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/machine_learning_models/naive_bayes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/machine_learning_models/newdata.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/machine_learning_models/svc.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/notebooks/logistic_jupyter.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/production/LinearSVC.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/production/Logistic_regression_model.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/production/decision_tree_model.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/production/naive_bayes_model.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/production/standard_scalar.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/production/svc_model.pkl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predict_risk/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/predict.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Heart-disease-predicition-master/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Heart-disease-predicition-master/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="4d8ec0d3-e378-4bab-aa60-45a1fc63fd41" name="Default Changelist" comment="on the way">
       <change beforePath="$PROJECT_DIR$/.idea/ehr.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ehr.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Doctor_app/Doctor_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Doctor_app/Doctor_index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Doctor_app/prescription_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Doctor_app/prescription_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Heart-disease-predicition-master/.idea/Heart-disease-predicition-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Heart-disease-predicition-master/.idea/Heart-disease-predicition-master.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Heart-disease-predicition-master/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Heart-disease-predicition-master/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Heart-disease-predicition-master/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Heart-disease-predicition-master/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Heart-disease-predicition-master/heart_disease_prediction/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Heart-disease-predicition-master/heart_disease_prediction/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Heart-disease-predicition-master/predict_risk/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Heart-disease-predicition-master/predict_risk/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/patientHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patientHistory.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +31,21 @@
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/patientHistory.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+              <folding>
+                <element signature="e#4444#4462#0#HTML" expanded="true" />
+                <element signature="e#5458#5478#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -128,7 +105,6 @@
         <option value="$PROJECT_DIR$/templates/patientProfileView.html" />
         <option value="$PROJECT_DIR$/templates/Doctor_app/multi_medecines_list.html" />
         <option value="$PROJECT_DIR$/templates/patientIndex.html" />
-        <option value="$PROJECT_DIR$/templates/patientHistory.html" />
         <option value="$PROJECT_DIR$/patient/views.py" />
         <option value="$PROJECT_DIR$/ehr/urls.py" />
         <option value="$PROJECT_DIR$/predict_risk/models.py" />
@@ -140,6 +116,7 @@
         <option value="$PROJECT_DIR$/templates/navbar.html" />
         <option value="$PROJECT_DIR$/predict_risk/forms.py" />
         <option value="$PROJECT_DIR$/templates/predict.html" />
+        <option value="$PROJECT_DIR$/templates/patientHistory.html" />
       </list>
     </option>
   </component>
@@ -164,33 +141,7 @@
             <path>
               <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
               <item name="ehr" type="462c0819:PsiDirectoryNode" />
-              <item name="doctor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ehr" type="462c0819:PsiDirectoryNode" />
-              <item name="ehr" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ehr" type="462c0819:PsiDirectoryNode" />
-              <item name="hospital" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ehr" type="462c0819:PsiDirectoryNode" />
-              <item name="predict_risk" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ehr" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ehr" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Doctor_app" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -289,7 +240,7 @@
       <workItem from="1559022243217" duration="38615000" />
       <workItem from="1559213102599" duration="87000" />
       <workItem from="1559225024983" duration="1479000" />
-      <workItem from="1559227171349" duration="9941000" />
+      <workItem from="1559227171349" duration="12990000" />
     </task>
     <task id="LOCAL-00001" summary="on the way">
       <created>1554725365252</created>
@@ -309,10 +260,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159233000" />
+    <option name="totallyTimeSpent" value="162282000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15013404" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -626,13 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/patientHistory.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="92" column="77" selection-start-line="92" selection-start-column="70" selection-end-line="92" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/patientIndex.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -767,16 +712,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/predict_risk/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1033">
-          <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/predict.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1200">
@@ -835,6 +770,27 @@
           <caret line="6" column="56" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="56" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predict_risk/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/patientHistory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="42" lean-forward="true" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
+          <folding>
+            <element signature="e#4444#4462#0#HTML" expanded="true" />
+            <element signature="e#5458#5478#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

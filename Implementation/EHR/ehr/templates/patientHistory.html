@@ -90,7 +90,7 @@
                     {{analytics_name|index:forloop.counter0}}
                         </div>
                         <div class="col-6">
-                            <a href="{{i.analytics_result}}">result{{ forloop.counter }}</a>
+                            <a href="{{i.analytics_result}}" style="color: #FFF;">result{{ forloop.counter }}</a>
                         </div>
                     </div>
                     {%endfor%}
@@ -113,7 +113,7 @@
                 {#  {{test_ray}}#}
                         </div>
                         <div class="col-6">
-                <a href="{{ i.rays_result }}">result{{ forloop.counter }}</a>
+                            <a href="{{ i.rays_result }}" style="color: #FFF;">result{{ forloop.counter }}</a>
                     {% comment %} {{i.rays_result }} {% endcomment %}
                         </div>
                     </div>

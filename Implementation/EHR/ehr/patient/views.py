@@ -269,17 +269,17 @@ def home(request):
     if patientReport:
         lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(report__exact=patientReport.report).exists()
         if lastMedicineInReportTrueOrFalse:
-            lastMedicineInReport = multi_medecines.objects.get(report__exact=patientReport.report)
+            lastMedicineInReport = multi_medecines.objects.filter(report=patientReport.report)
             context.update({'lastMedicineInReport': lastMedicineInReport})
 
         lastAnalyticsInReportTrueOrFalse = multi_analytics.objects.filter(report__exact=patientReport.report).exists()
         if lastAnalyticsInReportTrueOrFalse:
-            lastAnalyticsInReport = multi_analytics.objects.get(report__exact=patientReport.report)
+            lastAnalyticsInReport = multi_analytics.objects.filter(report__exact=patientReport.report)
             context.update({'lastAnalyticsInReport': lastAnalyticsInReport})
 
         lastRaysInReportTrueOrFalse = multi_rays.objects.filter(report__exact=patientReport.report).exists()
         if lastRaysInReportTrueOrFalse:
-            lastRaysInReport = multi_rays.objects.get(report__exact=patientReport.report)
+            lastRaysInReport = multi_rays.objects.filter(report__exact=patientReport.report)
             context.update({'lastRaysInReport': lastRaysInReport})
     else:
         context={
@@ -473,7 +473,7 @@ def patient_profile(request):
                     db = DB_functions()
                     db.remove_from_temp(id=request.session['patient_temp_id'])
                     print('iam here')
-                    return HttpResponseRedirect('/patient/patientCard/')
+                    return HttpResponseRedirect('/patient/patientCard/'+str(u_id))
                 else:
                     print('form two')
                     print(form2.errors)
@@ -675,6 +675,7 @@ def patientCard(request,userid):
             'Create_date': Create_date,
             'QR_code': QR_code,
             'age': age,
+            'userid':userid,
         }
         return render(request, 'patientData.html', context)
     else:

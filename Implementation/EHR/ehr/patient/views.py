@@ -269,9 +269,10 @@ def home(request):
     if patientReport:
         lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(report__exact=patientReport.report).exists()
         if lastMedicineInReportTrueOrFalse:
-            lastMedicineInReport = multi_medecines.objects.get(report__exact=patientReport.report)
+            # lastMedicineInReport = multi_medecines.objects.get(report__exact=patientReport.report)
+            lastMedicineInReport = multi_medecines.objects.filter(report__exact=patientReport.report)
             context.update({'lastMedicineInReport': lastMedicineInReport})
-
+            print('lastMedicineInReport = ', lastMedicineInReport)
         lastAnalyticsInReportTrueOrFalse = multi_analytics.objects.filter(report__exact=patientReport.report).exists()
         if lastAnalyticsInReportTrueOrFalse:
             lastAnalyticsInReport = multi_analytics.objects.get(report__exact=patientReport.report)

@@ -82,11 +82,11 @@ WSGI_APPLICATION = 'ehr.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'Oabw9z00VD',
+#         'NAME': '1Pa0YLLAaQ',
 #         'HOST': 'remotemysql.com',
 #         'PORT': '3306',
-#         'USER': 'Oabw9z00VD',
-#         'PASSWORD': 'ys2ICbkieB',
+#         'USER': '1Pa0YLLAaQ',
+#         'PASSWORD': 'W6fRchwHlT',
 #     },
 # }
 

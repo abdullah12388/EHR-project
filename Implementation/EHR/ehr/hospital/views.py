@@ -8,7 +8,9 @@ from django.contrib.auth.hashers import check_password
 from django.core.files.storage import FileSystemStorage
 import qrcode, shutil, os
 from datetime import date
-
+from django.views.generic import View
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 # Create your views here.
 
@@ -481,3 +483,35 @@ def hospital_profile_view(request,hosid=None):
 def reset_doc_passowrd(request,id):
     user.objects.filter(user_id=id).update(New_Password='123456789')
     return HttpResponseRedirect('/hospital/Index/')
+
+class StatView(View):
+    def get(self, request, *args, **kwargs):
+
+        context = {'hos_id' : request.session['hospital_id']}
+        return render(request, 'hospital_charts.html', context)
+
+class HospitalStatistics(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self,request,format=None):
+        labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
+        defulatdata_items = [12500,10000,15500,11151,12115,13891]
+        data1 = {
+        "label":labels,
+        "default":defulatdata_items,
+        }
+        data2 = {
+        "label":['Rd', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        "default":defulatdata_items,
+        }
+        data3 = {
+        "label":labels,
+        "default":defulatdata_items,
+        }
+        data = {
+        "data1":data1,
+        "data2":data2,
+        "data3":data3,
+        }
+        return Response(data)

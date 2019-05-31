@@ -121,5 +121,12 @@
     </div>
 {% block javascript %}
 {% endblock javascript %}
+
+<script>
+$(document).ready(function(){
+  {% block jquery %}{% endblock %}
+})
+</script>
+
 </body>
 </html>

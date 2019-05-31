@@ -20,6 +20,9 @@ urlpatterns = [
     url(r'^DeleteDoctor/(?P<Did>\w+)/$', views.delete_doctor, name='delete_doctor'),
     url(r'^DeletePharmayLab/(?P<ph_lb_id>\w+)/(?P<ph_lb_type>\w+)$', views.delete_pharmacy_lab, name='delete_pharmacy_lab'),
     url(r'^UnblockDoctor/(?P<ssn>\w+)/$', views.unblock_doctor, name='unblock_doctor'),
+
+    url(r'^api/charts/data/$', views.HospitalStatistics.as_view(),name="api-data"),
+    url(r'^Statistics/$', views.StatView.as_view(),name="stat"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

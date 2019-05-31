@@ -375,10 +375,10 @@ def patientLogin(request):
             # if 'for_pass' in request.POST:
         em = request.POST['for_pass']
         uid = user.objects.get(email_1=em).user_id
-        pid = patient.objects.get(Patient=uid).id
+        # pid = patient.objects.get(Patient=uid).id
         title = 'Reset Your Password'
         body = 'Visit This Link For Reset Your Password' \
-               ' http://127.0.0.1:8000/patient/forgetPassword/'+str(pid)
+               ' http://127.0.0.1:8000/patient/forgetPassword/'+str(uid)
         email = EmailMessage(title,body,to=[em])
         email.send()
             # else:
@@ -392,7 +392,7 @@ def patientLogin(request):
     return render(request, 'login.html', context)
 
 
-def forget_password(request,pid):
+def forget_password(request,uid):
     # email = EmailMessage('title', 'body', to=['dodyasd123888@gmail.com'])
     # email.send()
     if request.method == 'POST':
@@ -405,7 +405,7 @@ def forget_password(request,pid):
             return HttpResponseRedirect('/patient/')
         else:
             print('save error')
-    uid = patient.objects.get(id=pid).Patient_id
+    # uid = patient.objects.get(id=pid).Patient_id
     userData = user.objects.get(user_id=uid)
     context={
         'user': userData,

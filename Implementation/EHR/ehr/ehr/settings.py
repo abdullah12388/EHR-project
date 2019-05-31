@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'hospital',
     'crispy_forms',
     'predict_risk',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

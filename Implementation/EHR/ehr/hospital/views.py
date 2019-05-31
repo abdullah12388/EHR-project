@@ -36,8 +36,6 @@ def hospitalLogin(request):
     else:
         request.session['type'] = 'hospital'
         return render(request,'hospitalLogin.html',{})
-
-
 def hospitalLogout(request):
     if request.session['type'] == 'hospital':
         if 'hospital_id' in request.session:
@@ -48,8 +46,6 @@ def hospitalLogout(request):
     else:
         print('there is no hospital entered')
     return HttpResponseRedirect('/hospital/')
-
-
 def Index(request):
     if request.method == 'POST':
         depart_num = request.POST['departments']
@@ -151,10 +147,10 @@ def Index(request):
             e.save()
     else:
         print('no post yet')
-    hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
-    doctordata = doctor.objects.filter(hospital_id=request.session['hospital_id']);
-    pharmacydata = organization.objects.filter(Type=1).filter(hospital_id=request.session['hospital_id']);
-    labdata = organization.objects.filter(Type=2).filter(hospital_id=request.session['hospital_id']);
+    hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
+    doctordata = doctor.objects.filter(hospital_id=request.session['hospital_id'])
+    pharmacydata = organization.objects.filter(Type=1).filter(hospital_id=request.session['hospital_id'])
+    labdata = organization.objects.filter(Type=2).filter(hospital_id=request.session['hospital_id'])
     context = {
         'hospital': hospitaldata,
         'hos_id':hospitaldata.h_id,
@@ -163,8 +159,6 @@ def Index(request):
         'lab': labdata,
     }
     return render(request, 'hospitalIndex.html',context)
-
-
 def update_doctor(request,Docid):
     if request.method == 'POST':
         usr = user.objects.filter(user_id=Docid)
@@ -206,9 +200,9 @@ def update_doctor(request,Docid):
         genderMessage = gender(request.POST['gender'])
         maritalStatusMessage = maritalStatus(request.POST['marital_status'])
         if genderMessage == 'error':
-            return HttpResponseRedirect('/hospital/updateDoctor/')
+            return HttpResponseRedirect('/hospital/updateHospitalDoctor/')
         elif maritalStatusMessage == 'error':
-            return HttpResponseRedirect('/hospital/updateDoctor/')
+            return HttpResponseRedirect('/hospital/updateHospitalDoctor/')
         else:
             usr.update(gender=genderMessage)
             usr.update(marital_status=maritalStatusMessage)
@@ -232,7 +226,7 @@ def update_doctor(request,Docid):
         ########################################################
         return HttpResponseRedirect('/hospital/Index/')
     else:
-        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
+        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
         doctorData = doctor.objects.get(Doc_id=Docid)
         userData = user.objects.get(user_id=Docid)
         context={
@@ -241,9 +235,7 @@ def update_doctor(request,Docid):
             'doctorData':doctorData,
             'userData':userData,
         }
-        return render(request, 'updateDoctor.html',context)
-
-
+        return render(request, 'updateHospitalDoctor.html',context)
 # patient doctor functions
 def add_doctor(request):
     if request.method == 'POST':
@@ -254,7 +246,7 @@ def add_doctor(request):
             password = formu.cleaned_data.get('New_Password')
             con_password = formu.cleaned_data.get('Confirm_Pass')
             if not check_password(con_password, password):
-                return HttpResponseRedirect('/AddDoctor/?c=1')
+                return HttpResponseRedirect('/AddHospitalDoctor/?c=1')
             else:
                 # upload profile,ssn pictures and save paths to database
                 profile_picture_file = request.FILES['Profile_picture']
@@ -270,9 +262,9 @@ def add_doctor(request):
                 genderMessage = gender(request.POST['gender'])
                 maritalStatusMessage = maritalStatus(request.POST['marital_status'])
                 if genderMessage == 'error':
-                    return HttpResponseRedirect('/hospital/AddDoctor/')
+                    return HttpResponseRedirect('/hospital/AddHospitalDoctor/')
                 elif maritalStatusMessage == 'error':
-                    return HttpResponseRedirect('/hospital/AddDoctor/')
+                    return HttpResponseRedirect('/hospital/AddHospitalDoctor/')
                 else:
                     instance1.gender = genderMessage
                     instance1.marital_status = maritalStatusMessage
@@ -304,7 +296,7 @@ def add_doctor(request):
             print('form one')
             print(formu.errors)
     else:
-        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
+        hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
         form1 = AddUser()
         B_Doctor = doctor.objects.filter(hospital_id__isnull=True)
         context = {
@@ -313,7 +305,7 @@ def add_doctor(request):
             'form1': form1,
             'b_d': B_Doctor,
         }
-        return render(request, 'addDoctor.html', context)
+        return render(request, 'addHospitalDoctor.html', context)
 def gender(num):
     if num == '1':
         return 'male'
@@ -337,8 +329,6 @@ def maritalStatus(num):
     else:
         return 'error'
 # end of doctor profile
-
-
 def update_pharmacy(request,pharid,hosid):
     if request.method == 'POST':
         phr = organization.objects.filter(Type=1).filter(hospital_id=hosid).filter(org_id=pharid)
@@ -369,7 +359,6 @@ def update_pharmacy(request,pharid,hosid):
             'pharmacyData':pharmacyData,
         }
         return render(request, 'updatePharmacy.html',context)
-
 def add_pharmacy(request):
     if request.method == 'POST':
         # upload profile,ssn pictures and save paths to database
@@ -395,7 +384,6 @@ def add_pharmacy(request):
     else:
         hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
         return render(request, 'addPharmacy.html',{'hospital': hospitaldata,'hos_id':hospitaldata.h_id,})
-
 def update_lab(request,labid,hosid):
     if request.method == 'POST':
         labor = organization.objects.filter(Type=2).filter(hospital_id=hosid).filter(org_id=labid)
@@ -427,7 +415,6 @@ def update_lab(request,labid,hosid):
             'labData':labData,
         }
         return render(request, 'updateLab.html',context)
-
 def add_Lab(request):
     if request.method == 'POST':
         # upload profile,ssn pictures and save paths to database
@@ -453,25 +440,18 @@ def add_Lab(request):
     else:
         hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
         return render(request, 'addLab.html',{'hospital': hospitaldata,'hos_id':hospitaldata.h_id,})
-
-
 def delete_doctor(request,Did):
     doctor.objects.filter(Doc_id=Did).update(hospital_id='')
     return HttpResponseRedirect('/hospital/Index/')
-
-
 def delete_pharmacy_lab(request,ph_lb_id,ph_lb_type):
     # organization.objects.filter(org_id=ph_lb_id).filter(Type=ph_lb_type).update(hospital_id='')
     organization.objects.filter(org_id=ph_lb_id).filter(Type=ph_lb_type).delete()
     return HttpResponseRedirect('/hospital/Index/')
-
 def unblock_doctor(request,ssn):
     docId = user.objects.get(Ssn=ssn).user_id
     hosId = request.session['hospital_id']
     doctor.objects.filter(Doc_id=docId).update(hospital_id=hosId)
     return HttpResponseRedirect('/hospital/Index/')
-
-
 def hospital_profile_view(request,hosid=None):
     hospitaldata = get_object_or_404(hospital,h_id=hosid)
     context ={
@@ -479,17 +459,14 @@ def hospital_profile_view(request,hosid=None):
         'hos_id': hospitaldata.h_id,
     }
     return render(request, 'hospitalProfileView.html',context)
-
 def reset_doc_passowrd(request,id):
     user.objects.filter(user_id=id).update(New_Password='123456789')
     return HttpResponseRedirect('/hospital/Index/')
-
 class StatView(View):
     def get(self, request, *args, **kwargs):
 
         context = {'hos_id' : request.session['hospital_id']}
         return render(request, 'hospital_charts.html', context)
-
 class HospitalStatistics(APIView):
     authentication_classes = []
     permission_classes = []

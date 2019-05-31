@@ -1,0 +1,253 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+{% block updateDoctorProfile%}
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Doctor Profile Update</h2>
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66)">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-3">
+                    {% if userData %}
+                        <div class="row">
+                            <div style="width:200px;margin: auto">
+                                <img src="{{ userData.Profile_picture }}" alt="Doctor picture" class="img-thumbnail"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="file" name="Profile_picture" class="inputfile" id="file1"/>
+                            <label for="file1">Choose a file</label>
+                        </div>
+                        <div style="margin-top:45px"></div>
+                        <div class="row">
+                            <div style="width:200px;margin: auto">
+                                <img src="{{ userData.SSN_Picture }}"  alt="SSN" class="img-thumbnail">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="file" name="SSN_Picture" class="inputfile" id="file2"/>
+                            <label for="file2">Upload SSN</label>
+                        </div>
+                        <div style="margin-top:45px"></div>
+                        <div class="row">
+                            <div class="col-sm" style="text-align: center">
+                                <a href="{% url 'clinic:reset_doc_passowrd' id=doctorData.Doc_id %}">
+                                    <button type="button" style="border-radius: 50px;width:50%" class="button home_button">Reset Password</button>
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-sm-9">
+                    {% if userData %}
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="text" name="first_name" class="form-control" placeholder="First name" value="{{ userData.first_name }}"/>
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="middle_name" class="form-control" placeholder="Middle name" value="{{ userData.middle_name }}"/>
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="last_name" class="form-control" placeholder="Last name" value="{{ userData.last_name }}"/>
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="text" name="country" class="form-control" placeholder="Country" value="{{ userData.country }}" />
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="state" class="form-control" placeholder="State" value="{{ userData.state }}"/>
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="city" class="form-control" placeholder="City" value="{{ userData.city }}"/>
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="street" class="form-control" placeholder="Street" value="{{ userData.street }}"/>
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="text" name="zip_code" class="form-control" placeholder="Zip code" value="{{ userData.zip_code }}"/>
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="phone_number" class="form-control" placeholder="Phone number" value="{{ userData.phone_number }}"/>
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="home_phone_number" class="form-control" placeholder="Home Phone" value="{{ userData.home_phone_number }}"/>
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="work_phone_number" class="form-control" placeholder="Work Phone" value="{{ userData.work_phone_number }}"/>
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <select class="form-control" style="height: auto" name="gender">
+                                    <option value="" disabled>Gender</option>
+                                    {% if userData.gender == 'male' %}
+                                        <option value="1" selected>Male</option>
+                                        <option value="2">Female</option>
+                                        <option value="3">Other</option>
+                                    {% elif userData.gender == 'female' %}
+                                        <option value="1">Male</option>
+                                        <option value="2" selected>Female</option>
+                                        <option value="3">Other</option>
+                                    {% elif userData.gender == 'other' %}
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+                                        <option value="3" selected>Other</option>
+                                    {% else %}
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+                                        <option value="3">Other</option>
+                                    {% endif %}
+                                </select>
+                            </div>
+                            <div class="col-sm">
+                                <input type="date" name="Date_of_birth" class="form-control" placeholder="Birth Date" value="{{ userData.Date_of_birth|date:'Y-m-d' }}"/>
+                            </div>
+                            <div class="col-sm">
+                                <select class="form-control" style="height: auto" name="marital_status">
+                                    <option value="" disabled>Marital Status</option>
+                                    {% if userData.marital_status == 'single' %}
+                                        <option value="1" selected>Single</option>
+                                        <option value="2">Married</option>
+                                        <option value="3">Separated</option>
+                                        <option value="4">Divorced</option>
+                                        <option value="5">Widowed</option>
+                                    {% elif userData.marital_status == 'married' %}
+                                        <option value="1">Single</option>
+                                        <option value="2" selected>Married</option>
+                                        <option value="3">Separated</option>
+                                        <option value="4">Divorced</option>
+                                        <option value="5">Widowed</option>
+                                    {% elif userData.marital_status == 'separated' %}
+                                        <option value="1">Single</option>
+                                        <option value="2">Married</option>
+                                        <option value="3" selected>Separated</option>
+                                        <option value="4">Divorced</option>
+                                        <option value="5">Widowed</option>
+                                    {% elif userData.marital_status == 'divorced' %}
+                                        <option value="1">Single</option>
+                                        <option value="2">Married</option>
+                                        <option value="3">Separated</option>
+                                        <option value="4" selected>Divorced</option>
+                                        <option value="5">Widowed</option>
+                                    {% elif userData.marital_status == 'widowed' %}
+                                        <option value="1">Single</option>
+                                        <option value="2">Married</option>
+                                        <option value="3">Separated</option>
+                                        <option value="4">Divorced</option>
+                                        <option value="5" selected>Widowed</option>
+                                    {% else %}
+                                        <option value="1">Single</option>
+                                        <option value="2">Married</option>
+                                        <option value="3">Separated</option>
+                                        <option value="4">Divorced</option>
+                                        <option value="5">Widowed</option>
+                                    {% endif %}
+                                </select>
+                            </div>
+                            <div class="col-sm">
+                                <input type="number" name="Child_num" class="form-control" placeholder="children" min="0" max="20" value="{{ userData.Child_num }}" />
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="First E-mail" name="email_1" value="{{ userData.email_1 }}" id="id_email_2"/>
+                                <b id="warn" class="hide">
+                                    <i class="fa fa-warning" aria-hidden="true"></i>
+                                    email already exist
+                                </b>
+                            </div>
+                            <div class="col-sm">
+                                <input type="email" name="email_2" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Second E-mail" value="{{ userData.email_2 }}" />
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="text" name="Nationality" class="form-control" placeholder="Nationality" value="{{ userData.Nationality }}" />
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="Job_name" class="form-control" placeholder="Jop Title" value="{{ userData.Job_name }}"/>
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="Job_organization" class="form-control" placeholder="Jop Organization" value="{{ userData.Job_organization }}" />
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="Jop_place" class="form-control" placeholder="Jop Place" value="{{ userData.Jop_place }}"/>
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="text" name="Ssn" class="form-control" placeholder="SSN X-XX-XX-XX-XX-XXX-XX" value="{{ userData.Ssn }}" />
+                            </div>
+                            <input type="hidden" name="Ssn_id" value="{{ userData.Ssn_id }}" />
+                            <input type="hidden" name="User_type" value="{{ userData.User_type }}" />
+                        </div>
+                    {% endif %}
+                    {% if doctorData %}
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="text" name="Registration_num" value="{{ doctorData.Registration_num }}" class="form-control" placeholder="Registration Num">
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="Specialization" value="{{ doctorData.Specialization }}" class="form-control" placeholder="Specialization">
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="licence" value="{{ doctorData.licence }}" class="form-control" placeholder="licence Number">
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="Specialization_type" value="{{ doctorData.Specialization_type }}" class="form-control" placeholder="Specialization Type">
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <label for="rd" style="font-size: 1.25em;font-weight: 700;width: 80%;text-align: center;margin: auto;color: white;display: inline-block;">Registration Date</label>
+                                <input id="rd" type="date" name="Registration_date" value="{{ doctorData.Registration_date|date:'Y-m-d' }}" class="form-control" placeholder="Registration Date">
+                            </div>
+                            <div class="col-sm">
+                                <label for="ldp" style="font-size: 1.25em;font-weight: 700;width: 80%;text-align: center;margin: auto;color: white;display: inline-block;">Last Payment</label>
+                                <input id="ldp" type="date" name="Last_date_payment" value="{{ doctorData.Last_date_payment|date:'Y-m-d' }}" class="form-control" placeholder="Last Date Payment" alt="Last Date Payment">
+                            </div>
+                            <div class="col-sm">
+                                <label for="ed" style="font-size: 1.25em;font-weight: 700;width: 80%;text-align: center;margin: auto;color: white;display: inline-block;">End Date</label>
+                                <input id="ed" type="date" name="End_date" value="{{ doctorData.End_date|date:'Y-m-d' }}" class="form-control" placeholder="End Date">
+                            </div>
+                            <div class="col-sm">
+                                <label for="wt" style="font-size: 1.25em;font-weight: 700;width: 80%;text-align: center;margin: auto;color: white;display: inline-block;">Working Till</label>
+                                <input id="wt" type="date" name="Working_till" value="{{ doctorData.Working_till|date:'Y-m-d' }}" class="form-control" placeholder="Working Till">
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="text" name="Sub_syndicate" value="{{ doctorData.Sub_syndicate }}" class="form-control" placeholder="Sub Syndicate">
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="University" value="{{ doctorData.University }}" class="form-control" placeholder="University">
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="Work_place" value="{{ doctorData.Work_place }}" class="form-control" placeholder="Work Place">
+                            </div>
+                            <div class="col-sm">
+                                <input type="text" name="General_secretary" value="{{ doctorData.General_secretary }}" class="form-control" placeholder="General Secretary">
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <label for="gy" style="font-size: 1.25em;font-weight: 700;width: 80%;text-align: center;margin: auto;color: white;display: inline-block;">Graduation Date</label>
+                                <input id="gy" type="date" name="Graduation_year" value="{{ doctorData.Graduation_year|date:'Y-m-d' }}" class="form-control" placeholder="Graduation Year">
+                            </div>
+                            <div class="col-sm">
+                                <button id="id_signup_submit" type="submit" style="border-radius: 50px;width:50%;margin:15px 100px" class="button home_button">Update</button>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock updateDoctorProfile%}

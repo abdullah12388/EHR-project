@@ -7,7 +7,7 @@
 <body class="{% if request.get_full_path == '/patientHistory/' %} body_color
  {% else %}body
  {% endif %}"
-      style="{% if request.get_full_path == '/hospital/AddDoctor/' or request.get_full_path == '/hospital/AddPharmacy/' or '/patient/forgetPassword/' in request.get_full_path or '/pharmacy/pharmacyProfileView/' in request.get_full_path or '/predict/' in request.get_full_path or '/lab/labProfileView/' in request.get_full_path or request.get_full_path == '/hospital/AddLab/' or request.get_full_path == '/hospital/Index/' or request.get_full_path == '/patient/Index/' or '/patient/patientProfileView/' in request.get_full_path or '/hospital/updateDoctor/' in request.get_full_path or '/hospital/updatePharmacy/' in request.get_full_path or '/hospital/updateLab/' in request.get_full_path or '/hospital/hospitalProfileView/' in request.get_full_path or '/patient/patientCard/' in request.get_full_path or '/doctor/doctorProfileView/' in request.get_full_path%}background-image: url('/static/images/index_hero.jpg');
+      style="{% if request.get_full_path == '/hospital/AddDoctor/' or request.get_full_path == '/hospital/AddPharmacy/' or '/patient/forgetPassword/' in request.get_full_path or '/clinic/' in request.get_full_path or '/pharmacy/pharmacyProfileView/' in request.get_full_path or '/predict/' in request.get_full_path or '/lab/labProfileView/' in request.get_full_path or request.get_full_path == '/hospital/AddLab/' or request.get_full_path == '/hospital/Index/' or request.get_full_path == '/patient/Index/' or '/patient/patientProfileView/' in request.get_full_path or '/hospital/updateDoctor/' in request.get_full_path or '/hospital/updatePharmacy/' in request.get_full_path or '/hospital/updateLab/' in request.get_full_path or '/hospital/hospitalProfileView/' in request.get_full_path or '/patient/patientCard/' in request.get_full_path or '/doctor/doctorProfileView/' in request.get_full_path%}background-image: url('/static/images/index_hero.jpg');
           top: 0;
           left: 0;
           width: 100%;
@@ -39,6 +39,9 @@
         {# hospitalLogin Body #}
             {% block hospitalLogin %}
             {% endblock hospitalLogin %}
+        {# clinicLogin Body #}
+            {% block clinicLogin %}
+            {% endblock clinicLogin %}
         {# labIndex Body #}
             {% block labIndex %}
             {% endblock labIndex %}
@@ -71,6 +74,9 @@
         {# pharmacyProfileView body#}
             {% block pharmacyProfileView%}
             {% endblock pharmacyProfileView %}
+        {# clinicProfileView body#}
+            {% block clinicProfileView%}
+            {% endblock clinicProfileView %}
         {# labProfileView body#}
             {% block labProfileView%}
             {% endblock labProfileView %}
@@ -92,6 +98,9 @@
         {# Doctor Index body#}
             {% block hospitalIndex %}
             {% endblock hospitalIndex %}
+        {# clinicIndex Index body#}
+            {% block clinicIndex %}
+            {% endblock clinicIndex %}
         {# Home Body #}
             {% block home_content %}
             {% endblock home_content %}

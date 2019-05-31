@@ -51,6 +51,7 @@
     {% elif '/doctor/patiant/prescription/' in request.get_full_path %} height:0px;
     {% elif '/doctor/prescription/' in request.get_full_path %}height:0px;
     {% elif '/predict/' in request.get_full_path %}height:0px;
+    {% elif '/patient/forgetPassword/' in request.get_full_path %}height:0px;
     {% endif %}">
     <div class="
     {% if request.get_full_path == '/patient/patientHistory/' %}
@@ -76,6 +77,7 @@
     {% elif '/doctor/patiant/prescription/' in request.get_full_path %}display:none;
     {% elif '/doctor/prescription/' in request.get_full_path %}display:none;
     {% elif '/predict/' in request.get_full_path %}display:none;
+    {% elif '/patient/forgetPassword/' in request.get_full_path %}display:none;
     {% endif %}
     "></div>
 

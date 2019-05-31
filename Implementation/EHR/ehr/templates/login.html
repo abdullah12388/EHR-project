@@ -29,9 +29,9 @@
                                 <label class="mylabel">{{ form.password.label }}</label>
                                 {{ form.password }}
                             </div>
-                            <div class="form-group">
-                                <label><input name="remember_me" type="checkbox">Keep me logged in</label>
-                            </div>
+{#                            <div class="form-group">#}
+{#                                <label><input name="remember_me" type="checkbox">Keep me logged in</label>#}
+{#                            </div>#}
                             <button id="" type="submit" class="button home_button">Submit</button>
                         </div>
                     </form>
@@ -45,8 +45,21 @@
                             </div>
                             <div class="col-sm-6">
                                 <span>Forget Password</span>
-                                <button type="button" class="button home_button">Remember</button>
+                                <button type="button" id="forget" class="button home_button">Remember</button>
                             </div>
+                        </div>
+                        <div class="row" id="mail" style="display: none;">
+                            <form method="post" action="">
+                                {% csrf_token %}
+                                <div class="col-sm-7">
+                                    <input type="text" style="margin-top: 45px;border-radius: 50px;" name="for_pass" class="form-control" placeholder="E-mail" required>
+                                </div>
+                                <div class="col-sm-5">
+{#                                    <a href="{% url 'patient:forget_password' %}">#}
+                                        <button type="submit" style="border-radius: 50px;" class="button home_button">Get Reset Link</button>
+{#                                    </a>#}
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -54,5 +67,18 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    var button = document.getElementById('forget'); // Assumes element with id='button'
+    button.onclick = function() {
+        var div = document.getElementById('mail');
+        if (div.style.display !== 'none') {
+            div.style.display = 'none';
+        }
+        else {
+            div.style.display = 'block';
+    }};
+</script>
 
 {% endblock login_content %}

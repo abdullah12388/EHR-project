@@ -159,6 +159,14 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_in_env', 'media_roo
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_URL = '/patient/login/'
 
+###################################################
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ehr.healthcare2019@gmail.com'
+EMAIL_HOST_PASSWORD = 'As123123123'
+EMAIL_PORT = 587
+##################################################
+
 if DEBUG:
     import mimetypes
     mimetypes.add_type("text/javascript", ".js", True)

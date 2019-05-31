@@ -28,3 +28,6 @@ Password: ys2ICbkieB
 Server: remotemysql.com 
 Port: 3306
 DB_HOST
+
+ehr.healthcare2019@gmail.com
+As123123123

@@ -15,7 +15,7 @@ from datetime import date
 from django.conf import settings as set
 from django.contrib.auth.hashers import check_password
 from django.db.models import Count
-
+from django.core.mail import EmailMessage
 import cv2
 import numpy as np
 import pyzbar.pyzbar as pyzbar
@@ -370,13 +370,47 @@ def patientLogin(request):
                 return HttpResponseRedirect('/patient/?alert=wrong_password')
             elif result == 'wrong_email':
                 return HttpResponseRedirect('/patient/?alert=wrong_email')
-
+        #######################################################################
+        # if request.method == 'POST':
+            # if 'for_pass' in request.POST:
+        em = request.POST['for_pass']
+        uid = user.objects.get(email_1=em).user_id
+        pid = patient.objects.get(Patient=uid).id
+        title = 'Reset Your Password'
+        body = 'Visit This Link For Reset Your Password' \
+               ' http://127.0.0.1:8000/patient/forgetPassword/'+str(pid)
+        email = EmailMessage(title,body,to=[em])
+        email.send()
+            # else:
+            #     print('error')
+        #######################################################################
     else:
         form = login()
     context = {
         'form': form
     }
     return render(request, 'login.html', context)
+
+
+def forget_password(request,pid):
+    # email = EmailMessage('title', 'body', to=['dodyasd123888@gmail.com'])
+    # email.send()
+    if request.method == 'POST':
+        id = request.POST['userid']
+        password = request.POST['new_pass']
+        re_password = request.POST['confirm_pass']
+        if password == re_password:
+            user.objects.filter(user_id=id).update(New_Password=password)
+            print('Done')
+            return HttpResponseRedirect('/patient/')
+        else:
+            print('save error')
+    uid = patient.objects.get(id=pid).Patient_id
+    userData = user.objects.get(user_id=uid)
+    context={
+        'user': userData,
+    }
+    return render(request,'forgetPassword.html',context)
 
 
 def patientLogout(request):

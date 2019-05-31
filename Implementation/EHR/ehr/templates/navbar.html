@@ -53,6 +53,8 @@
     {% elif '/predict/' in request.get_full_path %}height:0px;
     {% elif '/doctor/Statistics/' in request.get_full_path %}height:50px;
     {% elif '/hospital/Statistics/' in request.get_full_path %}height:50px;
+    {% elif '/lab/Statistics/' in request.get_full_path %}height:50px;
+    {% elif '/pharmacy/Statistics/' in request.get_full_path %}height:50px;
     {% endif %}">
     <div class="
     {% if request.get_full_path == '/patient/patientHistory/' %}
@@ -130,8 +132,10 @@
                                                     <li><a href="{% url 'hospital:stat'%}">Statistics</a></li>
                                                 {% elif 'pharmacy_id' in request.session %}
                                                     <li><a href="{% url 'pharmacy:pharmacyPatientLogin'%}">Home</a></li>
+                                                    <li><a href="{% url 'pharmacy:stat'%}">Statistics</a></li>
                                                 {% elif 'lab_id' in request.session %}
                                                     <li><a href="{% url 'lab:labPatientLogin'%}">Home</a></li>
+                                                    <li><a href="{% url 'lab:stat'%}">Statistics</a></li>
                                                 {% endif %}
                                                 {% if 'patient_id' not in request.session and 'doctor_id' not in request.session and 'hospital_id' not in request.session and 'pharmacy_id' not in request.session and 'lab_id' not in request.session %}
                                                     {% if 'type' in request.session %}

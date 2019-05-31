@@ -8,7 +8,9 @@ from patient.models import patient, user
 from doctor.models import report, all_medicine, prescription, patient_medicine
 from patient.forms import patientLoginToPharmacyForm
 from patient.views import QRCodeScanner
-
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.views.generic import View
 
 
 def pharmacyLogin(request):
@@ -130,3 +132,36 @@ def pharmacy_profile_view(request,pharid=None):
         'hos_id':None,
     }
     return render(request, 'pharmacyProfileView.html',context)
+
+
+class StatView(View):
+    def get(self, request, *args, **kwargs):
+
+        context = {'ph_id' : request.session['pharmacy_id'] }
+        return render(request, 'pharmacy_charts.html', context)
+
+class pharStatistics(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self,request,format=None):
+        labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
+        defulatdata_items = [12500,10000,15500,11151,12115,13891]
+        data1 = {
+        "label":labels,
+        "default":defulatdata_items,
+        }
+        data2 = {
+        "label":['Rd', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        "default":defulatdata_items,
+        }
+        data3 = {
+        "label":labels,
+        "default":defulatdata_items,
+        }
+        data = {
+        "data1":data1,
+        "data2":data2,
+        "data3":data3,
+        }
+        return Response(data)

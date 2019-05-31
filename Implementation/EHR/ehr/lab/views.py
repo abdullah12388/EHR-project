@@ -7,6 +7,9 @@ from doctor.models import patient_analytics, patient_rays
 from hospital.models import organization
 from patient.views import QRCodeScanner
 from patient.models import patient, user
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.views.generic import View
 
 globalVariableForScanningQRCode = ''
 data = ""
@@ -170,3 +173,36 @@ def lab_profile_view(request,labid=None):
         'lab_id':labData.org_id,
     }
     return render(request, 'labProfileView.html',context)
+
+
+class StatView(View):
+    def get(self, request, *args, **kwargs):
+
+        context = {'lab_id' : request.session['lab_id'] }
+        return render(request, 'lab_charts.html', context)
+
+class LabStatistics(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self,request,format=None):
+        labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
+        defulatdata_items = [12500,10000,15500,11151,12115,13891]
+        data1 = {
+        "label":labels,
+        "default":defulatdata_items,
+        }
+        data2 = {
+        "label":['Rd', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        "default":defulatdata_items,
+        }
+        data3 = {
+        "label":labels,
+        "default":defulatdata_items,
+        }
+        data = {
+        "data1":data1,
+        "data2":data2,
+        "data3":data3,
+        }
+        return Response(data)

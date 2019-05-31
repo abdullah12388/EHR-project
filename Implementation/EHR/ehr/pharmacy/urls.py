@@ -14,6 +14,9 @@ urlpatterns = [
     url(r'^pharmacyProfileView/(?P<pharid>\w+)/$', views.pharmacy_profile_view, name='pharmacy_profile_view'),
     url(r'^QRScan/$', views.QRCodeScanView, name='QRCodeScanView'),
 
+    url(r'^api/charts/data/$', views.pharStatistics.as_view(),name="api-data"),
+    url(r'^Statistics/$', views.StatView.as_view(),name="stat"),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

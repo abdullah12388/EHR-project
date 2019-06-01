@@ -306,8 +306,8 @@
                                 <div class="bord txer" disabled style="overflow: auto">
                                     <p style="font-size: 20px;color: #32c69a;font-weight: bold;">Clinics</p>
                                     {% for clinic in clinics %}
-                                        <a class="tops" href="#">
-                                            {{ clinics.org_name }}
+                                        <a class="tops" href="{% url 'clinic:clinic_profile_view' clinid=clinic.org_id%}">
+                                            {{ clinic.org_name }}
                                         </a><br>
                                     {% endfor %}
                                 </div>

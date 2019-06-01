@@ -2,28 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d8ec0d3-e378-4bab-aa60-45a1fc63fd41" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/clinic/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinic/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinic/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinic/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinic/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinic/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/clinic/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/addHospitalDoctor.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/clinicIndex.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/clinicLogin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/clinicProfileView.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/updateHospitalDoctor.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospital/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospital/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospital/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospital/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospital/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospital/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/addDoctor.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/addClinicDoctor.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/updateDoctor.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/updateClinicDoctor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/patientIndex.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patientIndex.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,13 +31,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/clinic/urls.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/navbar.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="10" column="45" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="45" />
+            <state relative-caret-position="242">
+              <caret line="183" column="46" selection-start-line="183" selection-start-column="46" selection-end-line="183" selection-end-column="46" />
               <folding>
-                <element signature="e#0#32#0" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/patientIndex.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="6" column="34" lean-forward="true" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,36 +59,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/clinic/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="202" column="19" lean-forward="true" selection-start-line="202" selection-start-column="19" selection-end-line="202" selection-end-column="19" />
+            <state relative-caret-position="282">
+              <caret line="243" column="38" selection-start-line="243" selection-start-column="32" selection-end-line="243" selection-end-column="38" />
               <folding>
                 <element signature="e#0#80#0" expanded="true" />
-                <element signature="e#1642#1998#0" />
-                <element signature="e#2025#7335#0" />
-                <element signature="e#7356#11386#0" />
-                <element signature="e#15281#15439#0" />
-                <element signature="e#15468#15726#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/clinicIndex.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/addClinicDoctor.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="66" selection-start-line="66" selection-end-line="66" selection-end-column="43" />
-              <folding>
-                <element signature="n#style#0;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -105,18 +73,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="9" column="213" selection-start-line="9" selection-start-column="178" selection-end-line="9" selection-end-column="213" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/navbar.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="83" column="63" selection-start-line="83" selection-start-column="63" selection-end-line="83" selection-end-column="63" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -187,7 +143,6 @@
         <option value="$PROJECT_DIR$/clinic/models.py" />
         <option value="$PROJECT_DIR$/hospital/admin.py" />
         <option value="$PROJECT_DIR$/ehr/urls.py" />
-        <option value="$PROJECT_DIR$/templates/patientIndex.html" />
         <option value="$PROJECT_DIR$/templates/clinicLogin.html" />
         <option value="$PROJECT_DIR$/templates/clinicProfileView.html" />
         <option value="$PROJECT_DIR$/hospital/urls.py" />
@@ -197,12 +152,13 @@
         <option value="$PROJECT_DIR$/hospital/views.py" />
         <option value="$PROJECT_DIR$/clinic/views.py" />
         <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/templates/navbar.html" />
         <option value="$PROJECT_DIR$/templates/clinicIndex.html" />
+        <option value="$PROJECT_DIR$/templates/patientIndex.html" />
+        <option value="$PROJECT_DIR$/templates/navbar.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="width" value="815" />
     <option name="height" value="870" />
@@ -358,7 +314,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195661000" />
+    <option name="totallyTimeSpent" value="199564000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -666,13 +622,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/patientIndex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="87" column="75" selection-start-line="87" selection-start-column="75" selection-end-line="87" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/patient/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -786,35 +735,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clinic/views.py">
+    <entry file="file://$PROJECT_DIR$/templates/clinicIndex.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="202" column="19" lean-forward="true" selection-start-line="202" selection-start-column="19" selection-end-line="202" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#80#0" expanded="true" />
-            <element signature="e#1642#1998#0" />
-            <element signature="e#2025#7335#0" />
-            <element signature="e#7356#11386#0" />
-            <element signature="e#15281#15439#0" />
-            <element signature="e#15468#15726#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="213" selection-start-line="9" selection-start-column="178" selection-end-line="9" selection-end-column="213" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/navbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="83" column="63" selection-start-line="83" selection-start-column="63" selection-end-line="83" selection-end-column="63" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="100">
+          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
         </state>
       </provider>
     </entry>
@@ -828,10 +752,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/clinicIndex.html">
+    <entry file="file://$PROJECT_DIR$/clinic/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+        <state relative-caret-position="282">
+          <caret line="243" column="38" selection-start-line="243" selection-start-column="32" selection-end-line="243" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#80#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/patientIndex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="34" lean-forward="true" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="213" selection-start-line="9" selection-start-column="178" selection-end-line="9" selection-end-column="213" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="183" column="46" selection-start-line="183" selection-start-column="46" selection-end-line="183" selection-end-column="46" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee7bb95e-92ac-4fdd-8d7d-d7cb004bdf89" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ehr/patient/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/patient/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/pharmacy/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/pharmacy/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/templates/pharmacyLogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/pharmacyLogin.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +30,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ehr/patient/forms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
+            <state relative-caret-position="3982">
               <caret line="184" column="29" selection-start-line="184" selection-start-column="8" selection-end-line="184" selection-end-column="29" />
             </state>
           </provider>
@@ -41,17 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ehr/ehr/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
+            <state relative-caret-position="1650">
               <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ehr/pharmacy/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -59,34 +48,19 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ehr/patient/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="364" column="69" lean-forward="true" selection-start-line="364" selection-start-column="69" selection-end-line="364" selection-end-column="69" />
+            <state relative-caret-position="193">
+              <caret line="562" column="36" selection-start-line="562" selection-start-column="36" selection-end-line="562" selection-end-column="36" />
               <folding>
                 <element signature="e#1194#1222#0" />
                 <element signature="e#1278#1312#0" />
                 <element signature="e#1358#1636#0" />
                 <element signature="e#1683#1714#0" />
-                <element signature="e#1762#3880#0" />
                 <element signature="e#3934#5972#0" />
                 <element signature="e#6016#12446#0" />
                 <element signature="e#12472#15503#0" />
                 <element signature="e#15538#16254#0" />
                 <element signature="e#16290#16532#0" />
                 <element signature="e#16565#16748#0" />
-                <element signature="e#17916#18554#0" />
-                <element signature="e#18619#22968#0" />
-                <element signature="e#22990#23148#0" />
-                <element signature="e#23177#23435#0" />
-                <element signature="e#23460#23860#0" />
-                <element signature="e#23892#24008#0" />
-                <element signature="e#24039#24151#0" />
-                <element signature="e#24177#24199#0" />
-                <element signature="e#24656#25245#0" />
-                <element signature="e#25280#26366#0" />
-                <element signature="e#26401#26449#0" />
-                <element signature="e#28034#29339#0" />
-                <element signature="e#29366#30775#0" />
-                <element signature="e#30810#31640#0" />
               </folding>
             </state>
           </provider>
@@ -95,8 +69,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ehr/templates/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
+            <state relative-caret-position="682">
               <caret line="31" column="52" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ehr/patient/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -150,7 +136,6 @@
         <option value="$PROJECT_DIR$/ehr/templates/navbar.html" />
         <option value="$PROJECT_DIR$/ehr/templates/Doctor_app/prescription_list.html" />
         <option value="$PROJECT_DIR$/ehr/templates/Doctor_app/Patiant_ID_singup.html" />
-        <option value="$PROJECT_DIR$/ehr/patient/urls.py" />
         <option value="$PROJECT_DIR$/ehr/doctor/urls.py" />
         <option value="$PROJECT_DIR$/ehr/lab/urls.py" />
         <option value="$PROJECT_DIR$/ehr/templates/labIndex.html" />
@@ -162,6 +147,7 @@
         <option value="$PROJECT_DIR$/ehr/pharmacy/views.py" />
         <option value="$PROJECT_DIR$/ehr/templates/pharmacyLogin.html" />
         <option value="$PROJECT_DIR$/ehr/templates/login.html" />
+        <option value="$PROJECT_DIR$/ehr/patient/urls.py" />
         <option value="$PROJECT_DIR$/ehr/patient/views.py" />
       </list>
     </option>
@@ -219,7 +205,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Heart-disease-predicition-master" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -263,12 +249,13 @@
       <workItem from="1558349722684" duration="162912000" />
       <workItem from="1558946972318" duration="1212000" />
       <workItem from="1558948322232" duration="2945000" />
-      <workItem from="1559047580438" duration="9879000" />
+      <workItem from="1559047580438" duration="15028000" />
+      <workItem from="1559123913485" duration="18000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="337192000" />
+    <option name="totallyTimeSpent" value="342359000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -281,9 +268,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18059126" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18251929" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -419,13 +405,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/patient/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="48" column="11" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ehr/templates/Doctor_app/prescription_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -536,16 +515,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/patient/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" column="71" selection-start-line="22" selection-start-column="71" selection-end-line="23" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ehr/templates/patientIdentity.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -589,31 +558,10 @@
     <entry file="file://$PROJECT_DIR$/ehr/pharmacy/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/pharmacy/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/ehr/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ehr/templates/pharmacyLogin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/patient/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="184" column="29" selection-start-line="184" selection-start-column="8" selection-end-line="184" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -624,43 +572,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/patient/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="409">
+          <caret line="48" column="11" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/pharmacy/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/patient/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3982">
+          <caret line="184" column="29" selection-start-line="184" selection-start-column="8" selection-end-line="184" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/ehr/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1650">
+          <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ehr/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
+        <state relative-caret-position="682">
           <caret line="31" column="52" selection-start-line="31" selection-start-column="52" selection-end-line="31" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/patient/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ehr/patient/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="364" column="69" lean-forward="true" selection-start-line="364" selection-start-column="69" selection-end-line="364" selection-end-column="69" />
+        <state relative-caret-position="193">
+          <caret line="562" column="36" selection-start-line="562" selection-start-column="36" selection-end-line="562" selection-end-column="36" />
           <folding>
             <element signature="e#1194#1222#0" />
             <element signature="e#1278#1312#0" />
             <element signature="e#1358#1636#0" />
             <element signature="e#1683#1714#0" />
-            <element signature="e#1762#3880#0" />
             <element signature="e#3934#5972#0" />
             <element signature="e#6016#12446#0" />
             <element signature="e#12472#15503#0" />
             <element signature="e#15538#16254#0" />
             <element signature="e#16290#16532#0" />
             <element signature="e#16565#16748#0" />
-            <element signature="e#17916#18554#0" />
-            <element signature="e#18619#22968#0" />
-            <element signature="e#22990#23148#0" />
-            <element signature="e#23177#23435#0" />
-            <element signature="e#23460#23860#0" />
-            <element signature="e#23892#24008#0" />
-            <element signature="e#24039#24151#0" />
-            <element signature="e#24177#24199#0" />
-            <element signature="e#24656#25245#0" />
-            <element signature="e#25280#26366#0" />
-            <element signature="e#26401#26449#0" />
-            <element signature="e#28034#29339#0" />
-            <element signature="e#29366#30775#0" />
-            <element signature="e#30810#31640#0" />
           </folding>
         </state>
       </provider>

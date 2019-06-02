@@ -21,7 +21,7 @@
     <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);margin-top:30px;color: #FFF">
         {% if prescription %}
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <div class="row" style="border-bottom: solid 5px #32c69a">
                         <div class="col-sm-2" style="margin: auto 0px auto 0px;"></div>
                         <div class="col-sm-3" style="margin-bottom: 10px">
@@ -40,20 +40,39 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4" style="text-align: center">
+        {% endif %}
+        {% if prescription %}
+                <div class="col-sm-3" style="text-align: center">
+                    <a href="{% url 'doctor:presc_create'%}">
+                        <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Create</button>
+                    </a>
+                </div>
+                <div class="col-sm-3" style="text-align: center">
+                    {% with report=prescription|first %}
+                        <a href="{% url 'predict:predict' pk=report.patient.id%}">
+                            <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;width: 100%;" class="button home_button">Predict Heart Risk</button>
+                        </a>
+                    {% endwith %}
+                </div>
+            </div>
+        {% else %}
+            <div class="col-sm" style="text-align: center">
                     <a href="{% url 'doctor:presc_create'%}">
                         <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Create</button>
                     </a>
                 </div>
             </div>
+        {% endif %}
+        {% if prescription %}
             <div class="row">
-                <div class="col-sm">
+                <div class="col-sm" style="height:400px;overflow: auto">
                     <div class="row">
                         <div class="col-sm" style="text-align: center">
                             <label style="font-size: 30px;font-weight: bold;margin: 10px;border-bottom: solid 5px #32c69a;">Prescriptions</label>
                         </div>
                     </div>
-                    {% for p in prescription|slice:':10' %}
+{#                    {% for p in prescription|slice:':10' reversed %}#}
+                    {% for p in prescription reversed %}
                         <div class="row">
                             <div class="col-sm-3">
                                 <h3>{{ p.Submit_date }}</h3>
@@ -65,12 +84,12 @@
                                 <h3>{{ p.prescription.Doctor_signature|upper }}</h3>
                             </div>
                             <div class="col-sm-2">
-                                <a href="{% url 'doctor:update'  pk=p.pk %}">
+                                <a href="{% url 'doctor:update'  pk=p.prescription.prescription_id %}">
                                     <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Update</button>
                                 </a>
                             </div>
                             <div class="col-sm-2">
-                                <a href="{{ p.report }}">
+                                <a href="{{ p.prescription.prescription_id }}">
                                     <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Details</button>
                                 </a>
                             </div>

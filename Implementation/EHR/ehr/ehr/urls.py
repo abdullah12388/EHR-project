@@ -20,11 +20,13 @@ from django.urls import path, include
 from patient import views
 
 urlpatterns = [
-    url(r'^$', views.home, name='home'),
+    url(r'^$', views.patientLogin, name='patientLogin'),
     url(r'^admin/', admin.site.urls),
     url(r'^doctor/', include('doctor.urls')),
     url(r'^patient/', include('patient.urls')),
     url(r'^hospital/', include('hospital.urls')),
+    url(r'^clinic/', include('clinic.urls')),
+    url(r'^predict/',include('predict_risk.urls')),
     path('pharmacy/', include('pharmacy.urls')),
     path('lab/', include('lab.urls')),
 ]

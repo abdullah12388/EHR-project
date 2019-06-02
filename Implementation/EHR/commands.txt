@@ -14,6 +14,10 @@ pip install Pillow
 pip install qrcode
 pip install opencv-python
 pip install pyzbar
+pip install djangorestframework
+pip install markdown
+pip install django-filter
+pip install sklearn
 //////////////////////////////////////////////////////////////////
 DB_HOST
 ----------------
@@ -24,3 +28,6 @@ Password: ys2ICbkieB
 Server: remotemysql.com 
 Port: 3306
 DB_HOST
+
+ehr.healthcare2019@gmail.com
+As123123123

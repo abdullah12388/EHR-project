@@ -1,6 +1,7 @@
 from django import forms
 from patient.models import patient
-from doctor.models import report,user,prescription,patient_medicine,patient_rays,patient_analytics
+from doctor.models import report, user, prescription, patient_medicine, patient_rays, patient_analytics, all_medicine, \
+    all_rays, all_analytics
 from django.contrib.auth.hashers import make_password
 
 class GetPatianTIDForm (forms.ModelForm):
@@ -36,7 +37,8 @@ class PrescriptionForm (forms.ModelForm):
     next_appointment = forms.DateTimeField(widget=forms.DateTimeInput(attrs={
         'class': 'form-control',
         'placeholder': 'Next Appointment',
-        'required': 'required'
+        'required': 'required',
+        'type':'date',
     }))
     class Meta():
         model = prescription
@@ -50,16 +52,43 @@ class PrescriptionForm (forms.ModelForm):
         )
 
 class AddmedicenForm (forms.ModelForm):
+    med = forms.ModelChoiceField(queryset=all_medicine.objects.all(),widget=forms.Select(attrs={
+        'class': 'form-control',
+        'style': 'height:auto;',
+        'required': 'required',
+    }),empty_label='Medicine Name')
+    number_of_potions = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Number of Potions',
+        'required': 'required'
+    }), min_value=0)
+    number_of_pills = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Number of Pills',
+        'required': 'required'
+    }), min_value=0)
     class Meta():
         model = patient_medicine
-        fields = ('med','number_of_potions','number_of_pills')
+        fields = ('med',
+                  'number_of_potions',
+                  'number_of_pills')
 
 class AddRaysForm (forms.ModelForm):
+    ray = forms.ModelChoiceField(queryset=all_rays.objects.all(), widget=forms.Select(attrs={
+        'class': 'form-control',
+        'style': 'height:auto;',
+        'required': 'required',
+    }), empty_label='Rays Name')
     class Meta():
         model = patient_rays
         fields = ['ray']
 
 class AddanalyticsForm (forms.ModelForm):
+    analy = forms.ModelChoiceField(queryset=all_analytics.objects.all(), widget=forms.Select(attrs={
+        'class': 'form-control',
+        'style': 'height:auto;',
+        'required': 'required',
+    }), empty_label='Analytics Name')
     class Meta():
         model = patient_analytics
         fields = ['analy']

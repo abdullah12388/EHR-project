@@ -1,177 +1,116 @@
 {% extends 'Doctor_app/Doctor_base.html' %}
 {% block home_content %}
 
-<div style="width:10px;height:175px"></div>
-<div class="info">
-    <div class="container">
-        <div class="row row-eq-height">
-            {% if not form.instance.pk %}
-            <form method="post">
-                {%csrf_token%}
-                {{form.as_p}}
-                <input type="submit" class="btn btn-primary" value="Create">
-            </form>
-            {%else%}
-            <form method="post">
-                {%csrf_token%}
-                {{form.as_p}}
-                <input type="submit" class="btn btn-warning" value="Update">
-            </form>
-            {% endif %}
-        </div>
-    </div>
-</div>
-
 {#<div style="width:10px;height:175px"></div>#}
-{#<div class="container">#}
-{#    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Lab Profile Update</h2>#}
-{#    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66)">#}
-{#        {% if not form.instance.pk %}#}
-{#            <form method="POST">#}
-{#            {% csrf_token %}#}
-{#                <div class="row">#}
-{#                    <div class="col-sm">#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                <input type="text" name="Disease_name" class="form-control" pattern="[a-z]{3,}" placeholder="Disease Name" required id="id_Disease_name" />#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                <input type="text" name="Disease_level" class="form-control" pattern="[0-9]{1,}" placeholder="Disease Level" required id="id_Disease_level" />#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                <textarea name="Disease_disc" cols="40" rows="10" class="form-control" pattern="[a-z]{3,}" placeholder="Disease Discription" required id="id_Disease_disc"></textarea>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                <input type="text" name="Doctor_signature" class="form-control" pattern="[a-z]{3,}" placeholder="Doctor Signature" required id="id_Doctor_signature" />#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                <input type="datetime-local" name="next_appointment" class="form-control" placeholder="Next Appointment" required id="id_next_appointment" />#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm" style="text-align: center">#}
-{#                                <input type="submit" style="width:30%;margin:auto" class="button home_button" value="Create">#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="row">#}
-{#                    <div class="col-sm">#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                {{ form.Disease_name }}#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                {{ form.Disease_level }}#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                {{ form.Disease_disc }}#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                {{ form.Doctor_signature }}#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                {{ form.next_appointment }}#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm" style="text-align: center">#}
-{#                                <input type="submit" style="width:30%;margin:auto" class="button home_button" value="Create">#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
+{#<div class="info">#}
+{#    <div class="container">#}
+{#        <div class="row row-eq-height">#}
+{#            {% if not form.instance.pk %}#}
+{#            <form method="post">#}
+{#                {%csrf_token%}#}
+{#                {{form.as_p}}#}
+{#                <input type="submit" class="btn btn-primary" value="Create">#}
 {#            </form>#}
-{#        {% else %}#}
-{#            <form method="POST">#}
-{#                {% csrf_token %}#}
-{#                <div class="row">#}
-{#                    <div class="col-sm">#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                <input type="text" name="Disease_name" class="form-control" pattern="[a-z]{3,}" placeholder="Disease Name" required id="id_Disease_name" />#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                <input type="text" name="Disease_level" class="form-control" pattern="[0-9]{1,}" placeholder="Disease Level" required id="id_Disease_level" />#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                <textarea name="Disease_disc" cols="40" rows="10" class="form-control" pattern="[a-z]{3,}" placeholder="Disease Discription" required id="id_Disease_disc"></textarea>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                <input type="text" name="Doctor_signature" class="form-control" pattern="[a-z]{3,}" placeholder="Doctor Signature" required id="id_Doctor_signature" />#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                <input type="datetime-local" name="next_appointment" class="form-control" placeholder="Next Appointment" required id="id_next_appointment" />#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm" style="text-align: center">#}
-{#                                <input type="submit" style="width:30%;margin:auto" class="button home_button" value="Update">#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#                <div class="row">#}
-{#                    <div class="col-sm">#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                {{ form.Disease_name }}#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                {{ form.Disease_level }}#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                {{ form.Disease_disc }}#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                {{ form.Doctor_signature }}#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm">#}
-{#                                {{ form.next_appointment }}#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="form-row" style="margin-bottom:20px">#}
-{#                            <div class="col-sm" style="text-align: center">#}
-{#                                <input type="submit" style="width:30%;margin:auto" class="button home_button" value="Update">#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
+{#            {%else%}#}
+{#            <form method="post">#}
+{#                {%csrf_token%}#}
+{#                {{form.as_p}}#}
+{#                <input type="submit" class="btn btn-warning" value="Update">#}
 {#            </form>#}
-{#        {% endif %}#}
+{#            {% endif %}#}
+{#        </div>#}
 {#    </div>#}
 {#</div>#}
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">
+        Prescription
+        {% if '/doctor/prescription/update/' in request.get_full_path %}
+            Update
+        {% else %}
+            Create
+        {% endif %}
+    </h2>
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66)">
+        {% if not form.instance.pk %}
+            <form method="POST">
+            {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="text" name="Disease_name" class="form-control" pattern="[a-z]{3,}" placeholder="Disease Name" required id="id_Disease_name" />
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="text" name="Disease_level" class="form-control" pattern="[0-9]{1,}" placeholder="Disease Level" required id="id_Disease_level" />
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <textarea name="Disease_disc" cols="40" rows="10" class="form-control" pattern="[a-z]{3,}" placeholder="Disease Discription" required id="id_Disease_disc"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="text" name="Doctor_signature" class="form-control" pattern="[a-z]{3,}" placeholder="Doctor Signature" required id="id_Doctor_signature" />
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                <input type="date" name="next_appointment" class="form-control" placeholder="Next Appointment" required id="id_next_appointment" />
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm" style="text-align: center">
+                                <input type="submit" style="width:30%;margin:auto;border-radius: 50px" class="button home_button" value="Create">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        {% else %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.Disease_name }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.Disease_level }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.Disease_disc }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.Doctor_signature }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.next_appointment }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm" style="text-align: center">
+                                <input type="submit" style="width:30%;margin:auto;border-radius: 50px" class="button home_button" value="Update">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        {% endif %}
+    </div>
+</div>
 
 {% endblock home_content %}

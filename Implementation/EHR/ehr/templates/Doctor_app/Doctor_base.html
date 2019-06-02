@@ -7,7 +7,7 @@
 <body class="{% if request.get_full_path == '/patientHistory/' %} body_color
  {% else %}body
  {% endif %}"
-        style="{% if '/doctor/patiant/prescription/' in request.get_full_path %}background-image: url('/static/images/index_hero.jpg');
+        style="{% if '/doctor/patiant/prescription/' in request.get_full_path or '/doctor/prescription/' in request.get_full_path %}background-image: url('/static/images/index_hero.jpg');
           top: 0;
           left: 0;
           width: 100%;
@@ -49,5 +49,10 @@
     </div>
 {% block javascript %}
 {% endblock javascript %}
+<script>
+$(document).ready(function(){
+  {% block jquery %}{% endblock %}
+})
+</script>
 </body>
 </html>

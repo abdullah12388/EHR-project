@@ -24,3 +24,11 @@ Password: ys2ICbkieB
 Server: remotemysql.com 
 Port: 3306
 DB_HOST
+/////////////////////////////////////////////////////////////////
+Ubuntu 18.04:
+------------------
+sudo pip install pymysql (__init__.py)	import pymysql  
+				      	pymysql.install_as_MySQLdb()
+
+sudo apt-get install libzbar0
+pip install pyzbar[scripts]

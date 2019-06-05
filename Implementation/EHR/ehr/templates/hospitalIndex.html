@@ -6,7 +6,7 @@
 <div class="container">
     <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);margin-top:30px;color: #FFF">
         <div class="row">
-            <div class="col-sm-7">
+            <div class="col-sm-6">
                 <div class="row" style="border-bottom: solid 5px #32c69a">
                     {% if hospital %}
                     <div class="col-sm-2" style="margin: auto 0px auto 0px;"></div>
@@ -25,7 +25,7 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="col-sm-5" style="text-align: center">
+            <div class="col-sm-6" style="text-align: center">
                 <a href="{% url 'hospital:add_doctor' %}">
                     <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Add Doctor</button>
                 </a>
@@ -168,7 +168,7 @@
                                     <input type="text" class="form-control" style="margin:10px auto" value="{{ hospital.num_of_bed }} Bed" disabled>
                                 </div>
                                 <div class="col-sm-5" style="text-align: center;">
-                                    <select class="form-control" name="departments" style="margin-top:10px;" required>
+                                    <select class="form-control" name="departments" style="height: auto;margin-top:10px;" required>
                                         <option value="" selected disabled>Choose a Department...</option>
                                         <option value="1">{{ hospital.internal_medicine }} - Internal Medicine</option>
                                         <option value="2">{{ hospital.cardiology }} - Cardiology</option>

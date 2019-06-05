@@ -1,4 +1,5 @@
 {% load staticfiles %}
+
 <!-- Menu -->
 <div class="menu trans_500">
     <div class="menu_content d-flex flex-column align-items-center justify-content-center text-center">
@@ -49,6 +50,15 @@
     {% elif '/pharmacy/pharmacyProfileView/' in request.get_full_path %} height:0px;
     {% elif '/lab/labProfileView/' in request.get_full_path %} height:0px;
     {% elif '/doctor/patiant/prescription/' in request.get_full_path %} height:0px;
+    {% elif '/doctor/prescription/' in request.get_full_path %}height:0px;
+    {% elif '/predict/' in request.get_full_path %}height:0px;
+    {% elif '/patient/forgetPassword/' in request.get_full_path %}height:0px;
+    {% elif '/doctor/Statistics/' in request.get_full_path %}height:50px;
+    {% elif '/hospital/Statistics/' in request.get_full_path %}height:50px;
+    {% elif request.get_full_path == '/clinic/Index/' %}height:0px;
+    {% elif '/clinic/clinicProfileView/' in request.get_full_path %}height:0px;
+    {% elif '/clinic/AddClinicDoctor/' in request.get_full_path %}height:0px;
+    {% elif '/clinic/updateClinicDoctor/' in request.get_full_path %}height:0px;
     {% endif %}">
     <div class="
     {% if request.get_full_path == '/patient/patientHistory/' %}
@@ -72,6 +82,11 @@
     {% elif '/pharmacy/pharmacyProfileView/' in request.get_full_path %} display:none;
     {% elif '/lab/labProfileView/' in request.get_full_path %} display:none;
     {% elif '/doctor/patiant/prescription/' in request.get_full_path %}display:none;
+    {% elif '/doctor/prescription/' in request.get_full_path %}display:none;
+    {% elif '/predict/' in request.get_full_path %}display:none;
+    {% elif '/patient/forgetPassword/' in request.get_full_path %}display:none;
+    {% elif request.get_full_path == '/clinic/Index/' %}display:none;
+    {% elif '/clinic/clinicProfileView/' in request.get_full_path %}display:none;
     {% endif %}
     "></div>
 
@@ -113,19 +128,23 @@
                                     <div class="header_nav_content d-flex flex-row align-items-center justify-content-start">
                                         <nav class="main_nav">
                                             <ul class="d-flex flex-row align-items-center justify-content-start">
-                                                {% if 'patient_id' not in request.session and 'doctor_id' not in request.session and 'hospital_id' not in request.session and 'pharmacy_id' not in request.session and 'lab_id' not in request.session %}
+                                                {% if 'patient_id' not in request.session and 'doctor_id' not in request.session and 'hospital_id' not in request.session and 'pharmacy_id' not in request.session and 'lab_id' not in request.session and 'clinic_id' not in request.session %}
                                                 {% elif 'patient_id' in request.session %}
                                                     <li><a href="{% url 'patient:home'%}">Home</a></li>
                                                 {% elif 'doctor_id' in request.session %}
                                                     <li><a href="{% url 'doctor:patiant_id'%}">Home</a></li>
+                                                    <li><a href="{% url 'doctor:stat'%}">Statistics</a></li>
                                                 {% elif 'hospital_id' in request.session %}
                                                     <li><a href="{% url 'hospital:Index'%}">Home</a></li>
+                                                    <li><a href="{% url 'hospital:stat'%}">Statistics</a></li>
                                                 {% elif 'pharmacy_id' in request.session %}
                                                     <li><a href="{% url 'pharmacy:pharmacyPatientLogin'%}">Home</a></li>
                                                 {% elif 'lab_id' in request.session %}
                                                     <li><a href="{% url 'lab:labPatientLogin'%}">Home</a></li>
+                                                {% elif 'clinic_id' in request.session %}
+                                                    <li><a href="{% url 'clinic:Index' %}">Home</a></li>
                                                 {% endif %}
-                                                {% if 'patient_id' not in request.session and 'doctor_id' not in request.session and 'hospital_id' not in request.session and 'pharmacy_id' not in request.session and 'lab_id' not in request.session %}
+                                                {% if 'patient_id' not in request.session and 'doctor_id' not in request.session and 'hospital_id' not in request.session and 'pharmacy_id' not in request.session and 'lab_id' not in request.session and 'clinic_id' not in request.session%}
                                                     {% if 'type' in request.session %}
                                                     {% else%}
                                                         <li><a href="{% url 'patient:patientLogin'%}">Login</a></li>
@@ -155,6 +174,11 @@
                                                 {% elif 'lab_id' in request.session %}
                                                     <li><a href="{% url 'lab:lab_profile_view' labid=lab_id%}">Profile</a></li>
                                                     <li><a href="{% url 'lab:labLogout' %}">Logout</a></li>
+                                                {% elif 'clinic_id' in request.session %}
+                                                    {% if '/doctor/doctorProfileView/' not in request.get_full_path and '/pharmacy/pharmacyProfileView/' not in request.get_full_path and '/lab/labProfileView/' not in request.get_full_path %}
+                                                        <li><a href="{% url 'clinic:clinic_profile_view' clinid=clin_id %}">Profile</a></li>
+                                                    {% endif %}
+                                                    <li><a href="{% url 'clinic:clinicLogout'%}">Logout</a></li>
                                                 {% endif %}
                                             </ul>
                                         </nav>

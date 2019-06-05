@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block clinicIndex %}
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);margin-top:30px;color: #FFF">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row" style="border-bottom: solid 5px #32c69a">
+                    {% if clinic %}
+                    <div class="col-sm-2" style="margin: auto 0px auto 0px;"></div>
+                    <div class="col-sm-3" style="margin-bottom: 10px">
+                        <a href="{% url 'clinic:clinic_profile_view' clinid=clinic.org_id%}">
+                            <img class="ima" src="{{ clinic.org_logo }}" style="width: 70px;height: 70px">
+                        </a>
+                    </div>
+                    <div class="col-sm-3 topName" style="margin: auto 0px;">
+                        <label style="font-size: 22px">{{ clinic.org_name }}</label>
+                    </div>
+                    <div class="col-sm-2" style="margin: auto 0px auto 0px;">
+                        <i class="fa fa-star fa-lg" style="font-size: 30px"> {{ clinic.org_rate }}</i>
+                    </div>
+                    <div class="col-sm-2" style="margin: auto 0px auto 0px;"></div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-sm-4" style="text-align: center">
+                <a href="{% url 'clinic:add_doctor' %}">
+                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Add Doctor</button>
+                </a>
+{#                <a href="{% url 'hospital:add_pharmacy' %}">#}
+{#                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Add Pharmacy</button>#}
+{#                </a>#}
+{#                <a href="{% url 'hospital:add_Lab' %}">#}
+{#                    <button type="submit" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">Add Lab</button>#}
+{#                </a>#}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div class="row">
+                    <div class="col-sm">
+                        <label style="font-size: 22px;font-weight: bold;margin: 10px;border-bottom: solid 5px #32c69a;">Management</label>
+                    </div>
+                </div>{# management #}
+                <div class="row">
+                    <div class="col-sm" style="height: 250px;border-bottom: solid 5px #32c69a;overflow: auto">
+                        <div class="row">
+                            <div class="col-sm" style="text-align: center;">
+                                <label style="font-size: 18px;font-weight: bold;margin: 10px;border-bottom: solid 5px #32c69a;">Doctors</label>
+                            </div>
+                        </div>
+                        {# loop from here #}
+                        {% if doctor %}
+                            {% for doct in doctor %}
+                            <div class="row" style="margin-bottom: 5px">
+                                <div class="col-sm" style="text-align: center;margin: auto;">
+                                    <a href="{% url 'doctor:doctorProfileView' pk=doct.id%}">
+                                        <img class="ima" src="{{ doct.Doc.Profile_picture }}" style="width: 50px;height: 50px">
+                                    </a>
+                                </div>
+                                <div class="col-sm" style="text-align: center;margin: auto;">
+                                    <label style="font-size: 22px;margin: auto;">{{ doct.Doc.first_name }}</label>
+                                    <label style="font-size: 22px;margin: auto;">{{ doct.Doc.middle_name }}</label>
+                                    <label style="font-size: 22px;margin: auto;">{{ doct.Doc.last_name }}</label>
+                                </div>
+                                <div class="col-sm" style="text-align: center;">
+                                    <a href="{% url 'clinic:update_doctor' Docid=doct.Doc_id %}">
+                                        <button type="submit" style="width: 55%;height: 40px;margin-top: 10px;font-size: 18px;border-radius: 50px;" class="button home_button">Update</button>
+                                    </a>
+                                </div>
+                                <div class="col-sm" style="text-align: center;">
+                                    <a href="{% url 'clinic:delete_doctor' Did=doct.Doc_id %}">
+                                        <button type="submit" style="width: 55%;height: 40px;margin-top: 10px;font-size: 18px;border-radius: 50px;" class="button home_button">Block</button>
+                                    </a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>{# doctors #}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock clinicIndex %}

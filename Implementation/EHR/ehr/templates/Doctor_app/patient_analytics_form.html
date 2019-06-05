@@ -1,28 +1,80 @@
 {% extends 'Doctor_app/Doctor_base.html' %}
 {% block home_content %}
 
-<div class="info">
-    <div class="container">
-        <div class="row row-eq-height">
-          <div class="jumbotron">
-            {% if not form.instance.pk %}
-            <h1>Create</h1>
-            <form method="post">
-                {%csrf_token%}
-                {{form.as_p}}
-                <input type="submit" class="btn btn-primary" value="Create">
-            </form>
-            {%else%}
+{#<div class="info">#}
+{#    <div class="container">#}
+{#        <div class="row row-eq-height">#}
+{#          <div class="jumbotron">#}
+{#            {% if not form.instance.pk %}#}
+{#            <h1>Create</h1>#}
+{#            <form method="post">#}
+{#                {%csrf_token%}#}
+{#                {{form.as_p}}#}
+{#                <input type="submit" class="btn btn-primary" value="Create">#}
+{#            </form>#}
+{#            {%else%}#}
+{##}
+{#                <h1>Update</h1>#}
+{#                <form method="post">#}
+{#                    {%csrf_token%}#}
+{#                    {{form.as_p}}#}
+{#                    <input type="submit" class="btn btn-warning" value="Update">#}
+{#                </form>#}
+{#            {% endif %}#}
+{#          </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
 
-                <h1>Update</h1>
-                <form method="post">
-                    {%csrf_token%}
-                    {{form.as_p}}
-                    <input type="submit" class="btn btn-warning" value="Update">
-                </form>
-            {% endif %}
-          </div>
-        </div>
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">
+        Analytics
+        {% if '/doctor/prescription/update/' in request.get_full_path %}
+            Update
+        {% else %}
+            Create
+        {% endif %}
+    </h2>
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66)">
+        {% if not form.instance.pk %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.analy }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm" style="text-align: center">
+                                <input type="submit" style="width:30%;margin:auto;border-radius: 50px" class="button home_button" value="Create">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        {% else %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm">
+                                {{ form.analy }}
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-bottom:20px">
+                            <div class="col-sm" style="text-align: center">
+                                <input type="submit" style="width:30%;margin:auto;border-radius: 50px" class="button home_button" value="Update">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        {% endif %}
     </div>
 </div>
 

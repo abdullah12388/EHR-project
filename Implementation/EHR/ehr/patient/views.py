@@ -15,7 +15,7 @@ from datetime import date
 from django.conf import settings as set
 from django.contrib.auth.hashers import check_password
 from django.db.models import Count
-
+from django.core.mail import EmailMessage
 import cv2
 import numpy as np
 import pyzbar.pyzbar as pyzbar
@@ -269,18 +269,17 @@ def home(request):
     if patientReport:
         lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(report__exact=patientReport.report).exists()
         if lastMedicineInReportTrueOrFalse:
-            # lastMedicineInReport = multi_medecines.objects.get(report__exact=patientReport.report)
-            lastMedicineInReport = multi_medecines.objects.filter(report__exact=patientReport.report)
+            lastMedicineInReport = multi_medecines.objects.filter(report=patientReport.report)
             context.update({'lastMedicineInReport': lastMedicineInReport})
-            print('lastMedicineInReport = ', lastMedicineInReport)
+
         lastAnalyticsInReportTrueOrFalse = multi_analytics.objects.filter(report__exact=patientReport.report).exists()
         if lastAnalyticsInReportTrueOrFalse:
-            lastAnalyticsInReport = multi_analytics.objects.get(report__exact=patientReport.report)
+            lastAnalyticsInReport = multi_analytics.objects.filter(report__exact=patientReport.report)
             context.update({'lastAnalyticsInReport': lastAnalyticsInReport})
 
         lastRaysInReportTrueOrFalse = multi_rays.objects.filter(report__exact=patientReport.report).exists()
         if lastRaysInReportTrueOrFalse:
-            lastRaysInReport = multi_rays.objects.get(report__exact=patientReport.report)
+            lastRaysInReport = multi_rays.objects.filter(report__exact=patientReport.report)
             context.update({'lastRaysInReport': lastRaysInReport})
     else:
         context={
@@ -356,20 +355,62 @@ def patientLogin(request):
                 return HttpResponseRedirect('/patient/patientProfile/')
             elif result == 'email_exists':
                 if request.session['user_T'] == 2:
-                    return HttpResponseRedirect('/doctor')
+                    if 'remember_me' in request.POST:
+                        request.session.set_expiry(60 * 60 * 24 * 30)
+                        return HttpResponseRedirect('/doctor')
+                    else:
+                        return HttpResponseRedirect('/doctor')
                 else:
-                    return HttpResponseRedirect('/patient/Index/')
+                    if 'remember_me' in request.POST:
+                        request.session.set_expiry(60 * 60 * 24 * 30)
+                        return HttpResponseRedirect('/patient/Index/')
+                    else:
+                        return HttpResponseRedirect('/patient/Index/')
             elif result == 'wrong_password':
                 return HttpResponseRedirect('/patient/?alert=wrong_password')
             elif result == 'wrong_email':
                 return HttpResponseRedirect('/patient/?alert=wrong_email')
-
+        #######################################################################
+        # if request.method == 'POST':
+            # if 'for_pass' in request.POST:
+        em = request.POST['for_pass']
+        uid = user.objects.get(email_1=em).user_id
+        # pid = patient.objects.get(Patient=uid).id
+        title = 'Reset Your Password'
+        body = 'Visit This Link For Reset Your Password' \
+               ' http://127.0.0.1:8000/patient/forgetPassword/'+str(uid)
+        email = EmailMessage(title,body,to=[em])
+        email.send()
+            # else:
+            #     print('error')
+        #######################################################################
     else:
         form = login()
     context = {
         'form': form
     }
     return render(request, 'login.html', context)
+
+
+def forget_password(request,uid):
+    # email = EmailMessage('title', 'body', to=['dodyasd123888@gmail.com'])
+    # email.send()
+    if request.method == 'POST':
+        id = request.POST['userid']
+        password = request.POST['new_pass']
+        re_password = request.POST['confirm_pass']
+        if password == re_password:
+            user.objects.filter(user_id=id).update(New_Password=password)
+            print('Done')
+            return HttpResponseRedirect('/patient/')
+        else:
+            print('save error')
+    # uid = patient.objects.get(id=pid).Patient_id
+    userData = user.objects.get(user_id=uid)
+    context={
+        'user': userData,
+    }
+    return render(request,'forgetPassword.html',context)
 
 
 def patientLogout(request):
@@ -466,7 +507,7 @@ def patient_profile(request):
                     db = DB_functions()
                     db.remove_from_temp(id=request.session['patient_temp_id'])
                     print('iam here')
-                    return HttpResponseRedirect('/patient/patientCard/')
+                    return HttpResponseRedirect('/patient/patientCard/'+str(u_id))
                 else:
                     print('form two')
                     print(form2.errors)
@@ -657,7 +698,7 @@ def patientCard(request,userid):
     # print(Create_date)
     # print(birthdate)
     # print(age)
-    QR_code = patient.objects.get(Patient=request.session['user_id']).QR_code
+    QR_code = patient.objects.get(Patient=userid).QR_code
     if age:
         context = {
             'Profile_picture': Profile_picture,
@@ -668,6 +709,7 @@ def patientCard(request,userid):
             'Create_date': Create_date,
             'QR_code': QR_code,
             'age': age,
+            'userid':userid,
         }
         return render(request, 'patientData.html', context)
     else:

@@ -1,0 +1,146 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+{% block prediction %}
+
+<style>
+th,td{
+    color: #000;font-size: 18px;
+}
+</style>
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Predict your Heart disease</h2>
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66)">
+        <h2 style="text-align: center;color: #32c69a;">Medical Information</h2>
+        {% if predicted %}
+            <div class="card" role="alert">
+                <div class="header-main">
+                    {% if result %}
+                        <h4 class="table-danger text-center" style="color: #000;font-size: 30px;">You have a risk of heart disease</h4>
+                    {% else %}
+                        <h4 class="table-success  text-center" style="color: #000;font-size: 30px;">You do not have a risk of heart disease</h4>
+                    {% endif %}
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive justify-content-center">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Algorithm</th>
+                                    <th>Risk of Heart Disease</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="{{colors.LR}}">
+                                    <td>Logistic Regression</td>
+                                    <td>{{predictions.LogisticRegression}}</td>
+                                </tr>
+                                <tr class={{colors.SVC}}>
+                                    <td>Support Vector Classifier</td>
+                                    <td>{{predictions.SVC}}</td>
+                                </tr>
+                                <tr class={{colors.NB}}>
+                                    <td>Naive Bayes</td>
+                                    <td>{{predictions.NaiveBayes}}</td>
+                                </tr>
+                                <tr class={{colors.DT}}>
+                                    <td>Decision Tree</td>
+                                    <td>{{predictions.DecisionTree}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm">
+                    <p>Age<p>
+                    {{form.age}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p>Gender</p>
+                    {{form.sex}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p>Chest Pain</p>
+                    {{form.cp}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p>Resting BP</p>
+                    {{form.resting_bp}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p>Serum Cholestrol</p>
+                    {{form.serum_cholesterol}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p>Fasting Blood Sugar</p>
+                    {{form.fasting_blood_sugar}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p>Resting  Electrocardiographic Result</p>
+                    {{form.resting_ecg}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p>Maximum Heart Rate</p>
+                    {{form.max_heart_rate}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p>Excercise Induced Angina</p>
+                    {{form.exercise_induced_angina}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p>ST Depression</p>
+                    {{form.st_depression}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p>Slope of the peak exercise ST segment </p>
+                    {{form.st_slope}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p>Number of major vessels (0-3) colored by flourosopy</p>
+                    {{form.number_of_vessels}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <p>Thalium Scan Results</p>
+                    {{form.thallium_scan_results}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm" style="text-align: center">
+                    <input type="submit" value="Predict" style="margin-top:10px;font-size: 18px;border-radius: 50px;" class="button home_button">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock prediction %}

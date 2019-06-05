@@ -84,7 +84,9 @@
                             {% if lastMedicineInReport %}
                                 <div class="bord txer" disabled style="overflow: auto">
                                     <P style="font-size: 20px;color: #32c69a;font-weight: bold;">Medicines</P>
-                                    {{ lastMedicineInReport.P_M.med.medicine_name }}
+                                    {% for lmr in lastMedicineInReport %}
+                                        {{ lmr.P_M.med.medicine_name }}<br>
+                                    {% endfor %}
                                 </div>
                             {% else %}
                                  <div class="bord txer" disabled >
@@ -94,10 +96,12 @@
                             {% endif %}
                         </div>
                         <div class="col-sm-6">
-                            {% if lastAnalyticsInReport.P_A.analytics_result  %}
+                            {% if lastAnalyticsInReport  %}
                                 <div class="bord txer" disabled style="overflow: auto">
                                     <P style="font-size: 20px;color: #32c69a;font-weight: bold;">Analytics </P>
-                                    <a class="tops" href="{{ lastAnalyticsInReport.P_A.analytics_result }}">{{ lastAnalyticsInReport.P_A.analy.analytics_name }}</a>
+                                    {% for lar in lastAnalyticsInReport %}
+                                        <a class="tops" href="{{ lar.P_A.analytics_result }}">{{ lar.P_A.analy.analytics_name }}</a><br>
+                                    {% endfor %}
                                 </div>
                             {% else %}
                                 <div class="bord txer" disabled>
@@ -110,10 +114,12 @@
                     {# rays #}
                     <div class="row">
                         <div class="col-sm">
-                            {% if lastRaysInReport.P_R.rays_result %}
+                            {% if lastRaysInReport %}
                                 <div class="bord txer" disabled style="overflow: auto">
                                     <P style="font-size: 20px;color: #32c69a;font-weight: bold;">Rays</P>
-                                    <a class="tops" href="{{ lastRaysInReport.P_R.rays_result }}">{{ lastRaysInReport.P_R.ray.ray_name }}</a>
+                                    {% for lrr in lastRaysInReport %}
+                                        <a class="tops" href="{{ lrr.P_R.rays_result }}">{{ lrr.P_R.ray.ray_name }}</a><br>
+                                    {% endfor %}
                                 </div>
                             {% else %}
                                 <div class="bord txer" disabled >
@@ -300,8 +306,8 @@
                                 <div class="bord txer" disabled style="overflow: auto">
                                     <p style="font-size: 20px;color: #32c69a;font-weight: bold;">Clinics</p>
                                     {% for clinic in clinics %}
-                                        <a class="tops" href="#">
-                                            {{ clinics.org_name }}
+                                        <a class="tops" href="{% url 'clinic:clinic_profile_view' clinid=clinic.org_id%}">
+                                            {{ clinic.org_name }}
                                         </a><br>
                                     {% endfor %}
                                 </div>

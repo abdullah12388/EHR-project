@@ -14,6 +14,10 @@ pip install Pillow
 pip install qrcode
 pip install opencv-python
 pip install pyzbar
+pip install djangorestframework
+pip install markdown
+pip install django-filter
+pip install sklearn
 //////////////////////////////////////////////////////////////////
 DB_HOST
 ----------------
@@ -32,3 +36,6 @@ sudo pip install pymysql (__init__.py)	import pymysql
 
 sudo apt-get install libzbar0
 pip install pyzbar[scripts]
+
+ehr.healthcare2019@gmail.com
+As123123123

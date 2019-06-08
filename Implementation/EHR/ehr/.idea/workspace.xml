@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d8ec0d3-e378-4bab-aa60-45a1fc63fd41" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ehr.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ehr.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/clinic/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/clinic/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospital/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospital/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pharmacy/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/pharmacy/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/signup.html" afterDir="false" />
-    </list>
+    <list default="true" id="4d8ec0d3-e378-4bab-aa60-45a1fc63fd41" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/patient/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="550">
-              <caret line="405" column="39" selection-start-line="405" selection-start-column="39" selection-end-line="405" selection-end-column="39" />
+              <caret line="405" column="52" selection-start-line="405" selection-start-column="52" selection-end-line="405" selection-end-column="52" />
               <folding>
                 <element signature="e#1078#12482#0" />
                 <element signature="e#15576#16293#0" />
@@ -214,7 +201,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="width" value="815" />
     <option name="height" value="870" />
@@ -372,7 +359,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227274000" />
+    <option name="totallyTimeSpent" value="227456000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -846,7 +833,7 @@
     <entry file="file://$PROJECT_DIR$/patient/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
-          <caret line="405" column="39" selection-start-line="405" selection-start-column="39" selection-end-line="405" selection-end-column="39" />
+          <caret line="405" column="52" selection-start-line="405" selection-start-column="52" selection-end-line="405" selection-end-column="52" />
           <folding>
             <element signature="e#1078#12482#0" />
             <element signature="e#15576#16293#0" />

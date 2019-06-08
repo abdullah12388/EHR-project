@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect,get_object_or_404
 from doctor.models import patient_analytics, patient_rays
 from hospital.models import organization
 from patient.views import QRCodeScanner
-from patient.models import patient, user
+from patient.models import patient, user, AllNotification
 
 globalVariableForScanningQRCode = ''
 data = ""
@@ -32,7 +32,6 @@ def labLogin(request):
         request.session['type'] = 'lab'
         return render(request,'labLogin.html',{})
 
-
 def labLogout(request):
     if request.session['type'] == 'lab':
         if 'lab_id' in request.session:
@@ -43,7 +42,6 @@ def labLogout(request):
     else:
         print('there is no lab entered')
     return HttpResponseRedirect('/lab/')
-
 
 def labPatientLogin(request ):
     if request.method == 'POST':
@@ -71,41 +69,56 @@ def QRCodeScanView(request):
     request.session['ssnid'] = QRData
     return HttpResponseRedirect('/lab/labPatientLogin/')
 
-
-
 def AnalyticsListView(request):
     # patient_id = request.session['patient_id']
     #This will delete the SSN ID after loggin by the patient
     if 'ssnid' in request.session:
         request.session.pop('ssnid')
-    patient_id = patient.objects.get(Patient_id=request.session['patie_id']).id
-    lab_id = request.session['lab_id']
-    patientFoundTrueAndFalse = patient_analytics.objects.filter(pat_id__exact=patient_id).exists()
-    if patientFoundTrueAndFalse:
-        analyticsFound = patient_analytics.objects.filter(lab__isnull=True).exists()
-        if analyticsFound:
-            analyticsData = patient_analytics.objects.filter(lab__isnull=True)
-            if request.method == 'POST':
-                analyticsInsert = patient_analytics(P_A_id=request.POST['ana_id'])
-                analyticsInsert.lab_id = lab_id
-                analyticsInsert.pat_id = patient_id
-                analyticsInsert.analy_id = request.POST['analy_id']
-                analyticsResult = request.FILES['analytics_result']
-                fs = FileSystemStorage()
-                analyResult = fs.save(analyticsResult.name, analyticsResult)
-                analyticsInsert.analytics_result = '/lab' + fs.url(analyResult)
-                analyticsInsert.save()
+    if 'lab_id' in request.session and 'patie_id' in request.session:
+        patient_id = patient.objects.get(Patient_id=request.session['patie_id']).id
+        lab_id = request.session['lab_id']
+        patientFoundTrueAndFalse = patient_analytics.objects.filter(pat_id__exact=patient_id).exists()
+        if patientFoundTrueAndFalse:
+            analyticsFound = patient_analytics.objects.filter(lab__isnull=True).exists()
+            if analyticsFound:
+                analyticsData = patient_analytics.objects.filter(lab__isnull=True)
+                if request.method == 'POST':
+                    analyticsInsert = patient_analytics(P_A_id=request.POST['ana_id'])
+                    analyticsInsert.lab_id = lab_id
+                    analyticsInsert.pat_id = patient_id
+                    analyticsInsert.analy_id = request.POST['analy_id']
+                    analyticsResult = request.FILES['analytics_result']
+                    fs = FileSystemStorage()
+                    analyResult = fs.save(analyticsResult.name, analyticsResult)
+                    analyticsInsert.analytics_result = '/lab' + fs.url(analyResult)
+                    analyticsInsert.save()
+                    ##################### khan added from here to make notifications available ##################
+                    # creating instance from table "AllNotification" to affect and get notification from it
+                    notificationToBeSentToPatientFromLab = AllNotification()
+                    # taking ID from session of the doctor and patient I did't use what omar did because i need user instance
+                    labIdInSession = request.session['lab_id']
+                    patientIdInSession = request.session['patie_id']
+                    labId = organization.objects.get(org_id=labIdInSession)
+                    patientId = user.objects.get(user_id=patientIdInSession)
+                    # affecting table "AllNotification" and save data to preview to the user
+                    notificationToBeSentToPatientFromLab.LabSenderId = labId
+                    notificationToBeSentToPatientFromLab.patientRecipient = patientId
+                    notificationToBeSentToPatientFromLab.message = 'lab' + labId.org_name + ' added a new analytics'
+                    notificationToBeSentToPatientFromLab.save()
+                    #############################################################################################
+                else:
+                    print('error')
+                context = {
+                    'AnalyticsNotSubmitted': analyticsData,
+                    'lab_id': lab_id,
+                }
+                return render(request, 'patientAnalyticsToBeSubmit.html', context)
             else:
-                print('error')
-            context = {
-                'AnalyticsNotSubmitted': analyticsData,
-                'lab_id': lab_id,
-            }
-            return render(request, 'patientAnalyticsToBeSubmit.html', context)
+                return HttpResponse("You don't have any analytics")
         else:
-            return HttpResponse("You don't have any analytics")
+                return HttpResponseNotFound('<h1>patient not found</h1>')
     else:
-            return HttpResponseNotFound('<h1>patient not found</h1>')
+        return HttpResponseRedirect('lab/')
 
 
 def RaysListView(request):
@@ -113,36 +126,51 @@ def RaysListView(request):
     # This will delete the SSN ID after loggin by the patient
     if 'ssnid' in request.session:
         request.session.pop('ssnid')
-    patient_id = patient.objects.get(Patient_id=request.session['patie_id']).id
-    lab_id = request.session['lab_id']
-    patientFoundTrueAndFalse = patient_rays.objects.filter(pat_id__exact=patient_id).exists()
-    if patientFoundTrueAndFalse:
-        RaysFound = patient_rays.objects.filter(lab__isnull=True).exists()
-        if RaysFound:
-            RaysData = patient_rays.objects.filter(lab__isnull=True)
-            if request.method == 'POST':
-                RaysInsert = patient_rays(P_R_id=request.POST['ray_id'])
-                RaysInsert.lab_id = lab_id
-                RaysInsert.pat_id = patient_id
-                RaysInsert.ray_id = request.POST['rays_id']
-                RaysResult = request.FILES['rays_result']
-                fs = FileSystemStorage()
-                rayResult = fs.save(RaysResult.name, RaysResult)
-                RaysInsert.rays_result = '/lab' + fs.url(rayResult)
-                RaysInsert.save()
+    if 'lab_id' in request.session and 'patie_id' in request.session:
+        patient_id = patient.objects.get(Patient_id=request.session['patie_id']).id
+        lab_id = request.session['lab_id']
+        patientFoundTrueAndFalse = patient_rays.objects.filter(pat_id__exact=patient_id).exists()
+        if patientFoundTrueAndFalse:
+            RaysFound = patient_rays.objects.filter(lab__isnull=True).exists()
+            if RaysFound:
+                RaysData = patient_rays.objects.filter(lab__isnull=True)
+                if request.method == 'POST':
+                    RaysInsert = patient_rays(P_R_id=request.POST['ray_id'])
+                    RaysInsert.lab_id = lab_id
+                    RaysInsert.pat_id = patient_id
+                    RaysInsert.ray_id = request.POST['rays_id']
+                    RaysResult = request.FILES['rays_result']
+                    fs = FileSystemStorage()
+                    rayResult = fs.save(RaysResult.name, RaysResult)
+                    RaysInsert.rays_result = '/lab' + fs.url(rayResult)
+                    RaysInsert.save()
+                    ##################### khan added from here to make notifications available ##################
+                    # creating instance from table "AllNotification" to affect and get notification from it
+                    notificationToBeSentToPatientFromLab = AllNotification()
+                    # taking ID from session of the doctor and patient I did't use what omar did because i need user instance
+                    labIdInSession = request.session['lab_id']
+                    patientIdInSession = request.session['patie_id']
+                    labId = organization.objects.get(org_id=labIdInSession)
+                    patientId = user.objects.get(user_id=patientIdInSession)
+                    # affecting table "AllNotification" and save data to preview to the user
+                    notificationToBeSentToPatientFromLab.LabSenderId = labId
+                    notificationToBeSentToPatientFromLab.patientRecipient = patientId
+                    notificationToBeSentToPatientFromLab.message = 'lab ' + labId.org_name + ' added a new Rays'
+                    notificationToBeSentToPatientFromLab.save()
+                    #############################################################################################
+                else:
+                    print('error')
+                context = {
+                    'RaysNotSubmitted': RaysData,
+                    'lab_id': lab_id,
+                }
+                return render(request, 'patientRaysToBeSubmit.html', context)
             else:
-                print('error')
-            context = {
-                'RaysNotSubmitted': RaysData,
-                'lab_id': lab_id,
-            }
-            return render(request, 'patientRaysToBeSubmit.html', context)
+                return HttpResponse("You don't have any Rays")
         else:
-            return HttpResponse("You don't have any Rays")
+            return HttpResponseNotFound('<h1>patient not found</h1>')
     else:
-        return HttpResponseNotFound('<h1>patient not found</h1>')
-
-
+        return HttpResponseRedirect('lab/')
 # def lab_profile_view(request,labid,hosid):
 #     # pharmacyData = organization.objects.filter(Type=1).get(org_id=request.session['pharmacy_id'])
 #     labData = organization.objects.filter(Type=2).get(org_id=labid)

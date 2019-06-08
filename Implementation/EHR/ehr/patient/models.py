@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+from hospital.models import organization
 
 
 class temp_register(models.Model):
@@ -58,3 +59,18 @@ class patient(models.Model):
 
     def __str__(self):
         return self.Patient.first_name
+
+class AllNotification(models.Model):
+    patientRecipient = models.ForeignKey(user, on_delete=models.CASCADE, related_name='patient_recipient')
+    pharmacySenderId = models.ForeignKey(organization, on_delete=models.CASCADE, null=True,
+                                         related_name='sender_pharmacy_notification')
+    LabSenderId = models.ForeignKey(organization, on_delete=models.CASCADE, null=True,
+                                    related_name='sender_lab_notification')
+    doctorSenderId = models.ForeignKey(user, on_delete=models.CASCADE, null=True,
+                                       related_name='sender_doctor_notification')
+    message = models.TextField()
+    read = models.BooleanField(default=False)
+    recieved_date = models.DateTimeField(auto_now_add=True)
+
+
+

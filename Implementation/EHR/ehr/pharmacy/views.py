@@ -4,7 +4,7 @@ from django.shortcuts import render, get_object_or_404
 from django.template import context
 from django.views import generic
 from hospital.models import organization,hospital
-from patient.models import patient, user
+from patient.models import patient, user, AllNotification
 from doctor.models import report, all_medicine, prescription, patient_medicine
 from patient.forms import patientLoginToPharmacyForm
 from patient.views import QRCodeScanner
@@ -71,36 +71,52 @@ def medicineListView(request):
         request.session.pop('ssnID')
     # user_id = request.session['patient_id']
     # print(user_id)
-    patient_id = patient.objects.get(Patient_id=request.session['patien_id']).id
-    # print(patient_id)
-    patientFoundTrueAndFalse = patient_medicine.objects.filter(pat_id__exact=patient_id).exists()
-    # print(patientFoundTrueAndFalse)
-    if patientFoundTrueAndFalse:
-        medicineFound = patient_medicine.objects.filter(pharmacy__isnull=True).exists()
-        if medicineFound:
-            medicineData = patient_medicine.objects.filter(pharmacy__isnull=True)
-            if request.method == 'POST':
-                medicineInsert = patient_medicine(P_M_id=request.POST['med_id'])
-                # print(medicineData)
-                medicineInsert.pharmacy_id = pharmacy_id
-                medicineInsert.pat_id = patient_id
-                medicineInsert.med_id = request.POST['id_of_med']
-                medicineInsert.number_of_pills = request.POST['num_of_pot']
-                medicineInsert.number_of_potions = request.POST['num_of_pil']
-                medicineInsert.save()
-            # else:
-            #     print('error')
-            context = {
-                'DataNotSubmitted': medicineData,
-                'ph_id': pharmacy_id,
-            }
-            return render(request, 'patientMedicineToBeSubmit.html', context)
+    if 'pharmacy_id' in request.session and 'patien_id' in request.session:
+        patient_id = patient.objects.get(Patient_id=request.session['patien_id']).id
+        # print(patient_id)
+        patientFoundTrueAndFalse = patient_medicine.objects.filter(pat_id__exact=patient_id).exists()
+        # print(patientFoundTrueAndFalse)
+        if patientFoundTrueAndFalse:
+            medicineFound = patient_medicine.objects.filter(pharmacy__isnull=True).exists()
+            if medicineFound:
+                medicineData = patient_medicine.objects.filter(pharmacy__isnull=True)
+                if request.method == 'POST':
+                    medicineInsert = patient_medicine(P_M_id=request.POST['med_id'])
+                    # print(medicineData)
+                    medicineInsert.pharmacy_id = pharmacy_id
+                    medicineInsert.pat_id = patient_id
+                    medicineInsert.med_id = request.POST['id_of_med']
+                    medicineInsert.number_of_pills = request.POST['num_of_pot']
+                    medicineInsert.number_of_potions = request.POST['num_of_pil']
+                    medicineInsert.save()
+                    ##################### khan added from here to make notifications available ##################
+                    # creating instance from table "AllNotification" to affect and get notification from it
+                    notificationToBeSentToPatientFromPharmacy = AllNotification()
+                    # taking ID from session of the doctor and patient I did't use what omar did because i need user instance
+                    pharmacyIdInSession = request.session['pharmacy_id']
+                    patientIdInSession = request.session['patien_id']
+                    pharmacyId = organization.objects.get(org_id=pharmacyIdInSession)
+                    patientId = user.objects.get(user_id=patientIdInSession)
+                    # affecting table "AllNotification" and save data to preview to the user
+                    notificationToBeSentToPatientFromPharmacy.pharmacySenderId = pharmacyId
+                    notificationToBeSentToPatientFromPharmacy.patientRecipient = patientId
+                    notificationToBeSentToPatientFromPharmacy.message = 'pharmacy ' + pharmacyId.org_name + ' gave you a medicine'
+                    notificationToBeSentToPatientFromPharmacy.save()
+                    #############################################################################################
+                # else:
+                #     print('error')
+                context = {
+                    'DataNotSubmitted': medicineData,
+                    'ph_id': pharmacy_id,
+                }
+                return render(request, 'patientMedicineToBeSubmit.html', context)
 
+            else:
+                return HttpResponse("You don't have any medicines")
         else:
-            return HttpResponse("You don't have any medicines")
+            return HttpResponseNotFound('<h1>patient not found</h1>')
     else:
-        return HttpResponseNotFound('<h1>patient not found</h1>')
-
+        return HttpResponseRedirect('pharmacy/')
 
 # def pharmacy_profile_view(request,pharid,hosid):
 #     # pharmacyData = organization.objects.filter(Type=1).get(org_id=request.session['pharmacy_id'])

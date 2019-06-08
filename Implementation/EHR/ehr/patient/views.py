@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
+from django.utils import encoding
 from django.views.generic import DetailView
 from patient.forms import tempRegister, login, AddUser, AddPatient, searchHistory
 from doctor.models import (report, doctor, prescription, multi_analytics,
                            multi_chronic, multi_medecines, multi_rays,
                            patient_analytics, patient_chronic,
                            patient_medicine, patient_rays, all_analytics, all_medicine, all_rays, all_chronic)
-from patient.models import user, patient, temp_register
+from patient.models import user, patient, temp_register, AllNotification
 from hospital.models import organization, hospital
 from django.http import JsonResponse
 from django.core.files.storage import FileSystemStorage
@@ -749,7 +750,9 @@ def QRCodeScanner():
 
 def QRCodeScanView(request):
     QRData = QRCodeScanner()
+    print(QRData)
     QRData = QRData.decode("UTF-8")
+    print(QRData)
     get = user.objects.get(Ssn_id=QRData)
     if get:
         user_Type_number = get.User_type
@@ -768,6 +771,16 @@ def QRCodeScanView(request):
     else:
         return HttpResponseRedirect('/patient/')
 
+def Notification(request):
+    # recipient_id=request.session['recipient_patient_id']
+    # if 'recipient_patient_id' in request.session:
+    notiyMe = AllNotification.objects.filter(patientRecipient=40).order_by('read').order_by('-recieved_date')
+    for a in notiyMe:
+        print(a.message)
+
+        return HttpResponse(a.message)
+    # else:
+    #     return HttpResponseRedirect('/patient')
 
 
 

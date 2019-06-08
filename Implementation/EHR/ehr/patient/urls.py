@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^Index/$', view.home, name='home'),
     url(r'^logout/$', view.patientLogout, name='logout'),
     url(r'^patientProfile/$', view.patient_profile, name='patient_profile'),
+    url(r'^patientProfileUpdate/$', view.patient_profile_update, name='patient_profile_update'),
     # url(r'^patientProfileView/$', view.patient_profile_view, name='patient_profile_view'),
     url(r'^patientProfileView/(?P<pk>[-\w]+)/$',view.patientProfileDetialView.as_view(), name='patientProfileView'),
     url(r'^signup/$', view.temp_Register, name='signup'),

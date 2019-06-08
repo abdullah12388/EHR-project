@@ -73,7 +73,7 @@ class DB_functions:
             else:
                 patient_id = patient.objects.get(Patient_id=user_id).id
 
-            if check_password(password=self.__patient_password, encoded=password_db) or 1:
+            if check_password(password=self.__patient_password, encoded=password_db):
                 if user_Type_number == 2:
                     request.session['doctor_id'] = doctor_id
                     request.session['user_T'] = user_Type_number
@@ -308,6 +308,7 @@ def temp_Register(request):
             instance = form.save(commit=False)
             password = form.cleaned_data.get('password')
             re_password = form.cleaned_data.get('re_password')
+
             if check_password(re_password, password):
                 instance.save()
                 # print("password = ", password)
@@ -435,6 +436,80 @@ def patientLogout(request):
 
 
 # patient profile functions
+
+def patient_profile_update(request):
+    patid = request.session['patient_id']
+    userid = patient.objects.get(id=patid).Patient_id
+    if request.method == 'POST':
+        usr = user.objects.filter(user_id=userid)
+        # upload profile,ssn pictures and save paths to database
+        fs = FileSystemStorage()
+        if 'Profile_picture' in request.FILES:
+            profile_picture_file = request.FILES['Profile_picture']
+            ppf_name = fs.save(profile_picture_file.name, profile_picture_file)
+            Pro_pic = '/patient' + fs.url(ppf_name)
+            usr.update(Profile_picture=Pro_pic)
+        if 'SSN_Picture' in request.FILES:
+            ssn_picture_file = request.FILES['SSN_Picture']
+            spf_name = fs.save(ssn_picture_file.name, ssn_picture_file)
+            SSN_Pic = '/patient' + fs.url(spf_name)
+            usr.update(SSN_Picture=SSN_Pic)
+        usr.update(first_name=request.POST['first_name'])
+        usr.update(middle_name=request.POST['middle_name'])
+        usr.update(last_name=request.POST['last_name'])
+        usr.update(country=request.POST['country'])
+        usr.update(state=request.POST['state'])
+        usr.update(city=request.POST['city'])
+        usr.update(street=request.POST['street'])
+        usr.update(zip_code=request.POST['zip_code'])
+        usr.update(phone_number=request.POST['phone_number'])
+        usr.update(home_phone_number=request.POST['home_phone_number'])
+        usr.update(work_phone_number=request.POST['work_phone_number'])
+        usr.update(Date_of_birth=request.POST['Date_of_birth'])
+        usr.update(Child_num=request.POST['Child_num'])
+        usr.update(email_1=request.POST['email_1'])
+        usr.update(email_2=request.POST['email_2'])
+        usr.update(Nationality=request.POST['Nationality'])
+        usr.update(Jop_place=request.POST['Jop_place'])
+        usr.update(Job_name=request.POST['Job_name'])
+        usr.update(Job_organization=request.POST['Job_organization'])
+        genderMessage = gender(request.POST['gender'])
+        maritalStatusMessage = maritalStatus(request.POST['marital_status'])
+        if genderMessage == 'error':
+            return HttpResponseRedirect('/patient/patientProfileUpdate/')
+        elif maritalStatusMessage == 'error':
+            return HttpResponseRedirect('/hospital/patientProfileUpdate/')
+        else:
+            usr.update(gender=genderMessage)
+            usr.update(marital_status=maritalStatusMessage)
+        usr.update(User_type=1)
+        #########################################################
+        # form 2
+        pat = patient.objects.filter(id=patid)
+        pat.update(Emergency_contact=request.POST['Emergency_contact'])
+        pat.update(Height=request.POST['Height'])
+        pat.update(weight=request.POST['weight'])
+        bloodTypeMessage = bloodType(request.POST['Blood_type'])
+        DisabilityStatusMessage = disabilityStatus(request.POST['Disability_status'])
+        ChronicDiseasesMessage = chronicDiseases(request.POST['Chronic_diseases'])
+        if bloodTypeMessage == 'error' or DisabilityStatusMessage == 'error' or ChronicDiseasesMessage == 'error':
+            return HttpResponseRedirect('/patient/patientProfileUpdate/')
+        else:
+            pat.update(Blood_type=bloodTypeMessage)
+            pat.update(Disability_status=DisabilityStatusMessage)
+            pat.update(Chronic_diseases=ChronicDiseasesMessage)
+        pat.update(QR_code=request.POST['QR_code'])
+        ########################################################
+        return HttpResponseRedirect('/patient/Index/')
+    else:
+        patientData = patient.objects.get(id=patid)
+        userData = user.objects.get(user_id=userid)
+        context = {
+            'patientData': patientData,
+            'userData': userData,
+        }
+        return render(request, 'patientProfileUpdate.html', context)
+
 def patient_profile(request):
     if request.method == 'POST':
         form1 = AddUser(request.POST or None)
@@ -767,10 +842,6 @@ def QRCodeScanView(request):
             return HttpResponseRedirect('/patient/Index/')
     else:
         return HttpResponseRedirect('/patient/')
-
-
-
-
 
 
 

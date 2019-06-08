@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 app_name = 'doctor'
 urlpatterns = [
     url(r'^Home/$', views.Doctor, name='doctor'),
+    url(r'^resetpassword/$', views.RestDoctorPassword,name='resetpassword'),
     url(r'^$',views.GetPatianTID , name='patiant_id'),
     url(r'^patiant/prescription/$',views.ReportListView.as_view() , name='prescriptionlist'),
     url(r'^doctorProfileView/(?P<pk>[-\w]+)/$',views.doctorProfileDetialView.as_view(), name='doctorProfileView'),

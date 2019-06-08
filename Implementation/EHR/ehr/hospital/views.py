@@ -11,7 +11,7 @@ from datetime import date
 from django.views.generic import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
+from django.contrib.auth.hashers import make_password
 # Create your views here.
 
 
@@ -460,7 +460,9 @@ def hospital_profile_view(request,hosid=None):
     }
     return render(request, 'hospitalProfileView.html',context)
 def reset_doc_passowrd(request,id):
-    user.objects.filter(user_id=id).update(New_Password='123456789')
+    password = make_password('123456789')
+    print("new password", password)
+    user.objects.filter(user_id=id).update(New_Password=password)
     return HttpResponseRedirect('/hospital/Index/')
 class StatView(View):
     def get(self, request, *args, **kwargs):

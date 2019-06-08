@@ -14,6 +14,7 @@ from django.urls import reverse
 from patient.views import QRCodeScanner
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from django.contrib.auth.hashers import make_password
 
 
 import cv2
@@ -455,3 +456,24 @@ class DoctorStatistics(APIView):
         "data3":data3,
         }
         return Response(data)
+
+
+def RestDoctorPassword(request):
+    if request.method == 'POST':
+        print("ID DOc : " , request.session['doctor_id'])
+        newpassword = request.POST['new_pass']
+        print(newpassword)
+        confirmpassword = request.POST['confirm_pass']
+        print(confirmpassword)
+        if str(newpassword) == str(confirmpassword):
+            print("TRue")
+            password = make_password(newpassword)
+            print(password)
+            doctor_id = doctor.objects.get(id=request.session['doctor_id'])
+
+            user.objects.filter(user_id=doctor_id.Doc_id).update(New_Password=password)
+            return HttpResponseRedirect('/patient/logout')
+        else:
+            return HttpResponseRedirect('/')
+    else:
+        return render(request, 'Resetpassword.html', {})

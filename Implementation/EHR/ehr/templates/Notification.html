@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if notiyMe %}
+    <ul>
+        {% for message in notiyMe %}
+
+            <li><a href="#">{{ message.message }} - {{ message.recieved_date }} </a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+</body>
+</html>

@@ -775,10 +775,11 @@ def Notification(request):
     # recipient_id=request.session['recipient_patient_id']
     # if 'recipient_patient_id' in request.session:
     notiyMe = AllNotification.objects.filter(patientRecipient=40).order_by('read').order_by('-recieved_date')
-    for a in notiyMe:
-        print(a.message)
-
-        return HttpResponse(a.message)
+    # for a in notiyMe:
+    context = {
+        'notiyMe' : notiyMe
+    }
+    return render(request,'Notification.html',context)
     # else:
     #     return HttpResponseRedirect('/patient')
 

@@ -21,6 +21,7 @@ from patient import views
 
 urlpatterns = [
     url(r'^$', views.patientLogin, name='patientLogin'),
+    url(r'^catalog/$', views.patientLogin, name='patientLogin'),
     url(r'^admin/', admin.site.urls),
     url(r'^doctor/', include('doctor.urls')),
     url(r'^patient/', include('patient.urls')),
@@ -30,3 +31,7 @@ urlpatterns = [
     path('pharmacy/', include('pharmacy.urls')),
     path('lab/', include('lab.urls')),
 ]
+
+admin.site.site_header = "EHR ADMIN"
+admin.site.site_title = "EHR ADMIN"
+admin.site.index_title = "Welcome to EHR SYSTEM"

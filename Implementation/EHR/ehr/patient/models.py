@@ -61,16 +61,11 @@ class patient(models.Model):
         return self.Patient.first_name
 
 
-
 class AllNotification(models.Model):
-    pharmacySenderId = models.ForeignKey(organization, on_delete=models.CASCADE, null=True,
-                                         related_name='sender_pharmacy_notification')
-    LabSenderId = models.ForeignKey(organization, on_delete=models.CASCADE, null=True,
-                                    related_name='sender_lab_notification')
-    doctorSenderId = models.ForeignKey(user, on_delete=models.CASCADE, null=True,
-                                       related_name='sender_doctor_notification')
+    pharmacySenderId = models.ForeignKey(organization, on_delete=models.CASCADE, null=True,related_name='sender_pharmacy_notification')
+    LabSenderId = models.ForeignKey(organization, on_delete=models.CASCADE, null=True,related_name='sender_lab_notification')
+    doctorSenderId = models.ForeignKey(user, on_delete=models.CASCADE, null=True,related_name='sender_doctor_notification')
     patientRecipient = models.ForeignKey(patient, on_delete=models.CASCADE, related_name='patient_recipient')
     message = models.TextField()
     read = models.BooleanField(default=False)
     recieved_date = models.DateTimeField(auto_now_add=True)
-

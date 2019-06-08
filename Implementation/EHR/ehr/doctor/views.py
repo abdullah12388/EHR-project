@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from .forms import GetPatianTIDForm,PrescriptionForm,AddmedicenForm,AddRaysForm,AddanalyticsForm
 from patient.views import DB_functions
-from patient.models import user,patient
+from patient.models import user, patient, AllNotification
 from hospital.models import hospital
 from .models import (prescription,report,doctor,multi_medecines,
 patient_medicine,all_medicine,multi_rays,multi_analytics
@@ -151,6 +151,21 @@ class prescriptionFormView (FormView):
         patient_instance = patient.objects.get(id=Doctor_Patiant_ID)
         Doc_instance = doctor.objects.get(id=D_ID)
         create_report = report.objects.create(prescription=Prescription_Instance,doctor=Doc_instance,patient=patient_instance)
+        ##################### khan added from here to make notifications available ##################
+        # creating instance from table "AllNotification" to affect and get notification from it
+        notificationToBeSentToPatientFromDoctor = AllNotification()
+        # taking ID from session of the doctor and patient I did't use what omar did because i need user instance
+        doctorIdInSession = self.request.session['doctor_id']
+        patientIdInSession = self.request.session['patient_id']
+        doctorId = user.objects.get(user_id=doctorIdInSession)
+        patientId = patient.objects.get(Patient=patientIdInSession)
+        # affecting table "AllNotification" and save data to preview to the user
+        notificationToBeSentToPatientFromDoctor.doctorSenderId = doctorId
+        notificationToBeSentToPatientFromDoctor.patientRecipient = patientId
+        notificationToBeSentToPatientFromDoctor.message = 'Doctor ' + doctorId.first_name + ' added a new prescription'
+        notificationToBeSentToPatientFromDoctor.save()
+        #############################################################################################
+
         return HttpResponseRedirect(reverse('doctor:newmed', kwargs={'pk':create_report.prescription.prescription_id}))
 
     def render_to_response(self , redirect_url):

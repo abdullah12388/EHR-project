@@ -6,7 +6,7 @@ from doctor.models import (report, doctor, prescription, multi_analytics,
                            multi_chronic, multi_medecines, multi_rays,
                            patient_analytics, patient_chronic,
                            patient_medicine, patient_rays, all_analytics, all_medicine, all_rays, all_chronic)
-from patient.models import user, patient, temp_register
+from patient.models import user, patient, temp_register, AllNotification
 from hospital.models import organization, hospital
 from django.http import JsonResponse
 from django.core.files.storage import FileSystemStorage
@@ -254,6 +254,8 @@ def home(request):
     labs = organization.objects.filter(Type__exact='2')
     clinics = organization.objects.filter(Type__exact='3')
     hospitals = hospital.objects.all()
+    notificationForUser = Notification(request.session['patient_id'])
+    print(notificationForUser)
     context = {
         'topDoctor': topDoctor,
         'topHospital': topHospital,
@@ -265,7 +267,13 @@ def home(request):
         'hospitals': hospitals,
         'clinics':clinics,
         'patid':patient_id,
+
     }
+    if notificationForUser.count() >0:
+        context.update(
+            {'notific':notificationForUser}
+        )
+
     if patientReport:
         lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(report__exact=patientReport.report).exists()
         if lastMedicineInReportTrueOrFalse:
@@ -714,10 +722,8 @@ def patientHistory(request):
     #     })
     return render(request, 'patientHistory.html', context)
 
-
 def patientDoctor(request):
     return render(request, 'patientDoctor.html', {})
-
 
 # def patientCard(request):
 #     # print(request.session['user_id'])
@@ -842,6 +848,10 @@ def QRCodeScanView(request):
             return HttpResponseRedirect('/patient/Index/')
     else:
         return HttpResponseRedirect('/patient/')
+
+def Notification(id):
+    notiyMe = AllNotification.objects.filter(patientRecipient=id).order_by('read').order_by('-recieved_date')
+    return notiyMe
 
 
 

@@ -185,15 +185,20 @@
                                             </ul>
                                         </nav>
                                         <div class="search_content d-flex flex-row align-items-center justify-content-end ml-auto">
-                                             <div class="dropdown">
-  <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" style="background-color: #32c69a">
-      <span class="badge" style="background-color: #f86c6c; color: white">5</span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#">HTML</a></li>
-    <li><a href="#">CSS</a></li>
-    <li><a href="#">JavaScript</a></li>
-  </ul>
+<div class="dropdown">
+    <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" style="background-color: #32c69a">
+        <span class="badge" style="background-color: #f86c6c; color: white">5</span>
+    </button>
+    <ul class="dropdown-menu">
+        {% if notific %}
+            {% for i in notific %}
+                <li><a href="#">{{ i.message }}</a></li>
+            {% endfor %}
+        {% else %}
+            <li>haha</li>
+        {% endif %}
+
+    </ul>
 </div>
                                             <form action="#" id="search_container_form" class="search_container_form">
                                                 <input type="text" class="search_container_input" placeholder="Search" required="required">

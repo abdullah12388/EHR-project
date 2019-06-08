@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect,get_object_or_404
 from doctor.models import patient_analytics, patient_rays
 from hospital.models import organization
 from patient.views import QRCodeScanner
-from patient.models import patient, user
+from patient.models import patient, user, AllNotification
 
 globalVariableForScanningQRCode = ''
 data = ""
@@ -95,6 +95,20 @@ def AnalyticsListView(request):
                 analyResult = fs.save(analyticsResult.name, analyticsResult)
                 analyticsInsert.analytics_result = '/lab' + fs.url(analyResult)
                 analyticsInsert.save()
+                ##################### khan added from here to make notifications available ##################
+                # creating instance from table "AllNotification" to affect and get notification from it
+                notificationToBeSentToPatientFromLab = AllNotification()
+                # taking ID from session of the doctor and patient I did't use what omar did because i need user instance
+                labIdInSession = request.session['lab_id']
+                patientIdInSession = request.session['patie_id']
+                labId = organization.objects.get(org_id=labIdInSession)
+                patientId = patient.objects.get(Patient=patientIdInSession)
+                # affecting table "AllNotification" and save data to preview to the user
+                notificationToBeSentToPatientFromLab.LabSenderId = labId
+                notificationToBeSentToPatientFromLab.patientRecipient = patientId
+                notificationToBeSentToPatientFromLab.message = 'lab' + labId.org_name + ' added a new analytics'
+                notificationToBeSentToPatientFromLab.save()
+                #############################################################################################
             else:
                 print('error')
             context = {
@@ -130,6 +144,22 @@ def RaysListView(request):
                 rayResult = fs.save(RaysResult.name, RaysResult)
                 RaysInsert.rays_result = '/lab' + fs.url(rayResult)
                 RaysInsert.save()
+
+                ##################### khan added from here to make notifications available ##################
+                # creating instance from table "AllNotification" to affect and get notification from it
+                notificationToBeSentToPatientFromLab = AllNotification()
+                # taking ID from session of the doctor and patient I did't use what omar did because i need user instance
+                labIdInSession = request.session['lab_id']
+                patientIdInSession = request.session['patie_id']
+                labId = organization.objects.get(org_id=labIdInSession)
+                patientId = patient.objects.get(Patient=patientIdInSession)
+                # affecting table "AllNotification" and save data to preview to the user
+                notificationToBeSentToPatientFromLab.LabSenderId = labId
+                notificationToBeSentToPatientFromLab.patientRecipient = patientId
+                notificationToBeSentToPatientFromLab.message = 'lab ' + labId.org_name + ' added a new Rays'
+                notificationToBeSentToPatientFromLab.save()
+                #############################################################################################
+
             else:
                 print('error')
             context = {

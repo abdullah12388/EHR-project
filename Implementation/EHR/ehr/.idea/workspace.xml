@@ -90,8 +90,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/patient/models.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="513">
               <caret line="71" selection-start-line="71" selection-end-line="71" />
+=======
+            <state relative-caret-position="249">
+              <caret line="71" column="74" selection-start-line="71" selection-start-column="74" selection-end-line="71" selection-end-column="108" />
+>>>>>>> Stashed changes
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
                 <element signature="e#139#321#0" />
@@ -209,7 +214,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="width" value="815" />
     <option name="height" value="870" />
@@ -329,7 +334,7 @@
       <workItem from="1559227171349" duration="32280000" />
       <workItem from="1559415573116" duration="1584000" />
       <workItem from="1559990662400" duration="17934000" />
-      <workItem from="1560017918109" duration="533000" />
+      <workItem from="1560017918109" duration="777000" />
     </task>
     <task id="LOCAL-00001" summary="on the way">
       <created>1554725365252</created>
@@ -349,10 +354,17 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="227570000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+=======
+    <option name="totallyTimeSpent" value="224396000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="7" />
+>>>>>>> Stashed changes
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20710456" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -799,8 +811,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/patient/models.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="513">
           <caret line="71" selection-start-line="71" selection-end-line="71" />
+=======
+        <state relative-caret-position="249">
+          <caret line="71" column="74" selection-start-line="71" selection-start-column="74" selection-end-line="71" selection-end-column="108" />
+>>>>>>> Stashed changes
           <folding>
             <element signature="e#0#28#0" expanded="true" />
             <element signature="e#139#321#0" />

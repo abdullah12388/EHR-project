@@ -237,75 +237,123 @@ class DB_functions:
 
 
 def home(request):
-    # after finishing please change the comment below to get everything from session
+    # # after finishing please change the comment below to get everything from session
+    # # patient_id = request.session['patient_id']
     # patient_id = request.session['patient_id']
-    patient_id = request.session['patient_id']
-    topDoctor = doctor.objects.annotate(Count('doc_rate')).order_by('-doc_rate')[:50]
-    topHospital = hospital.objects.annotate(Count('hos_rate')).order_by('-hos_rate')[:50]
-    topLab = organization.objects.filter(Type__exact='2').annotate(Count('org_rate')).order_by('-org_rate')[:50]
-    topPharmacy = organization.objects.filter(Type__exact='1').annotate(Count('org_rate')).order_by('-org_rate')[:50]
-    ch = report.objects.filter(patient_id=patient_id).exists()
-    # print(ch)
-    if(ch):
-        patientReport = report.objects.filter(patient_id__exact=patient_id).order_by('-Submit_date')[0]
-    else:
-        patientReport = report.objects.filter(patient_id__isnull=True)
-    pharmacies = organization.objects.filter(Type__exact='1')
-    labs = organization.objects.filter(Type__exact='2')
-    clinics = organization.objects.filter(Type__exact='3')
-    hospitals = hospital.objects.all()
-    notificationForUser = Notification(request.session['patient_id'])
-    print(notificationForUser)
-    context = {
-        'topDoctor': topDoctor,
-        'topHospital': topHospital,
-        'topLab': topLab,
-        'topPharmacy': topPharmacy,
-        'patientReport': patientReport,
-        'pharmacies': pharmacies,
-        'labs': labs,
-        'hospitals': hospitals,
-        'clinics':clinics,
-        'patid':patient_id,
-
-    }
-    if notificationForUser.count() >0:
-        context.update(
-            {'notific':notificationForUser}
-        )
-
-    if patientReport:
-        lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(report__exact=patientReport.report).exists()
-        if lastMedicineInReportTrueOrFalse:
-            lastMedicineInReport = multi_medecines.objects.filter(report=patientReport.report)
-            context.update({'lastMedicineInReport': lastMedicineInReport})
-
-        lastAnalyticsInReportTrueOrFalse = multi_analytics.objects.filter(report__exact=patientReport.report).exists()
-        if lastAnalyticsInReportTrueOrFalse:
-            lastAnalyticsInReport = multi_analytics.objects.filter(report__exact=patientReport.report)
-            context.update({'lastAnalyticsInReport': lastAnalyticsInReport})
-
-        lastRaysInReportTrueOrFalse = multi_rays.objects.filter(report__exact=patientReport.report).exists()
-        if lastRaysInReportTrueOrFalse:
-            lastRaysInReport = multi_rays.objects.filter(report__exact=patientReport.report)
-            context.update({'lastRaysInReport': lastRaysInReport})
-    else:
-        context={
+    # topDoctor = doctor.objects.annotate(Count('doc_rate')).order_by('-doc_rate')[:50]
+    # topHospital = hospital.objects.annotate(Count('hos_rate')).order_by('-hos_rate')[:50]
+    # topLab = organization.objects.filter(Type__exact='2').annotate(Count('org_rate')).order_by('-org_rate')[:50]
+    # topPharmacy = organization.objects.filter(Type__exact='1').annotate(Count('org_rate')).order_by('-org_rate')[:50]
+    # ch = report.objects.filter(patient_id=patient_id).exists()
+    # # print(ch)
+    # if(ch):
+    #     patientReport = report.objects.filter(patient_id__exact=patient_id).order_by('-Submit_date')[0]
+    # else:
+    #     patientReport = report.objects.filter(patient_id__isnull=True)
+    # pharmacies = organization.objects.filter(Type__exact='1')
+    # labs = organization.objects.filter(Type__exact='2')
+    # clinics = organization.objects.filter(Type__exact='3')
+    # hospitals = hospital.objects.all()
+    # notificationForUser = Notification(request.session['patient_id'])
+    # print(notificationForUser)
+    # context = {
+    #     'topDoctor': topDoctor,
+    #     'topHospital': topHospital,
+    #     'topLab': topLab,
+    #     'topPharmacy': topPharmacy,
+    #     'patientReport': patientReport,
+    #     'pharmacies': pharmacies,
+    #     'labs': labs,
+    #     'hospitals': hospitals,
+    #     'clinics':clinics,
+    #     'patid':patient_id,
+    #
+    # }
+    # if notificationForUser.count() >0:
+    #     context.update(
+    #         {'notific':notificationForUser}
+    #     )
+    #
+    # if patientReport:
+    #     lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(report__exact=patientReport.report).exists()
+    #     if lastMedicineInReportTrueOrFalse:
+    #         lastMedicineInReport = multi_medecines.objects.filter(report=patientReport.report)
+    #         context.update({'lastMedicineInReport': lastMedicineInReport})
+    #
+    #     lastAnalyticsInReportTrueOrFalse = multi_analytics.objects.filter(report__exact=patientReport.report).exists()
+    #     if lastAnalyticsInReportTrueOrFalse:
+    #         lastAnalyticsInReport = multi_analytics.objects.filter(report__exact=patientReport.report)
+    #         context.update({'lastAnalyticsInReport': lastAnalyticsInReport})
+    #
+    #     lastRaysInReportTrueOrFalse = multi_rays.objects.filter(report__exact=patientReport.report).exists()
+    #     if lastRaysInReportTrueOrFalse:
+    #         lastRaysInReport = multi_rays.objects.filter(report__exact=patientReport.report)
+    #         context.update({'lastRaysInReport': lastRaysInReport})
+    # else:
+    #     context={
+    if 'patient_id' in request.session:
+        # after finishing please change the comment below to get everything from session
+        # patient_id = request.session['patient_id']
+        patient_id = request.session['patient_id']
+        topDoctor = doctor.objects.annotate(Count('doc_rate')).order_by('-doc_rate')[:50]
+        topHospital = hospital.objects.annotate(Count('hos_rate')).order_by('-hos_rate')[:50]
+        topLab = organization.objects.filter(Type__exact='2').annotate(Count('org_rate')).order_by('-org_rate')[:50]
+        topPharmacy = organization.objects.filter(Type__exact='1').annotate(Count('org_rate')).order_by('-org_rate')[:50]
+        ch = report.objects.filter(patient_id=patient_id).exists()
+        # print(ch)
+        if(ch):
+            patientReport = report.objects.filter(patient_id__exact=patient_id).order_by('-Submit_date')[0]
+        else:
+            patientReport = report.objects.filter(patient_id__isnull=True)
+        pharmacies = organization.objects.filter(Type__exact='1')
+        labs = organization.objects.filter(Type__exact='2')
+        clinics = organization.objects.filter(Type__exact='3')
+        hospitals = hospital.objects.all()
+        context = {
             'topDoctor': topDoctor,
             'topHospital': topHospital,
             'topLab': topLab,
             'topPharmacy': topPharmacy,
-            # 'patientReport': 'false',
+            'patientReport': patientReport,
             'pharmacies': pharmacies,
             'labs': labs,
             'hospitals': hospitals,
-            # 'lastMedicineInReport': 'False',
-            # 'lastAnalyticsInReport': 'False',
-            # 'lastRaysInReport': 'False',
-            'patid': patient_id,
+            'clinics':clinics,
+            'patid':patient_id,
         }
-        return render(request, 'patientIndex.html', context)
+        if patientReport:
+            lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(report__exact=patientReport.report).exists()
+            if lastMedicineInReportTrueOrFalse:
+                lastMedicineInReport = multi_medecines.objects.filter(report=patientReport.report)
+                context.update({'lastMedicineInReport': lastMedicineInReport})
 
+            lastAnalyticsInReportTrueOrFalse = multi_analytics.objects.filter(report__exact=patientReport.report).exists()
+            if lastAnalyticsInReportTrueOrFalse:
+                lastAnalyticsInReport = multi_analytics.objects.filter(report__exact=patientReport.report)
+                context.update({'lastAnalyticsInReport': lastAnalyticsInReport})
+
+            lastRaysInReportTrueOrFalse = multi_rays.objects.filter(report__exact=patientReport.report).exists()
+            if lastRaysInReportTrueOrFalse:
+                lastRaysInReport = multi_rays.objects.filter(report__exact=patientReport.report)
+                context.update({'lastRaysInReport': lastRaysInReport})
+        else:
+            context={
+                'topDoctor': topDoctor,
+                'topHospital': topHospital,
+                'topLab': topLab,
+                'topPharmacy': topPharmacy,
+                # 'patientReport': 'false',
+                'pharmacies': pharmacies,
+                'labs': labs,
+                'hospitals': hospitals,
+                # 'lastMedicineInReport': 'False',
+                # 'lastAnalyticsInReport': 'False',
+                # 'lastRaysInReport': 'False',
+                'patid': patient_id,
+            }
+            return render(request, 'patientIndex.html', context)
+    else:
+        return HttpResponseRedirect('/')
     return render(request, 'patientIndex.html', context)
 
 
@@ -313,17 +361,24 @@ def temp_Register(request):
     if request.method == 'POST':
         form = tempRegister(request.POST or None)
         if form.is_valid():
-            instance = form.save(commit=False)
-            password = form.cleaned_data.get('password')
-            re_password = form.cleaned_data.get('re_password')
+            tempEmail = form.cleaned_data.get('email')
+            isInUser = user.objects.filter(email_1=tempEmail).exists()
+            isIntemp = temp_register.objects.filter(email=tempEmail).exists()
 
-            if check_password(re_password, password):
-                instance.save()
-                # print("password = ", password)
-                return HttpResponseRedirect('/patient/')
+            if not isInUser and not isIntemp:
+                instance = form.save(commit=False)
+                password = form.cleaned_data.get('password')
+                re_password = form.cleaned_data.get('re_password')
+
+                if check_password(re_password, password):
+                    instance.save()
+                    # print("password = ", password)
+                    return HttpResponseRedirect('/patient/')
             else:
-                # print(False)
-                return HttpResponseRedirect('/patient/signup/?a=1')
+                return HttpResponseRedirect('/patient/signup/?a=2')
+        else:
+            # print(False)
+            return HttpResponseRedirect('/patient/signup/?a=1')
     else:
         form = tempRegister()
     context = {
@@ -351,54 +406,57 @@ def valid_email(request):
 
 
 def patientLogin(request):
-    if request.method == 'POST':
-        form = login(request.POST or None)
-        if form.is_valid():
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password')
-            db = DB_functions()
-            db.set_patient_email(email)
-            db.set_patient_password(password)
-            result = db.patient_login(request)
-            if result == 'temp_email_exists':
-                return HttpResponseRedirect('/patient/patientProfile/')
-            elif result == 'email_exists':
-                if request.session['user_T'] == 2:
-                    if 'remember_me' in request.POST:
-                        request.session.set_expiry(60 * 60 * 24 * 30)
-                        return HttpResponseRedirect('/doctor')
+    if not 'patient_id' in request.session:
+        if request.method == 'POST':
+            form = login(request.POST or None)
+            if form.is_valid():
+                email = form.cleaned_data.get('email')
+                password = form.cleaned_data.get('password')
+                db = DB_functions()
+                db.set_patient_email(email)
+                db.set_patient_password(password)
+                result = db.patient_login(request)
+                if result == 'temp_email_exists':
+                    return HttpResponseRedirect('/patient/patientProfile/')
+                elif result == 'email_exists':
+                    if request.session['user_T'] == 2:
+                        if 'remember_me' in request.POST:
+                            request.session.set_expiry(60 * 60 * 24 * 30)
+                            return HttpResponseRedirect('/doctor')
+                        else:
+                            return HttpResponseRedirect('/doctor')
                     else:
-                        return HttpResponseRedirect('/doctor')
-                else:
-                    if 'remember_me' in request.POST:
-                        request.session.set_expiry(60 * 60 * 24 * 30)
-                        return HttpResponseRedirect('/patient/Index/')
-                    else:
-                        return HttpResponseRedirect('/patient/Index/')
-            elif result == 'wrong_password':
-                return HttpResponseRedirect('/patient/?alert=wrong_password')
-            elif result == 'wrong_email':
-                return HttpResponseRedirect('/patient/?alert=wrong_email')
-        #######################################################################
-        # if request.method == 'POST':
-            # if 'for_pass' in request.POST:
-        em = request.POST['for_pass']
-        uid = user.objects.get(email_1=em).user_id
-        # pid = patient.objects.get(Patient=uid).id
-        title = 'Reset Your Password'
-        body = 'Visit This Link For Reset Your Password' \
-               ' http://127.0.0.1:8000/patient/forgetPassword/'+str(uid)
-        email = EmailMessage(title,body,to=[em])
-        email.send()
-            # else:
-            #     print('error')
-        #######################################################################
+                        if 'remember_me' in request.POST:
+                            request.session.set_expiry(60 * 60 * 24 * 30)
+                            return HttpResponseRedirect('/patient/Index/')
+                        else:
+                            return HttpResponseRedirect('/patient/Index/')
+                elif result == 'wrong_password':
+                    return HttpResponseRedirect('/patient/?alert=wrong_password')
+                elif result == 'wrong_email':
+                    return HttpResponseRedirect('/patient/?alert=wrong_email')
+            #######################################################################
+            # if request.method == 'POST':
+                # if 'for_pass' in request.POST:
+            em = request.POST['for_pass']
+            uid = user.objects.get(email_1=em).user_id
+            # pid = patient.objects.get(Patient=uid).id
+            title = 'Reset Your Password'
+            body = 'Visit This Link For Reset Your Password' \
+                   ' http://127.0.0.1:8000/patient/forgetPassword/'+str(uid)
+            email = EmailMessage(title,body,to=[em])
+            email.send()
+                # else:
+                #     print('error')
+            #######################################################################
+        else:
+            form = login()
+        context = {
+            'form': form
+        }
+        return render(request, 'login.html', context)
     else:
-        form = login()
-    context = {
-        'form': form
-    }
-    return render(request, 'login.html', context)
+        return HttpResponseRedirect('/patient/Index/')
 
 
 def forget_password(request,uid):

@@ -59,6 +59,7 @@
     {% elif '/clinic/clinicProfileView/' in request.get_full_path %}height:0px;
     {% elif '/clinic/AddClinicDoctor/' in request.get_full_path %}height:0px;
     {% elif '/clinic/updateClinicDoctor/' in request.get_full_path %}height:0px;
+    {% elif request.get_full_path == '/patient/patientProfileUpdate/' %}height:0px;
     {% endif %}">
     <div class="
     {% if request.get_full_path == '/patient/patientHistory/' %}
@@ -86,6 +87,7 @@
     {% elif '/predict/' in request.get_full_path %}display:none;
     {% elif '/patient/forgetPassword/' in request.get_full_path %}display:none;
     {% elif request.get_full_path == '/clinic/Index/' %}display:none;
+    {% elif request.get_full_path == '/patient/patientProfileUpdate/' %}display:none;
     {% elif '/clinic/clinicProfileView/' in request.get_full_path %}display:none;
     {% endif %}
     "></div>

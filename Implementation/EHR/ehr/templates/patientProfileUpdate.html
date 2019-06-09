@@ -1,0 +1,323 @@
+{% extends "base.html"%}
+{% load staticfiles %}
+{% block patientProfileUpdate%}
+
+{% if request.GET.c == "1" %}
+<script>
+    alert('passwords not matched')
+</script>
+{% endif %}
+
+<div style="width:10px;height:175px"></div>
+<div class="container">
+    <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Profile Update</h2>
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66)">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-3">
+                    <div class="row">
+                        <div style="width:200px;margin: auto">
+                            <img src="{{ userData.Profile_picture }}" alt="profile picture" class="img-thumbnail"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="file" name="Profile_picture" value="{{ userData.Profile_picture }}" class="inputfile" id="file1" />
+                        <label for="file1">Choose a file</label>
+                    </div>
+                    <div style="margin-top:45px"></div>
+                    <div class="row">
+                        <div style="width:200px;margin: auto">
+                            <img src="{{ userData.SSN_Picture }}"  alt="SSN" class="img-thumbnail">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="file" name="SSN_Picture" value="{{ userData.SSN_Picture }}" class="inputfile" id="file2"/>
+                        <label for="file2">Upload SSN</label>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+                            <input type="text" name="first_name" value="{{ userData.first_name }}" class="form-control" pattern="[a-z]{3,}" placeholder="First name" id="id_first_name" />
+                        </div>
+                        <div class="col">
+                            <input type="text" name="middle_name" value="{{ userData.middle_name }}" class="form-control" pattern="[a-z]{3,}" placeholder="Middle name" id="id_middle_name" />
+                        </div>
+                        <div class="col">
+                            <input type="text" name="last_name" value="{{ userData.last_name }}" class="form-control" pattern="[a-z]{3,}" placeholder="Last name" id="id_last_name" />
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+                            <input type="text" name="country" value="{{ userData.country }}" class="form-control" pattern="[a-z]{3,}" placeholder="Country" id="id_country" />
+                        </div>
+                        <div class="col">
+                            <input type="text" name="state" value="{{ userData.state }}" class="form-control" pattern="[a-z]{3,}" placeholder="State" id="id_state" />
+                        </div>
+                        <div class="col">
+                            <input type="text" name="city" value="{{ userData.city }}" class="form-control" pattern="[a-z]{3,}" placeholder="City" id="id_city" />
+                        </div>
+                        <div class="col">
+                            <input type="text" name="street" value="{{ userData.street }}" class="form-control" pattern="[a-z0-9]{3,}" placeholder="Street" id="id_street" />
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+                            <input type="text" name="zip_code" value="{{ userData.zip_code }}" class="form-control" pattern="[0-9]{5}" placeholder="Zip code" id="id_zip_code" />
+                        </div>
+                        <div class="col">
+                            <input type="text" name="phone_number" value="{{ userData.phone_number }}" class="form-control" pattern="[0-9]{11}" placeholder="Phone number" id="id_phone_number" />
+                        </div>
+                        <div class="col">
+                            <input type="text" name="home_phone_number" value="{{ userData.home_phone_number }}" class="form-control" pattern="[0-9]{10,11}" placeholder="Home Phone" id="id_home_phone_number" />
+                        </div>
+                        <div class="col">
+                            <input type="text" name="work_phone_number" value="{{ userData.work_phone_number }}" class="form-control" pattern="[0-9]{10,11}" placeholder="Work Phone" id="id_work_phone_number" />
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+                            <select class="form-control" style="height: auto" name="gender">
+                                    <option value="" disabled>Gender</option>
+                                    {% if userData.gender == 'male' %}
+                                        <option value="1" selected>Male</option>
+                                        <option value="2">Female</option>
+                                        <option value="3">Other</option>
+                                    {% elif userData.gender == 'female' %}
+                                        <option value="1">Male</option>
+                                        <option value="2" selected>Female</option>
+                                        <option value="3">Other</option>
+                                    {% elif userData.gender == 'other' %}
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+                                        <option value="3" selected>Other</option>
+                                    {% else %}
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+                                        <option value="3">Other</option>
+                                    {% endif %}
+                                </select>
+                        </div>
+                        <div class="col">
+                            <input type="date" name="Date_of_birth" value="{{ userData.Date_of_birth|date:'Y-m-d' }}" class="form-control" placeholder="Birth Date" id="id_Date_of_birth" />
+                        </div>
+                        <div class="col">
+                            <select class="form-control" style="height: auto" name="marital_status">
+                                <option value="" disabled>Marital Status</option>
+                                {% if userData.marital_status == 'single' %}
+                                    <option value="1" selected>Single</option>
+                                    <option value="2">Married</option>
+                                    <option value="3">Separated</option>
+                                    <option value="4">Divorced</option>
+                                    <option value="5">Widowed</option>
+                                {% elif userData.marital_status == 'married' %}
+                                    <option value="1">Single</option>
+                                    <option value="2" selected>Married</option>
+                                    <option value="3">Separated</option>
+                                    <option value="4">Divorced</option>
+                                    <option value="5">Widowed</option>
+                                {% elif userData.marital_status == 'separated' %}
+                                    <option value="1">Single</option>
+                                    <option value="2">Married</option>
+                                    <option value="3" selected>Separated</option>
+                                    <option value="4">Divorced</option>
+                                    <option value="5">Widowed</option>
+                                {% elif userData.marital_status == 'divorced' %}
+                                    <option value="1">Single</option>
+                                    <option value="2">Married</option>
+                                    <option value="3">Separated</option>
+                                    <option value="4" selected>Divorced</option>
+                                    <option value="5">Widowed</option>
+                                {% elif userData.marital_status == 'widowed' %}
+                                    <option value="1">Single</option>
+                                    <option value="2">Married</option>
+                                    <option value="3">Separated</option>
+                                    <option value="4">Divorced</option>
+                                    <option value="5" selected>Widowed</option>
+                                {% else %}
+                                    <option value="1">Single</option>
+                                    <option value="2">Married</option>
+                                    <option value="3">Separated</option>
+                                    <option value="4">Divorced</option>
+                                    <option value="5">Widowed</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        <div class="col">
+                            <input type="number" name="Child_num" value="{{ userData.Child_num }}" class="form-control" placeholder="children" min="0" max="20" id="id_Child_num" />
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+                            <input type="email" name="email_1" value="{{ userData.email_1 }}" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="First E-mail" id="id_email_2" name="email_1" />
+                            <b id="warn" class="hide">
+                                <i class="fa fa-warning" aria-hidden="true"></i>
+                                email already exist
+                            </b>
+                        </div>
+                        <div class="col">
+                            <input type="email" name="email_2" value="{{ userData.email_2 }}" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Second E-mail" id="id_email_2" />
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+                            <input type="text" name="Nationality" value="{{ userData.Nationality }}" class="form-control" pattern="[a-z]{5,}" placeholder="Nationality" id="id_Nationality" />
+                        </div>
+                        <div class="col">
+                            <input type="text" name="Job_name" value="{{ userData.Job_name }}" class="form-control" pattern="[a-z]{5,}" placeholder="Jop Title" id="id_Job_name" />
+                        </div>
+                        <div class="col">
+                            <input type="text" name="Job_organization" value="{{ userData.Job_organization }}" class="form-control" pattern="[a-z]{5,}" placeholder="Jop Organization" id="id_Job_organization" />
+                        </div>
+                        <div class="col">
+                            <input type="text" name="Jop_place" value="{{ userData.Jop_place }}" class="form-control" pattern="[a-z]{5,}" placeholder="Jop Place" id="id_Jop_place" />
+                        </div>
+                    </div>
+                    <input type="hidden" name="User_type" value="{{ userData.User_type }}" id="id_User_type" />
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+                            <input type="text" name="Emergency_contact" value="{{ patientData.Emergency_contact }}" class="form-control" pattern="[0-9]{10,11}" placeholder="Emergency contact" id="id_Emergency_contact" />
+                        </div>
+                        <div class="col">
+                            <input type="number" name="Height" value="{{ patientData.Height }}" class="form-control" placeholder="Height in cm" min="1" max="400" step="any" id="id_Height" />
+                        </div>
+                        <div class="col">
+                            <input type="number" name="weight" value="{{ patientData.weight }}" class="form-control" placeholder="Weight in kg" min="1" max="400" step="any" id="id_weight" />
+                        </div>
+                    </div>
+                    <div class="form-row" style="margin-bottom:20px">
+                        <div class="col">
+                            <select class="form-control" style="height: auto" name="Blood_type">
+                                <option value="" disabled>Blood Type</option>
+                                {% if patientData.Blood_type == 'A+' %}
+                                    <option value="1" selected>A+</option>
+                                    <option value="2">A-</option>
+                                    <option value="3">B+</option>
+                                    <option value="4">B-</option>
+                                    <option value="5">AB+</option>
+                                    <option value="6">AB-</option>
+                                    <option value="7">O+</option>
+                                    <option value="8">O-</option>
+                                    <option value="9">Other</option>
+                                {% elif patientData.Blood_type == 'A-' %}
+                                    <option value="1">A+</option>
+                                    <option value="2" selected>A-</option>
+                                    <option value="3">B+</option>
+                                    <option value="4">B-</option>
+                                    <option value="5">AB+</option>
+                                    <option value="6">AB-</option>
+                                    <option value="7">O+</option>
+                                    <option value="8">O-</option>
+                                    <option value="9">Other</option>
+                                {% elif patientData.Blood_type == 'B+' %}
+                                    <option value="1">A+</option>
+                                    <option value="2">A-</option>
+                                    <option value="3" selected>B+</option>
+                                    <option value="4">B-</option>
+                                    <option value="5">AB+</option>
+                                    <option value="6">AB-</option>
+                                    <option value="7">O+</option>
+                                    <option value="8">O-</option>
+                                    <option value="9">Other</option>
+                                {% elif patientData.Blood_type == 'B-' %}
+                                    <option value="1">A+</option>
+                                    <option value="2">A-</option>
+                                    <option value="3">B+</option>
+                                    <option value="4" selected>B-</option>
+                                    <option value="5">AB+</option>
+                                    <option value="6">AB-</option>
+                                    <option value="7">O+</option>
+                                    <option value="8">O-</option>
+                                    <option value="9">Other</option>
+                                {% elif patientData.Blood_type == 'AB+' %}
+                                    <option value="1">A+</option>
+                                    <option value="2">A-</option>
+                                    <option value="3">B+</option>
+                                    <option value="4">B-</option>
+                                    <option value="5" selected>AB+</option>
+                                    <option value="6">AB-</option>
+                                    <option value="7">O+</option>
+                                    <option value="8">O-</option>
+                                    <option value="9">Other</option>
+                                {% elif patientData.Blood_type == 'AB-' %}
+                                    <option value="1">A+</option>
+                                    <option value="2">A-</option>
+                                    <option value="3">B+</option>
+                                    <option value="4">B-</option>
+                                    <option value="5">AB+</option>
+                                    <option value="6" selected>AB-</option>
+                                    <option value="7">O+</option>
+                                    <option value="8">O-</option>
+                                    <option value="9">Other</option>
+                                {% elif patientData.Blood_type == 'O+' %}
+                                    <option value="1">A+</option>
+                                    <option value="2">A-</option>
+                                    <option value="3">B+</option>
+                                    <option value="4">B-</option>
+                                    <option value="5">AB+</option>
+                                    <option value="6">AB-</option>
+                                    <option value="7" selected>O+</option>
+                                    <option value="8">O-</option>
+                                    <option value="9">Other</option>
+                                {% elif patientData.Blood_type == 'O-' %}
+                                    <option value="1">A+</option>
+                                    <option value="2">A-</option>
+                                    <option value="3">B+</option>
+                                    <option value="4">B-</option>
+                                    <option value="5">AB+</option>
+                                    <option value="6">AB-</option>
+                                    <option value="7">O+</option>
+                                    <option value="8" selected>O-</option>
+                                    <option value="9">Other</option>
+                                {% else %}
+                                    <option value="1">A+</option>
+                                    <option value="2">A-</option>
+                                    <option value="3">B+</option>
+                                    <option value="4">B-</option>
+                                    <option value="5">AB+</option>
+                                    <option value="6">AB-</option>
+                                    <option value="7">O+</option>
+                                    <option value="8">O-</option>
+                                    <option value="9" selected>Other</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        <div class="col" style="text-align:center">
+                            <select class="form-control" style="height: auto" name="Disability_status">
+                                <option value="" disabled>Disability Status</option>
+                                {% if patientData.Disability_status == 'disabled'%}
+                                    <option value="1" selected>Disabled</option>
+                                    <option value="2">None</option>
+                                {% else %}
+                                    <option value="1">Disabled</option>
+                                    <option value="2" selected>None</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        <div class="col" style="text-align:center">
+                            <select class="form-control" style="height: auto" name="Chronic_diseases">
+                                <option value="" disabled>Chronic Diseases</option>
+                                {% if patientData.Chronic_diseases == 'have' %}
+                                    <option value="1" selected>Have</option>
+                                    <option value="2">None</option>
+                                {% else %}
+                                    <option value="1">Have</option>
+                                    <option value="2" selected>None</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        <input type="hidden" name="QR_code" value="{{ patientData.QR_code }}" id="id_QR_code" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <button id="id_signup_submit" type="submit" style="border-radius: 50px;width:20%;margin:auto" class="button home_button">Submit</button>
+            </div>
+            <!--<input type="submit" class="form-control" style="width:20%;margin:40px auto 0px auto" value="Submit">-->
+        </form>
+    </div>
+</div>
+
+{% endblock patientProfileUpdate%}

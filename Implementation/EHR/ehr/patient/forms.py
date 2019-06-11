@@ -1,7 +1,8 @@
 from django import forms
-from .models import *
-from doctor.models import report
 from django.contrib.auth.hashers import make_password
+
+from doctor.models import report
+from .models import *
 
 
 class tempRegister(forms.ModelForm):
@@ -38,6 +39,7 @@ class tempRegister(forms.ModelForm):
         model = temp_register
         fields = ['email', 'password', 're_password']
 
+
 class login(forms.ModelForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={
         'class': 'form-control',
@@ -54,18 +56,18 @@ class login(forms.ModelForm):
         'required': 'required',
         'id': 'id_pass'
     }))
+
     class Meta:
         model = temp_register
         fields = ['email', 'password']
 
 
-
 class patientLoginToPharmacyForm(forms.ModelForm):
     Ssn_id = forms.IntegerField(widget=forms.NumberInput(attrs={
-        'class' : 'form-control',
-        'placeholder' : 'Enter Patient Code',
-        'required' : 'required',
-        'maxlength' : 7,
+        'class': 'form-control',
+        'placeholder': 'Enter Patient Code',
+        'required': 'required',
+        'maxlength': 7,
     }))
 
     class Meta:
@@ -73,9 +75,7 @@ class patientLoginToPharmacyForm(forms.ModelForm):
         fields = ['QR_code']
 
 
-
 class AddUser(forms.ModelForm):
-
     first_name = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'pattern': '[a-z]{3,}',
@@ -148,7 +148,7 @@ class AddUser(forms.ModelForm):
         'placeholder': 'Birth Date',
         'required': 'required',
         'type': 'date'
-    }),input_formats=['%Y-%m-%d','%m/%d/%Y','%m/%d/%y','%d-%m-%Y'])
+    }), input_formats=['%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y', '%d-%m-%Y'])
     marital_status = forms.CharField()
     Child_num = forms.IntegerField(widget=forms.NumberInput(attrs={
         'class': 'form-control',
@@ -161,7 +161,7 @@ class AddUser(forms.ModelForm):
         'placeholder': 'First E-mail',
         'required': 'required',
         'id': 'id_email_2',
-        'name':'email_1'
+        'name': 'email_1'
     }))
     email_2 = forms.EmailField(widget=forms.EmailInput(attrs={
         'class': 'form-control',
@@ -175,13 +175,13 @@ class AddUser(forms.ModelForm):
         'placeholder': 'Nationality',
         'required': 'required'
     }))
-    Profile_picture = forms.ImageField(required=False,widget=forms.ClearableFileInput(attrs={
+    Profile_picture = forms.ImageField(required=False, widget=forms.ClearableFileInput(attrs={
         'class': 'inputfile',
         'name': 'file',
         'id': 'file1',
         'required': 'required',
     }))
-    SSN_Picture = forms.ImageField(required=False,widget=forms.ClearableFileInput(attrs={
+    SSN_Picture = forms.ImageField(required=False, widget=forms.ClearableFileInput(attrs={
         'class': 'inputfile',
         'name': 'file',
         'id': 'file2',
@@ -237,7 +237,6 @@ class AddUser(forms.ModelForm):
         password = self.cleaned_data.get('New_Password')
         return make_password(password)
 
-
     class Meta:
         model = user
         fields = ['first_name',
@@ -268,8 +267,8 @@ class AddUser(forms.ModelForm):
                   'SSN_Picture',
                   'User_type']
 
-class AddPatient(forms.ModelForm):
 
+class AddPatient(forms.ModelForm):
     Emergency_contact = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'pattern': '[0-9]{10,11}',
@@ -285,12 +284,12 @@ class AddPatient(forms.ModelForm):
         'class': 'form-control',
         'placeholder': 'Height in cm',
         'required': 'required'
-    }),min_value=1,max_value=400)
+    }), min_value=1, max_value=400)
     weight = forms.FloatField(widget=forms.NumberInput(attrs={
         'class': 'form-control',
         'placeholder': 'Weight in kg',
         'required': 'required'
-    }),min_value=1,max_value=400)
+    }), min_value=1, max_value=400)
     Blood_type = forms.CharField()
     Chronic_diseases = forms.CharField()
 
@@ -304,6 +303,7 @@ class AddPatient(forms.ModelForm):
                   'Chronic_diseases',
                   'QR_code']
 
+
 class searchHistory(forms.ModelForm):
     search_content = forms.CharField(widget=forms.TextInput(attrs={
         'class': '',
@@ -312,7 +312,7 @@ class searchHistory(forms.ModelForm):
         'required': 'required',
         'id': 'id_search'
     }))
+
     class Meta:
         model = report
         fields = ['search_content']
-

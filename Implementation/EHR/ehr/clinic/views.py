@@ -1,16 +1,13 @@
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
-from django.shortcuts import render,get_object_or_404
-from hospital.models import organization
-from doctor.models import doctor
-from patient.forms import AddUser
-from patient.models import user
 from django.contrib.auth.hashers import check_password
 from django.core.files.storage import FileSystemStorage
-import qrcode, shutil, os
-from datetime import date
-from django.views.generic import View
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
+from django.shortcuts import render, get_object_or_404
+
+from doctor.models import doctor
+from hospital.models import organization
+from patient.forms import AddUser
+from patient.models import user
+
 
 # Create your views here.
 
@@ -23,7 +20,8 @@ def clinicLogin(request):
         clinicPassFound = organization.objects.filter(hr_password__exact=clinicPass).exists()
         if clinicUserFound:
             if clinicPassFound:
-                cln_id = organization.objects.filter(Type=3).filter(hr_password=clinicPass).get(hr_username=clinicName).org_id
+                cln_id = organization.objects.filter(Type=3).filter(hr_password=clinicPass).get(
+                    hr_username=clinicName).org_id
                 request.session['clinic_id'] = cln_id
                 request.session['type'] = 'clinic'
                 return HttpResponseRedirect('Index/')
@@ -35,7 +33,8 @@ def clinicLogin(request):
             return HttpResponseNotFound('<h1>clinic not found</h1>')
     else:
         request.session['type'] = 'clinic'
-        return render(request,'clinicLogin.html',{})
+        return render(request, 'clinicLogin.html', {})
+
 
 def clinicLogout(request):
     if request.session['type'] == 'clinic':
@@ -48,18 +47,20 @@ def clinicLogout(request):
         print('there is no clinic entered')
     return HttpResponseRedirect('/clinic/')
 
+
 def Index(request):
     doctordata = doctor.objects.filter(clinic_id=request.session['clinic_id'])
     clinicdata = organization.objects.filter(Type=3).get(org_id=request.session['clinic_id'])
     print(clinicdata)
     context = {
         'clinic': clinicdata,
-        'clin_id':clinicdata.org_id,
+        'clin_id': clinicdata.org_id,
         'doctor': doctordata,
     }
-    return render(request, 'clinicIndex.html',context)
+    return render(request, 'clinicIndex.html', context)
 
-def update_doctor(request,Docid):
+
+def update_doctor(request, Docid):
     if request.method == 'POST':
         usr = user.objects.filter(user_id=Docid)
         # upload profile,ssn pictures and save paths to database
@@ -129,13 +130,14 @@ def update_doctor(request,Docid):
         clinicdata = organization.objects.get(org_id=request.session['clinic_id'])
         doctorData = doctor.objects.get(Doc_id=Docid)
         userData = user.objects.get(user_id=Docid)
-        context={
+        context = {
             'clinic': clinicdata,
             'clin_id': clinicdata.org_id,
-            'doctorData':doctorData,
-            'userData':userData,
+            'doctorData': doctorData,
+            'userData': userData,
         }
-        return render(request, 'updateClinicDoctor.html',context)
+        return render(request, 'updateClinicDoctor.html', context)
+
 
 # patient doctor functions
 def add_doctor(request):
@@ -207,6 +209,8 @@ def add_doctor(request):
             'b_d': B_Doctor,
         }
         return render(request, 'addClinicDoctor.html', context)
+
+
 def gender(num):
     if num == '1':
         return 'male'
@@ -216,6 +220,8 @@ def gender(num):
         return 'other'
     else:
         return 'error'
+
+
 def maritalStatus(num):
     if num == '1':
         return 'single'
@@ -229,27 +235,32 @@ def maritalStatus(num):
         return 'widowed'
     else:
         return 'error'
+
+
 # end of doctor profile
 
-def delete_doctor(request,Did):
+def delete_doctor(request, Did):
     doctor.objects.filter(Doc_id=Did).update(clinic_id='')
     return HttpResponseRedirect('/clinic/Index/')
 
-def unblock_doctor(request,ssn):
+
+def unblock_doctor(request, ssn):
     docId = user.objects.get(Ssn=ssn).user_id
     clinId = request.session['clinic_id']
     doctor.objects.filter(Doc_id=docId).update(clinic_id=clinId)
     return HttpResponseRedirect('/clinic/Index/')
 
-def clinic_profile_view(request,clinid=None):
-    clinicdata = get_object_or_404(organization,org_id=clinid)
-    context ={
+
+def clinic_profile_view(request, clinid=None):
+    clinicdata = get_object_or_404(organization, org_id=clinid)
+    context = {
         'clinic': clinicdata,
         'clin_id': clinicdata.org_id,
     }
-    return render(request, 'clinicProfileView.html',context)
+    return render(request, 'clinicProfileView.html', context)
 
-def reset_doc_passowrd(request,id):
+
+def reset_doc_passowrd(request, id):
     user.objects.filter(user_id=id).update(New_Password='123456789')
     return HttpResponseRedirect('/clinic/Index/')
 

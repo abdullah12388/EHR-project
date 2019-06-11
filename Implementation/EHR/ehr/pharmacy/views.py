@@ -1,14 +1,10 @@
-from django.contrib.auth.decorators import login_required
-from django.http import request, HttpResponseRedirect, HttpResponseNotFound, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponseNotFound, HttpResponse
 from django.shortcuts import render, get_object_or_404
-from django.template import context
-from django.views import generic
-from hospital.models import organization,hospital
-from patient.models import patient, user, AllNotification
-from doctor.models import report, all_medicine, prescription, patient_medicine
-from patient.forms import patientLoginToPharmacyForm
-from patient.views import QRCodeScanner
 
+from doctor.models import patient_medicine
+from hospital.models import organization
+from patient.models import patient, user, AllNotification
+from patient.views import QRCodeScanner
 
 
 def pharmacyLogin(request):
@@ -19,7 +15,8 @@ def pharmacyLogin(request):
         pharmacyPassFound = organization.objects.filter(hr_password__exact=pharmacyPass).exists()
         if pharmacyUserFound:
             if pharmacyPassFound:
-                organ_id = organization.objects.filter(Type=1).filter(hr_password=pharmacyPass).get(hr_username=pharmacyName).org_id
+                organ_id = organization.objects.filter(Type=1).filter(hr_password=pharmacyPass).get(
+                    hr_username=pharmacyName).org_id
                 request.session['pharmacy_id'] = organ_id
                 request.session['type'] = 'pharmacy'
                 return HttpResponseRedirect('pharmacyPatientLogin/')
@@ -31,7 +28,7 @@ def pharmacyLogin(request):
             return HttpResponseNotFound('<h1>Pharmacy not found</h1>')
     else:
         request.session['type'] = 'pharmacy'
-        return render(request,'pharmacyLogin.html',{})
+        return render(request, 'pharmacyLogin.html', {})
 
 
 def pharmacyLogout(request):
@@ -54,9 +51,10 @@ def pharmacyPatientLogin(request):
         return HttpResponseRedirect('medicines/')
     else:
         if 'ssnID' not in request.session:
-            return render(request, 'pharmacyIndex.html', {'ph_id':request.session['pharmacy_id']})
+            return render(request, 'pharmacyIndex.html', {'ph_id': request.session['pharmacy_id']})
         else:
-            return render(request, 'pharmacyIndex.html', {'ph_id':request.session['pharmacy_id'],'SSNID': request.session['ssnID']})
+            return render(request, 'pharmacyIndex.html',
+                          {'ph_id': request.session['pharmacy_id'], 'SSNID': request.session['ssnID']})
 
 
 def QRCodeScanView(request):
@@ -64,6 +62,7 @@ def QRCodeScanView(request):
     QRData = QRData.decode("UTF-8")
     request.session['ssnID'] = QRData
     return HttpResponseRedirect('/pharmacy/pharmacyPatientLogin/')
+
 
 def medicineListView(request):
     pharmacy_id = request.session['pharmacy_id']
@@ -137,11 +136,11 @@ def medicineListView(request):
 #     }
 #     return render(request, 'pharmacyProfileView.html',context)
 
-def pharmacy_profile_view(request,pharid=None):
-    pharmacyData = get_object_or_404(organization,org_id=pharid)
-    context ={
+def pharmacy_profile_view(request, pharid=None):
+    pharmacyData = get_object_or_404(organization, org_id=pharid)
+    context = {
         'pharmacy': pharmacyData,
-        'ph_id':pharmacyData.org_id,
-        'hos_id':None,
+        'ph_id': pharmacyData.org_id,
+        'hos_id': None,
     }
-    return render(request, 'pharmacyProfileView.html',context)
+    return render(request, 'pharmacyProfileView.html', context)

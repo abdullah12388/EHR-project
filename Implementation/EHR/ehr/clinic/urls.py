@@ -1,7 +1,8 @@
-from django.conf.urls import url
-from clinic import views
 from django.conf import settings
+from django.conf.urls import url
 from django.conf.urls.static import static
+
+from clinic import views
 
 app_name = 'clinic'
 

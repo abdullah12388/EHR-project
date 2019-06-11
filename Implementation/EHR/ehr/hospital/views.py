@@ -1,17 +1,18 @@
+from django.contrib.auth.hashers import check_password
+from django.contrib.auth.hashers import make_password
+from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
-from django.shortcuts import render,get_object_or_404
-from .models import hospital,organization
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import View
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
 from doctor.models import doctor
 from patient.forms import AddUser
 from patient.models import user
-from django.contrib.auth.hashers import check_password
-from django.core.files.storage import FileSystemStorage
-import qrcode, shutil, os
-from datetime import date
-from django.views.generic import View
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from django.contrib.auth.hashers import make_password
+from .models import hospital, organization
+
+
 # Create your views here.
 
 
@@ -35,7 +36,9 @@ def hospitalLogin(request):
             return HttpResponseNotFound('<h1>Hospital not found</h1>')
     else:
         request.session['type'] = 'hospital'
-        return render(request,'hospitalLogin.html',{})
+        return render(request, 'hospitalLogin.html', {})
+
+
 def hospitalLogout(request):
     if request.session['type'] == 'hospital':
         if 'hospital_id' in request.session:
@@ -46,6 +49,8 @@ def hospitalLogout(request):
     else:
         print('there is no hospital entered')
     return HttpResponseRedirect('/hospital/')
+
+
 def Index(request):
     if request.method == 'POST':
         depart_num = request.POST['departments']
@@ -153,13 +158,15 @@ def Index(request):
     labdata = organization.objects.filter(Type=2).filter(hospital_id=request.session['hospital_id'])
     context = {
         'hospital': hospitaldata,
-        'hos_id':hospitaldata.h_id,
+        'hos_id': hospitaldata.h_id,
         'doctor': doctordata,
         'pharmacy': pharmacydata,
         'lab': labdata,
     }
-    return render(request, 'hospitalIndex.html',context)
-def update_doctor(request,Docid):
+    return render(request, 'hospitalIndex.html', context)
+
+
+def update_doctor(request, Docid):
     if request.method == 'POST':
         usr = user.objects.filter(user_id=Docid)
         # upload profile,ssn pictures and save paths to database
@@ -229,13 +236,15 @@ def update_doctor(request,Docid):
         hospitaldata = hospital.objects.get(h_id=request.session['hospital_id'])
         doctorData = doctor.objects.get(Doc_id=Docid)
         userData = user.objects.get(user_id=Docid)
-        context={
+        context = {
             'hospital': hospitaldata,
             'hos_id': hospitaldata.h_id,
-            'doctorData':doctorData,
-            'userData':userData,
+            'doctorData': doctorData,
+            'userData': userData,
         }
-        return render(request, 'updateHospitalDoctor.html',context)
+        return render(request, 'updateHospitalDoctor.html', context)
+
+
 # patient doctor functions
 def add_doctor(request):
     if request.method == 'POST':
@@ -306,6 +315,8 @@ def add_doctor(request):
             'b_d': B_Doctor,
         }
         return render(request, 'addHospitalDoctor.html', context)
+
+
 def gender(num):
     if num == '1':
         return 'male'
@@ -315,6 +326,8 @@ def gender(num):
         return 'other'
     else:
         return 'error'
+
+
 def maritalStatus(num):
     if num == '1':
         return 'single'
@@ -328,8 +341,10 @@ def maritalStatus(num):
         return 'widowed'
     else:
         return 'error'
+
+
 # end of doctor profile
-def update_pharmacy(request,pharid,hosid):
+def update_pharmacy(request, pharid, hosid):
     if request.method == 'POST':
         phr = organization.objects.filter(Type=1).filter(hospital_id=hosid).filter(org_id=pharid)
         # upload profile,ssn pictures and save paths to database
@@ -353,12 +368,14 @@ def update_pharmacy(request,pharid,hosid):
     else:
         hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
         pharmacyData = organization.objects.filter(Type=1).filter(hospital_id=hosid).get(org_id=pharid)
-        context={
+        context = {
             'hospital': hospitaldata,
             'hos_id': hospitaldata.h_id,
-            'pharmacyData':pharmacyData,
+            'pharmacyData': pharmacyData,
         }
-        return render(request, 'updatePharmacy.html',context)
+        return render(request, 'updatePharmacy.html', context)
+
+
 def add_pharmacy(request):
     if request.method == 'POST':
         # upload profile,ssn pictures and save paths to database
@@ -383,8 +400,10 @@ def add_pharmacy(request):
         return HttpResponseRedirect('/hospital/Index/')
     else:
         hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
-        return render(request, 'addPharmacy.html',{'hospital': hospitaldata,'hos_id':hospitaldata.h_id,})
-def update_lab(request,labid,hosid):
+        return render(request, 'addPharmacy.html', {'hospital': hospitaldata, 'hos_id': hospitaldata.h_id, })
+
+
+def update_lab(request, labid, hosid):
     if request.method == 'POST':
         labor = organization.objects.filter(Type=2).filter(hospital_id=hosid).filter(org_id=labid)
         # upload profile,ssn pictures and save paths to database
@@ -409,12 +428,14 @@ def update_lab(request,labid,hosid):
         hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
         labData = organization.objects.filter(Type=2).filter(hospital_id=hosid).get(org_id=labid)
         print(labData.org_name)
-        context={
+        context = {
             'hospital': hospitaldata,
             'hos_id': hospitaldata.h_id,
-            'labData':labData,
+            'labData': labData,
         }
-        return render(request, 'updateLab.html',context)
+        return render(request, 'updateLab.html', context)
+
+
 def add_Lab(request):
     if request.method == 'POST':
         # upload profile,ssn pictures and save paths to database
@@ -439,58 +460,71 @@ def add_Lab(request):
         return HttpResponseRedirect('/hospital/Index/')
     else:
         hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
-        return render(request, 'addLab.html',{'hospital': hospitaldata,'hos_id':hospitaldata.h_id,})
-def delete_doctor(request,Did):
+        return render(request, 'addLab.html', {'hospital': hospitaldata, 'hos_id': hospitaldata.h_id, })
+
+
+def delete_doctor(request, Did):
     doctor.objects.filter(Doc_id=Did).update(hospital_id='')
     return HttpResponseRedirect('/hospital/Index/')
-def delete_pharmacy_lab(request,ph_lb_id,ph_lb_type):
+
+
+def delete_pharmacy_lab(request, ph_lb_id, ph_lb_type):
     # organization.objects.filter(org_id=ph_lb_id).filter(Type=ph_lb_type).update(hospital_id='')
     organization.objects.filter(org_id=ph_lb_id).filter(Type=ph_lb_type).delete()
     return HttpResponseRedirect('/hospital/Index/')
-def unblock_doctor(request,ssn):
+
+
+def unblock_doctor(request, ssn):
     docId = user.objects.get(Ssn=ssn).user_id
     hosId = request.session['hospital_id']
     doctor.objects.filter(Doc_id=docId).update(hospital_id=hosId)
     return HttpResponseRedirect('/hospital/Index/')
-def hospital_profile_view(request,hosid=None):
-    hospitaldata = get_object_or_404(hospital,h_id=hosid)
-    context ={
+
+
+def hospital_profile_view(request, hosid=None):
+    hospitaldata = get_object_or_404(hospital, h_id=hosid)
+    context = {
         'hospital': hospitaldata,
         'hos_id': hospitaldata.h_id,
     }
-    return render(request, 'hospitalProfileView.html',context)
-def reset_doc_passowrd(request,id):
+    return render(request, 'hospitalProfileView.html', context)
+
+
+def reset_doc_passowrd(request, id):
     password = make_password('123456789')
     print("new password", password)
     user.objects.filter(user_id=id).update(New_Password=password)
     return HttpResponseRedirect('/hospital/Index/')
+
+
 class StatView(View):
     def get(self, request, *args, **kwargs):
-
-        context = {'hos_id' : request.session['hospital_id']}
+        context = {'hos_id': request.session['hospital_id']}
         return render(request, 'hospital_charts.html', context)
+
+
 class HospitalStatistics(APIView):
     authentication_classes = []
     permission_classes = []
 
-    def get(self,request,format=None):
+    def get(self, request, format=None):
         labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
-        defulatdata_items = [12500,10000,15500,11151,12115,13891]
+        defulatdata_items = [12500, 10000, 15500, 11151, 12115, 13891]
         data1 = {
-        "label":labels,
-        "default":defulatdata_items,
+            "label": labels,
+            "default": defulatdata_items,
         }
         data2 = {
-        "label":['Rd', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        "default":defulatdata_items,
+            "label": ['Rd', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            "default": defulatdata_items,
         }
         data3 = {
-        "label":labels,
-        "default":defulatdata_items,
+            "label": labels,
+            "default": defulatdata_items,
         }
         data = {
-        "data1":data1,
-        "data2":data2,
-        "data3":data3,
+            "data1": data1,
+            "data2": data2,
+            "data3": data3,
         }
         return Response(data)

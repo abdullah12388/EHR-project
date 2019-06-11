@@ -111,7 +111,7 @@ def medicineListView(request):
             return render(request, 'patientMedicineToBeSubmit.html', context)
 
         else:
-            return HttpResponse("You don't have any medicines")
+            return HttpResponseRedirect("/pharmacy/pharmacyPatientLogin/?notify=1")
     else:
         return HttpResponseNotFound('<h1>patient not found</h1>')
 

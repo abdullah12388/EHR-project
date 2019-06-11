@@ -213,15 +213,6 @@
                                                 {% endif %}
                                             </ul>
                                         </nav>
-                                        <div class="search_content d-flex flex-row align-items-center justify-content-end ml-auto">
-                                            <form action="#" id="search_container_form" class="search_container_form">
-                                                <input type="text" class="search_container_input" placeholder="Search"
-                                                       required="required">
-                                                <button class="search_container_button"><i class="fa fa-search"
-                                                                                           aria-hidden="true"></i>
-                                                </button>
-                                            </form>
-                                        </div>
                                     </div>
                                     {% if 'patient_id' in request.session %}
                                         <div class="collapse" id="collapseExample"
@@ -236,18 +227,12 @@
                                                             <a href="#" style="color: #000;">
                                                                 <div class="row"
                                                                      style="margin: 10px;border-bottom: solid 2px #32c69a;background-color: rgba(50, 198, 154, 0.6);">
-                                                                    <div class="col-sm-3" style="margin: auto">
-                                                                        {% if notify.doctorSenderId  %}
-                                                                            <img src="{{ notify.doctorSenderId.Profile_picture }}" style="width: 50px;height: 50px;border-radius: 50px">
-                                                                        {% elif notify.LabSenderId %}
-                                                                            <img src="{{ notify.LabSenderId.org_logo }}" style="width: 50px;height: 50px;border-radius: 50px">
-                                                                        {% elif notify.pharmacySenderId %}
-                                                                            <img src="{{ notify.pharmacySenderId.org_logo }}" style="width: 50px;height: 50px;border-radius: 50px">
-                                                                        {% endif %}
+                                                                    <div class="col-sm-3">
+                                                                        <img src="{{ notify.doctorSenderId.Profile_picture }}"
+                                                                             style="width: 50px;height: 50px;border-radius: 50px">
                                                                     </div>
-                                                                    <div class="col-sm-9" style="font-size:18px;text-align: center;margin: auto">
-                                                                        {{ notify.message }}<br>
-                                                                        <span style="color: #666">{{ notify.recieved_date|date:'Y-m-d H:i:s' }}</span>
+                                                                    <div class="col-sm-9" style="font-size:20px;text-align: center;margin: auto">
+                                                                        {{ notify.message }}
                                                                     </div>
                                                                 </div>
                                                             </a>
@@ -257,18 +242,12 @@
                                                             <a href="#" style="color: #000;">
                                                                 <div class="row"
                                                                      style="margin: 10px;border-bottom: solid 2px #32c69a;">
-                                                                    <div class="col-sm-3" style="margin: auto">
-                                                                        {% if notify.doctorSenderId  %}
-                                                                            <img src="{{ notify.doctorSenderId.Profile_picture }}" style="width: 50px;height: 50px;border-radius: 50px">
-                                                                        {% elif notify.LabSenderId %}
-                                                                            <img src="{{ notify.labSenderId_id.org_logo }}" style="width: 50px;height: 50px;border-radius: 50px">
-                                                                        {% elif notify.pharmacySenderId %}
-                                                                            <img src="{{ notify.pharmacySenderId.org_logo }}" style="width: 50px;height: 50px;border-radius: 50px">
-                                                                        {% endif %}
+                                                                    <div class="col-sm-3">
+                                                                        <img src="{{ notify.doctorSenderId.Profile_picture }}"
+                                                                             style="width: 50px;height: 50px;border-radius: 50px">
                                                                     </div>
-                                                                    <div class="col-sm-9" style="font-size:18px;text-align: center;margin: auto">
-                                                                        {{ notify.message }}<br>
-                                                                        <span style="color: #666">{{ notify.recieved_date|date:'Y-m-d H:i:s' }}</span>
+                                                                    <div class="col-sm-9" style="font-size:20px;text-align: center;margin: auto">
+                                                                        {{ notify.message }}
                                                                     </div>
                                                                 </div>
                                                             </a>

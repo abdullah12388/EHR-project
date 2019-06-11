@@ -20,7 +20,7 @@ from doctor.models import (report, doctor, prescription, multi_analytics,
                            patient_medicine, patient_rays, all_analytics, all_medicine, all_rays, all_chronic)
 from hospital.models import organization, hospital
 from patient.forms import tempRegister, login, AddUser, AddPatient, searchHistory
-from patient.models import user, patient, temp_register, AllNotification
+from patient.models import user, patient, temp_register, AllNotification,rate
 
 
 # Create your views here.
@@ -313,7 +313,7 @@ def home(request):
         labs = organization.objects.filter(Type__exact='2')
         clinics = organization.objects.filter(Type__exact='3')
         hospitals = hospital.objects.all()
-        notifyData = AllNotification.objects.all()
+        notifyData = AllNotification.objects.all().order_by('read').order_by('-recieved_date')
         newNotifyData = AllNotification.objects.filter(read=0)
         context = {
             'topDoctor': topDoctor,
@@ -942,3 +942,73 @@ def QRCodeScanView(request):
 def Notification(id):
     notiyMe = AllNotification.objects.filter(patientRecipient=id).order_by('read').order_by('-recieved_date')
     return notiyMe
+
+def doctorRate(request,userid,patid,hosid):
+    if request.method == 'POST':
+        patObject = patient.objects.get(id=patid)
+        docObject = user.objects.get(user_id=userid)
+        hosObject = hospital.objects.get(h_id=hosid)
+        rateObject1 = rate()
+        rateObject1.Patient = patObject
+        rateObject1.Doctor = docObject
+        rateObject1.Rate = request.POST['d_star']
+        rateObject1.comment = request.POST['comment']
+        rateObject1.save()
+        rateObject2 = rate()
+        rateObject2.Patient = patObject
+        rateObject2.Hospital = hosObject
+        rateObject2.Rate = request.POST['h_star']
+        rateObject2.save()
+        docrate = rate.objects.filter(Doctor=docObject)
+        sum = 0
+        for i in range(len(docrate)):
+            sum = sum + docrate[i].Rate
+        averageRate = int(sum/len(docrate))
+        doctor.objects.filter(Doc_id=userid).update(doc_rate=averageRate)
+        sum2 = 0
+        hosrate = rate.objects.filter(Hospital=hosObject)
+        for j in range(len(hosrate)):
+            sum2 = sum2 + hosrate[j].Rate
+        averageRate2 = int(sum2 / len(hosrate))
+        hospital.objects.filter(h_id=hosid).update(hos_rate=averageRate2)
+        return HttpResponseRedirect('/patient/Index/')
+    AllNotification.objects.filter(doctorSenderId=userid).filter(patientRecipient=patid).filter(hospitalSenderId=hosid).update(read=1)
+    return render(request,'doctorRate.html',{})
+
+def organizationRate(request,orgid,patid):
+    if request.method == 'POST':
+        patObject = patient.objects.get(id=patid)
+        orgObject = organization.objects.get(org_id=orgid)
+        if AllNotification.objects.filter(pharmacySenderId=orgid):
+            rateObject3 = rate()
+            rateObject3.Patient = patObject
+            rateObject3.Pharmacy = orgObject
+            rateObject3.Rate = request.POST['org_star']
+            rateObject3.save()
+            pharrate = rate.objects.filter(Pharmacy=orgObject)
+            sum = 0
+            for i in range(len(pharrate)):
+                sum = sum + pharrate[i].Rate
+            averageRate = int(sum / len(pharrate))
+            print(averageRate)
+            organization.objects.filter(org_id=orgid).update(org_rate=averageRate)
+        else:
+            rateObject3 = rate()
+            rateObject3.Patient = patObject
+            rateObject3.Lab = orgObject
+            rateObject3.Rate = request.POST['org_star']
+            rateObject3.save()
+            labrate = rate.objects.filter(Lab=orgObject)
+            sum2 = 0
+            for j in range(len(labrate)):
+                sum2 = sum2 + labrate[j].Rate
+            averageRate2 = int(sum2 / len(labrate))
+            print(averageRate2)
+            organization.objects.filter(org_id=orgid).update(org_rate=averageRate2)
+        return HttpResponseRedirect('/patient/Index/')
+    if AllNotification.objects.filter(pharmacySenderId=orgid):
+        AllNotification.objects.filter(pharmacySenderId=orgid).filter(patientRecipient=patid).update(read=1)
+        return render(request, 'organizationRate.html', {'org_name':'Pharmacy'})
+    else:
+        AllNotification.objects.filter(LabSenderId=orgid).filter(patientRecipient=patid).update(read=1)
+        return render(request, 'organizationRate.html', {'org_name':'Lab'})

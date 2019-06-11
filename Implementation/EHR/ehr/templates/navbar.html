@@ -62,6 +62,8 @@
         {% elif '/clinic/AddClinicDoctor/' in request.get_full_path %}height:0px;
         {% elif '/clinic/updateClinicDoctor/' in request.get_full_path %}height:0px;
         {% elif request.get_full_path == '/patient/patientProfileUpdate/' %}height:0px;
+        {% elif '/patient/DoctorRate/' in request.get_full_path %}height:0px;
+        {% elif '/patient/OrganizationRate/' in request.get_full_path %}height:0px;
         {% endif %}">
     <div class="
     {% if request.get_full_path == '/patient/patientHistory/' %}
@@ -91,6 +93,8 @@
             {% elif request.get_full_path == '/clinic/Index/' %}display:none;
             {% elif request.get_full_path == '/patient/patientProfileUpdate/' %}display:none;
             {% elif '/clinic/clinicProfileView/' in request.get_full_path %}display:none;
+            {% elif '/patient/DoctorRate/' in request.get_full_path %}display:none;
+            {% elif '/patient/OrganizationRate/' in request.get_full_path %}display:none;
             {% endif %}
             "></div>
 
@@ -167,10 +171,11 @@
                                                                href="#collapseExample" role="button"
                                                                aria-expanded="false"
                                                                aria-controls="collapseExample">
-{#                                                                Notification#}
-                                                                <i class="fa fa-bell" style="font-size: 25px;color: rgba(18,17,17,0.8)">
+                                                                {#                                                                Notification#}
+                                                                <i class="fa fa-bell"
+                                                                   style="font-size: 25px;color: rgba(18,17,17,0.8)">
                                                                     {% if newNotifications|length == 0 %}
-                                                                    {% else%}
+                                                                    {% else %}
                                                                         <span style="font-size: 20px">{{ newNotifications|length }}</span>
                                                                     {% endif %}
                                                                 </i>
@@ -233,45 +238,69 @@
                                                 {% for notify in notifications %}
                                                     {% if notify.read == 0 %}
                                                         <li>
-                                                            <a href="#" style="color: #000;">
-                                                                <div class="row"
-                                                                     style="margin: 10px;border-bottom: solid 2px #32c69a;background-color: rgba(50, 198, 154, 0.6);">
-                                                                    <div class="col-sm-3" style="margin: auto">
-                                                                        {% if notify.doctorSenderId  %}
-                                                                            <img src="{{ notify.doctorSenderId.Profile_picture }}" style="width: 50px;height: 50px;border-radius: 50px">
-                                                                        {% elif notify.LabSenderId %}
-                                                                            <img src="{{ notify.LabSenderId.org_logo }}" style="width: 50px;height: 50px;border-radius: 50px">
-                                                                        {% elif notify.pharmacySenderId %}
-                                                                            <img src="{{ notify.pharmacySenderId.org_logo }}" style="width: 50px;height: 50px;border-radius: 50px">
-                                                                        {% endif %}
-                                                                    </div>
-                                                                    <div class="col-sm-9" style="font-size:18px;text-align: center;margin: auto">
-                                                                        {{ notify.message }}<br>
-                                                                        <span style="color: #666">{{ notify.recieved_date|date:'Y-m-d H:i:s' }}</span>
-                                                                    </div>
+                                                            <a href="
+                                                                {% if notify.doctorSenderId %}
+                                                                    {% url 'patient:doctorRate' userid=notify.doctorSenderId_id patid=notify.patientRecipient_id hosid=notify.hospitalSenderId_id %}
+                                                                {% elif notify.LabSenderId %}
+                                                                    {% url 'patient:organizationRate' orgid=notify.LabSenderId_id patid=notify.patientRecipient_id %}
+                                                                {% elif notify.pharmacySenderId %}
+                                                                    {% url 'patient:organizationRate' orgid=notify.pharmacySenderId_id patid=notify.patientRecipient_id %}
+                                                                {% endif %}
+                                                            " style="color: #000;">
+                                                            <div class="row"
+                                                                 style="margin: 10px;border-bottom: solid 2px #32c69a;background-color: rgba(50, 198, 154, 0.6);">
+                                                                <div class="col-sm-3" style="margin: auto">
+                                                                    {% if notify.doctorSenderId %}
+                                                                        <img src="{{ notify.doctorSenderId.Profile_picture }}"
+                                                                             style="width: 50px;height: 50px;border-radius: 50px">
+                                                                    {% elif notify.LabSenderId %}
+                                                                        <img src="{{ notify.LabSenderId.org_logo }}"
+                                                                             style="width: 50px;height: 50px;border-radius: 50px">
+                                                                    {% elif notify.pharmacySenderId %}
+                                                                        <img src="{{ notify.pharmacySenderId.org_logo }}"
+                                                                             style="width: 50px;height: 50px;border-radius: 50px">
+                                                                    {% endif %}
                                                                 </div>
+                                                                <div class="col-sm-9"
+                                                                     style="font-size:18px;text-align: center;margin: auto">
+                                                                    {{ notify.message }}<br>
+                                                                    <span style="color: #666">{{ notify.recieved_date|date:'Y-m-d H:i:s' }}</span>
+                                                                </div>
+                                                            </div>
                                                             </a>
                                                         </li>
                                                     {% else %}
                                                         <li>
-                                                            <a href="#" style="color: #000;">
-                                                                <div class="row"
-                                                                     style="margin: 10px;border-bottom: solid 2px #32c69a;">
-                                                                    <div class="col-sm-3" style="margin: auto">
-                                                                        {% if notify.doctorSenderId  %}
-                                                                            <img src="{{ notify.doctorSenderId.Profile_picture }}" style="width: 50px;height: 50px;border-radius: 50px">
-                                                                        {% elif notify.LabSenderId %}
-                                                                            <img src="{{ notify.labSenderId_id.org_logo }}" style="width: 50px;height: 50px;border-radius: 50px">
-                                                                        {% elif notify.pharmacySenderId %}
-                                                                            <img src="{{ notify.pharmacySenderId.org_logo }}" style="width: 50px;height: 50px;border-radius: 50px">
-                                                                        {% endif %}
-                                                                    </div>
-                                                                    <div class="col-sm-9" style="font-size:18px;text-align: center;margin: auto">
-                                                                        {{ notify.message }}<br>
-                                                                        <span style="color: #666">{{ notify.recieved_date|date:'Y-m-d H:i:s' }}</span>
-                                                                    </div>
+{#                                                            <a href="#}
+{#                                                                {% if notify.doctorSenderId %}#}
+{#                                                                    {% url 'patient:doctorRate' userid=notify.doctorSenderId_id patid=notify.patientRecipient_id hosid=notify.hospitalSenderId_id %}#}
+{#                                                                {% elif notify.LabSenderId %}#}
+{#                                                                    {% url 'patient:organizationRate' orgid=notify.LabSenderId_id patid=notify.patientRecipient_id %}#}
+{#                                                                {% elif notify.pharmacySenderId %}#}
+{#                                                                    {% url 'patient:organizationRate' orgid=notify.pharmacySenderId_id patid=notify.patientRecipient_id %}#}
+{#                                                                {% endif %}#}
+{#                                                            " style="color: #000;">#}
+                                                            <div class="row"
+                                                                 style="margin: 10px;border-bottom: solid 2px #32c69a;color: #000">
+                                                                <div class="col-sm-3" style="margin: auto">
+                                                                    {% if notify.doctorSenderId %}
+                                                                        <img src="{{ notify.doctorSenderId.Profile_picture }}"
+                                                                             style="width: 50px;height: 50px;border-radius: 50px">
+                                                                    {% elif notify.LabSenderId %}
+                                                                        <img src="{{ notify.LabSenderId.org_logo }}"
+                                                                             style="width: 50px;height: 50px;border-radius: 50px">
+                                                                    {% elif notify.pharmacySenderId %}
+                                                                        <img src="{{ notify.pharmacySenderId.org_logo }}"
+                                                                             style="width: 50px;height: 50px;border-radius: 50px">
+                                                                    {% endif %}
                                                                 </div>
-                                                            </a>
+                                                                <div class="col-sm-9"
+                                                                     style="font-size:18px;text-align: center;margin: auto">
+                                                                    {{ notify.message }}<br>
+                                                                    <span style="color: #666">{{ notify.recieved_date|date:'Y-m-d H:i:s' }}</span>
+                                                                </div>
+                                                            </div>
+{#                                                            </a>#}
                                                         </li>
                                                     {% endif %}
                                                 {% endfor %}

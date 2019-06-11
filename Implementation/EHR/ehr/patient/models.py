@@ -76,9 +76,10 @@ class AllNotification(models.Model):
 
 class rate(models.Model):
     Patient = models.ForeignKey(patient, on_delete=models.CASCADE, related_name='patient_rate')
-    Doctor = models.ForeignKey(user, on_delete=models.CASCADE, related_name='doctor_rate')
+    Doctor = models.ForeignKey(user,null=True, on_delete=models.CASCADE, related_name='doctor_rate')
     Hospital = models.ForeignKey(hospital, null=True, on_delete=models.CASCADE, related_name='hospital_rate')
     Lab = models.ForeignKey(organization,null=True, on_delete=models.CASCADE, related_name='lab_rate')
     Pharmacy = models.ForeignKey(organization, null=True,on_delete=models.CASCADE, related_name='pharmacy_rate')
     Rate = models.IntegerField()
+    comment = models.TextField()
 

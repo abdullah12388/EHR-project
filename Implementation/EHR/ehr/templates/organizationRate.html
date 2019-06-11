@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block organizationRate %}
+
+    <style>
+        .rating-star {
+            font-size: 36px;
+            display: inline-block;
+            direction: rtl;
+            padding: 0;
+        }
+
+        .rating-star > input {
+            display: none;
+        }
+
+        .rating-star > input:checked ~ label,
+        .rating-star > label:hover,
+        .rating-star > label:hover ~ label {
+            color: #00ffb3;
+        }
+
+        .rating-star > label:hover ~ input:checked ~ label {
+            color: rgba(250, 150, 0, 0.3);
+        }
+    </style>
+    <div style="width:10px;height:175px"></div>
+    <div class="container">
+        <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Rating</h2>
+        <div class="jumbotron" style="background-color:rgba(18,17,17,0.66)">
+            <form method="POST" action="">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="row">
+                            <div class="col-sm-3" style="margin: auto;">
+                                <label style="font-size: 20px;color: #FFF;font-weight: bold;">{{ org_name }} Rate:</label>
+                            </div>
+                            <div class="col-sm-9" style="margin: auto;text-align: center">
+                                <div class="rating-star">
+                                    <input type="radio" name="org_star" id="s10" value="10" required/>
+                                    <label for="s10">★</label>
+                                    <input type="radio" name="org_star" id="s9" value="9"/>
+                                    <label for="s9">★</label>
+                                    <input type="radio" name="org_star" id="s8" value="8"/>
+                                    <label for="s8">★</label>
+                                    <input type="radio" name="org_star" id="s7" value="7"/>
+                                    <label for="s7">★</label>
+                                    <input type="radio" name="org_star" id="s6" value="6"/>
+                                    <label for="s6">★</label>
+                                    <input type="radio" name="org_star" id="s5" value="5"/>
+                                    <label for="s5">★</label>
+                                    <input type="radio" name="org_star" id="s4" value="4"/>
+                                    <label for="s4">★</label>
+                                    <input type="radio" name="org_star" id="s3" value="3"/>
+                                    <label for="s3">★</label>
+                                    <input type="radio" name="org_star" id="s2" value="2"/>
+                                    <label for="s2">★</label>
+                                    <input type="radio" name="org_star" id="s1" value="1"/>
+                                    <label for="s1">★</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin:20px">
+                            <div class="col-sm" style="text-align: center">
+                                <button id="id_signup_submit" type="submit"
+                                        style="border-radius: 50px;width:30%;margin:auto" class="button home_button">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock organizationRate %}

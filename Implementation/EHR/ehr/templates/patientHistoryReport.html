@@ -55,7 +55,7 @@
                         {{ i.P_A.analy.analytics_name }}
                         </div>
                         <div class="col-6">
-                            <a href="{{i.P_A.analytics_result}}" target="_blank" style="color: #FFF;">result{{ forloop.counter }}</a>
+                            <a href="{{i.P_A.analytics_result}}" style="color: #FFF;">result{{ forloop.counter }}</a>
                         </div>
                     </div>
                     {%endfor%}
@@ -75,7 +75,7 @@
                             {{ i.P_R.ray.ray_name }}
                         </div>
                         <div class="col-6">
-                            <a href="{{ i.P_R.rays_result }}" target="_blank" style="color: #FFF;">result{{ forloop.counter }}</a>
+                            <a href="{{ i.P_R.rays_result }}" style="color: #FFF;">result{{ forloop.counter }}</a>
                         </div>
                     </div>
                     {%endfor%}
@@ -83,7 +83,7 @@
             </div>
             <div class="by">
                 <h4 class="" style="color: #32c69a"><b style="color: #32c69a">By:</b></h4>
-                <p style="color: #32c69a"><b style="color: #32c69a">Doctor: </b> {{ doctor_name }}</p>
+                <p style="color: #32c69a"><b style="color: #32c69a">Doctor: </b> {{ myReport.doctor.Doc.first_name }} {{ myReport.doctor.Doc.middle_name }} {{ myReport.doctor.Doc.last_name }}</p>
                 {% if myReport.clinic == None %}
                     <p style="color: #32c69a"><b style="color: #32c69a">Hospital: </b> {{ myReport.hospital.h_name }}</p>
                 {% elif myReport.hospital == None %}

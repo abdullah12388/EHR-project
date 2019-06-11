@@ -827,34 +827,42 @@ def QRCodeScanner():
                             cv2.destroyAllWindows()
                             #return the QR Code data that we extracted in the for loop
                             return obj.data
+
             #it's to show a frame that contains camera
             cv2.imshow("Frame", frame)
             # it waits for a QR Code to be detected
-            if cv2.waitKey(1) :
+            if cv2.waitKey(1):
                 for obj in decodedObjects:
                     if obj.data:
                         break
 
+
+
+
 def QRCodeScanView(request):
     QRData = QRCodeScanner()
-    QRData = QRData.decode("UTF-8")
-    get = user.objects.get(Ssn_id=QRData)
-    if get:
-        user_Type_number = get.User_type
-        if user_Type_number == 2:
-            doctor_id = doctor.objects.get(Doc=get).id
-            request.session['doctor_id'] = doctor_id
-            request.session['user_T'] = user_Type_number
-            request.session['Doctor_Patiant_ID'] = 0
-            return HttpResponseRedirect('/doctor')
+    if QRData:
+        QRData = QRData.decode("UTF-8")
+        get = user.objects.get(Ssn_id=QRData)
+        if get:
+            user_Type_number = get.User_type
+            if user_Type_number == 2:
+                doctor_id = doctor.objects.get(Doc=get).id
+                request.session['doctor_id'] = doctor_id
+                request.session['user_T'] = user_Type_number
+                request.session['Doctor_Patiant_ID'] = 0
+                return HttpResponseRedirect('/doctor')
+            else:
+                patient_id = patient.objects.get(Patient_id=get).id
+                request.session['patient_id'] = patient_id
+                request.session['user_type'] = 'registered_patient'
+                request.session['user_T'] = user_Type_number
+                return HttpResponseRedirect('/patient/Index/')
         else:
-            patient_id = patient.objects.get(Patient_id=get).id
-            request.session['patient_id'] = patient_id
-            request.session['user_type'] = 'registered_patient'
-            request.session['user_T'] = user_Type_number
-            return HttpResponseRedirect('/patient/Index/')
+            return HttpResponseRedirect('/patient/')
     else:
         return HttpResponseRedirect('/patient/')
+
 
 
 

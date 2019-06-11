@@ -35,3 +35,5 @@ Plan B:
 2)	Try to find an alternative that can help us to get the sensor at least price
 Plan C:
 We will work on the other Idea which is about trying to provide a solution that is a person who can help older people so they can live well as their children do not have enough time to take care of them.
+
+http://abdullahmk96.pythonanywhere.com/?fbclid=IwAR3V5v2rzML-7mS9Ovg1VjJtR4xL5-ZnxgnWlVrq7Vc6Y2ENt5c6XvQdI1A

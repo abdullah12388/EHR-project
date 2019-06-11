@@ -1,14 +1,14 @@
 from django.db import models
 
-# Create your models here.
-
-
+from hospital.models import organization, hospital
 class temp_register(models.Model):
     id = models.AutoField(primary_key=True)
     email = models.EmailField(max_length=255)
     password = models.CharField(max_length=255)
+
     def __str__(self):
         return self.email
+
 
 class user(models.Model):
     user_id = models.AutoField(primary_key=True)
@@ -55,6 +55,30 @@ class patient(models.Model):
     Blood_type = models.CharField(max_length=5)
     Chronic_diseases = models.CharField(max_length=10)
 
-
     def __str__(self):
         return self.Patient.first_name
+
+
+class AllNotification(models.Model):
+    patientRecipient = models.ForeignKey(patient, on_delete=models.CASCADE, related_name='patient_recipient')
+    doctorSenderId = models.ForeignKey(user, on_delete=models.CASCADE, null=True,
+                                       related_name='sender_doctor_notification')
+    hospitalSenderId = models.ForeignKey(hospital, on_delete=models.CASCADE, null=True,
+                                         related_name='sender_hospital_notification')
+    pharmacySenderId = models.ForeignKey(organization, on_delete=models.CASCADE, null=True,
+                                         related_name='sender_pharmacy_notification')
+    LabSenderId = models.ForeignKey(organization, on_delete=models.CASCADE, null=True,
+                                    related_name='sender_lab_notification')
+    message = models.TextField()
+    read = models.BooleanField(default=False)
+    recieved_date = models.DateTimeField(auto_now_add=True)
+
+
+class rate(models.Model):
+    Patient = models.ForeignKey(patient, on_delete=models.CASCADE, related_name='patient_rate')
+    Doctor = models.ForeignKey(user, on_delete=models.CASCADE, related_name='doctor_rate')
+    Hospital = models.ForeignKey(hospital, null=True, on_delete=models.CASCADE, related_name='hospital_rate')
+    Lab = models.ForeignKey(organization,null=True, on_delete=models.CASCADE, related_name='lab_rate')
+    Pharmacy = models.ForeignKey(organization, null=True,on_delete=models.CASCADE, related_name='pharmacy_rate')
+    Rate = models.IntegerField()
+

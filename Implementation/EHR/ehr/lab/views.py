@@ -1,15 +1,16 @@
 from django.core.files.storage import FileSystemStorage
-from hospital.models import organization,hospital
 from django.http import HttpResponseRedirect, HttpResponseNotFound, HttpResponse
-from django.http import HttpResponseRedirect, HttpResponseNotFound, HttpResponse
-from django.shortcuts import render, redirect,get_object_or_404
+from django.shortcuts import render, get_object_or_404
+
 from doctor.models import patient_analytics, patient_rays
 from hospital.models import organization
+from patient.models import patient, user, AllNotification
 from patient.views import QRCodeScanner
-from patient.models import patient, user
 
 globalVariableForScanningQRCode = ''
 data = ""
+
+
 def labLogin(request):
     if request.method == 'POST':
         labName = request.POST['lab_name']
@@ -18,7 +19,8 @@ def labLogin(request):
         labPassFound = organization.objects.filter(hr_password__exact=labPass).exists()
         if labUserFound:
             if labPassFound:
-                organ_id = organization.objects.filter(Type=2).filter(hr_password=labPass).get(hr_username=labName).org_id
+                organ_id = organization.objects.filter(Type=2).filter(hr_password=labPass).get(
+                    hr_username=labName).org_id
                 request.session['lab_id'] = organ_id
                 request.session['type'] = 'lab'
                 return HttpResponseRedirect('labPatientLogin/')
@@ -30,7 +32,7 @@ def labLogin(request):
             return HttpResponseNotFound('<h1>Lab not found</h1>')
     else:
         request.session['type'] = 'lab'
-        return render(request,'labLogin.html',{})
+        return render(request, 'labLogin.html', {})
 
 
 def labLogout(request):
@@ -45,7 +47,7 @@ def labLogout(request):
     return HttpResponseRedirect('/lab/')
 
 
-def labPatientLogin(request ):
+def labPatientLogin(request):
     if request.method == 'POST':
 
         ssn_id = request.POST['pat_id']
@@ -61,9 +63,11 @@ def labPatientLogin(request ):
             print('Please Choose right type')
     else:
         if 'ssnid' not in request.session:
-            return render(request,'labIndex.html',{'lab_id':request.session['lab_id']})
+            return render(request, 'labIndex.html', {'lab_id': request.session['lab_id']})
         else:
-            return render(request, 'labIndex.html', {'lab_id':request.session['lab_id'],'SSN_ID': request.session['ssnid'],})
+            return render(request, 'labIndex.html',
+                          {'lab_id': request.session['lab_id'], 'SSN_ID': request.session['ssnid'], })
+
 
 def QRCodeScanView(request):
     QRData = QRCodeScanner()
@@ -72,10 +76,9 @@ def QRCodeScanView(request):
     return HttpResponseRedirect('/lab/labPatientLogin/')
 
 
-
 def AnalyticsListView(request):
     # patient_id = request.session['patient_id']
-    #This will delete the SSN ID after loggin by the patient
+    # This will delete the SSN ID after loggin by the patient
     if 'ssnid' in request.session:
         request.session.pop('ssnid')
     patient_id = patient.objects.get(Patient_id=request.session['patie_id']).id
@@ -95,6 +98,20 @@ def AnalyticsListView(request):
                 analyResult = fs.save(analyticsResult.name, analyticsResult)
                 analyticsInsert.analytics_result = '/lab' + fs.url(analyResult)
                 analyticsInsert.save()
+                ##################### khan added from here to make notifications available ##################
+                # creating instance from table "AllNotification" to affect and get notification from it
+                notificationToBeSentToPatientFromLab = AllNotification()
+                # taking ID from session of the doctor and patient I did't use what omar did because i need user instance
+                labIdInSession = request.session['lab_id']
+                patientIdInSession = request.session['patie_id']
+                labId = organization.objects.get(org_id=labIdInSession)
+                patientId = patient.objects.get(Patient=patientIdInSession)
+                # affecting table "AllNotification" and save data to preview to the user
+                notificationToBeSentToPatientFromLab.LabSenderId = labId
+                notificationToBeSentToPatientFromLab.patientRecipient = patientId
+                notificationToBeSentToPatientFromLab.message = 'lab' + labId.org_name + ' is waiting for your review.'
+                notificationToBeSentToPatientFromLab.save()
+                #############################################################################################
             else:
                 print('error')
             context = {
@@ -105,7 +122,7 @@ def AnalyticsListView(request):
         else:
             return HttpResponse("You don't have any analytics")
     else:
-            return HttpResponseNotFound('<h1>patient not found</h1>')
+        return HttpResponseNotFound('<h1>patient not found</h1>')
 
 
 def RaysListView(request):
@@ -130,6 +147,22 @@ def RaysListView(request):
                 rayResult = fs.save(RaysResult.name, RaysResult)
                 RaysInsert.rays_result = '/lab' + fs.url(rayResult)
                 RaysInsert.save()
+
+                ##################### khan added from here to make notifications available ##################
+                # creating instance from table "AllNotification" to affect and get notification from it
+                notificationToBeSentToPatientFromLab = AllNotification()
+                # taking ID from session of the doctor and patient I did't use what omar did because i need user instance
+                labIdInSession = request.session['lab_id']
+                patientIdInSession = request.session['patie_id']
+                labId = organization.objects.get(org_id=labIdInSession)
+                patientId = patient.objects.get(Patient=patientIdInSession)
+                # affecting table "AllNotification" and save data to preview to the user
+                notificationToBeSentToPatientFromLab.LabSenderId = labId
+                notificationToBeSentToPatientFromLab.patientRecipient = patientId
+                notificationToBeSentToPatientFromLab.message = 'lab ' + labId.org_name + ' is waiting for your review.'
+                notificationToBeSentToPatientFromLab.save()
+                #############################################################################################
+
             else:
                 print('error')
             context = {
@@ -163,10 +196,10 @@ def RaysListView(request):
 #     }
 #     return render(request, 'labProfileView.html',context)
 
-def lab_profile_view(request,labid=None):
-    labData = get_object_or_404(organization,org_id=labid)
-    context ={
+def lab_profile_view(request, labid=None):
+    labData = get_object_or_404(organization, org_id=labid)
+    context = {
         'lab': labData,
-        'lab_id':labData.org_id,
+        'lab_id': labData.org_id,
     }
-    return render(request, 'labProfileView.html',context)
+    return render(request, 'labProfileView.html', context)

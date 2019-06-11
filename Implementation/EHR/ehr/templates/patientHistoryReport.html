@@ -81,6 +81,15 @@
                     {%endfor%}
                 </div>
             </div>
+            <div class="by">
+                <h4 class="" style="color: #32c69a"><b style="color: #32c69a">By:</b></h4>
+                <p style="color: #32c69a"><b style="color: #32c69a">Doctor: </b> {{ doctor_name }}</p>
+                {% if myReport.clinic == None %}
+                    <p style="color: #32c69a"><b style="color: #32c69a">Hospital: </b> {{ myReport.hospital.h_name }}</p>
+                {% elif myReport.hospital == None %}
+                    <p style="color: #32c69a"><b style="color: #32c69a">Clinic: </b> {{ myReport.clinic.org_name }}</p>
+                {% endif %}
+            </div>
         </div>
     </div>
 {% endblock patient_report_content %}

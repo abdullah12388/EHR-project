@@ -109,7 +109,7 @@ def AnalyticsListView(request):
                 # affecting table "AllNotification" and save data to preview to the user
                 notificationToBeSentToPatientFromLab.LabSenderId = labId
                 notificationToBeSentToPatientFromLab.patientRecipient = patientId
-                notificationToBeSentToPatientFromLab.message = 'lab' + labId.org_name + ' added a new analytics'
+                notificationToBeSentToPatientFromLab.message = 'lab' + labId.org_name + ' is waiting for your review.'
                 notificationToBeSentToPatientFromLab.save()
                 #############################################################################################
             else:
@@ -159,7 +159,7 @@ def RaysListView(request):
                 # affecting table "AllNotification" and save data to preview to the user
                 notificationToBeSentToPatientFromLab.LabSenderId = labId
                 notificationToBeSentToPatientFromLab.patientRecipient = patientId
-                notificationToBeSentToPatientFromLab.message = 'lab ' + labId.org_name + ' added a new Rays'
+                notificationToBeSentToPatientFromLab.message = 'lab ' + labId.org_name + ' is waiting for your review.'
                 notificationToBeSentToPatientFromLab.save()
                 #############################################################################################
 

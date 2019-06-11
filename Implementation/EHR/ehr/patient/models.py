@@ -1,8 +1,6 @@
 from django.db import models
 
 from hospital.models import organization, hospital
-
-
 class temp_register(models.Model):
     id = models.AutoField(primary_key=True)
     email = models.EmailField(max_length=255)
@@ -74,3 +72,13 @@ class AllNotification(models.Model):
     message = models.TextField()
     read = models.BooleanField(default=False)
     recieved_date = models.DateTimeField(auto_now_add=True)
+
+
+class rate(models.Model):
+    Patient = models.ForeignKey(patient, on_delete=models.CASCADE, related_name='patient_rate')
+    Doctor = models.ForeignKey(user, on_delete=models.CASCADE, related_name='doctor_rate')
+    Hospital = models.ForeignKey(hospital, null=True, on_delete=models.CASCADE, related_name='hospital_rate')
+    Lab = models.ForeignKey(organization,null=True, on_delete=models.CASCADE, related_name='lab_rate')
+    Pharmacy = models.ForeignKey(organization, null=True,on_delete=models.CASCADE, related_name='pharmacy_rate')
+    Rate = models.IntegerField()
+

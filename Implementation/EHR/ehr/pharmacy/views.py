@@ -99,7 +99,7 @@ def medicineListView(request):
                 # affecting table "AllNotification" and save data to preview to the user
                 notificationToBeSentToPatientFromPharmacy.pharmacySenderId = pharmacyId
                 notificationToBeSentToPatientFromPharmacy.patientRecipient = patientId
-                notificationToBeSentToPatientFromPharmacy.message = 'pharmacy ' + pharmacyId.org_name + ' gave you a medicine'
+                notificationToBeSentToPatientFromPharmacy.message = 'Pharmacy ' + pharmacyId.org_name + ' is waiting for your review.'
                 notificationToBeSentToPatientFromPharmacy.save()
                 #############################################################################################
             # else:

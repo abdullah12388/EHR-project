@@ -10,6 +10,7 @@ from rest_framework.views import APIView
 
 from patient.models import user, patient, AllNotification
 from patient.views import QRCodeScanner
+from hospital.models import hospital
 from .forms import GetPatianTIDForm, PrescriptionForm, AddmedicenForm, AddRaysForm, AddanalyticsForm
 from .models import (prescription, report, doctor, multi_medecines,
                      patient_medicine, multi_rays, patient_rays, patient_analytics, multi_analytics)
@@ -152,11 +153,13 @@ class prescriptionFormView(FormView):
         notifyPatient = AllNotification()
         # taking ID from session of the doctor and patient I did't use what omar did because i need user instance
         doctorId = doctor.objects.get(id=D_ID)
+        userid = user.objects.get(user_id=doctorId.Doc_id)
         patientId = patient.objects.get(id=Doctor_Patiant_ID)
+        hospitalId = hospital.objects.get(h_id=doctorId.hospital_id)
         # affecting table "AllNotification" and save data to preview to the user
-        notifyPatient.doctorSenderId_id = doctorId.Doc_id
-        notifyPatient.patientRecipient_id = patientId.id
-        notifyPatient.hospitalSenderId_id = doctorId.hospital_id
+        notifyPatient.doctorSenderId = userid
+        notifyPatient.patientRecipient = patientId
+        notifyPatient.hospitalSenderId = hospitalId
         notifyPatient.message = 'Doctor ' + doctorId.Doc.first_name + ' is waiting for your review.'
         notifyPatient.save()
         #############################################################################################

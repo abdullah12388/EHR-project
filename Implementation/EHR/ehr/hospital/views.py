@@ -36,6 +36,8 @@ def hospitalLogin(request):
     else:
         request.session['type'] = 'hospital'
         return render(request,'hospitalLogin.html',{})
+
+
 def hospitalLogout(request):
     if request.session['type'] == 'hospital':
         if 'hospital_id' in request.session:
@@ -46,6 +48,8 @@ def hospitalLogout(request):
     else:
         print('there is no hospital entered')
     return HttpResponseRedirect('/hospital/')
+
+
 def Index(request):
     if request.method == 'POST':
         depart_num = request.POST['departments']
@@ -159,6 +163,8 @@ def Index(request):
         'lab': labdata,
     }
     return render(request, 'hospitalIndex.html',context)
+
+
 def update_doctor(request,Docid):
     if request.method == 'POST':
         usr = user.objects.filter(user_id=Docid)
@@ -236,6 +242,8 @@ def update_doctor(request,Docid):
             'userData':userData,
         }
         return render(request, 'updateHospitalDoctor.html',context)
+
+
 # patient doctor functions
 def add_doctor(request):
     if request.method == 'POST':
@@ -306,6 +314,8 @@ def add_doctor(request):
             'b_d': B_Doctor,
         }
         return render(request, 'addHospitalDoctor.html', context)
+
+
 def gender(num):
     if num == '1':
         return 'male'
@@ -315,6 +325,8 @@ def gender(num):
         return 'other'
     else:
         return 'error'
+
+
 def maritalStatus(num):
     if num == '1':
         return 'single'
@@ -328,6 +340,8 @@ def maritalStatus(num):
         return 'widowed'
     else:
         return 'error'
+
+
 # end of doctor profile
 def update_pharmacy(request,pharid,hosid):
     if request.method == 'POST':
@@ -359,6 +373,8 @@ def update_pharmacy(request,pharid,hosid):
             'pharmacyData':pharmacyData,
         }
         return render(request, 'updatePharmacy.html',context)
+
+
 def add_pharmacy(request):
     if request.method == 'POST':
         # upload profile,ssn pictures and save paths to database
@@ -384,6 +400,8 @@ def add_pharmacy(request):
     else:
         hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
         return render(request, 'addPharmacy.html',{'hospital': hospitaldata,'hos_id':hospitaldata.h_id,})
+
+
 def update_lab(request,labid,hosid):
     if request.method == 'POST':
         labor = organization.objects.filter(Type=2).filter(hospital_id=hosid).filter(org_id=labid)
@@ -415,6 +433,8 @@ def update_lab(request,labid,hosid):
             'labData':labData,
         }
         return render(request, 'updateLab.html',context)
+
+
 def add_Lab(request):
     if request.method == 'POST':
         # upload profile,ssn pictures and save paths to database
@@ -440,18 +460,26 @@ def add_Lab(request):
     else:
         hospitaldata = hospital.objects.get(h_id=request.session['hospital_id']);
         return render(request, 'addLab.html',{'hospital': hospitaldata,'hos_id':hospitaldata.h_id,})
-def delete_doctor(request,Did):
+
+
+def delete_doctor(request, Did):
     doctor.objects.filter(Doc_id=Did).update(hospital_id='')
     return HttpResponseRedirect('/hospital/Index/')
+
+
 def delete_pharmacy_lab(request,ph_lb_id,ph_lb_type):
     # organization.objects.filter(org_id=ph_lb_id).filter(Type=ph_lb_type).update(hospital_id='')
     organization.objects.filter(org_id=ph_lb_id).filter(Type=ph_lb_type).delete()
     return HttpResponseRedirect('/hospital/Index/')
-def unblock_doctor(request,ssn):
+
+
+def unblock_doctor(request, ssn):
     docId = user.objects.get(Ssn=ssn).user_id
     hosId = request.session['hospital_id']
     doctor.objects.filter(Doc_id=docId).update(hospital_id=hosId)
     return HttpResponseRedirect('/hospital/Index/')
+
+
 def hospital_profile_view(request,hosid=None):
     hospitaldata = get_object_or_404(hospital,h_id=hosid)
     context ={
@@ -459,16 +487,22 @@ def hospital_profile_view(request,hosid=None):
         'hos_id': hospitaldata.h_id,
     }
     return render(request, 'hospitalProfileView.html',context)
+
+
 def reset_doc_passowrd(request,id):
     password = make_password('123456789')
     print("new password", password)
     user.objects.filter(user_id=id).update(New_Password=password)
     return HttpResponseRedirect('/hospital/Index/')
+
+
 class StatView(View):
     def get(self, request, *args, **kwargs):
 
         context = {'hos_id' : request.session['hospital_id']}
         return render(request, 'hospital_charts.html', context)
+
+
 class HospitalStatistics(APIView):
     authentication_classes = []
     permission_classes = []

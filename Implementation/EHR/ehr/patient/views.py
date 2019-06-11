@@ -1,24 +1,27 @@
-from django.shortcuts import render
+from datetime import date
+
+import cv2
+import os
+import pyzbar.pyzbar as pyzbar
+import qrcode
+import shutil
+from django.conf import settings as set
+from django.contrib.auth.hashers import check_password
+from django.core.files.storage import FileSystemStorage
+from django.core.mail import EmailMessage
+from django.db.models import Count
 from django.http import HttpResponseRedirect, HttpResponse
+from django.http import JsonResponse
+from django.shortcuts import render
 from django.views.generic import DetailView
-from patient.forms import tempRegister, login, AddUser, AddPatient, searchHistory
 from doctor.models import (report, doctor, prescription, multi_analytics,
                            multi_chronic, multi_medecines, multi_rays,
                            patient_analytics, patient_chronic,
                            patient_medicine, patient_rays, all_analytics, all_medicine, all_rays, all_chronic)
-from patient.models import user, patient, temp_register
 from hospital.models import organization, hospital
-from django.http import JsonResponse
-from django.core.files.storage import FileSystemStorage
-import qrcode, shutil, os
-from datetime import date
-from django.conf import settings as set
-from django.contrib.auth.hashers import check_password
-from django.db.models import Count
-from django.core.mail import EmailMessage
-import cv2
-import numpy as np
-import pyzbar.pyzbar as pyzbar
+from patient.forms import tempRegister, login, AddUser, AddPatient, searchHistory
+from patient.models import user, patient, temp_register, AllNotification
+
 
 # Create your views here.
 
@@ -237,6 +240,60 @@ class DB_functions:
 
 
 def home(request):
+    # # after finishing please change the comment below to get everything from session
+    # # patient_id = request.session['patient_id']
+    # patient_id = request.session['patient_id']
+    # topDoctor = doctor.objects.annotate(Count('doc_rate')).order_by('-doc_rate')[:50]
+    # topHospital = hospital.objects.annotate(Count('hos_rate')).order_by('-hos_rate')[:50]
+    # topLab = organization.objects.filter(Type__exact='2').annotate(Count('org_rate')).order_by('-org_rate')[:50]
+    # topPharmacy = organization.objects.filter(Type__exact='1').annotate(Count('org_rate')).order_by('-org_rate')[:50]
+    # ch = report.objects.filter(patient_id=patient_id).exists()
+    # # print(ch)
+    # if(ch):
+    #     patientReport = report.objects.filter(patient_id__exact=patient_id).order_by('-Submit_date')[0]
+    # else:
+    #     patientReport = report.objects.filter(patient_id__isnull=True)
+    # pharmacies = organization.objects.filter(Type__exact='1')
+    # labs = organization.objects.filter(Type__exact='2')
+    # clinics = organization.objects.filter(Type__exact='3')
+    # hospitals = hospital.objects.all()
+    # notificationForUser = Notification(request.session['patient_id'])
+    # print(notificationForUser)
+    # context = {
+    #     'topDoctor': topDoctor,
+    #     'topHospital': topHospital,
+    #     'topLab': topLab,
+    #     'topPharmacy': topPharmacy,
+    #     'patientReport': patientReport,
+    #     'pharmacies': pharmacies,
+    #     'labs': labs,
+    #     'hospitals': hospitals,
+    #     'clinics':clinics,
+    #     'patid':patient_id,
+    #
+    # }
+    # if notificationForUser.count() >0:
+    #     context.update(
+    #         {'notific':notificationForUser}
+    #     )
+    #
+    # if patientReport:
+    #     lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(report__exact=patientReport.report).exists()
+    #     if lastMedicineInReportTrueOrFalse:
+    #         lastMedicineInReport = multi_medecines.objects.filter(report=patientReport.report)
+    #         context.update({'lastMedicineInReport': lastMedicineInReport})
+    #
+    #     lastAnalyticsInReportTrueOrFalse = multi_analytics.objects.filter(report__exact=patientReport.report).exists()
+    #     if lastAnalyticsInReportTrueOrFalse:
+    #         lastAnalyticsInReport = multi_analytics.objects.filter(report__exact=patientReport.report)
+    #         context.update({'lastAnalyticsInReport': lastAnalyticsInReport})
+    #
+    #     lastRaysInReportTrueOrFalse = multi_rays.objects.filter(report__exact=patientReport.report).exists()
+    #     if lastRaysInReportTrueOrFalse:
+    #         lastRaysInReport = multi_rays.objects.filter(report__exact=patientReport.report)
+    #         context.update({'lastRaysInReport': lastRaysInReport})
+    # else:
+    #     context={
     if 'patient_id' in request.session:
         # after finishing please change the comment below to get everything from session
         # patient_id = request.session['patient_id']
@@ -244,10 +301,11 @@ def home(request):
         topDoctor = doctor.objects.annotate(Count('doc_rate')).order_by('-doc_rate')[:50]
         topHospital = hospital.objects.annotate(Count('hos_rate')).order_by('-hos_rate')[:50]
         topLab = organization.objects.filter(Type__exact='2').annotate(Count('org_rate')).order_by('-org_rate')[:50]
-        topPharmacy = organization.objects.filter(Type__exact='1').annotate(Count('org_rate')).order_by('-org_rate')[:50]
+        topPharmacy = organization.objects.filter(Type__exact='1').annotate(Count('org_rate')).order_by('-org_rate')[
+                      :50]
         ch = report.objects.filter(patient_id=patient_id).exists()
         # print(ch)
-        if(ch):
+        if (ch):
             patientReport = report.objects.filter(patient_id__exact=patient_id).order_by('-Submit_date')[0]
         else:
             patientReport = report.objects.filter(patient_id__isnull=True)
@@ -255,6 +313,8 @@ def home(request):
         labs = organization.objects.filter(Type__exact='2')
         clinics = organization.objects.filter(Type__exact='3')
         hospitals = hospital.objects.all()
+        notifyData = AllNotification.objects.all()
+        newNotifyData = AllNotification.objects.filter(read=0)
         context = {
             'topDoctor': topDoctor,
             'topHospital': topHospital,
@@ -264,16 +324,20 @@ def home(request):
             'pharmacies': pharmacies,
             'labs': labs,
             'hospitals': hospitals,
-            'clinics':clinics,
-            'patid':patient_id,
+            'clinics': clinics,
+            'patid': patient_id,
+            'notifications': notifyData,
+            'newNotifications': newNotifyData,
         }
         if patientReport:
-            lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(report__exact=patientReport.report).exists()
+            lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(
+                report__exact=patientReport.report).exists()
             if lastMedicineInReportTrueOrFalse:
                 lastMedicineInReport = multi_medecines.objects.filter(report=patientReport.report)
                 context.update({'lastMedicineInReport': lastMedicineInReport})
 
-            lastAnalyticsInReportTrueOrFalse = multi_analytics.objects.filter(report__exact=patientReport.report).exists()
+            lastAnalyticsInReportTrueOrFalse = multi_analytics.objects.filter(
+                report__exact=patientReport.report).exists()
             if lastAnalyticsInReportTrueOrFalse:
                 lastAnalyticsInReport = multi_analytics.objects.filter(report__exact=patientReport.report)
                 context.update({'lastAnalyticsInReport': lastAnalyticsInReport})
@@ -283,7 +347,7 @@ def home(request):
                 lastRaysInReport = multi_rays.objects.filter(report__exact=patientReport.report)
                 context.update({'lastRaysInReport': lastRaysInReport})
         else:
-            context={
+            context = {
                 'topDoctor': topDoctor,
                 'topHospital': topHospital,
                 'topLab': topLab,
@@ -300,7 +364,6 @@ def home(request):
             return render(request, 'patientIndex.html', context)
     else:
         return HttpResponseRedirect('/')
-
     return render(request, 'patientIndex.html', context)
 
 
@@ -384,17 +447,17 @@ def patientLogin(request):
                     return HttpResponseRedirect('/patient/?alert=wrong_email')
             #######################################################################
             # if request.method == 'POST':
-                # if 'for_pass' in request.POST:
+            # if 'for_pass' in request.POST:
             em = request.POST['for_pass']
             uid = user.objects.get(email_1=em).user_id
             # pid = patient.objects.get(Patient=uid).id
             title = 'Reset Your Password'
             body = 'Visit This Link For Reset Your Password' \
-                   ' http://127.0.0.1:8000/patient/forgetPassword/'+str(uid)
-            email = EmailMessage(title,body,to=[em])
+                   ' http://127.0.0.1:8000/patient/forgetPassword/' + str(uid)
+            email = EmailMessage(title, body, to=[em])
             email.send()
-                # else:
-                #     print('error')
+            # else:
+            #     print('error')
             #######################################################################
         else:
             form = login()
@@ -406,7 +469,7 @@ def patientLogin(request):
         return HttpResponseRedirect('/patient/Index/')
 
 
-def forget_password(request,uid):
+def forget_password(request, uid):
     # email = EmailMessage('title', 'body', to=['dodyasd123888@gmail.com'])
     # email.send()
     if request.method == 'POST':
@@ -421,10 +484,10 @@ def forget_password(request,uid):
             print('save error')
     # uid = patient.objects.get(id=pid).Patient_id
     userData = user.objects.get(user_id=uid)
-    context={
+    context = {
         'user': userData,
     }
-    return render(request,'forgetPassword.html',context)
+    return render(request, 'forgetPassword.html', context)
 
 
 def patientLogout(request):
@@ -523,6 +586,7 @@ def patient_profile_update(request):
         }
         return render(request, 'patientProfileUpdate.html', context)
 
+
 def patient_profile(request):
     if request.method == 'POST':
         form1 = AddUser(request.POST or None)
@@ -595,7 +659,7 @@ def patient_profile(request):
                     db = DB_functions()
                     db.remove_from_temp(id=request.session['patient_temp_id'])
                     print('iam here')
-                    return HttpResponseRedirect('/patient/patientCard/'+str(u_id))
+                    return HttpResponseRedirect('/patient/patientCard/' + str(u_id))
                 else:
                     print('form two')
                     print(form2.errors)
@@ -610,6 +674,8 @@ def patient_profile(request):
             'form2': form2,
         }
         return render(request, 'patientProfile.html', context)
+
+
 def gender(num):
     if num == '1':
         return 'male'
@@ -619,6 +685,8 @@ def gender(num):
         return 'other'
     else:
         return 'error'
+
+
 def maritalStatus(num):
     if num == '1':
         return 'single'
@@ -632,6 +700,8 @@ def maritalStatus(num):
         return 'widowed'
     else:
         return 'error'
+
+
 def bloodType(num):
     if num == '1':
         return 'A+'
@@ -653,6 +723,8 @@ def bloodType(num):
         return 'other'
     else:
         return 'error'
+
+
 def disabilityStatus(num):
     if num == '1':
         return 'disabled'
@@ -660,6 +732,8 @@ def disabilityStatus(num):
         return 'none'
     else:
         return 'error'
+
+
 def chronicDiseases(num):
     if num == '1':
         return 'have'
@@ -667,8 +741,12 @@ def chronicDiseases(num):
         return 'none'
     else:
         return 'error'
+
+
 def move(src, dest):
     shutil.move(src, dest)
+
+
 # end of patient profile
 
 
@@ -687,7 +765,7 @@ class patientProfileDetialView(DetailView):
     template_name = 'patientProfileView.html'
     context_object_name = 'patient'
     redirect_url = '/patient/Index/'
-    #self.kwargs['pk']
+    # self.kwargs['pk']
     # def render_to_response(self , redirect_url):
     #     if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
     #         return HttpResponseRedirect('/patient/login/')
@@ -695,6 +773,7 @@ class patientProfileDetialView(DetailView):
     #         return HttpResponseRedirect('/')
     #     else:
     #        return super().render_to_response(redirect_url)
+
 
 def patientHistory(request):
     global mix_1_1
@@ -767,7 +846,7 @@ def patientDoctor(request):
 #     else:
 #         return HttpResponse('age:fail to calculate')
 
-def patientCard(request,userid):
+def patientCard(request, userid):
     # print(request.session['user_id'])
     Profile_picture = user.objects.get(user_id=userid).Profile_picture
     first_name = user.objects.get(user_id=userid).first_name
@@ -797,47 +876,44 @@ def patientCard(request,userid):
             'Create_date': Create_date,
             'QR_code': QR_code,
             'age': age,
-            'userid':userid,
+            'userid': userid,
         }
         return render(request, 'patientData.html', context)
     else:
         return HttpResponse('age:fail to calculate')
 
+
 def QRCodeScanner():
-    #to determine which camera you will use
+    # to determine which camera you will use
     cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
-    #to check if the machine contains a camera
+    # to check if the machine contains a camera
     if cap is None or not cap.isOpened():
         print('Warning: unable to open Camera! You might not Have a Camera')
     else:
         while True:
-            #to make the camera read and capture frames
+            # to make the camera read and capture frames
             ret, frame = cap.read()
-            #where QR Code data will be saved
+            # where QR Code data will be saved
             decodedObjects = pyzbar.decode(frame)
-            #iterate throw the list which contains QR details
+            # iterate throw the list which contains QR details
             for obj in decodedObjects:
-                #if object contains data that means a QR Code is detected
+                # if object contains data that means a QR Code is detected
                 if obj.data:
-                    #it waits for a QR Code to be detected
+                    # it waits for a QR Code to be detected
                     if cv2.waitKey(1):
-                        #it's for stopping the camera and release all resources that we used
+                        # it's for stopping the camera and release all resources that we used
                         if obj.data:
                             cap.release()
                             cv2.destroyAllWindows()
-                            #return the QR Code data that we extracted in the for loop
+                            # return the QR Code data that we extracted in the for loop
                             return obj.data
-
-            #it's to show a frame that contains camera
+            # it's to show a frame that contains camera
             cv2.imshow("Frame", frame)
             # it waits for a QR Code to be detected
             if cv2.waitKey(1):
                 for obj in decodedObjects:
                     if obj.data:
                         break
-
-
-
 
 def QRCodeScanView(request):
     QRData = QRCodeScanner()
@@ -863,6 +939,6 @@ def QRCodeScanView(request):
     else:
         return HttpResponseRedirect('/patient/')
 
-
-
-
+def Notification(id):
+    notiyMe = AllNotification.objects.filter(patientRecipient=id).order_by('read').order_by('-recieved_date')
+    return notiyMe

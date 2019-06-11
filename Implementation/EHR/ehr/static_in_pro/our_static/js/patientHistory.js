@@ -9,13 +9,7 @@ $(document).ready(function () {
     for( i=0; i<medicine_body.length; i++ ) {
         arr_2.push($(".medicine_body:eq("+ i +")"));
     }
-    for( i=0; i<12; i++ ) {
-        // console.log("i = ", i);
-        // console.log(arr_1[i]);
-        arr_1[i].click(function(){
-            console.log(i);
-        });
-    }
+
     // var tehaTest = $("#tehaTest");
     // elements.each(function () {
     //     for( i=0; i<12; i++ ) {

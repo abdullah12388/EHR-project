@@ -2,463 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee7bb95e-92ac-4fdd-8d7d-d7cb004bdf89" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/EHR.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EHR.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ehr/templates/patientHistoryReport.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/CNAME" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/CNAME" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/Gruntfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/Gruntfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/_plugins/bridge.rb" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/_plugins/bridge.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/_plugins/bugify.rb" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/_plugins/bugify.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/_pug/customizer-nav.pug" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/_pug/customizer-nav.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/_pug/customizer-variables.pug" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/_pug/customizer-variables.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/assets/js/customize.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/assets/js/customize.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/assets/js/vendor/jszip.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/assets/js/vendor/jszip.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/assets/js/vendor/less.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/assets/js/vendor/less.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/assets/js/vendor/uglify.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/assets/js/vendor/uglify.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/docs/robots.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/grunt/.jshintrc" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/grunt/.jshintrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/js/.jscsrc" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/js/.jscsrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/js/.jshintrc" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/js/.jshintrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/js/tests/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/js/tests/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/js/tests/unit/.jshintrc" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/js/tests/unit/.jshintrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/js/tests/vendor/jquery.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/js/tests/vendor/jquery.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/js/tests/vendor/qunit.js" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/js/tests/vendor/qunit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/less/.csslintrc" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/less/.csslintrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/nuget/MyGet.ps1" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/nuget/MyGet.ps1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/nuget/bootstrap.less.nuspec" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/nuget/bootstrap.less.nuspec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/nuget/bootstrap.nuspec" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/nuget/bootstrap.nuspec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/css/autocomplete.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/css/autocomplete.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/css/fonts.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/css/fonts.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/css/responsive.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/css/responsive_rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/css/responsive_rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/css/vendor/select2/LICENSE-SELECT2.md" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/css/vendor/select2/LICENSE-SELECT2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/css/vendor/select2/select2.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/css/vendor/select2/select2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/css/vendor/select2/select2.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/css/vendor/select2/select2.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/css/widgets.css" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/css/widgets.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/fonts/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/fonts/README.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/README.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/calendar-icons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/calendar-icons.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-addlink.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-addlink.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-alert.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-alert.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-calendar.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-calendar.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-changelink.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-changelink.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-clock.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-clock.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-deletelink.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-deletelink.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-no.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-no.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-unknown-alt.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-unknown-alt.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-unknown.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-unknown.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-yes.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/icon-yes.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/inline-delete.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/inline-delete.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/search.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/search.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/selector-icons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/selector-icons.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/sorting-icons.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/sorting-icons.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/tooltag-add.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/tooltag-add.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/img/tooltag-arrowright.svg" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/img/tooltag-arrowright.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/SelectBox.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/SelectBox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/autocomplete.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/autocomplete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/cancel.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/cancel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/collapse.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/collapse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/jquery.init.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/jquery.init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/popup_response.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/popup_response.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/prepopulate.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/prepopulate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/prepopulate.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/prepopulate.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/prepopulate_init.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/prepopulate_init.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/timeparse.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/timeparse.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/jquery/LICENSE-JQUERY.txt" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/jquery/LICENSE-JQUERY.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/LICENSE-SELECT2.md" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/LICENSE-SELECT2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/ar.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/ar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/az.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/az.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/bg.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/bg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/ca.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/ca.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/cs.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/cs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/da.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/da.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/de.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/de.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/el.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/el.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/en.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/en.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/es.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/es.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/et.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/et.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/eu.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/eu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/fa.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/fa.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/fi.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/fi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/fr.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/fr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/gl.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/gl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/he.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/he.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/hi.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/hi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/hr.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/hr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/hu.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/hu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/id.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/id.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/is.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/is.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/it.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/it.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/ja.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/ja.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/km.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/km.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/ko.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/ko.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/lt.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/lt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/lv.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/lv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/mk.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/mk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/ms.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/ms.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/nb.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/nb.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/nl.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/nl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/pl.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/pl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/pt-BR.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/pt-BR.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/pt.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/pt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/ro.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/ro.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/ru.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/ru.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/sk.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/sk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/sr-Cyrl.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/sr-Cyrl.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/sr.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/sr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/sv.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/sv.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/th.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/th.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/tr.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/tr.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/uk.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/uk.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/vi.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/vi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/zh-CN.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/zh-CN.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/zh-TW.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/i18n/zh-TW.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/select2.full.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/select2.full.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/select2.full.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/select2/select2.full.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/xregexp/LICENSE-XREGEXP.txt" beforeDir="false" afterPath="$PROJECT_DIR$/static_in_env/static_root/admin/js/vendor/xregexp/LICENSE-XREGEXP.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/CNAME" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/CONTRIBUTING.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/Gemfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/Gemfile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/Gruntfile.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/ISSUE_TEMPLATE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/_config.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/bower.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_data/browser-bugs.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_data/browser-features.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_data/core-team.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_data/glyphicons.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_data/sass-team.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_data/showcase.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_data/translations.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/ads.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/alerts.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/badges.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/breadcrumbs.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/button-dropdowns.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/button-groups.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/dropdowns.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/glyphicons.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/input-groups.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/jumbotron.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/labels.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/list-group.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/media.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/navbar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/navs.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/page-header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/pagination.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/panels.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/progress-bars.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/responsive-embed.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/thumbnails.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/components/wells.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/css/buttons.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/css/code.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/css/forms.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/css/grid.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/css/helpers.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/css/images.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/css/less.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/css/overview.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/css/responsive-utilities.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/css/sass.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/css/tables.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/css/type.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/customizer-variables.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/footer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/getting-started/accessibility.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/getting-started/browser-device-support.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/getting-started/community.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/getting-started/disabling-responsiveness.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/getting-started/download.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/getting-started/examples.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/getting-started/grunt.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/getting-started/license.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/getting-started/template.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/getting-started/third-party-support.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/getting-started/tools.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/getting-started/translations.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/getting-started/whats-included.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/js/affix.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/js/alerts.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/js/buttons.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/js/carousel.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/js/collapse.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/js/dropdowns.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/js/modal.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/js/overview.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/js/popovers.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/js/scrollspy.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/js/tabs.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/js/tooltips.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/js/transitions.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/nav/about.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/nav/components.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/nav/css.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/nav/customize.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/nav/getting-started.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/nav/javascript.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/nav/main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_includes/nav/migration.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_layouts/default.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_layouts/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_plugins/bridge.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_plugins/bugify.rb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_pug/customizer-nav.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/_pug/customizer-variables.pug" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/about.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/apple-touch-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/brand/bootstrap-outline.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/brand/bootstrap-punchout.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/brand/bootstrap-solid.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/css/docs.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/css/docs.min.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/css/ie10-viewport-bug-workaround.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/css/src/docs.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/css/src/pygments-manni.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/flash/ZeroClipboard.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/img/components.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/img/devices.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/img/expo-lyft.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/img/expo-newsweek.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/img/expo-riot.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/img/expo-vogue.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/img/sass-less.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/customize.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/docs.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/ie-emulation-modes-warning.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/ie8-responsive-file-warning.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/raw-files.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/src/application.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/src/customizer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/vendor/Blob.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/vendor/FileSaver.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/vendor/ZeroClipboard.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/vendor/anchor.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/vendor/autoprefixer.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/vendor/holder.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/vendor/jquery.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/vendor/jszip.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/vendor/less.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/assets/js/vendor/uglify.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/browser-bugs.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/components.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/css.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/customize.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/blog/blog.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/blog/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/carousel/carousel.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/carousel/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/cover/cover.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/cover/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/dashboard/dashboard.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/dashboard/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/grid/grid.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/grid/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/jumbotron-narrow/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/jumbotron-narrow/jumbotron-narrow.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/jumbotron/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/jumbotron/jumbotron.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/justified-nav/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/justified-nav/justified-nav.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/navbar-fixed-top/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/navbar-fixed-top/navbar-fixed-top.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/navbar-static-top/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/navbar-static-top/navbar-static-top.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/navbar/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/navbar/navbar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/non-responsive/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/non-responsive/non-responsive.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/offcanvas/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/offcanvas/offcanvas.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/offcanvas/offcanvas.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/blog.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/carousel.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/cover.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/dashboard.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/equal-height-columns.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/grid.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/jumbotron-narrow.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/jumbotron.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/justified-nav.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/navbar-fixed.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/navbar-static.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/navbar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/non-responsive.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/offcanvas.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/sign-in.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/starter-template.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/sticky-footer-navbar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/sticky-footer.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/screenshots/theme.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/signin/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/signin/signin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/starter-template/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/starter-template/starter-template.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/sticky-footer-navbar/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/sticky-footer-navbar/sticky-footer-navbar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/sticky-footer/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/sticky-footer/sticky-footer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/theme/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/theme/theme.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/tooltip-viewport/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/tooltip-viewport/tooltip-viewport.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/examples/tooltip-viewport/tooltip-viewport.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/getting-started.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/javascript.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/migration.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/docs/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/fonts/glyphicons-halflings-regular.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/grunt/bs-commonjs-generator.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/grunt/bs-glyphicons-data-generator.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/grunt/bs-lessdoc-parser.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/grunt/bs-raw-files-generator.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/grunt/change-version.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/grunt/configBridge.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/grunt/npm-shrinkwrap.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/grunt/sauce_browsers.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/affix.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/alert.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/button.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/carousel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/collapse.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/dropdown.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/modal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/popover.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/scrollspy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tab.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/unit/affix.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/unit/alert.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/unit/button.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/unit/carousel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/unit/collapse.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/unit/dropdown.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/unit/modal.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/unit/phantom.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/unit/popover.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/unit/scrollspy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/unit/tab.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/unit/tooltip.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/vendor/jquery.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/vendor/qunit.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/vendor/qunit.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/visual/affix-with-sticky-footer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/visual/affix.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/visual/alert.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/visual/button.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/visual/carousel.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/visual/collapse.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/visual/dropdown.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/visual/modal.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/visual/popover.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/visual/scrollspy.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/visual/tab.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tests/visual/tooltip.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/tooltip.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/js/transition.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/alerts.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/badges.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/bootstrap.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/breadcrumbs.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/button-groups.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/buttons.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/carousel.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/close.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/code.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/component-animations.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/dropdowns.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/forms.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/glyphicons.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/grid.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/input-groups.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/jumbotron.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/labels.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/list-group.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/media.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/alerts.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/background-variant.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/border-radius.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/buttons.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/center-block.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/clearfix.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/forms.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/gradients.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/grid-framework.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/grid.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/hide-text.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/image.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/labels.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/list-group.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/nav-divider.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/nav-vertical-align.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/opacity.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/pagination.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/panels.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/progress-bar.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/reset-filter.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/reset-text.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/resize.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/responsive-visibility.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/size.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/tab-focus.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/table-row.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/text-emphasis.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/text-overflow.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/mixins/vendor-prefixes.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/modals.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/navbar.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/navs.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/normalize.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/pager.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/pagination.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/panels.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/popovers.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/print.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/progress-bars.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/responsive-embed.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/responsive-utilities.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/scaffolding.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/tables.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/theme.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/thumbnails.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/tooltip.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/type.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/utilities.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/variables.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/less/wells.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/nuget/MyGet.ps1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/nuget/bootstrap.less.nuspec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/nuget/bootstrap.nuspec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/package.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static_in_env/static_root/styles/bootstrap-3.3.7/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/hospital/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/hospital/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/patient/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/patient/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/patient/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/patient/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/main_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/main_styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/templates/addHospitalDoctor.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/addHospitalDoctor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/templates/patientHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/patientHistory.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -483,28 +36,53 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ehr/ehr/settings.py">
+        <entry file="file://$PROJECT_DIR$/ehr/patient/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="97" column="23" selection-start-line="97" selection-start-column="23" selection-end-line="97" selection-end-column="23" />
+            <state relative-caret-position="126">
+              <caret line="729" column="46" selection-start-line="729" selection-start-column="37" selection-end-line="729" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#12737#15770#0" />
+                <element signature="e#15805#16522#0" />
+                <element signature="e#16558#16800#0" />
+                <element signature="e#16833#17016#0" />
+                <element signature="e#17050#19268#0" />
+                <element signature="e#19309#19997#0" />
+                <element signature="e#20032#20670#0" />
+                <element signature="e#20743#24570#0" />
+                <element signature="e#24606#28965#0" />
+                <element signature="e#28987#29145#0" />
+                <element signature="e#29174#29432#0" />
+                <element signature="e#29457#29857#0" />
+                <element signature="e#29889#30005#0" />
+                <element signature="e#30036#30148#0" />
+                <element signature="e#30174#30196#0" />
+                <element signature="e#30197#30221#0" />
+                <element signature="e#30653#31242#0" />
+                <element signature="e#32738#32786#0" />
+                <element signature="e#32789#32816#0" />
+                <element signature="e#34371#35685#0" />
+                <element signature="e#35712#37121#0" />
+                <element signature="e#37156#37986#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ehr/templates/header.html">
+        <entry file="file://$PROJECT_DIR$/ehr/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+            <state relative-caret-position="480">
+              <caret line="98" selection-start-line="98" selection-end-line="98" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ehr/static_in_pro/our_static/js/patientHistory.js">
+        <entry file="file://$PROJECT_DIR$/ehr/templates/patientHistoryReport.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+            <state relative-caret-position="150">
+              <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -512,49 +90,59 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ehr/templates/patientHistory.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="125" column="43" lean-forward="true" selection-start-line="125" selection-start-column="43" selection-end-line="125" selection-end-column="43" />
+            <state relative-caret-position="144">
+              <caret line="58" column="202" selection-start-line="58" selection-start-column="202" selection-end-line="58" selection-end-column="202" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ehr/patient/views.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ehr/hospital/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-502">
-              <caret line="663" column="39" selection-start-line="663" selection-start-column="39" selection-end-line="663" selection-end-column="39" />
+            <state relative-caret-position="81">
+              <caret line="167" column="15" lean-forward="true" selection-start-line="167" selection-start-column="15" selection-end-line="167" selection-end-column="15" />
               <folding>
-                <element signature="e#0#35#0" expanded="true" />
-                <element signature="e#1762#3880#0" />
-                <element signature="e#3934#5972#0" />
-                <element signature="e#6016#12446#0" />
-                <element signature="e#12472#15503#0" />
-                <element signature="e#15538#16254#0" />
-                <element signature="e#16290#16532#0" />
-                <element signature="e#16565#16748#0" />
-                <element signature="e#16782#17881#0" />
-                <element signature="e#17916#18554#0" />
-                <element signature="e#18619#22968#0" />
-                <element signature="e#22990#23148#0" />
-                <element signature="e#23177#23435#0" />
-                <element signature="e#23460#23860#0" />
-                <element signature="e#23892#24008#0" />
-                <element signature="e#24039#24151#0" />
-                <element signature="e#24177#24199#0" />
-                <element signature="e#24656#25245#0" />
-                <element signature="e#25280#26366#0" />
-                <element signature="e#26401#26449#0" />
-                <element signature="e#26452#26479#0" />
+                <element signature="e#0#80#0" expanded="true" />
+                <element signature="e#677#1659#0" />
+                <element signature="e#1695#2051#0" />
+                <element signature="e#2078#7384#0" />
+                <element signature="e#7425#11470#0" />
+                <element signature="e#11645#14580#0" />
+                <element signature="e#12010#14580#0" />
+                <element signature="e#15096#15254#0" />
+                <element signature="e#15285#15543#0" />
+                <element signature="e#15617#17160#0" />
+                <element signature="e#17194#18486#0" />
+                <element signature="e#18530#20107#0" />
+                <element signature="e#20136#21423#0" />
+                <element signature="e#21462#21570#0" />
+                <element signature="e#21631#21858#0" />
+                <element signature="e#22154#22362#0" />
+                <element signature="e#22405#22596#0" />
+                <element signature="e#22625#22792#0" />
+                <element signature="e#22834#23507#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/commands.txt">
+        <entry file="file://$PROJECT_DIR$/ehr/hospital/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="20" />
+            <state relative-caret-position="315">
+              <caret line="21" column="40" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/main_styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="1783" column="20" selection-start-line="1783" selection-start-column="20" selection-end-line="1783" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -564,6 +152,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>error</find>
+      <find>multi_medecines</find>
+      <find>sear</find>
+      <find>objects.</find>
+      <find>print</find>
+      <find>histo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -572,12 +165,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ehr/static_in_pro/our_static/js/patientSignup.js" />
-        <option value="$PROJECT_DIR$/ehr/templates/patientData.html" />
-        <option value="$PROJECT_DIR$/ehr/templates/patientProfile.html" />
         <option value="$PROJECT_DIR$/ehr/templates/patientAnalyticsToBeSubmit.html" />
         <option value="$PROJECT_DIR$/ehr/templates/patientRaysToBeSubmit.html" />
-        <option value="$PROJECT_DIR$/ehr/templates/patientHistory.html" />
         <option value="$PROJECT_DIR$/ehr/templates/hospitalLogin.html" />
         <option value="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/js/tests/vendor/qunit.js" />
         <option value="$PROJECT_DIR$/ehr/patient/forms.py" />
@@ -586,7 +175,6 @@
         <option value="$PROJECT_DIR$/ehr/templates/addOrganization.html" />
         <option value="$PROJECT_DIR$/ehr/templates/addPharmacy.html" />
         <option value="$PROJECT_DIR$/ehr/templates/addLab.html" />
-        <option value="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/main_styles.css" />
         <option value="$PROJECT_DIR$/ehr/templates/patientProfileView.html" />
         <option value="$PROJECT_DIR$/ehr/templates/hospitalProfileView.html" />
         <option value="$PROJECT_DIR$/ehr/doctor/models.py" />
@@ -601,26 +189,33 @@
         <option value="$PROJECT_DIR$/ehr/hospital/urls.py" />
         <option value="$PROJECT_DIR$/ehr/templates/hospitalIndex.html" />
         <option value="$PROJECT_DIR$/ehr/templates/updateLab.html" />
-        <option value="$PROJECT_DIR$/ehr/hospital/views.py" />
         <option value="$PROJECT_DIR$/ehr/doctor/forms.py" />
         <option value="$PROJECT_DIR$/ehr/templates/Doctor_app/navbar.html" />
         <option value="$PROJECT_DIR$/ehr/templates/Doctor_app/Doctor_base.html" />
         <option value="$PROJECT_DIR$/ehr/templates/navbar.html" />
         <option value="$PROJECT_DIR$/ehr/templates/Doctor_app/prescription_list.html" />
         <option value="$PROJECT_DIR$/ehr/templates/Doctor_app/Patiant_ID_singup.html" />
-        <option value="$PROJECT_DIR$/ehr/patient/urls.py" />
         <option value="$PROJECT_DIR$/ehr/doctor/urls.py" />
+        <option value="$PROJECT_DIR$/ehr/doctor/views.py" />
         <option value="$PROJECT_DIR$/ehr/lab/urls.py" />
         <option value="$PROJECT_DIR$/ehr/templates/labIndex.html" />
         <option value="$PROJECT_DIR$/ehr/templates/pharmacyIndex.html" />
         <option value="$PROJECT_DIR$/ehr/pharmacy/urls.py" />
         <option value="$PROJECT_DIR$/ehr/lab/views.py" />
         <option value="$PROJECT_DIR$/ehr/doctor/views.py" />
-        <option value="$PROJECT_DIR$/ehr/ehr/settings.py" />
         <option value="$PROJECT_DIR$/ehr/pharmacy/views.py" />
-        <option value="$PROJECT_DIR$/ehr/templates/pharmacyLogin.html" />
-        <option value="$PROJECT_DIR$/ehr/templates/login.html" />
+        <option value="$PROJECT_DIR$/ehr/static_in_pro/our_static/js/patientHistory.js" />
+        <option value="$PROJECT_DIR$/ehr/ehr/__init__.py" />
+        <option value="$PROJECT_DIR$/ehr/ehr/settings.py" />
+        <option value="$PROJECT_DIR$/ehr/ehr/settings.py" />
+        <option value="$PROJECT_DIR$/ehr/hospital/views.py" />
+        <option value="$PROJECT_DIR$/ehr/patient/urls.py" />
         <option value="$PROJECT_DIR$/ehr/patient/views.py" />
+        <option value="$PROJECT_DIR$/ehr/templates/base.html" />
+        <option value="$PROJECT_DIR$/ehr/templates/patientHistoryReport.html" />
+        <option value="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/main_styles.css" />
+        <option value="$PROJECT_DIR$/ehr/templates/addHospitalDoctor.html" />
+        <option value="$PROJECT_DIR$/ehr/templates/patientHistory.html" />
       </list>
     </option>
   </component>
@@ -636,8 +231,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Course" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -654,22 +247,19 @@
               <item name="EHR" type="b2602c69:ProjectViewProjectNode" />
               <item name="EHR" type="462c0819:PsiDirectoryNode" />
               <item name="ehr" type="462c0819:PsiDirectoryNode" />
-              <item name="static_in_pro" type="462c0819:PsiDirectoryNode" />
+              <item name="doctor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EHR" type="b2602c69:ProjectViewProjectNode" />
               <item name="EHR" type="462c0819:PsiDirectoryNode" />
               <item name="ehr" type="462c0819:PsiDirectoryNode" />
-              <item name="static_in_pro" type="462c0819:PsiDirectoryNode" />
-              <item name="our_static" type="462c0819:PsiDirectoryNode" />
+              <item name="hospital" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EHR" type="b2602c69:ProjectViewProjectNode" />
               <item name="EHR" type="462c0819:PsiDirectoryNode" />
               <item name="ehr" type="462c0819:PsiDirectoryNode" />
-              <item name="static_in_pro" type="462c0819:PsiDirectoryNode" />
-              <item name="our_static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="patient" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EHR" type="b2602c69:ProjectViewProjectNode" />
@@ -681,13 +271,19 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Course" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -708,6 +304,58 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager" selected="Python.views (1)">
+    <configuration name="views (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="EHR" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ehr/hospital" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ehr/hospital/views.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="EHR" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ehr/patient" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ehr/patient/views.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.views (1)" />
+        <item itemvalue="Python.views" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -731,12 +379,21 @@
       <workItem from="1558349722684" duration="162912000" />
       <workItem from="1558946972318" duration="1212000" />
       <workItem from="1558948322232" duration="2945000" />
-      <workItem from="1559047580438" duration="9879000" />
+      <workItem from="1559047580438" duration="468000" />
+      <workItem from="1559087691045" duration="3434000" />
+      <workItem from="1559588086569" duration="642000" />
+      <workItem from="1559591587454" duration="443000" />
+      <workItem from="1559593815650" duration="344000" />
+      <workItem from="1559595290769" duration="263000" />
+      <workItem from="1560121521056" duration="5635000" />
+      <workItem from="1560155206154" duration="3450000" />
+      <workItem from="1560188284343" duration="3387000" />
+      <workItem from="1560206298970" duration="13637000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="329699000" />
+    <option name="totallyTimeSpent" value="360934000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -748,189 +405,41 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1040" height="754" extended-state="6" />
+    <frame x="67" y="25" width="957" height="743" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25918368" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.39407244" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Concurrent Activities Diagram" weight="0.32899022" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32956153" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32899022" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32956153" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32956153" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32956153" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32839838" />
-      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.27198696" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32899022" />
+      <window_info anchor="bottom" id="Educational.CheckDetails" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.3297587" />
-      <window_info anchor="right" id="Database" order="4" weight="0.3297587" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32930845" />
+      <window_info anchor="right" id="SciView" order="4" weight="0.32930845" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/EHR$views.coverage" NAME="views Coverage Results" MODIFIED="1560157382838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ehr/patient" />
+    <SUITE FILE_PATH="coverage/EHR$views__1_.coverage" NAME="views (1) Coverage Results" MODIFIED="1560206688517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ehr/hospital" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ehr/templates/patientData.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="67" column="144" selection-start-line="67" selection-start-column="144" selection-end-line="67" selection-end-column="144" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/hospital/forms.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/hospital/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1725">
-          <caret line="69" column="40" selection-start-line="69" selection-start-column="40" selection-end-line="69" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/patientProfileView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="168" column="10" lean-forward="true" selection-start-line="168" selection-start-column="10" selection-end-line="168" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/patientProfile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="109" column="28" lean-forward="true" selection-start-line="109" selection-start-column="28" selection-end-line="112" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/hospitalProfileView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="23" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/patientAnalyticsToBeSubmit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="28" column="81" selection-start-line="28" selection-start-column="81" selection-end-line="28" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/addPharmacy.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/updateDoctor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="37" lean-forward="true" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/Doctor_app/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/Doctor_app/home.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/Doctor_app/navbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="128" column="65" lean-forward="true" selection-start-line="128" selection-start-column="65" selection-end-line="128" selection-end-column="103" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/addDoctor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" selection-start-line="3" selection-end-line="33" selection-end-column="6" />
-          <folding>
-            <element signature="n#div#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/Doctor_app/Doctor_index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/Doctor_app/prescription_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="90" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/updatePharmacy.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="26" column="123" selection-start-line="26" selection-start-column="123" selection-end-line="26" selection-end-column="123" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/hospital/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="18" column="31" lean-forward="true" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/pharmacyProfileView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="103" column="31" selection-start-line="103" selection-start-column="12" selection-end-line="103" selection-end-column="31" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/Doctor_app/patient_rays_form.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/Doctor_app/patient_rays_detail.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/doctor/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="48" column="11" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/patient/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="48" column="11" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ehr/templates/Doctor_app/prescription_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -1000,64 +509,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/hospital/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2786">
-          <caret line="336" column="23" selection-start-line="336" selection-start-column="23" selection-end-line="336" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#80#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/doctor/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1145">
-          <caret line="13" column="39" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/lab/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2332">
-          <caret line="114" column="36" selection-start-line="114" selection-start-column="36" selection-end-line="114" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ehr/templates/labIndex.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
           <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/patient/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-502">
-          <caret line="663" column="39" selection-start-line="663" selection-start-column="39" selection-end-line="663" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#1762#3880#0" />
-            <element signature="e#3934#5972#0" />
-            <element signature="e#6016#12446#0" />
-            <element signature="e#12472#15503#0" />
-            <element signature="e#15538#16254#0" />
-            <element signature="e#16290#16532#0" />
-            <element signature="e#16565#16748#0" />
-            <element signature="e#16782#17881#0" />
-            <element signature="e#17916#18554#0" />
-            <element signature="e#18619#22968#0" />
-            <element signature="e#22990#23148#0" />
-            <element signature="e#23177#23435#0" />
-            <element signature="e#23460#23860#0" />
-            <element signature="e#23892#24008#0" />
-            <element signature="e#24039#24151#0" />
-            <element signature="e#24177#24199#0" />
-            <element signature="e#24656#25245#0" />
-            <element signature="e#25280#26366#0" />
-            <element signature="e#26401#26449#0" />
-            <element signature="e#26452#26479#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1071,19 +526,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/patient/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" column="71" selection-start-line="22" selection-start-column="71" selection-end-line="23" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/patientIdentity.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/patientIdentity.html" />
     <entry file="file://$PROJECT_DIR$/ehr/templates/patientProfile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
@@ -1091,20 +534,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/patientData.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="67" column="144" selection-start-line="67" selection-start-column="144" selection-end-line="67" selection-end-column="144" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ehr/templates/signup.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/ehr/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/ehr/wsgi.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Oabw9z00VD.sql">
@@ -1123,20 +553,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ehr/pharmacy/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/pharmacy/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/ehr/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ehr/templates/pharmacyLogin.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -1166,47 +582,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/patient/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="364" column="69" lean-forward="true" selection-start-line="364" selection-start-column="69" selection-end-line="364" selection-end-column="69" />
-          <folding>
-            <element signature="e#1194#1222#0" />
-            <element signature="e#1278#1312#0" />
-            <element signature="e#1358#1636#0" />
-            <element signature="e#1683#1714#0" />
-            <element signature="e#1762#3880#0" />
-            <element signature="e#3934#5972#0" />
-            <element signature="e#6016#12446#0" />
-            <element signature="e#12472#15503#0" />
-            <element signature="e#15538#16254#0" />
-            <element signature="e#16290#16532#0" />
-            <element signature="e#16565#16748#0" />
-            <element signature="e#17916#18554#0" />
-            <element signature="e#18619#22968#0" />
-            <element signature="e#22990#23148#0" />
-            <element signature="e#23177#23435#0" />
-            <element signature="e#23460#23860#0" />
-            <element signature="e#23892#24008#0" />
-            <element signature="e#24039#24151#0" />
-            <element signature="e#24177#24199#0" />
-            <element signature="e#24656#25245#0" />
-            <element signature="e#25280#26366#0" />
-            <element signature="e#26401#26449#0" />
-            <element signature="e#28034#29339#0" />
-            <element signature="e#29366#30775#0" />
-            <element signature="e#30810#31640#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/ehr/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="97" column="23" selection-start-line="97" selection-start-column="23" selection-end-line="97" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -1216,22 +591,243 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ehr/templates/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
+        <state relative-caret-position="500">
           <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commands.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/ehr/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#220#229#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/dist-packages/pyzbar/zbar_library.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="53" column="36" selection-start-line="53" selection-start-column="36" selection-end-line="53" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/ehr/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ehr/static_in_pro/our_static/js/patientHistory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/lab/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="115" column="58" selection-start-line="115" selection-start-column="58" selection-end-line="115" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/pharmacy/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="21" column="106" selection-start-line="21" selection-start-column="106" selection-end-line="21" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/clinic/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="36" selection-start-column="36" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/doctor/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/ehr/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="107" column="21" selection-start-line="107" selection-start-column="21" selection-end-line="107" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/969679ff-f03e-4169-b75c-379bbca3dec5/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="uml://DATABASE/b68ba670-0afb-4eb9-87c7-3ebe1352fed9">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>b68ba670-0afb-4eb9-87c7-3ebe1352fed9</OriginalElement>
+          <nodes />
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="348.5" y="280.5" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b68ba670-0afb-4eb9-87c7-3ebe1352fed9/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/patientData.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1005">
+          <caret line="67" column="144" selection-start-line="67" selection-start-column="144" selection-end-line="67" selection-end-column="144" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/hospital/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="40" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/patient/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/Doctor_app/prescription_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/hospital/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="167" column="15" lean-forward="true" selection-start-line="167" selection-start-column="15" selection-end-line="167" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#80#0" expanded="true" />
+            <element signature="e#677#1659#0" />
+            <element signature="e#1695#2051#0" />
+            <element signature="e#2078#7384#0" />
+            <element signature="e#7425#11470#0" />
+            <element signature="e#11645#14580#0" />
+            <element signature="e#12010#14580#0" />
+            <element signature="e#15096#15254#0" />
+            <element signature="e#15285#15543#0" />
+            <element signature="e#15617#17160#0" />
+            <element signature="e#17194#18486#0" />
+            <element signature="e#18530#20107#0" />
+            <element signature="e#20136#21423#0" />
+            <element signature="e#21462#21570#0" />
+            <element signature="e#21631#21858#0" />
+            <element signature="e#22154#22362#0" />
+            <element signature="e#22405#22596#0" />
+            <element signature="e#22625#22792#0" />
+            <element signature="e#22834#23507#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/patient/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="729" column="46" selection-start-line="729" selection-start-column="37" selection-end-line="729" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#12737#15770#0" />
+            <element signature="e#15805#16522#0" />
+            <element signature="e#16558#16800#0" />
+            <element signature="e#16833#17016#0" />
+            <element signature="e#17050#19268#0" />
+            <element signature="e#19309#19997#0" />
+            <element signature="e#20032#20670#0" />
+            <element signature="e#20743#24570#0" />
+            <element signature="e#24606#28965#0" />
+            <element signature="e#28987#29145#0" />
+            <element signature="e#29174#29432#0" />
+            <element signature="e#29457#29857#0" />
+            <element signature="e#29889#30005#0" />
+            <element signature="e#30036#30148#0" />
+            <element signature="e#30174#30196#0" />
+            <element signature="e#30197#30221#0" />
+            <element signature="e#30653#31242#0" />
+            <element signature="e#32738#32786#0" />
+            <element signature="e#32789#32816#0" />
+            <element signature="e#34371#35685#0" />
+            <element signature="e#35712#37121#0" />
+            <element signature="e#37156#37986#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="98" selection-start-line="98" selection-end-line="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/patientHistoryReport.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/main_styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="1783" column="20" selection-start-line="1783" selection-start-column="20" selection-end-line="1783" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/addHospitalDoctor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/doctor/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ehr/templates/patientHistory.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="125" column="43" lean-forward="true" selection-start-line="125" selection-start-column="43" selection-end-line="125" selection-end-column="43" />
+        <state relative-caret-position="144">
+          <caret line="58" column="202" selection-start-line="58" selection-start-column="202" selection-end-line="58" selection-end-column="202" />
         </state>
       </provider>
     </entry>

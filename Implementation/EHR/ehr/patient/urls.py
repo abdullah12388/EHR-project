@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^forgetPassword/(?P<uid>[-\w]+)/$', view.forget_password, name='forget_password'),
     url(r'^Notification',view.Notification, name='notification'),
 
+    url(r'^getReport/(?P<report_id>\w+)/$', view.getReport, name='getReport'),
 
 ]
 if settings.DEBUG:

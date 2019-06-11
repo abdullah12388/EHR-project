@@ -1,18 +1,43 @@
 {% extends 'base.html' %}
 {% block patient_history_content %}
 
+
+<style>
+</style>
 <div style="width:10px;height:175px"></div>
 <!--<div style="background-color: #25755d">-->
 
 
     <div class="container">
         <h1 style="text-align:center;color:#32c69a;margin:20px 0px 30px 0px">Patient History</h1>
-        <div class="search_bar">
-            <form action='' method="POST">
-                {% csrf_token %}
-                {{ form.search_content }}
-                <button  type="submit"><span class="glyphicon glyphicon-search"></span></button>
-            </form>
+{#        <div class="search_bar">#}
+{#            <div id="myDropdown" class="dropdown-content">#}
+{#                {{ form.search_content }}#}
+{#                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">#}
+{#                <button  type="submit"><span class="glyphicon glyphicon-search"></span></button>#}
+{#                {% for rd in reportData %}#}
+{#                    <a href="{% url 'patient:getReport' report_id=rd.report%}">#}
+{#                        {{ rd.Submit_date }}#}
+{#                        - {{ rd.patient_id.Patient_id.first_name }}#}
+{#                    </a>#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#        </div>#}
+
+        <div class="row text-center">
+            <div class="col-sm">
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Search</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                        {% for rd in reportData %}
+                            <a href="{% url 'patient:getReport' report_id=rd.report%}">
+                                {{ rd.Submit_date }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
         <!--<div class="history_details">-->
         <!--<div class="history_date"><p>{{ Submit_date|date:'m-d-Y h:i a' }}</p></div>-->
@@ -32,6 +57,7 @@
         <!--</div>-->
         <!--</div>-->
         {% for pk, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id, doctor_name, prescription_detail, clinic_name, hospital_name, p_a_id, p_c_id, p_m_id, p_r_id, analytics_name, chronic_name, medicine_name, ray_name in mix_1 %}
+        {% if forloop.counter0 < 4 %}
         <div class="history_details" style="border:solid 30px #32c69a">
             <div class="history_date"><p>{{ Submit_date|date:'m-d-Y h:i a' }}</p></div>
             <div class="row text-center report_header">
@@ -131,7 +157,32 @@
                 {% endif %}
             </div>
         </div>
+        {% endif %}
         {% endfor %}
+
+
+{#        {% if pages.has_other_pages %}#}
+{#            <ul class="pagination">#}
+{#                {% if pages.has_previous %}#}
+{#                <li><a href="?page={{ pages.previous_page_number }}">&laquo;</a></li>#}
+{#                {% else %}#}
+{#                <li class="disabled"><span>&laquo;</span></li>#}
+{#                {% endif %}#}
+{#                {% for i in pages.paginator.page_range %}#}
+{#                {% if pages.number == i %}#}
+{#                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>#}
+{#                {% else %}#}
+{#                    <li><a href="?page={{ i }}">{{ i }}</a></li>#}
+{#                {% endif %}#}
+{#                {% endfor %}#}
+{#                {% if pages.has_next %}#}
+{#                <li><a href="?page={{ pages.next_page_number }}">&raquo;</a></li>#}
+{#                {% else %}#}
+{#                <li class="disabled"><span>&raquo;</span></li>#}
+{#                {% endif %}#}
+{#            </ul>#}
+{#        {% endif %}#}
+
     </div>
 </div>
 {% endblock patient_history_content %}

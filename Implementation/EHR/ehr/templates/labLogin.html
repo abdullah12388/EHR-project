@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% block labLogin %}
-
+{% if request.GET.notify == "wrong_password" %}
+    <script>
+    alert("Wrong Password")
+    </script>
+    {% elif request.GET.notify == "lab_not_found" %}
+    <script>
+    alert("Lab not found")
+    </script>
+{% endif %}
 <div class="home_container" style="top:30%">
     <div class="container">
         <div class="row">

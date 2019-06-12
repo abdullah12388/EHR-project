@@ -1,6 +1,15 @@
 {% extends 'base.html' %}
 {% block labIndex %}
 
+{% if request.GET.notify == "patient_not_found" %}
+<script>
+alert("This's not a patient")
+</script>
+{% elif request.GET.notify == "user_not_found" %}
+<script>
+alert("This's not a user")
+</script>
+{% endif %}
 <div class="home_container" style="top:30%">
     <div class="container">
 				<div class="row">

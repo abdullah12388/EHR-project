@@ -9,7 +9,7 @@
     <h2 style="text-align:center;color:#FFF;margin:20px 0px 30px 0px">Patient Profile Information</h2>
     <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);padding: 2rem 2rem">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-md-3">
                 <div class="row">
                     <div style="width:200px;margin: auto">
                         <h3 style="color: #FFF;text-align: center;font-weight: bold;">Profile Picture</h3>
@@ -24,77 +24,73 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-9">
+            <div class="col-md-9">
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Full Name</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Full Name</label>
                     </div>
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.first_name }}</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.first_name }}</label>
                     </div>
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.middle_name }}</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.middle_name }}</label>
                     </div>
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.last_name }}</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.last_name }}</label>
                     </div>
                 </div><hr>
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Full Address</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Full Address</label>
                     </div>
-                    <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.country }}</label>
+                    <div class="col-md-2">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.country }}</label>
                     </div>
-                    <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.state }}</label>
+                    <div class="col-md-2">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.state }}</label>
                     </div>
-                    <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.city }}</label>
+                    <div class="col-md-2">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.city }}</label>
                     </div>
-                    <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.street }}</label>
+                    <div class="col-md-2">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.street }}</label>
                     </div>
-                    <div class="col-sm-1"></div>
+                    <div class="col-md-1"></div>
                 </div><hr>
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Phone</label><br>
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Numbers</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Private</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.phone_number }}</label>
                     </div>
-                    <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Private</label>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.phone_number }}</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Home</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.home_phone_number }}</label>
                     </div>
-                    <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Home</label>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.home_phone_number }}</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Work</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.work_phone_number }}</label>
                     </div>
-                    <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Work</label>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.work_phone_number }}</label>
-                    </div>
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Emergency</label>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Emergency_contact }}</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Emergency</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Emergency_contact }}</label>
                     </div>
                 </div><hr>
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Gender</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.gender }}</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Gender</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.gender }}</label>
                     </div>
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Birth Date</label>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.Date_of_birth }}</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Birth Date</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.Date_of_birth }}</label>
                     </div>
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Marital Status</label>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.marital_status }}</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Marital Status</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.marital_status }}</label>
                     </div>
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Children</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Children</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">
                             {% if patient.Patient.Child_num == 0 %}
                                 None
                             {% else %}
@@ -104,70 +100,72 @@
                     </div>
                 </div><hr>
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">E-Mails</label>
+                    <div class="col-md-2">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">E-Mails</label>
                     </div>
-                    <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.email_1 }}</label>
+                    <div class="col-md-5">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.email_1 }}</label>
                     </div>
-                    <div class="col-sm-4" style="text-align: center;">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.email_2 }}</label>
+                    <div class="col-md-5" style="text-align: center;">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.email_2 }}</label>
                     </div>
-                    <div class="col-sm-1"></div>
+                    <div class="col-md-1"></div>
                 </div><hr>
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Nationality</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.Nationality }}</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Nationality</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.Nationality }}</label>
                     </div>
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Job Name</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.Job_name }}</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Job Name</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.Job_name }}</label>
                     </div>
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Job Organization</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.Job_organization }}</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Job Organization</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.Job_organization }}</label>
                     </div>
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Jop Place</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.Jop_place }}</label>
+                    <div class="col-md-3">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Jop Place</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.Jop_place }}</label>
                     </div>
                 </div><hr>
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">SSN</label>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Patient.Ssn }}</label>
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">SSN</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.Ssn }}</label>
                     </div>
-                    <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Height</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Height }} cm</label>
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Height</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Height }} cm</label>
                     </div>
-                    <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Weight</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.weight }} kg</label>
-                    </div>
-                    <div class="col-sm-1">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Blood</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Blood_type }}</label>
-                    </div>
-                    <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Disabled</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Disability_status }}</label>
-                    </div>
-                    <div class="col-sm-2">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Chronic</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ patient.Chronic_diseases }}</label>
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Weight</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.weight }} kg</label>
                     </div>
                 </div><hr>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Blood</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Blood_type }}</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Disabled</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Disability_status }}</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Chronic</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Chronic_diseases }}</label>
+                    </div>
+                </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm" style="text-align: center">
                         <a href="{% url 'patient:patientCard' userid=patient.Patient.user_id%}">
-                            <button type="submit" style="border-radius: 50px;width:45%;margin:auto" class="button home_button">Card</button>
+                            <button type="submit" style="border-radius: 50px;width:45%;margin:5px" class="button home_button">Card</button>
                         </a>
                     </div>
                     <div class="col-sm" style="text-align: center">
                         <a href="{% url 'patient:patient_profile_update' %}">
-                            <button type="submit" style="border-radius: 50px;width:45%;margin:auto" class="button home_button">Update</button>
+                            <button type="submit" style="border-radius: 50px;width:45%;margin:5px" class="button home_button">Update</button>
                         </a>
                     </div>
                 </div>

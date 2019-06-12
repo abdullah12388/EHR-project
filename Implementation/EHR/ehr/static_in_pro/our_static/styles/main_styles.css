@@ -1942,3 +1942,8 @@ display: block;
 .dropdown a:hover {background-color: #ddd;}
 
 .show {display: block;}
+
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

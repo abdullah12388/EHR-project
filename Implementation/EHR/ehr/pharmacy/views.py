@@ -46,9 +46,18 @@ def pharmacyLogout(request):
 def pharmacyPatientLogin(request):
     if request.method == 'POST':
         ssn_id = request.POST['pat_id']
-        u_id = user.objects.get(Ssn_id=ssn_id).user_id
-        request.session['patien_id'] = u_id
-        return HttpResponseRedirect('medicines/')
+        user_found = user.objects.filter(Ssn_id__exact=ssn_id).exists()
+        if user_found:
+            myUser = user.objects.get(Ssn_id=ssn_id)
+            user_type = myUser.User_type
+            if str(user_type) == "1":
+                u_id = user.objects.get(Ssn_id=ssn_id).user_id
+                request.session['patien_id'] = u_id
+                return HttpResponseRedirect('medicines/')
+            else:
+                return HttpResponseRedirect('/pharmacy/pharmacyPatientLogin/?notify=not_patient')
+        else:
+            return HttpResponseRedirect('/pharmacy/pharmacyPatientLogin/?notify=not_user')
     else:
         if 'ssnID' not in request.session:
             return render(request, 'pharmacyIndex.html', {'ph_id': request.session['pharmacy_id']})

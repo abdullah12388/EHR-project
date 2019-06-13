@@ -152,6 +152,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>jumbotron</find>
@@ -205,9 +212,7 @@
         <option value="$PROJECT_DIR$/templates/signup.html" />
         <option value="$PROJECT_DIR$/clinic/urls.py" />
         <option value="$PROJECT_DIR$/templates/addClinicDoctor.html" />
-        <option value="$PROJECT_DIR$/patient/forms.py" />
         <option value="$PROJECT_DIR$/templates/clinicProfileView.html" />
-        <option value="$PROJECT_DIR$/templates/footer.html" />
         <option value="$PROJECT_DIR$/ehr/settings.py" />
         <option value="$PROJECT_DIR$/templates/doctorRate.html" />
         <option value="$PROJECT_DIR$/patient/models.py" />
@@ -215,8 +220,10 @@
         <option value="$PROJECT_DIR$/patient/urls.py" />
         <option value="$PROJECT_DIR$/templates/doctorProfileView.html" />
         <option value="$PROJECT_DIR$/lab/views.py" />
+        <option value="$PROJECT_DIR$/patient/forms.py" />
         <option value="$PROJECT_DIR$/pharmacy/views.py" />
-        <option value="$PROJECT_DIR$/templates/patientProfileView.html" />
+        <option value="$PROJECT_DIR$/doctor/views.py" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/patient/views.py" />
         <option value="$PROJECT_DIR$/clinic/views.py" />
         <option value="$PROJECT_DIR$/templates/hospital_charts.html" />
@@ -293,6 +300,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="true" />
@@ -397,7 +405,7 @@
     <option name="totallyTimeSpent" value="322618000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16286863" />

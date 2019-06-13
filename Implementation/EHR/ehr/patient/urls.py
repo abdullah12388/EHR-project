@@ -27,6 +27,7 @@ urlpatterns = [
     # url(r'^Notification',view.Notification, name='notification'),
     url(r'^DoctorRate/(?P<userid>[-\w]+)/(?P<patid>[-\w]+)/(?P<hosid>[-\w]+)/',view.doctorRate, name='doctorRate'),
     url(r'^OrganizationRate/(?P<orgid>[-\w]+)/(?P<patid>[-\w]+)/',view.organizationRate, name='organizationRate'),
+    url(r'^aboutUs/$',view.aboutUs, name='aboutUs'),
 
 
 ]

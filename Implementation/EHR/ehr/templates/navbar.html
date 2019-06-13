@@ -12,7 +12,7 @@
         </form>
         <ul>
             <li class="menu_item"><a href="/">Home</a></li>
-            <li class="menu_item"><a href="#">About us</a></li>
+            <li class="menu_item"><a href="{% url "patient:aboutUs" %}">About us</a></li>
             <li class="menu_item"><a href="#">Services</a></li>
             <li class="menu_item"><a href="{% url 'patient:patientLogin' %}">Login</a></li>
             <li class="menu_item"><a href="{% url 'patient:signup' %}">Register</a></li>
@@ -109,13 +109,13 @@
                         <div class="col">
                             <div class="header_top_content d-flex flex-row align-items-center justify-content-start">
                                 <div class="logo">
-                                    <a href="#">EHR<span>|</span>HealthCare</a>
+                                    <a href="{% url 'patient:patientLogin' %}">EHR<span>|</span>HealthCare</a>
                                 </div>
                                 <div class="header_top_extra d-flex flex-row align-items-center justify-content-start ml-auto">
                                     <div class="header_top_nav">
                                         <ul class="d-flex flex-row align-items-center justify-content-start">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="services.html">Services</a></li>
+                                            <li><a href="{% url "patient:aboutUs" %}">About Us</a></li>
+{#                                            <li><a href="services.html">Services</a></li>#}
                                         </ul>
                                     </div>
                                     <div class="header_top_phone">
@@ -221,15 +221,15 @@
                                                 {% endif %}
                                             </ul>
                                         </nav>
-                                        <div class="search_content d-flex flex-row align-items-center justify-content-end ml-auto">
-                                            <form action="#" id="search_container_form" class="search_container_form">
-                                                <input type="text" class="search_container_input" placeholder="Search"
-                                                       required="required">
-                                                <button class="search_container_button"><i class="fa fa-search"
-                                                                                           aria-hidden="true"></i>
-                                                </button>
-                                            </form>
-                                        </div>
+{#                                        <div class="search_content d-flex flex-row align-items-center justify-content-end ml-auto">#}
+{#                                            <form action="#" id="search_container_form" class="search_container_form">#}
+{#                                                <input type="text" class="search_container_input" placeholder="Search"#}
+{#                                                       required="required">#}
+{#                                                <button class="search_container_button"><i class="fa fa-search"#}
+{#                                                                                           aria-hidden="true"></i>#}
+{#                                                </button>#}
+{#                                            </form>#}
+{#                                        </div>#}
                                     </div>
                                     {% if 'patient_id' in request.session %}
                                         <div class="collapse" id="collapseExample"

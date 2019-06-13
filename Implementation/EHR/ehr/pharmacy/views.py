@@ -152,4 +152,6 @@ def pharmacy_profile_view(request, pharid=None):
         'ph_id': pharmacyData.org_id,
         'hos_id': None,
     }
+    if 'patient_id' not in request.session and 'hospital_id' not in request.session and 'pharmacy_id' not in request.session:
+        return HttpResponseRedirect('/pharmacy/')
     return render(request, 'pharmacyProfileView.html', context)

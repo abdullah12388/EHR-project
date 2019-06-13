@@ -910,10 +910,14 @@ def QRCodeScanner():
             # it's to show a frame that contains camera
             cv2.imshow("Frame", frame)
             # it waits for a QR Code to be detected
-            if cv2.waitKey(1):
-                for obj in decodedObjects:
-                    if obj.data:
-                        break
+            # if cv2.waitKey(1):
+            #     for obj in decodedObjects:
+            #         if obj.data:
+            #             break
+            if (cv2.waitKey(1) == 27):  # wait for ESC key to exit
+                cap.release()
+                cv2.destroyAllWindows()
+                break
 
 def QRCodeScanView(request):
     QRData = QRCodeScanner()
@@ -939,9 +943,9 @@ def QRCodeScanView(request):
     else:
         return HttpResponseRedirect('/patient/')
 
-def Notification(id):
-    notiyMe = AllNotification.objects.filter(patientRecipient=id).order_by('read').order_by('-recieved_date')
-    return notiyMe
+# def Notification(id):
+#     notiyMe = AllNotification.objects.filter(patientRecipient=id).order_by('read').order_by('-recieved_date')
+#     return notiyMe
 
 def doctorRate(request,userid,patid,hosid):
     if request.method == 'POST':

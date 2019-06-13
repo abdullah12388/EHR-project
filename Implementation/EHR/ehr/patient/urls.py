@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^patientDoctor/$', view.patientDoctor, name='patientDoctor'),
     url(r'^QRScan/$', view.QRCodeScanView, name='QRCodeScanView'),
     url(r'^forgetPassword/(?P<uid>[-\w]+)/$', view.forget_password, name='forget_password'),
-    url(r'^Notification',view.Notification, name='notification'),
+    # url(r'^Notification',view.Notification, name='notification'),
     url(r'^DoctorRate/(?P<userid>[-\w]+)/(?P<patid>[-\w]+)/(?P<hosid>[-\w]+)/',view.doctorRate, name='doctorRate'),
     url(r'^OrganizationRate/(?P<orgid>[-\w]+)/(?P<patid>[-\w]+)/',view.organizationRate, name='organizationRate'),
 

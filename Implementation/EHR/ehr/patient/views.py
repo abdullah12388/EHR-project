@@ -765,6 +765,12 @@ class patientProfileDetialView(DetailView):
     template_name = 'patientProfileView.html'
     context_object_name = 'patient'
     redirect_url = '/patient/Index/'
+
+    def render_to_response(self, redirect_url):
+        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
+            return HttpResponseRedirect('/patient/')
+        else:
+            return super().render_to_response(redirect_url)
     # self.kwargs['pk']
     # def render_to_response(self , redirect_url):
     #     if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
@@ -917,7 +923,9 @@ def QRCodeScanner():
             if (cv2.waitKey(1) == 27):  # wait for ESC key to exit
                 cap.release()
                 cv2.destroyAllWindows()
+                # HttpResponseRedirect('/patient/')
                 break
+
 
 def QRCodeScanView(request):
     QRData = QRCodeScanner()

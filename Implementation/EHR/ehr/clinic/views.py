@@ -257,6 +257,8 @@ def clinic_profile_view(request, clinid=None):
         'clinic': clinicdata,
         'clin_id': clinicdata.org_id,
     }
+    if 'clinic_id' not in request.session:
+        return HttpResponseRedirect('/clinic/')
     return render(request, 'clinicProfileView.html', context)
 
 

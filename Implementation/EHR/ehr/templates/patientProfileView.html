@@ -165,11 +165,13 @@
                             <button type="submit" style="border-radius: 50px;width:45%;margin:auto" class="button home_button">Card</button>
                         </a>
                     </div>
-                    <div class="col-sm" style="text-align: center">
-                        <a href="{% url 'patient:patient_profile_update' %}">
-                            <button type="submit" style="border-radius: 50px;width:45%;margin:auto" class="button home_button">Update</button>
-                        </a>
-                    </div>
+                    {% if 'patient_id' in request.session %}
+                        <div class="col-sm" style="text-align: center">
+                            <a href="{% url 'patient:patient_profile_update' %}">
+                                <button type="submit" style="border-radius: 50px;width:45%;margin:auto" class="button home_button">Update</button>
+                            </a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

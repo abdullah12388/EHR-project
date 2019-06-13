@@ -29,10 +29,13 @@
                         <h1 style="color: #32c69a;text-align: center;font-weight: bold;">{{ doctor.doc_rate }}</h1>
                     </div>
                 </div>
-                <div class="row text-center">
-                    <a href="{% url 'doctor:resetpassword' %}" id="id_signup_submit" class="button home_button">Reset Password</a>
-                </div>
-
+                {% if 'doctor_id' in request.session %}
+                    <div class="row">
+                        <a href="{% url 'doctor:resetpassword' %}" style="margin: auto">
+                            <button id="id_signup_submit" class="button home_button">Update Password</button>
+                        </a>
+                    </div>
+                {% endif %}
             </div>
             <div class="col-sm-9">
                 <div class="row" style="margin-bottom:20px">

@@ -26,10 +26,10 @@ def labLogin(request):
                 return HttpResponseRedirect('labPatientLogin/')
             else:
                 print('wrong password')
-                return HttpResponse("You entered wrong pass")
+                return HttpResponseRedirect('/lab/?notify=wrong_password')
         else:
             print('Lab not exists')
-            return HttpResponseNotFound('<h1>Lab not found</h1>')
+            return HttpResponseRedirect('/lab/?notify=lab_not_found')
     else:
         request.session['type'] = 'lab'
         return render(request, 'labLogin.html', {})
@@ -49,18 +49,26 @@ def labLogout(request):
 
 def labPatientLogin(request):
     if request.method == 'POST':
-
         ssn_id = request.POST['pat_id']
-        u_id = user.objects.get(Ssn_id=ssn_id).user_id
-        request.session['patie_id'] = u_id
-        if request.POST['type'] == '1':
-            print('we did it')
-            return HttpResponseRedirect('Analytics/')
-        elif request.POST['type'] == '2':
-            print('rays')
-            return HttpResponseRedirect('Rays/')
+        ssn_found = user.objects.filter(Ssn_id__exact=ssn_id).exists()
+        if ssn_found:
+            myUser = user.objects.filter(Ssn_id__exact=ssn_id)
+            userType = myUser.User_type
+            if str(userType) == "1":
+                u_id = user.objects.get(Ssn_id=ssn_id).user_id
+                request.session['patie_id'] = u_id
+                if request.POST['type'] == '1':
+                    print('we did it')
+                    return HttpResponseRedirect('Analytics/')
+                elif request.POST['type'] == '2':
+                    print('rays')
+                    return HttpResponseRedirect('Rays/')
+                else:
+                    print('Please Choose right type')
+            else:
+                return HttpResponseRedirect('/lab/labPatientLogin/?notify=patient_not_found')
         else:
-            print('Please Choose right type')
+            return HttpResponseRedirect('/lab/labPatientLogin/?notify=user_not_found')
     else:
         if 'ssnid' not in request.session:
             return render(request, 'labIndex.html', {'lab_id': request.session['lab_id']})

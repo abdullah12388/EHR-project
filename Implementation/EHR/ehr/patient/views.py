@@ -29,6 +29,7 @@ from patient.models import user, patient, temp_register, AllNotification,rate
 class DB_functions:
     __patient_email = ''
     __patient_password = ''
+    __all_report_data = []
     __final_all_reports = []
     patient_login_result = ''
 
@@ -42,14 +43,17 @@ class DB_functions:
         check = temp_register.objects.filter(id__iexact=id).exists()
         if check:
             temp_register.objects.get(pk=id).delete()
-            print("Temp Deleted Successfully")
+            # print("Temp Deleted Successfully")
             return True
         else:
-            print("Temp Not Found")
+            # print("Temp Not Found")
             return False
 
     def get_final_all_reports(self):
         return self.__final_all_reports
+
+    def get_all_report_data(self):
+        return self.__all_report_data
 
     def patient_login(self, request):
         temp_is_exist = temp_register.objects.filter(email__iexact=self.__patient_email).exists()
@@ -62,7 +66,7 @@ class DB_functions:
                 request.session['patient_temp_id'] = id
                 request.session['user_type'] = 'temp'
                 if 'patient_temp_id' not in request.session:
-                    print('THIS IS FALSE')
+                     print('THIS IS FALSE')
                 self.patient_login_result = 'temp_email_exists'
             else:
                 self.patient_login_result = 'wrong_password'
@@ -87,7 +91,7 @@ class DB_functions:
                     request.session['user_T'] = user_Type_number
 
                 if 'patient_id' not in request.session or 'doctor_id' not in request.session:
-                    print('THIS IS FALSE')
+                     print('THIS IS FALSE')
                 self.patient_login_result = 'email_exists'
             else:
                 self.patient_login_result = 'wrong_password'
@@ -134,31 +138,30 @@ class DB_functions:
                     hospital_names.append(hospital.objects.get(h_id=instance.hospital_id).h_name)
             all_report_data = [pk_list, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id,
                                doctor_names, prescription_detail, clinic_names, hospital_names]
-            return all_report_data
+            self.__all_report_data = all_report_data
+            return report_data
         else:
             return False
 
     def get_multi(self, request):
-        report_data = self.patient_report_data(request=request)
+        self.patient_report_data(request=request)
+        report_data = self.get_all_report_data()
         if not report_data == False:
             report_id = report_data[0]
-            # print("report_id",report_id)
+            # print("report_id", report_id)
             i = 0
-            p_a_id, p_c_id, p_m_id, p_r_id = [[] for y in range(len(report_id))], [[] for y in range(len(report_id))], [
-                [] for y in range(len(report_id))], [[] for y in range(len(report_id))]
-            p_a_id_, p_c_id_, p_m_id_, p_r_id_ = [[] for y in range(len(report_id))], [[] for y in
-                                                                                       range(len(report_id))], [[] for y
-                                                                                                                in
-                                                                                                                range(
-                                                                                                                    len(
-                                                                                                                        report_id))], [
-                                                     [] for y in range(len(report_id))]
-            analytics_name, medicine_name, ray_name, chronic_name = [[] for y in range(len(report_id))], [[] for y in
-                                                                                                          range(len(
-                                                                                                              report_id))], [
-                                                                        [] for y in range(len(report_id))], [[] for y in
-                                                                                                             range(len(
-                                                                                                                 report_id))]
+            p_a_id, p_c_id, p_m_id, p_r_id = [[] for y in range(len(report_id))],\
+                                             [[] for y in range(len(report_id))],\
+                                             [[] for y in range(len(report_id))],\
+                                             [[] for y in range(len(report_id))]
+            p_a_id_, p_c_id_, p_m_id_, p_r_id_ = [[] for y in range(len(report_id))],\
+                                                 [[] for y in range(len(report_id))],\
+                                                 [[] for y in range( len(report_id))], \
+                                                 [[] for y in range(len(report_id))]
+            analytics_name, medicine_name, ray_name, chronic_name = [[] for y in range(len(report_id))],\
+                                                                    [[] for y in range(len(report_id))], \
+                                                                    [[] for y in range(len(report_id))],\
+                                                                    [[] for y in range(len( report_id))]
             for i in range(0, len(report_id)):
                 multi_analytics_data = multi_analytics.objects.filter(report_id__exact=report_id[i]).exists()
                 multi_chronic_data = multi_chronic.objects.filter(report_id__exact=report_id[i]).exists()
@@ -478,10 +481,10 @@ def forget_password(request, uid):
         re_password = request.POST['confirm_pass']
         if password == re_password:
             user.objects.filter(user_id=id).update(New_Password=password)
-            print('Done')
+            # print('Done')
             return HttpResponseRedirect('/patient/')
         else:
-            print('save error')
+             print('save error')
     # uid = patient.objects.get(id=pid).Patient_id
     userData = user.objects.get(user_id=uid)
     context = {
@@ -494,19 +497,19 @@ def patientLogout(request):
     if request.session['user_T'] == 2:
         if 'doctor_id' in request.session:
             request.session.pop('doctor_id')
-            print('SESSION FOUND')
+            # print('SESSION FOUND')
         if 'doctor_id' not in request.session:
-            print('SESSION DELETED')
+             print('SESSION DELETED')
     else:
 
         if 'patient_temp_id' in request.session:
             request.session.pop('patient_id')
-            print('SESSION FOUND')
+            # print('SESSION FOUND')
         if 'patient_id' in request.session:
             request.session.pop('patient_id')
-            print('SESSION FOUND')
+            # print('SESSION FOUND')
         if 'patient_id' not in request.session:
-            print('SESSION DELETED')
+             print('SESSION DELETED')
 
     return HttpResponseRedirect('/patient/')
 
@@ -658,14 +661,14 @@ def patient_profile(request):
                     instance2.save()
                     db = DB_functions()
                     db.remove_from_temp(id=request.session['patient_temp_id'])
-                    print('iam here')
-                    return HttpResponseRedirect('/patient/patientCard/' + str(u_id))
+                    # print('iam here')
+                    return HttpResponseRedirect('/patient/patientCard/'+str(u_id))
                 else:
-                    print('form two')
-                    print(form2.errors)
+                     print('form two')
+                    # print(form2.errors)
         else:
-            print('form one')
-            print(form1.errors)
+             print('form one')
+             print(form1.errors)
     else:
         form1 = AddUser()
         form2 = AddPatient()
@@ -784,7 +787,8 @@ def patientHistory(request):
         form = searchHistory()
     context = {'form': form}
     db = DB_functions()
-    mix_1 = db.patient_report_data(request=request)
+    query = db.patient_report_data(request=request)
+    mix_1 = db.get_all_report_data()
     mix_2 = db.get_multi(request=request)
     mix_2_1 = db.get_final_all_reports()
 
@@ -796,8 +800,14 @@ def patientHistory(request):
         # print('report = ', mix_1[0])
         # print('NORMAL = ', mix_2_1[6])
         # print('REVERSED = ', list(reversed(mix_2_1[6])))
+        # query
+        # page = request.GET.get('page', 1)
+        # paginator = Paginator(query, 3)
+        # pages = paginator.page(page)
         context.update({
             'mix_1': mix_1_1,
+            # 'pages': pages,
+            'reportData': query
         })
     # if not mix_2:
     #     mix_2_1 = zip(mix_2[0], mix_2[1], mix_2[2], mix_2[3])
@@ -805,6 +815,20 @@ def patientHistory(request):
     #         'mix_2': mix_2_1
     #     })
     return render(request, 'patientHistory.html', context)
+
+
+def getReport(request, report_id):
+    myReport = report.objects.get(pk=report_id)
+    myMultiAnalytics = multi_analytics.objects.filter(report_id__exact=report_id)
+    myMultiRays = multi_rays.objects.filter(report_id__exact=report_id)
+    myMultiMedicines = multi_medecines.objects.filter(report_id__exact=report_id)
+    context = {
+        'myReport': myReport,
+        'myMultiAnalytics': myMultiAnalytics,
+        'myMultiRays': myMultiRays,
+        'myMultiMedicines': myMultiMedicines
+    }
+    return render(request, 'patientHistoryReport.html', context)
 
 
 def patientDoctor(request):

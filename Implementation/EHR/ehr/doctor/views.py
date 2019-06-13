@@ -49,13 +49,14 @@ def GetPatianTID(request):
                 print(user_id)
                 user_Type_number = get.User_type
                 print(user_Type_number)
-
-            if user_Type_number != 1:
-                return HttpResponseRedirect('/doctor/patiant/?alert=Not A Patiant')
-            if user_Type_number == 1:
-                request.session['Doctor_Patiant_ID'] = p_id
-                print(request.session['Doctor_Patiant_ID'])
-                return HttpResponseRedirect('/doctor/patiant/prescription/')
+                if user_Type_number != 1:
+                    return HttpResponseRedirect('/doctor/?alert=1')
+                if user_Type_number == 1:
+                    request.session['Doctor_Patiant_ID'] = p_id
+                    print(request.session['Doctor_Patiant_ID'])
+                    return HttpResponseRedirect('/doctor/patiant/prescription/')
+            else:
+                return HttpResponseRedirect('/doctor/?alert=1')
 
         else:
             Get_PatianT_ID_Form = GetPatianTIDForm()
@@ -83,10 +84,12 @@ def QRCodeScanView(request):
             user_Type_number = get.User_type
             print(user_Type_number)
 
-        if user_Type_number == 1:
-            request.session['Doctor_Patiant_ID'] = p_id
-            print(request.session['Doctor_Patiant_ID'])
-            return HttpResponseRedirect('/doctor/patiant/prescription/')
+            if user_Type_number == 1:
+                request.session['Doctor_Patiant_ID'] = p_id
+                print(request.session['Doctor_Patiant_ID'])
+                return HttpResponseRedirect('/doctor/patiant/prescription/')
+            else:
+                return HttpResponseRedirect('/doctor/')
         else:
             return HttpResponseRedirect('/doctor/')
     else:

@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^DoctorRate/(?P<userid>[-\w]+)/(?P<patid>[-\w]+)/(?P<hosid>[-\w]+)/',view.doctorRate, name='doctorRate'),
     url(r'^OrganizationRate/(?P<orgid>[-\w]+)/(?P<patid>[-\w]+)/',view.organizationRate, name='organizationRate'),
 
+    url(r'^getReport/(?P<report_id>\w+)/$', view.getReport, name='getReport'),
 
 ]
 if settings.DEBUG:

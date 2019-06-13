@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 {% block pharmacyIndex %}
-
+{% if request.GET.notify == "1" %}
+<script>
+    alert("You don't have any medicines")
+</script>
+    {% elif request.GET.notify == "not_patient" %}
+    <script>
+        alert("This is not a patient")
+    </script>
+    {% elif request.GET.notify == "not_user" %}
+    <script>
+        alert("This is not a user")
+    </script>
+{% endif %}
 <div class="home_container" style="top:30%">
     <div class="container">
         <div class="row">

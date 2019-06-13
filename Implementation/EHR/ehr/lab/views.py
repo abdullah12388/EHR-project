@@ -50,9 +50,9 @@ def labLogout(request):
 def labPatientLogin(request):
     if request.method == 'POST':
         ssn_id = request.POST['pat_id']
-        ssn_found = user.objects.filter(Ssn_id__exact=ssn_id).exists()
+        ssn_found = user.objects.filter(Ssn_id__iexact=ssn_id).exists()
         if ssn_found:
-            myUser = user.objects.filter(Ssn_id__exact=ssn_id)
+            myUser = user.objects.get(Ssn_id=ssn_id)
             userType = myUser.User_type
             if str(userType) == "1":
                 u_id = user.objects.get(Ssn_id=ssn_id).user_id

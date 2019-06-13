@@ -52,10 +52,10 @@ def labPatientLogin(request):
         ssn_id = request.POST['pat_id']
         ssn_found = user.objects.filter(Ssn_id__exact=ssn_id).exists()
         if ssn_found:
-            myUser = user.objects.filter(Ssn_id__exact=ssn_id)
-            userType = myUser.User_type
-            if str(userType) == "1":
-                u_id = user.objects.get(Ssn_id=ssn_id).user_id
+            myUser = user.objects.get(Ssn_id=ssn_id)
+            user_type = myUser.User_type
+            if str(user_type) == "1":
+                u_id = myUser.user_id
                 request.session['patie_id'] = u_id
                 if request.POST['type'] == '1':
                     print('we did it')
@@ -129,6 +129,7 @@ def AnalyticsListView(request):
             return render(request, 'patientAnalyticsToBeSubmit.html', context)
         else:
             return HttpResponse("You don't have any analytics")
+            # return HttpResponseRedirect('/lab/labPatientLogin/Analytics/?notify=no_analytics')
     else:
         return HttpResponseNotFound('<h1>patient not found</h1>')
 

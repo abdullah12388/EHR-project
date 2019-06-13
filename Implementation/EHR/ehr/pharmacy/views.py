@@ -59,9 +59,12 @@ def pharmacyPatientLogin(request):
 
 def QRCodeScanView(request):
     QRData = QRCodeScanner()
-    QRData = QRData.decode("UTF-8")
-    request.session['ssnID'] = QRData
-    return HttpResponseRedirect('/pharmacy/pharmacyPatientLogin/')
+    if QRData:
+        QRData = QRData.decode("UTF-8")
+        request.session['ssnID'] = QRData
+        return HttpResponseRedirect('/pharmacy/pharmacyPatientLogin/')
+    else:
+        return HttpResponseRedirect('/pharmacy/pharmacyPatientLogin/')
 
 
 def medicineListView(request):

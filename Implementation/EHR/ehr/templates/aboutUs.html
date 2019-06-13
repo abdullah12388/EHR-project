@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<!-- Info Boxes -->
+{% block aboutUs %}
+<div class="container">
+    <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);margin-top:30px;color: #FFF">
+        <div class="row">
+            <h2>About Project :</h2>
+            <br>
+            <b>The idea is about giving people the power of accessing their Health records from anywhere using the power of the Internet we started ( Electronic Health Record ) system by keeping patient's health records then analyzing it to predict if he will get a heart disease in the future using:
+            <br>Python/Django framework to built the full web application
+            <br>Data Mining models ( prediction models)
+            <br>MySQL Data base </b>
+        </div>
+        <br>
+        <div class="row">
+            <h2>About Team :</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="{% static 'images/doctorManal.jpg'%}" alt="Avatar" style="width:300px; border-radius: 50%; height: 200px;">
+                <b>Supervisor</b>
+                <br>
+                <b>Dr. Manal Abdelkader</b>
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'images/abdullah.jpg'%}" alt="Avatar" style="width:300px; border-radius: 50%; height: 200px;">
+                <b>Abdullah Mohamed</b>
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'images/omarGamal.jpg'%}" alt="Avatar" style="width:300px; border-radius: 50%; height: 200px;">
+                <b>Omar Gamal</b>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="{% static 'images/mohamedAshraf.PNG'%}" alt="Avatar" style="width:300px; border-radius: 50%; height: 200px;">
+                <b>Mohamed Ashraf</b>
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'images/contact.jpg'%}" alt="Avatar" style="width:300px; border-radius: 50%; height: 200px;">
+                <b>Noran Yahia</b>
+            </div>
+            <div class="col-sm-4">
+                <img src="{% static 'images/Teha.jpg'%}" alt="Avatar" style="width:300px; border-radius: 50%; height: 200px;">
+                <b>Abdulfatah Ramadan</b>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock aboutUs %}

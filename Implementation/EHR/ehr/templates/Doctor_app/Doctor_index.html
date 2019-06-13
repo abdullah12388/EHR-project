@@ -8,7 +8,7 @@
             <div class='row'>
                 <div class='col-sm-5' style="border: solid 3px #32c69a;height: 300px;overflow: auto">
                     <h1 style="text-align: center;font-size: 22px;color: #32c69a;font-weight: bold;">Good Comments</h1>
-                    {% for com in Good %}
+                    {% for com in Good reversed%}
                         <p style="font-size: 18px;color: #FFF;font-weight: bold;">{{ com.comment }}</p>
                         <hr style="height: 3px;background-color: #32c69a">
                     {% endfor %}
@@ -16,7 +16,7 @@
                 <div class="col-sm-2"></div>
                 <div class='col-sm-5' style="border: solid 3px #32c69a;height: 300px;overflow: auto">
                     <h1 style="text-align: center;font-size: 22px;color: #32c69a;font-weight: bold;">Bad Comments</h1>
-                    {% for com in Bad %}
+                    {% for com in Bad reversed%}
                         <p style="font-size: 18px;color: #FFF;font-weight: bold;">{{ com.comment }}</p>
                         <hr style="height: 3px;background-color: #32c69a">
                     {% endfor %}

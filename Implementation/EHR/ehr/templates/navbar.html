@@ -11,9 +11,8 @@
             <button class="menu_search_button"><i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
         <ul>
-            <li class="menu_item"><a href="/">Home</a></li>
+            <li class="menu_item"><a href="{% url 'patient:patientLogin' %}">Home</a></li>
             <li class="menu_item"><a href="{% url "patient:aboutUs" %}">About us</a></li>
-            <li class="menu_item"><a href="#">Services</a></li>
             <li class="menu_item"><a href="{% url 'patient:patientLogin' %}">Login</a></li>
             <li class="menu_item"><a href="{% url 'patient:signup' %}">Register</a></li>
         </ul>
@@ -65,6 +64,7 @@
         {% elif '/patient/DoctorRate/' in request.get_full_path %}height:0px;
         {% elif '/patient/OrganizationRate/' in request.get_full_path %}height:0px;
         {% elif request.get_full_path == '/doctor/Home/' %}height:0px;
+        {% elif request.get_full_path == '/patient/aboutUs/' %}height:0px;
         {% endif %}">
     <div class="
     {% if request.get_full_path == '/patient/patientHistory/' %}
@@ -97,6 +97,7 @@
             {% elif '/patient/DoctorRate/' in request.get_full_path %}display:none;
             {% elif '/patient/OrganizationRate/' in request.get_full_path %}display:none;
             {% elif request.get_full_path == '/doctor/Home/' %}display:none;
+            {% elif request.get_full_path == '/patient/aboutUs/' %}display:none;
             {% endif %}
             "></div>
 

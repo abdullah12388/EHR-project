@@ -29,7 +29,7 @@ class tempRegister(forms.ModelForm):
         'required': 'required',
         'id': 're_pass'
     }))
-    re_password.label = 'Repeat password'
+    re_password.label = 'Confirm Password'
 
     def clean_password(self):
         password = self.cleaned_data.get('password')

@@ -11,9 +11,8 @@
             <button class="menu_search_button"><i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
         <ul>
-            <li class="menu_item"><a href="/">Home</a></li>
-            <li class="menu_item"><a href="#">About us</a></li>
-            <li class="menu_item"><a href="#">Services</a></li>
+            <li class="menu_item"><a href="{% url 'patient:patientLogin' %}">Home</a></li>
+            <li class="menu_item"><a href="{% url "patient:aboutUs" %}">About us</a></li>
             <li class="menu_item"><a href="{% url 'patient:patientLogin' %}">Login</a></li>
             <li class="menu_item"><a href="{% url 'patient:signup' %}">Register</a></li>
         </ul>
@@ -40,7 +39,7 @@
         {% elif request.get_full_path == '/hospital/Index/' %} height:170px;
         {% elif request.get_full_path == '/patient/patientProfile/' %} height:950px;
         {% elif '/patient/patientProfileView/' in request.get_full_path %} height:0px;
-        {% elif request.get_full_path == '/hospital/AddDoctor/' %} height:0px;
+        {% elif request.get_full_path == '/hospital/AddHospitalDoctor/' %} height:0px;
         {% elif request.get_full_path == '/hospital/AddPharmacy/' %} height:0px;
         {% elif request.get_full_path == '/hospital/AddLab/' %} height:0px;
         {% elif '/hospital/hospitalProfileView/' in request.get_full_path %} height:0px;
@@ -64,6 +63,8 @@
         {% elif request.get_full_path == '/patient/patientProfileUpdate/' %}height:0px;
         {% elif '/patient/DoctorRate/' in request.get_full_path %}height:0px;
         {% elif '/patient/OrganizationRate/' in request.get_full_path %}height:0px;
+        {% elif request.get_full_path == '/doctor/Home/' %}height:0px;
+        {% elif request.get_full_path == '/patient/aboutUs/' %}height:0px;
         {% endif %}">
     <div class="
     {% if request.get_full_path == '/patient/patientHistory/' %}
@@ -74,7 +75,7 @@
             {% elif request.get_full_path == '/patient/patientProfile/?c=1' %} height:120%;
             {% elif request.get_full_path == '/patient/Index/' %} display:none;
             {% elif request.get_full_path == '/hospital/Index/' %} display:none;
-            {% elif request.get_full_path == '/hospital/AddDoctor/' %} display:none;
+            {% elif request.get_full_path == '/hospital/AddHospitalDoctor/' %} display:none;
             {% elif request.get_full_path == '/hospital/AddPharmacy/' %} display:none;
             {% elif request.get_full_path == '/hospital/AddLab/' %} display:none;
             {% elif '/hospital/hospitalProfileView/' in request.get_full_path %} display:none;
@@ -95,6 +96,8 @@
             {% elif '/clinic/clinicProfileView/' in request.get_full_path %}display:none;
             {% elif '/patient/DoctorRate/' in request.get_full_path %}display:none;
             {% elif '/patient/OrganizationRate/' in request.get_full_path %}display:none;
+            {% elif request.get_full_path == '/doctor/Home/' %}display:none;
+            {% elif request.get_full_path == '/patient/aboutUs/' %}display:none;
             {% endif %}
             "></div>
 
@@ -107,13 +110,13 @@
                         <div class="col">
                             <div class="header_top_content d-flex flex-row align-items-center justify-content-start">
                                 <div class="logo">
-                                    <a href="#">EHR<span>|</span>HealthCare</a>
+                                    <a href="{% url 'patient:patientLogin' %}">EHR<span>|</span>HealthCare</a>
                                 </div>
                                 <div class="header_top_extra d-flex flex-row align-items-center justify-content-start ml-auto">
                                     <div class="header_top_nav">
                                         <ul class="d-flex flex-row align-items-center justify-content-start">
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="services.html">Services</a></li>
+                                            <li><a href="{% url "patient:aboutUs" %}">About Us</a></li>
+{#                                            <li><a href="services.html">Services</a></li>#}
                                         </ul>
                                     </div>
                                     <div class="header_top_phone">
@@ -142,9 +145,10 @@
                                                 {% elif 'doctor_id' in request.session %}
                                                     <li><a href="{% url 'doctor:patiant_id' %}">Home</a></li>
                                                     <li><a href="{% url 'doctor:stat' %}">Statistics</a></li>
+                                                    <li><a href="{% url 'doctor:doctor' %}">News</a></li>
                                                 {% elif 'hospital_id' in request.session %}
                                                     <li><a href="{% url 'hospital:Index' %}">Home</a></li>
-                                                    <li><a href="{% url 'hospital:stat' %}">Statistics</a></li>
+{#                                                    <li><a href="{% url 'hospital:stat' %}">Statistics</a></li>#}
                                                 {% elif 'pharmacy_id' in request.session %}
                                                     <li><a href="{% url 'pharmacy:pharmacyPatientLogin' %}">Home</a>
                                                     </li>
@@ -218,6 +222,15 @@
                                                 {% endif %}
                                             </ul>
                                         </nav>
+{#                                        <div class="search_content d-flex flex-row align-items-center justify-content-end ml-auto">#}
+{#                                            <form action="#" id="search_container_form" class="search_container_form">#}
+{#                                                <input type="text" class="search_container_input" placeholder="Search"#}
+{#                                                       required="required">#}
+{#                                                <button class="search_container_button"><i class="fa fa-search"#}
+{#                                                                                           aria-hidden="true"></i>#}
+{#                                                </button>#}
+{#                                            </form>#}
+{#                                        </div>#}
                                     </div>
                                     {% if 'patient_id' in request.session %}
                                         <div class="collapse" id="collapseExample"

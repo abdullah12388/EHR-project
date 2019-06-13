@@ -79,9 +79,13 @@ def labPatientLogin(request):
 
 def QRCodeScanView(request):
     QRData = QRCodeScanner()
-    QRData = QRData.decode("UTF-8")
-    request.session['ssnid'] = QRData
-    return HttpResponseRedirect('/lab/labPatientLogin/')
+    if QRData:
+        QRData = QRData.decode("UTF-8")
+        request.session['ssnid'] = QRData
+        return HttpResponseRedirect('/lab/labPatientLogin/')
+    else:
+        return HttpResponseRedirect('/lab/labPatientLogin/')
+
 
 
 def AnalyticsListView(request):

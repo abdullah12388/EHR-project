@@ -3,13 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4d8ec0d3-e378-4bab-aa60-45a1fc63fd41" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/clinic/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/clinic/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/doctor/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/doctor/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hospital/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/hospital/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lab/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/lab/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pharmacy/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pharmacy/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/doctorProfileView.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/doctorProfileView.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patientProfileView.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patientProfileView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../static_in_env/static_root/admin/js/inlines.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,13 +33,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lab/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="199" column="29" lean-forward="true" selection-start-line="199" selection-start-column="29" selection-end-line="199" selection-end-column="29" />
+            <state relative-caret-position="1055">
+              <caret line="199" column="29" selection-start-line="199" selection-start-column="29" selection-end-line="199" selection-end-column="29" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
-                <element signature="e#1489#1815#0" />
-                <element signature="e#1852#2634#0" />
-                <element signature="e#2670#2825#0" />
               </folding>
             </state>
           </provider>
@@ -54,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pharmacy/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="461">
-              <caret line="145" column="4" lean-forward="true" selection-start-line="145" selection-start-column="4" selection-end-line="146" selection-end-column="49" />
+            <state relative-caret-position="447">
+              <caret line="147" column="4" selection-start-line="147" selection-start-column="4" selection-end-line="147" selection-end-column="4" />
               <folding>
                 <element signature="e#0#80#0" expanded="true" />
               </folding>
@@ -63,13 +54,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/patient/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="926" column="21" lean-forward="true" selection-start-line="926" selection-start-column="21" selection-end-line="926" selection-end-column="21" />
+            <state relative-caret-position="417">
+              <caret line="296" column="18" selection-start-line="296" selection-start-column="8" selection-end-line="296" selection-end-column="18" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/clinic/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="259" column="57" selection-start-line="259" selection-start-column="57" selection-end-line="259" selection-end-column="57" />
+              <folding>
+                <element signature="e#0#54#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/templates/patientProfileView.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="439">
-              <caret line="174" column="22" lean-forward="true" selection-start-line="174" selection-start-column="22" selection-end-line="174" selection-end-column="22" />
+              <caret line="174" column="22" selection-start-line="174" selection-start-column="22" selection-end-line="174" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -158,7 +161,6 @@
         <option value="$PROJECT_DIR$/templates/organizationRate.html" />
         <option value="$PROJECT_DIR$/patient/urls.py" />
         <option value="$PROJECT_DIR$/templates/navbar.html" />
-        <option value="$PROJECT_DIR$/clinic/views.py" />
         <option value="$PROJECT_DIR$/templates/doctorProfileView.html" />
         <option value="$PROJECT_DIR$/hospital/views.py" />
         <option value="$PROJECT_DIR$/doctor/views.py" />
@@ -166,6 +168,7 @@
         <option value="$PROJECT_DIR$/pharmacy/views.py" />
         <option value="$PROJECT_DIR$/templates/patientProfileView.html" />
         <option value="$PROJECT_DIR$/patient/views.py" />
+        <option value="$PROJECT_DIR$/clinic/views.py" />
       </list>
     </option>
   </component>
@@ -186,6 +189,11 @@
             <path>
               <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
               <item name="ehr" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ehr" type="462c0819:PsiDirectoryNode" />
+              <item name="clinic" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
@@ -343,7 +351,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="296330000" />
+    <option name="totallyTimeSpent" value="296958000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -405,13 +413,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="on the way" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/updateClinicDoctor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="117" column="60" selection-start-line="117" selection-start-column="60" selection-end-line="117" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/patientProfileUpdate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -739,16 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clinic/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="260" column="47" lean-forward="true" selection-start-line="260" selection-start-column="47" selection-end-line="260" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hospital/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
@@ -761,8 +752,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pharmacy/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="145" column="4" lean-forward="true" selection-start-line="145" selection-start-column="4" selection-end-line="146" selection-end-column="49" />
+        <state relative-caret-position="447">
+          <caret line="147" column="4" selection-start-line="147" selection-start-column="4" selection-end-line="147" selection-end-column="4" />
           <folding>
             <element signature="e#0#80#0" expanded="true" />
           </folding>
@@ -771,13 +762,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lab/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="199" column="29" lean-forward="true" selection-start-line="199" selection-start-column="29" selection-end-line="199" selection-end-column="29" />
+        <state relative-caret-position="1055">
+          <caret line="199" column="29" selection-start-line="199" selection-start-column="29" selection-end-line="199" selection-end-column="29" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
-            <element signature="e#1489#1815#0" />
-            <element signature="e#1852#2634#0" />
-            <element signature="e#2670#2825#0" />
           </folding>
         </state>
       </provider>
@@ -814,16 +802,33 @@
     <entry file="file://$PROJECT_DIR$/templates/patientProfileView.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
-          <caret line="174" column="22" lean-forward="true" selection-start-line="174" selection-start-column="22" selection-end-line="174" selection-end-column="22" />
+          <caret line="174" column="22" selection-start-line="174" selection-start-column="22" selection-end-line="174" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/django/contrib/sessions/middleware.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/patient/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="926" column="21" lean-forward="true" selection-start-line="926" selection-start-column="21" selection-end-line="926" selection-end-column="21" />
+        <state relative-caret-position="417">
+          <caret line="296" column="18" selection-start-line="296" selection-start-column="8" selection-end-line="296" selection-end-column="18" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clinic/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="259" column="57" selection-start-line="259" selection-start-column="57" selection-end-line="259" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -455,14 +455,20 @@ class doctorProfileDetialView(DetailView):
     template_name = 'doctorProfileView.html'
     context_object_name = 'doctor'
     redirect_url = '/doctor/'
-    # self.kwargs['pk']
-    # def render_to_response(self , redirect_url):
+
+    def render_to_response(self, redirect_url):
+        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session and 'hospital_id' not in self.request.session:
+            return HttpResponseRedirect('/doctor/')
+        else:
+            return super().render_to_response(redirect_url)
+
+    # def render_to_response(self, redirect_url):
     #     if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-    #         return HttpResponseRedirect('/patient/login/')
+    #         return HttpResponseRedirect('/')
     #     elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
     #         return HttpResponseRedirect('/')
     #     else:
-    #        return super().render_to_response(redirect_url)
+    #         return super().render_to_response(redirect_url)
 
 
 class StatView(View):

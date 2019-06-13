@@ -487,6 +487,8 @@ def hospital_profile_view(request, hosid=None):
         'hospital': hospitaldata,
         'hos_id': hospitaldata.h_id,
     }
+    if 'patient_id' not in request.session and 'hospital_id' not in request.session:
+        return HttpResponseRedirect('/hospital/')
     return render(request, 'hospitalProfileView.html', context)
 
 

@@ -17,14 +17,26 @@ from .models import (prescription, report, doctor, multi_medecines,
 from django.utils import timezone
 from datetime import datetime,timedelta
 
+from django.core import serializers
+
+import feedparser
+
 def Doctor(request):
     if 'doctor_id' not in request.session:
         return HttpResponseRedirect('/patient/')
-    else:
-        user_type = request.session['user_T']
-        user_id = request.session['doctor_id']
-        p_id = request.session['Doctor_Patiant_ID']
-    context = {'ID': user_id, 'Type': user_type, 'p_id': p_id}
+    docid = request.session['doctor_id']
+    userid = doctor.objects.get(id=docid).Doc_id
+    goodBadComments = rate.objects.filter(Doctor=userid)
+    goodComment = goodBadComments.filter(Rate__gte=8)
+    badComment = goodBadComments.filter(Rate__lte=8)
+
+    NewsFeed = feedparser.parse("https://rss.medicalnewstoday.com/featurednews.xml")
+    entry = NewsFeed.entries
+    context = {
+        "Good":goodComment,
+        "Bad":badComment,
+        "News":entry
+    }
     return render(request, 'Doctor_app/Doctor_index.html', context)
 
 
@@ -523,10 +535,8 @@ class DoctorStatistics(APIView):
         data = {
             "data1": data1,
             "data2": data2,
-            # "Comments":list(goodBadComments),
         }
         return Response(data)
-
 
 def RestDoctorPassword(request):
     if request.method == 'POST':
@@ -547,3 +557,4 @@ def RestDoctorPassword(request):
             return HttpResponseRedirect('/')
     else:
         return render(request, 'Resetpassword.html', {})
+

@@ -1024,3 +1024,7 @@ def organizationRate(request,orgid,patid):
     else:
         AllNotification.objects.filter(LabSenderId=orgid).filter(patientRecipient=patid).update(read=1)
         return render(request, 'organizationRate.html', {'org_name':'Lab'})
+
+
+def aboutUs(request):
+    return render(request,'aboutUs.html',{})

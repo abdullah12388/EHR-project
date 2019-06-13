@@ -66,32 +66,36 @@ def GetPatianTID(request):
 
 def QRCodeScanView(request):
     QRData = QRCodeScanner()
-    QRData = QRData.decode("UTF-8")
-    getUser = user.objects.get(Ssn_id=QRData)
+    if QRData:
+        QRData = QRData.decode("UTF-8")
+        getUser = user.objects.get(Ssn_id=QRData)
 
-    if getUser:
-        user_Type_number = getUser.User_type
+        if getUser:
+            user_Type_number = getUser.User_type
 
-        ssn_id = QRData
-        print(ssn_id)
-        user_is_exist = user.objects.filter(Ssn_id=ssn_id).exists()
-        if user_is_exist:
-            get = user.objects.get(Ssn_id=ssn_id)
-            user_id = get.user_id
-            patientget = patient.objects.get(Patient_id=user_id)
-            p_id = patientget.id
-            print(user_id)
-            user_Type_number = get.User_type
-            print(user_Type_number)
+            ssn_id = QRData
+            print(ssn_id)
+            user_is_exist = user.objects.filter(Ssn_id=ssn_id).exists()
+            if user_is_exist:
+                get = user.objects.get(Ssn_id=ssn_id)
+                user_id = get.user_id
+                patientget = patient.objects.get(Patient_id=user_id)
+                p_id = patientget.id
+                print(user_id)
+                user_Type_number = get.User_type
+                print(user_Type_number)
 
-        if user_Type_number == 1:
-            request.session['Doctor_Patiant_ID'] = p_id
-            print(request.session['Doctor_Patiant_ID'])
-            return HttpResponseRedirect('/doctor/patiant/prescription/')
+            if user_Type_number == 1:
+                request.session['Doctor_Patiant_ID'] = p_id
+                print(request.session['Doctor_Patiant_ID'])
+                return HttpResponseRedirect('/doctor/patiant/prescription/')
+            else:
+                return HttpResponseRedirect('/doctor/')
         else:
             return HttpResponseRedirect('/doctor/')
     else:
         return HttpResponseRedirect('/doctor/')
+
 
 
 class ReportListView(ListView):
@@ -458,7 +462,7 @@ class doctorProfileDetialView(DetailView):
     redirect_url = '/doctor/'
 
     def render_to_response(self, redirect_url):
-        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session and 'hospital_id' not in self.request.session:
+        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session and 'hospital_id' not in self.request.session and 'clinic_id' not in self.request.session:
             return HttpResponseRedirect('/doctor/')
         else:
             return super().render_to_response(redirect_url)

@@ -39,23 +39,23 @@
                 </div>
             </div>
         </div>
-        <!--<div class="history_details">-->
-        <!--<div class="history_date"><p>{{ Submit_date|date:'m-d-Y h:i a' }}</p></div>-->
-        <!--<h3>{{ pk_list }}</h3>-->
-        <!--<h3>{{ doctor_id }}</h3>-->
-        <!--<h3>{{ patient_id }}</h3>-->
-        <!--<h3>{{ prescription_id }}</h3>-->
-        <!--<h3>{{ Submit_date|date:"SHORT_DATETIME_FORMAT"  }}</h3>-->
-        <!--<h3>{{ Submit_date|date:"D d M Y"  }}</h3>-->
-        <!--<h3>{{ Submit_date|time:"P" }}</h3>-->
-        <!--<h3>{{ Submit_date|date:'m-d-Y h:i a' }}</h3>-->
-        <!--<div class="row text-center">-->
-        <!--<a class="col-sm-3 elements" href="#">Prescription</a>-->
-        <!--<a class="col-sm-3 elements" href="#">Medicines</a>-->
-        <!--<a class="col-sm-3 elements" href="#">Analytics</a>-->
-        <!--<a class="col-sm-3 elements" href="#">Rays</a>-->
-        <!--</div>-->
-        <!--</div>-->
+{#        <!--<div class="history_details">-->#}
+{#        <!--<div class="history_date"><p>{{ Submit_date|date:'m-d-Y h:i a' }}</p></div>-->#}
+{#        <!--<h3>{{ pk_list }}</h3>-->#}
+{#        <!--<h3>{{ doctor_id }}</h3>-->#}
+{#        <!--<h3>{{ patient_id }}</h3>-->#}
+{#        <!--<h3>{{ prescription_id }}</h3>-->#}
+{#        <!--<h3>{{ Submit_date|date:"SHORT_DATETIME_FORMAT"  }}</h3>-->#}
+{#        <!--<h3>{{ Submit_date|date:"D d M Y"  }}</h3>-->#}
+{#        <!--<h3>{{ Submit_date|time:"P" }}</h3>-->#}
+{#        <!--<h3>{{ Submit_date|date:'m-d-Y h:i a' }}</h3>-->#}
+{#        <!--<div class="row text-center">-->#}
+{#        <!--<a class="col-sm-3 elements" href="#">Prescription</a>-->#}
+{#        <!--<a class="col-sm-3 elements" href="#">Medicines</a>-->#}
+{#        <!--<a class="col-sm-3 elements" href="#">Analytics</a>-->#}
+{#        <!--<a class="col-sm-3 elements" href="#">Rays</a>-->#}
+{#        <!--</div>-->#}
+{#        <!--</div>-->#}
         {% for pk, doctor_id, patient_id, prescription_id, Submit_date, clinic_id, hospital_id, doctor_name, prescription_detail, clinic_name, hospital_name, p_a_id, p_c_id, p_m_id, p_r_id, analytics_name, chronic_name, medicine_name, ray_name in mix_1 %}
         {% if forloop.counter0 < 4 %}
         <div class="history_details" style="border:solid 30px #32c69a">
@@ -146,6 +146,7 @@
                     {%endfor%}
                 {% endwith %}
                 </div>
+
             </div>
             <div class="by">
                 <h4 class="" style="color: #32c69a"><b style="color: #32c69a">By:</b></h4>

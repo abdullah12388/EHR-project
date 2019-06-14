@@ -125,7 +125,7 @@ class ReportListView(ListView):
 
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:
@@ -141,7 +141,7 @@ class PrescriptionDetialView(DetailView):
     def render_to_response(self, redirect_url):
         self.request.session['presc_id'] = self.kwargs['pk']
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:
@@ -183,7 +183,7 @@ class prescriptionFormView(FormView):
 
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:
@@ -197,7 +197,7 @@ class prescriptionUpdate(UpdateView):
 
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:
@@ -216,7 +216,7 @@ class Medicen_List(ListView):
 
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:
@@ -233,7 +233,7 @@ class Medicin_DetialView(DetailView):
 
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:
@@ -248,7 +248,7 @@ class Medicen_UPDATE(UpdateView):
     # form_class = AddmedicenForm
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:
@@ -287,7 +287,7 @@ class rays_List(ListView):
 
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:
@@ -304,7 +304,7 @@ class rays_DetialView(DetailView):
 
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:
@@ -319,7 +319,7 @@ class rays_UPDATE(UpdateView):
     # form_class = AddRaysForm
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:
@@ -347,7 +347,7 @@ class raysFormView(FormView):
 
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:
@@ -366,7 +366,7 @@ class analytics_List(ListView):
 
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:
@@ -383,7 +383,7 @@ class analytics_DetialView(DetailView):
 
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:
@@ -398,7 +398,7 @@ class analytics_UPDATE(UpdateView):
     # form_class = AddanalyticsForm
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:
@@ -426,7 +426,7 @@ class analyticsFormView(FormView):
 
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/login/')
+            return HttpResponseRedirect('/patient/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
             return HttpResponseRedirect('/')
         else:

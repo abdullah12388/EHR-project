@@ -146,7 +146,7 @@ class DB_functions:
     def get_multi(self, request):
         self.patient_report_data(request=request)
         report_data = self.get_all_report_data()
-        if not report_data == False:
+        if report_data:
             report_id = report_data[0]
             # print("report_id", report_id)
             i = 0
@@ -517,166 +517,172 @@ def patientLogout(request):
 # patient profile functions
 
 def patient_profile_update(request):
-    patid = request.session['patient_id']
-    userid = patient.objects.get(id=patid).Patient_id
-    if request.method == 'POST':
-        usr = user.objects.filter(user_id=userid)
-        # upload profile,ssn pictures and save paths to database
-        fs = FileSystemStorage()
-        if 'Profile_picture' in request.FILES:
-            profile_picture_file = request.FILES['Profile_picture']
-            ppf_name = fs.save(profile_picture_file.name, profile_picture_file)
-            Pro_pic = '/patient' + fs.url(ppf_name)
-            usr.update(Profile_picture=Pro_pic)
-        if 'SSN_Picture' in request.FILES:
-            ssn_picture_file = request.FILES['SSN_Picture']
-            spf_name = fs.save(ssn_picture_file.name, ssn_picture_file)
-            SSN_Pic = '/patient' + fs.url(spf_name)
-            usr.update(SSN_Picture=SSN_Pic)
-        usr.update(first_name=request.POST['first_name'])
-        usr.update(middle_name=request.POST['middle_name'])
-        usr.update(last_name=request.POST['last_name'])
-        usr.update(country=request.POST['country'])
-        usr.update(state=request.POST['state'])
-        usr.update(city=request.POST['city'])
-        usr.update(street=request.POST['street'])
-        usr.update(zip_code=request.POST['zip_code'])
-        usr.update(phone_number=request.POST['phone_number'])
-        usr.update(home_phone_number=request.POST['home_phone_number'])
-        usr.update(work_phone_number=request.POST['work_phone_number'])
-        usr.update(Date_of_birth=request.POST['Date_of_birth'])
-        usr.update(Child_num=request.POST['Child_num'])
-        usr.update(email_1=request.POST['email_1'])
-        usr.update(email_2=request.POST['email_2'])
-        usr.update(Nationality=request.POST['Nationality'])
-        usr.update(Jop_place=request.POST['Jop_place'])
-        usr.update(Job_name=request.POST['Job_name'])
-        usr.update(Job_organization=request.POST['Job_organization'])
-        genderMessage = gender(request.POST['gender'])
-        maritalStatusMessage = maritalStatus(request.POST['marital_status'])
-        if genderMessage == 'error':
-            return HttpResponseRedirect('/patient/patientProfileUpdate/')
-        elif maritalStatusMessage == 'error':
-            return HttpResponseRedirect('/hospital/patientProfileUpdate/')
+    if 'patient_id' in request.session:
+        patid = request.session['patient_id']
+        userid = patient.objects.get(id=patid).Patient_id
+        if request.method == 'POST':
+            usr = user.objects.filter(user_id=userid)
+            # upload profile,ssn pictures and save paths to database
+            fs = FileSystemStorage()
+            if 'Profile_picture' in request.FILES:
+                profile_picture_file = request.FILES['Profile_picture']
+                ppf_name = fs.save(profile_picture_file.name, profile_picture_file)
+                Pro_pic = '/patient' + fs.url(ppf_name)
+                usr.update(Profile_picture=Pro_pic)
+            if 'SSN_Picture' in request.FILES:
+                ssn_picture_file = request.FILES['SSN_Picture']
+                spf_name = fs.save(ssn_picture_file.name, ssn_picture_file)
+                SSN_Pic = '/patient' + fs.url(spf_name)
+                usr.update(SSN_Picture=SSN_Pic)
+            usr.update(first_name=request.POST['first_name'])
+            usr.update(middle_name=request.POST['middle_name'])
+            usr.update(last_name=request.POST['last_name'])
+            usr.update(country=request.POST['country'])
+            usr.update(state=request.POST['state'])
+            usr.update(city=request.POST['city'])
+            usr.update(street=request.POST['street'])
+            usr.update(zip_code=request.POST['zip_code'])
+            usr.update(phone_number=request.POST['phone_number'])
+            usr.update(home_phone_number=request.POST['home_phone_number'])
+            usr.update(work_phone_number=request.POST['work_phone_number'])
+            usr.update(Date_of_birth=request.POST['Date_of_birth'])
+            usr.update(Child_num=request.POST['Child_num'])
+            usr.update(email_1=request.POST['email_1'])
+            usr.update(email_2=request.POST['email_2'])
+            usr.update(Nationality=request.POST['Nationality'])
+            usr.update(Jop_place=request.POST['Jop_place'])
+            usr.update(Job_name=request.POST['Job_name'])
+            usr.update(Job_organization=request.POST['Job_organization'])
+            genderMessage = gender(request.POST['gender'])
+            maritalStatusMessage = maritalStatus(request.POST['marital_status'])
+            if genderMessage == 'error':
+                return HttpResponseRedirect('/patient/patientProfileUpdate/')
+            elif maritalStatusMessage == 'error':
+                return HttpResponseRedirect('/hospital/patientProfileUpdate/')
+            else:
+                usr.update(gender=genderMessage)
+                usr.update(marital_status=maritalStatusMessage)
+            usr.update(User_type=1)
+            #########################################################
+            # form 2
+            pat = patient.objects.filter(id=patid)
+            pat.update(Emergency_contact=request.POST['Emergency_contact'])
+            pat.update(Height=request.POST['Height'])
+            pat.update(weight=request.POST['weight'])
+            bloodTypeMessage = bloodType(request.POST['Blood_type'])
+            DisabilityStatusMessage = disabilityStatus(request.POST['Disability_status'])
+            ChronicDiseasesMessage = chronicDiseases(request.POST['Chronic_diseases'])
+            if bloodTypeMessage == 'error' or DisabilityStatusMessage == 'error' or ChronicDiseasesMessage == 'error':
+                return HttpResponseRedirect('/patient/patientProfileUpdate/')
+            else:
+                pat.update(Blood_type=bloodTypeMessage)
+                pat.update(Disability_status=DisabilityStatusMessage)
+                pat.update(Chronic_diseases=ChronicDiseasesMessage)
+            pat.update(QR_code=request.POST['QR_code'])
+            ########################################################
+            return HttpResponseRedirect('/patient/Index/')
         else:
-            usr.update(gender=genderMessage)
-            usr.update(marital_status=maritalStatusMessage)
-        usr.update(User_type=1)
-        #########################################################
-        # form 2
-        pat = patient.objects.filter(id=patid)
-        pat.update(Emergency_contact=request.POST['Emergency_contact'])
-        pat.update(Height=request.POST['Height'])
-        pat.update(weight=request.POST['weight'])
-        bloodTypeMessage = bloodType(request.POST['Blood_type'])
-        DisabilityStatusMessage = disabilityStatus(request.POST['Disability_status'])
-        ChronicDiseasesMessage = chronicDiseases(request.POST['Chronic_diseases'])
-        if bloodTypeMessage == 'error' or DisabilityStatusMessage == 'error' or ChronicDiseasesMessage == 'error':
-            return HttpResponseRedirect('/patient/patientProfileUpdate/')
-        else:
-            pat.update(Blood_type=bloodTypeMessage)
-            pat.update(Disability_status=DisabilityStatusMessage)
-            pat.update(Chronic_diseases=ChronicDiseasesMessage)
-        pat.update(QR_code=request.POST['QR_code'])
-        ########################################################
-        return HttpResponseRedirect('/patient/Index/')
+            patientData = patient.objects.get(id=patid)
+            userData = user.objects.get(user_id=userid)
+            context = {
+                'patientData': patientData,
+                'userData': userData,
+            }
+            return render(request, 'patientProfileUpdate.html', context)
     else:
-        patientData = patient.objects.get(id=patid)
-        userData = user.objects.get(user_id=userid)
-        context = {
-            'patientData': patientData,
-            'userData': userData,
-        }
-        return render(request, 'patientProfileUpdate.html', context)
+        return HttpResponseRedirect('/patient/Index/')
 
 
 def patient_profile(request):
-    if request.method == 'POST':
-        form1 = AddUser(request.POST or None)
-        form2 = AddPatient(request.POST or None)
-        if form1.is_valid():
-            # stop save in database
-            instance1 = form1.save(commit=False)
-            password = form1.cleaned_data.get('New_Password')
-            con_password = form1.cleaned_data.get('Confirm_Pass')
-            if not check_password(con_password, password):
-                return HttpResponseRedirect('/patientProfile/?c=1')
-            else:
-                # upload profile,ssn pictures and save paths to database
-                profile_picture_file = request.FILES['Profile_picture']
-                ssn_picture_file = request.FILES['SSN_Picture']
-                fs = FileSystemStorage()
-                ppf_name = fs.save(profile_picture_file.name, profile_picture_file)
-                spf_name = fs.save(ssn_picture_file.name, ssn_picture_file)
-                instance1.Profile_picture = '/patient' + fs.url(ppf_name)
-                instance1.SSN_Picture = '/patient' + fs.url(spf_name)
-                # extract ssn id from full ssn
-                ssn = instance1.Ssn
-                instance1.Ssn_id = ssn[7:14]
-                qr = qrcode.QRCode(
-                    version=1,
-                    error_correction=qrcode.constants.ERROR_CORRECT_M,
-                    box_size=10,
-                    border=4,
-                )
-                qr.add_data(instance1.Ssn_id)
-                qr.make(fit=True)
-                qrc_id = qr.make_image()
-                img_name = instance1.Ssn_id
-                img_exten = 'png'
-                img = img_name + '.' + img_exten
-                qrc_id.save(img)
-                genderMessage = gender(request.POST['gender'])
-                maritalStatusMessage = maritalStatus(request.POST['marital_status'])
-                if genderMessage == 'error':
-                    return HttpResponseRedirect('/patient/patientProfile/')
-                elif maritalStatusMessage == 'error':
-                    return HttpResponseRedirect('/patient/patientProfile/')
+    if 'patient_temp_id' not in request.session:
+        if request.method == 'POST':
+            form1 = AddUser(request.POST or None)
+            form2 = AddPatient(request.POST or None)
+            if form1.is_valid():
+                # stop save in database
+                instance1 = form1.save(commit=False)
+                password = form1.cleaned_data.get('New_Password')
+                con_password = form1.cleaned_data.get('Confirm_Pass')
+                if not check_password(con_password, password):
+                    return HttpResponseRedirect('/patientProfile/?c=1')
                 else:
-                    instance1.gender = genderMessage
-                    instance1.marital_status = maritalStatusMessage
-                instance1.save()
-                move(os.path.join('', img), os.path.join(set.MEDIA_ROOT, img))
-                # get the user id with the email
-                a = form1.cleaned_data.get('email_1')
-                u_id = user.objects.get(email_1=a).user_id
-                request.session['user_id'] = u_id
-                if form2.is_valid():
-                    instance2 = form2.save(commit=False)
-                    instance2.Patient_id = u_id
-                    instance2.QR_code = '/patient' + fs.url(img)
-                    bloodTypeMessage = bloodType(request.POST['Blood_type'])
-                    disabilityStatusMessage = disabilityStatus(request.POST['Disability_status'])
-                    chronicDiseasesMessage = chronicDiseases(request.POST['Chronic_diseases'])
-                    if bloodTypeMessage == 'error':
+                    # upload profile,ssn pictures and save paths to database
+                    profile_picture_file = request.FILES['Profile_picture']
+                    ssn_picture_file = request.FILES['SSN_Picture']
+                    fs = FileSystemStorage()
+                    ppf_name = fs.save(profile_picture_file.name, profile_picture_file)
+                    spf_name = fs.save(ssn_picture_file.name, ssn_picture_file)
+                    instance1.Profile_picture = '/patient' + fs.url(ppf_name)
+                    instance1.SSN_Picture = '/patient' + fs.url(spf_name)
+                    # extract ssn id from full ssn
+                    ssn = instance1.Ssn
+                    instance1.Ssn_id = ssn[7:14]
+                    qr = qrcode.QRCode(
+                        version=1,
+                        error_correction=qrcode.constants.ERROR_CORRECT_M,
+                        box_size=10,
+                        border=4,
+                    )
+                    qr.add_data(instance1.Ssn_id)
+                    qr.make(fit=True)
+                    qrc_id = qr.make_image()
+                    img_name = instance1.Ssn_id
+                    img_exten = 'png'
+                    img = img_name + '.' + img_exten
+                    qrc_id.save(img)
+                    genderMessage = gender(request.POST['gender'])
+                    maritalStatusMessage = maritalStatus(request.POST['marital_status'])
+                    if genderMessage == 'error':
                         return HttpResponseRedirect('/patient/patientProfile/')
-                    elif disabilityStatusMessage == 'error':
-                        return HttpResponseRedirect('/patient/patientProfile/')
-                    elif chronicDiseasesMessage == 'error':
+                    elif maritalStatusMessage == 'error':
                         return HttpResponseRedirect('/patient/patientProfile/')
                     else:
-                        instance2.Blood_type = bloodTypeMessage
-                        instance2.Disability_status = disabilityStatusMessage
-                        instance2.Chronic_diseases = chronicDiseasesMessage
-                    instance2.save()
-                    db = DB_functions()
-                    db.remove_from_temp(id=request.session['patient_temp_id'])
-                    # print('iam here')
-                    return HttpResponseRedirect('/patient/patientCard/'+str(u_id))
-                else:
-                     print('form two')
-                    # print(form2.errors)
+                        instance1.gender = genderMessage
+                        instance1.marital_status = maritalStatusMessage
+                    instance1.save()
+                    move(os.path.join('', img), os.path.join(set.MEDIA_ROOT, img))
+                    # get the user id with the email
+                    a = form1.cleaned_data.get('email_1')
+                    u_id = user.objects.get(email_1=a).user_id
+                    request.session['user_id'] = u_id
+                    if form2.is_valid():
+                        instance2 = form2.save(commit=False)
+                        instance2.Patient_id = u_id
+                        instance2.QR_code = '/patient' + fs.url(img)
+                        bloodTypeMessage = bloodType(request.POST['Blood_type'])
+                        disabilityStatusMessage = disabilityStatus(request.POST['Disability_status'])
+                        chronicDiseasesMessage = chronicDiseases(request.POST['Chronic_diseases'])
+                        if bloodTypeMessage == 'error':
+                            return HttpResponseRedirect('/patient/patientProfile/')
+                        elif disabilityStatusMessage == 'error':
+                            return HttpResponseRedirect('/patient/patientProfile/')
+                        elif chronicDiseasesMessage == 'error':
+                            return HttpResponseRedirect('/patient/patientProfile/')
+                        else:
+                            instance2.Blood_type = bloodTypeMessage
+                            instance2.Disability_status = disabilityStatusMessage
+                            instance2.Chronic_diseases = chronicDiseasesMessage
+                        instance2.save()
+                        db = DB_functions()
+                        db.remove_from_temp(id=request.session['patient_temp_id'])
+                        # print('iam here')
+                        return HttpResponseRedirect('/patient/patientCard/'+str(u_id))
+                    else:
+                         print('form two')
+                        # print(form2.errors)
+            else:
+                 print('form one')
+                 print(form1.errors)
         else:
-             print('form one')
-             print(form1.errors)
+            form1 = AddUser()
+            form2 = AddPatient()
+            context = {
+                'form1': form1,
+                'form2': form2,
+            }
+            return render(request, 'patientProfile.html', context)
     else:
-        form1 = AddUser()
-        form2 = AddPatient()
-        context = {
-            'form1': form1,
-            'form2': form2,
-        }
-        return render(request, 'patientProfile.html', context)
+        return HttpResponseRedirect("/")
 
 
 def gender(num):
@@ -785,57 +791,62 @@ class patientProfileDetialView(DetailView):
 
 
 def patientHistory(request):
-    global mix_1_1
-    if request.method == 'POST':
-        form = searchHistory(request.POST or None)
-        form.save()
+    if 'patient_id' in request.session:
+        global mix_1_1
+        if request.method == 'POST':
+            form = searchHistory(request.POST or None)
+            form.save()
+        else:
+            form = searchHistory()
+        context = {'form': form}
+        db = DB_functions()
+        query = db.patient_report_data(request=request)
+        mix_1 = db.get_all_report_data()
+        mix_2 = db.get_multi(request=request)
+        mix_2_1 = db.get_final_all_reports()
+
+        if mix_1 and mix_2 == True:
+            mix_1_1 = zip(mix_1[0], mix_1[1], mix_1[2], mix_1[3], mix_1[4], mix_1[5], mix_1[6], mix_1[7], mix_1[8],
+                          mix_1[9], mix_1[10], mix_2_1[0], mix_2_1[1], mix_2_1[2], mix_2_1[3],
+                          mix_2_1[4], mix_2_1[5], mix_2_1[6], mix_2_1[7])
+
+            # print('report = ', mix_1[0])
+            # print('NORMAL = ', mix_2_1[6])
+            # print('REVERSED = ', list(reversed(mix_2_1[6])))
+            # query
+            # page = request.GET.get('page', 1)
+            # paginator = Paginator(query, 3)
+            # pages = paginator.page(page)
+            context.update({
+                'mix_1': mix_1_1,
+                # 'pages': pages,
+                'reportData': query
+            })
+        # if not mix_2:
+        #     mix_2_1 = zip(mix_2[0], mix_2[1], mix_2[2], mix_2[3])
+        #     context.update({
+        #         'mix_2': mix_2_1
+        #     })
+        return render(request, 'patientHistory.html', context)
     else:
-        form = searchHistory()
-    context = {'form': form}
-    db = DB_functions()
-    query = db.patient_report_data(request=request)
-    mix_1 = db.get_all_report_data()
-    mix_2 = db.get_multi(request=request)
-    mix_2_1 = db.get_final_all_reports()
-
-    if not mix_1 == False and mix_2 == True:
-        mix_1_1 = zip(mix_1[0], mix_1[1], mix_1[2], mix_1[3], mix_1[4], mix_1[5], mix_1[6], mix_1[7], mix_1[8],
-                      mix_1[9], mix_1[10], mix_2_1[0], mix_2_1[1], mix_2_1[2], mix_2_1[3],
-                      mix_2_1[4], mix_2_1[5], mix_2_1[6], mix_2_1[7])
-
-        # print('report = ', mix_1[0])
-        # print('NORMAL = ', mix_2_1[6])
-        # print('REVERSED = ', list(reversed(mix_2_1[6])))
-        # query
-        # page = request.GET.get('page', 1)
-        # paginator = Paginator(query, 3)
-        # pages = paginator.page(page)
-        context.update({
-            'mix_1': mix_1_1,
-            # 'pages': pages,
-            'reportData': query
-        })
-    # if not mix_2:
-    #     mix_2_1 = zip(mix_2[0], mix_2[1], mix_2[2], mix_2[3])
-    #     context.update({
-    #         'mix_2': mix_2_1
-    #     })
-    return render(request, 'patientHistory.html', context)
+        return HttpResponseRedirect('/patient/Index/')
 
 
 def getReport(request, report_id):
-    myReport = report.objects.get(pk=report_id)
-    myMultiAnalytics = multi_analytics.objects.filter(report_id__exact=report_id)
-    myMultiRays = multi_rays.objects.filter(report_id__exact=report_id)
-    myMultiMedicines = multi_medecines.objects.filter(report_id__exact=report_id)
-    context = {
-        'myReport': myReport,
-        'myMultiAnalytics': myMultiAnalytics,
-        'myMultiRays': myMultiRays,
-        'myMultiMedicines': myMultiMedicines
-    }
-    return render(request, 'patientHistoryReport.html', context)
-
+    if 'patient_id' in request.session:
+        myReport = report.objects.get(pk=report_id)
+        myMultiAnalytics = multi_analytics.objects.filter(report_id__exact=report_id)
+        myMultiRays = multi_rays.objects.filter(report_id__exact=report_id)
+        myMultiMedicines = multi_medecines.objects.filter(report_id__exact=report_id)
+        context = {
+            'myReport': myReport,
+            'myMultiAnalytics': myMultiAnalytics,
+            'myMultiRays': myMultiRays,
+            'myMultiMedicines': myMultiMedicines
+        }
+        return render(request, 'patientHistoryReport.html', context)
+    else:
+        return HttpResponseRedirect('/patient/Index/')
 
 def patientDoctor(request):
     return render(request, 'patientDoctor.html', {})
@@ -877,41 +888,43 @@ def patientDoctor(request):
 #         return HttpResponse('age:fail to calculate')
 
 def patientCard(request, userid):
-    # print(request.session['user_id'])
-    Profile_picture = user.objects.get(user_id=userid).Profile_picture
-    first_name = user.objects.get(user_id=userid).first_name
-    middle_name = user.objects.get(user_id=userid).middle_name
-    last_name = user.objects.get(user_id=userid).last_name
-    phone_number = user.objects.get(user_id=userid).phone_number
-    Create_date = user.objects.get(user_id=userid).Create_date
-    birthdate = user.objects.get(user_id=userid).Date_of_birth
-    days_in_year = 365.2425
-    age = int((date.today() - birthdate).days / days_in_year)
-    # print(Profile_picture)
-    # print(first_name)
-    # print(middle_name)
-    # print(last_name)
-    # print(phone_number)
-    # print(Create_date)
-    # print(birthdate)
-    # print(age)
-    QR_code = patient.objects.get(Patient=userid).QR_code
-    if age:
-        context = {
-            'Profile_picture': Profile_picture,
-            'first_name': first_name,
-            'middle_name': middle_name,
-            'last_name': last_name,
-            'phone_number': phone_number,
-            'Create_date': Create_date,
-            'QR_code': QR_code,
-            'age': age,
-            'userid': userid,
-        }
-        return render(request, 'patientData.html', context)
+    if 'patient_id' in request.session:
+        # print(request.session['user_id'])
+        Profile_picture = user.objects.get(user_id=userid).Profile_picture
+        first_name = user.objects.get(user_id=userid).first_name
+        middle_name = user.objects.get(user_id=userid).middle_name
+        last_name = user.objects.get(user_id=userid).last_name
+        phone_number = user.objects.get(user_id=userid).phone_number
+        Create_date = user.objects.get(user_id=userid).Create_date
+        birthdate = user.objects.get(user_id=userid).Date_of_birth
+        days_in_year = 365.2425
+        age = int((date.today() - birthdate).days / days_in_year)
+        # print(Profile_picture)
+        # print(first_name)
+        # print(middle_name)
+        # print(last_name)
+        # print(phone_number)
+        # print(Create_date)
+        # print(birthdate)
+        # print(age)
+        QR_code = patient.objects.get(Patient=userid).QR_code
+        if age:
+            context = {
+                'Profile_picture': Profile_picture,
+                'first_name': first_name,
+                'middle_name': middle_name,
+                'last_name': last_name,
+                'phone_number': phone_number,
+                'Create_date': Create_date,
+                'QR_code': QR_code,
+                'age': age,
+                'userid': userid,
+            }
+            return render(request, 'patientData.html', context)
+        else:
+            return HttpResponse('age:fail to calculate')
     else:
-        return HttpResponse('age:fail to calculate')
-
+        return HttpResponseRedirect('/patient/Index/')
 
 def QRCodeScanner():
     # to determine which camera you will use
@@ -979,76 +992,83 @@ def QRCodeScanView(request):
 #     notiyMe = AllNotification.objects.filter(patientRecipient=id).order_by('read').order_by('-recieved_date')
 #     return notiyMe
 
+
 def doctorRate(request,userid,patid,hosid):
-    if request.method == 'POST':
-        patObject = patient.objects.get(id=patid)
-        docObject = user.objects.get(user_id=userid)
-        hosObject = hospital.objects.get(h_id=hosid)
-        rateObject1 = rate()
-        rateObject1.Patient = patObject
-        rateObject1.Doctor = docObject
-        rateObject1.Rate = request.POST['d_star']
-        rateObject1.comment = request.POST['comment']
-        rateObject1.save()
-        rateObject2 = rate()
-        rateObject2.Patient = patObject
-        rateObject2.Hospital = hosObject
-        rateObject2.Rate = request.POST['h_star']
-        rateObject2.save()
-        docrate = rate.objects.filter(Doctor=docObject)
-        sum = 0
-        for i in range(len(docrate)):
-            sum = sum + docrate[i].Rate
-        averageRate = int(sum/len(docrate))
-        doctor.objects.filter(Doc_id=userid).update(doc_rate=averageRate)
-        sum2 = 0
-        hosrate = rate.objects.filter(Hospital=hosObject)
-        for j in range(len(hosrate)):
-            sum2 = sum2 + hosrate[j].Rate
-        averageRate2 = int(sum2 / len(hosrate))
-        hospital.objects.filter(h_id=hosid).update(hos_rate=averageRate2)
+    if 'patient_id' in request.session:
+        if request.method == 'POST':
+            patObject = patient.objects.get(id=patid)
+            docObject = user.objects.get(user_id=userid)
+            hosObject = hospital.objects.get(h_id=hosid)
+            rateObject1 = rate()
+            rateObject1.Patient = patObject
+            rateObject1.Doctor = docObject
+            rateObject1.Rate = request.POST['d_star']
+            rateObject1.comment = request.POST['comment']
+            rateObject1.save()
+            rateObject2 = rate()
+            rateObject2.Patient = patObject
+            rateObject2.Hospital = hosObject
+            rateObject2.Rate = request.POST['h_star']
+            rateObject2.save()
+            docrate = rate.objects.filter(Doctor=docObject)
+            sum = 0
+            for i in range(len(docrate)):
+                sum = sum + docrate[i].Rate
+            averageRate = int(sum/len(docrate))
+            doctor.objects.filter(Doc_id=userid).update(doc_rate=averageRate)
+            sum2 = 0
+            hosrate = rate.objects.filter(Hospital=hosObject)
+            for j in range(len(hosrate)):
+                sum2 = sum2 + hosrate[j].Rate
+            averageRate2 = int(sum2 / len(hosrate))
+            hospital.objects.filter(h_id=hosid).update(hos_rate=averageRate2)
+            return HttpResponseRedirect('/patient/Index/')
+        AllNotification.objects.filter(doctorSenderId=userid).filter(patientRecipient=patid).filter(hospitalSenderId=hosid).update(read=1)
+        return render(request, 'doctorRate.html', {})
+    else:
         return HttpResponseRedirect('/patient/Index/')
-    AllNotification.objects.filter(doctorSenderId=userid).filter(patientRecipient=patid).filter(hospitalSenderId=hosid).update(read=1)
-    return render(request,'doctorRate.html',{})
+
 
 def organizationRate(request,orgid,patid):
-    if request.method == 'POST':
-        patObject = patient.objects.get(id=patid)
-        orgObject = organization.objects.get(org_id=orgid)
+    if 'patient_id' in request.session:
+        if request.method == 'POST':
+            patObject = patient.objects.get(id=patid)
+            orgObject = organization.objects.get(org_id=orgid)
+            if AllNotification.objects.filter(pharmacySenderId=orgid):
+                rateObject3 = rate()
+                rateObject3.Patient = patObject
+                rateObject3.Pharmacy = orgObject
+                rateObject3.Rate = request.POST['org_star']
+                rateObject3.save()
+                pharrate = rate.objects.filter(Pharmacy=orgObject)
+                sum = 0
+                for i in range(len(pharrate)):
+                    sum = sum + pharrate[i].Rate
+                averageRate = int(sum / len(pharrate))
+                print(averageRate)
+                organization.objects.filter(org_id=orgid).update(org_rate=averageRate)
+            else:
+                rateObject3 = rate()
+                rateObject3.Patient = patObject
+                rateObject3.Lab = orgObject
+                rateObject3.Rate = request.POST['org_star']
+                rateObject3.save()
+                labrate = rate.objects.filter(Lab=orgObject)
+                sum2 = 0
+                for j in range(len(labrate)):
+                    sum2 = sum2 + labrate[j].Rate
+                averageRate2 = int(sum2 / len(labrate))
+                print(averageRate2)
+                organization.objects.filter(org_id=orgid).update(org_rate=averageRate2)
+            return HttpResponseRedirect('/patient/Index/')
         if AllNotification.objects.filter(pharmacySenderId=orgid):
-            rateObject3 = rate()
-            rateObject3.Patient = patObject
-            rateObject3.Pharmacy = orgObject
-            rateObject3.Rate = request.POST['org_star']
-            rateObject3.save()
-            pharrate = rate.objects.filter(Pharmacy=orgObject)
-            sum = 0
-            for i in range(len(pharrate)):
-                sum = sum + pharrate[i].Rate
-            averageRate = int(sum / len(pharrate))
-            print(averageRate)
-            organization.objects.filter(org_id=orgid).update(org_rate=averageRate)
+            AllNotification.objects.filter(pharmacySenderId=orgid).filter(patientRecipient=patid).update(read=1)
+            return render(request, 'organizationRate.html', {'org_name':'Pharmacy'})
         else:
-            rateObject3 = rate()
-            rateObject3.Patient = patObject
-            rateObject3.Lab = orgObject
-            rateObject3.Rate = request.POST['org_star']
-            rateObject3.save()
-            labrate = rate.objects.filter(Lab=orgObject)
-            sum2 = 0
-            for j in range(len(labrate)):
-                sum2 = sum2 + labrate[j].Rate
-            averageRate2 = int(sum2 / len(labrate))
-            print(averageRate2)
-            organization.objects.filter(org_id=orgid).update(org_rate=averageRate2)
-        return HttpResponseRedirect('/patient/Index/')
-    if AllNotification.objects.filter(pharmacySenderId=orgid):
-        AllNotification.objects.filter(pharmacySenderId=orgid).filter(patientRecipient=patid).update(read=1)
-        return render(request, 'organizationRate.html', {'org_name':'Pharmacy'})
+            AllNotification.objects.filter(LabSenderId=orgid).filter(patientRecipient=patid).update(read=1)
+            return render(request, 'organizationRate.html', {'org_name':'Lab'})
     else:
-        AllNotification.objects.filter(LabSenderId=orgid).filter(patientRecipient=patid).update(read=1)
-        return render(request, 'organizationRate.html', {'org_name':'Lab'})
-
+        return HttpResponseRedirect('/patient/Index/')
 
 def aboutUs(request):
     return render(request,'aboutUs.html',{})

@@ -27,66 +27,66 @@
             <div class="col-md-9">
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-md-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Full Name</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis"  data-toggle="tooltip" data-placement="top" title="Full Name">Full Name</label>
                     </div>
-                    <div class="col-md-3">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.first_name }}</label>
+                    <div class="col-md-3 ">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis"  data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.first_name }}">{{ patient.Patient.first_name }}</label>
                     </div>
-                    <div class="col-md-3">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.middle_name }}</label>
+                    <div class="col-md-3 ">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis"  data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.middle_name }}">{{ patient.Patient.middle_name }}</label>
                     </div>
-                    <div class="col-md-3">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.last_name }}</label>
+                    <div class="col-md-3 ">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis"  data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.last_name }}">{{ patient.Patient.last_name }}</label>
                     </div>
                 </div><hr>
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-md-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Full Address</label>
+                    <div class="col-md-3 ellipsis">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;"  data-toggle="tooltip" data-placement="top" title="Full Address">Full Address</label>
                     </div>
                     <div class="col-md-2">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.country }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.country }}">{{ patient.Patient.country }}</label>
                     </div>
                     <div class="col-md-2">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.state }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.state }}">{{ patient.Patient.state }}</label>
                     </div>
                     <div class="col-md-2">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.city }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.city }}">{{ patient.Patient.city }}</label>
                     </div>
                     <div class="col-md-2">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.street }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.street }}">{{ patient.Patient.street }}</label>
                     </div>
                     <div class="col-md-1"></div>
                 </div><hr>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-md-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Private</label>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.phone_number }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.phone_number }}">{{ patient.Patient.phone_number }}</label>
                     </div>
                     <div class="col-md-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Home</label>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.home_phone_number }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.home_phone_number }}">{{ patient.Patient.home_phone_number }}</label>
                     </div>
                     <div class="col-md-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Work</label>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.work_phone_number }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.work_phone_number }}">{{ patient.Patient.work_phone_number }}</label>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 ">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Emergency</label>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Emergency_contact }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Emergency_contact }}">{{ patient.Emergency_contact }}</label>
                     </div>
                 </div><hr>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-md-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Gender</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.gender }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.gender }}">{{ patient.Patient.gender }}</label>
                     </div>
                     <div class="col-md-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Birth Date</label>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.Date_of_birth }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.Date_of_birth }}">{{ patient.Patient.Date_of_birth }}</label>
                     </div>
                     <div class="col-md-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Marital Status</label>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.marital_status }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.marital_status }}">{{ patient.Patient.marital_status }}</label>
                     </div>
                     <div class="col-md-3">
                         <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Children</label><br>
@@ -101,60 +101,60 @@
                 </div><hr>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-md-2">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">E-Mails</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Full Nam">E-Mails</label>
                     </div>
                     <div class="col-md-5">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.email_1 }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.email_1 }}">{{ patient.Patient.email_1 }}</label>
                     </div>
                     <div class="col-md-5" style="text-align: center;">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.email_2 }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.email_2 }}">{{ patient.Patient.email_2 }}</label>
                     </div>
                     <div class="col-md-1"></div>
                 </div><hr>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-md-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Nationality</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.Nationality }}</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Nationality">Nationality</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.Nationality }}">{{ patient.Patient.Nationality }}</label>
                     </div>
                     <div class="col-md-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Job Name</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.Job_name }}</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Job Name">Job Name</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.Job_name }}">{{ patient.Patient.Job_name }}</label>
                     </div>
                     <div class="col-md-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Job Organization</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.Job_organization }}</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Job Organization">Job Organization</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.Job_organization }}">{{ patient.Patient.Job_organization }}</label>
                     </div>
                     <div class="col-md-3">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Jop Place</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.Jop_place }}</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Jop Place">Jop Place</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.Jop_place }}">{{ patient.Patient.Jop_place }}</label>
                     </div>
                 </div><hr>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-md-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">SSN</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Patient.Ssn }}</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="SSN">SSN</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Patient.Ssn }}">{{ patient.Patient.Ssn }}</label>
                     </div>
                     <div class="col-md-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Height</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Height }} cm</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Height">Height</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Height }} cm">{{ patient.Height }} cm</label>
                     </div>
                     <div class="col-md-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Weight</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.weight }} kg</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Weight">Weight</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.weight }} kg">{{ patient.weight }} kg</label>
                     </div>
                 </div><hr>
                 <div class="row">
                     <div class="col-md-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Blood</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Blood_type }}</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Blood">Blood</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Blood_type }}">{{ patient.Blood_type }}</label>
                     </div>
                     <div class="col-md-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Disabled</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Disability_status }}</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Disabled">Disabled</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Disability_status }}">{{ patient.Disability_status }}</label>
                     </div>
                     <div class="col-md-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis">Chronic</label><br>
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis">{{ patient.Chronic_diseases }}</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Chronic">Chronic</label><br>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ patient.Chronic_diseases }}">{{ patient.Chronic_diseases }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
@@ -175,4 +175,12 @@
         </div>
     </div>
 </div>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+
 {% endblock patientProfileView%}

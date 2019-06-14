@@ -8,7 +8,7 @@
     <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);padding: 2rem 2rem">
         <div class="row">
         {% if hospital %}
-            <div class="col-sm-3">
+            <div class="col-lg-3">
                 <div class="row">
                     <div style="width:200px;margin: auto">
                         <h3 style="color: #FFF;text-align: center;font-weight: bold;">Logo</h3>
@@ -23,90 +23,90 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-lg-6">
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Name</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Name">Name</label>
                     </div>
                     <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_name }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ hospital.h_name }}">{{ hospital.h_name }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Phone</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Phone">Phone</label>
                     </div>
                     <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_phone_num }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ hospital.h_phone_num }}">{{ hospital.h_phone_num }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Website</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Website">Website</label>
                     </div>
                     <div class="col-sm-8" style="max-height: 60px;overflow: hidden">
-                        <a href="{{ hospital.website }}" style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.website }}</a>
+                        <a href="{{ hospital.website }}" style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ hospital.website }}">{{ hospital.website }}</a>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Country</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Country">Country</label>
                     </div>
                     <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_country }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ hospital.h_country }}">{{ hospital.h_country }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">State</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="State">State</label>
                     </div>
                     <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_state }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ hospital.h_state }}">{{ hospital.h_state }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">City</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="City">City</label>
                     </div>
                     <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_city }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ hospital.h_city }}">{{ hospital.h_city }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Street</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Street">Street</label>
                     </div>
                     <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_street }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ hospital.h_street }}">{{ hospital.h_street }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Zip Code</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Zip Code">Zip Code</label>
                     </div>
                     <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_zipcode }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ hospital.h_zipcode }}">{{ hospital.h_zipcode }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">E-Mail</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="E-Mail">E-Mail</label>
                     </div>
                     <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.email }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ hospital.email }}">{{ hospital.email }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Type</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Type">Type</label>
                     </div>
                     <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_type }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ hospital.h_type }}">{{ hospital.h_type }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Emergency</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Emergency">Emergency</label>
                     </div>
                     <div class="col-sm-8">
                         <label style="font-size: 20px;color: #32c69a;font-weight: bold;">
@@ -119,23 +119,23 @@
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Establishment</label>
+                    <div class="col-sm-4" >
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Establishment">Establishment</label>
                     </div>
                     <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_date }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ hospital.h_date }}">{{ hospital.h_date }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
                     <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Ownership</label>
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Ownership">Ownership</label>
                     </div>
                     <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ hospital.h_ownership }}</label>
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ hospital.h_ownership }}">{{ hospital.h_ownership }}</label>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
+            <div class="col-lg-3">
                 <h3 style="color: #FFF;text-align: center;font-weight: bold;">Departments</h3>
                 <ul class="list-group">
                     {% if hospital.internal_medicine <= 0 %}

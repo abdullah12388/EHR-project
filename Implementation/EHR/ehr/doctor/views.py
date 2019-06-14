@@ -56,20 +56,18 @@ def GetPatianTID(request):
             user_is_exist = user.objects.filter(Ssn_id=ssn_id).exists()
             if user_is_exist:
                 get = user.objects.get(Ssn_id=ssn_id)
-                user_id = get.user_id
-                patientget = patient.objects.get(Patient_id=user_id)
-                p_id = patientget.id
-                print(user_id)
                 user_Type_number = get.User_type
-                print(user_Type_number)
                 if user_Type_number != 1:
-                    return HttpResponseRedirect('/doctor/?alert=1')
-                if user_Type_number == 1:
+                    return HttpResponseRedirect('/doctor/?notify=patient_not_found')
+                elif user_Type_number == 1:
+                    user_id = get.user_id
+                    patientget = patient.objects.get(Patient_id=user_id)
+                    p_id = patientget.id
+                    print(user_id)
                     request.session['Doctor_Patiant_ID'] = p_id
-                    print(request.session['Doctor_Patiant_ID'])
                     return HttpResponseRedirect('/doctor/patiant/prescription/')
             else:
-                return HttpResponseRedirect('/doctor/?alert=1')
+                return HttpResponseRedirect('/doctor/?notify=user_not_found')
 
         else:
             Get_PatianT_ID_Form = GetPatianTIDForm()
@@ -475,7 +473,7 @@ class doctorProfileDetialView(DetailView):
 
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session and 'hospital_id' not in self.request.session and 'clinic_id' not in self.request.session:
-            return HttpResponseRedirect('/doctor/')
+            return HttpResponseRedirect('/doctor/?notify=not_found')
         else:
             return super().render_to_response(redirect_url)
 
@@ -541,6 +539,7 @@ class DoctorStatistics(APIView):
             "data2": data2,
         }
         return Response(data)
+
 
 def RestDoctorPassword(request):
     if request.method == 'POST':

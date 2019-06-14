@@ -1,9 +1,13 @@
 {% extends 'Doctor_app/Doctor_base.html' %}
 
 {% block home_content %}
-{% if request.GET.alert == "1" %}
+{% if request.GET.notify == "patient_not_found" %}
 <script>
-    alert("This is not a patient")
+alert("This's not a patient")
+</script>
+{% elif request.GET.notify == "user_not_found" %}
+<script>
+alert("This's not a user")
 </script>
 {% endif %}
 <div class="home_container" style="top:30%">

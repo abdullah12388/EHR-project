@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee7bb95e-92ac-4fdd-8d7d-d7cb004bdf89" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/ehr/lab/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/lab/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ehr/templates/patientAnalyticsToBeSubmit.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/patientAnalyticsToBeSubmit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/doctor/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/doctor/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/ehr/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/ehr/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/templates/Doctor_app/Patiant_ID_singup.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/Doctor_app/Patiant_ID_singup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/templates/clinicProfileView.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/clinicProfileView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/templates/doctorProfileView.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/doctorProfileView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/templates/hospitalProfileView.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/hospitalProfileView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/templates/labProfileView.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/labProfileView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/templates/patientProfileView.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/patientProfileView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ehr/templates/pharmacyProfileView.html" beforeDir="false" afterPath="$PROJECT_DIR$/ehr/templates/pharmacyProfileView.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,28 +35,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ehr/patient/views.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ehr/templates/patientProfileView.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="477">
-              <caret line="842" column="39" selection-start-line="842" selection-start-column="39" selection-end-line="842" selection-end-column="39" />
+            <state relative-caret-position="240">
+              <caret line="55" column="88" selection-start-line="55" selection-start-column="88" selection-end-line="55" selection-end-column="185" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ehr/templates/doctorProfileView.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="46" column="163" lean-forward="true" selection-start-line="46" selection-start-column="85" selection-end-line="46" selection-end-column="163" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ehr/templates/pharmacyProfileView.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="95" column="184" selection-start-line="95" selection-start-column="184" selection-end-line="95" selection-end-column="184" />
               <folding>
-                <element signature="e#22675#23370#0" />
-                <element signature="e#23405#24051#0" />
-                <element signature="e#24124#27951#0" />
-                <element signature="e#27988#32354#0" />
-                <element signature="e#32378#32536#0" />
-                <element signature="e#32567#32825#0" />
-                <element signature="e#32852#33252#0" />
-                <element signature="e#33286#33402#0" />
-                <element signature="e#33435#33547#0" />
-                <element signature="e#33575#33597#0" />
-                <element signature="e#34056#34646#0" />
-                <element signature="e#34682#36008#0" />
-                <element signature="e#36608#36656#0" />
-                <element signature="e#38242#39557#0" />
-                <element signature="e#39585#41003#0" />
-                <element signature="e#41039#41869#0" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" />
               </folding>
             </state>
           </provider>
@@ -69,6 +80,7 @@
       <find>notify</find>
       <find>exac</find>
       <find>HttpResponseRedirect</find>
+      <find>ssn</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -77,19 +89,13 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ehr/templates/hospitalLogin.html" />
-        <option value="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/bootstrap-3.3.7/js/tests/vendor/qunit.js" />
-        <option value="$PROJECT_DIR$/ehr/patient/forms.py" />
-        <option value="$PROJECT_DIR$/ehr/hospital/forms.py" />
         <option value="$PROJECT_DIR$/ehr/hospital/models.py" />
         <option value="$PROJECT_DIR$/ehr/templates/addOrganization.html" />
         <option value="$PROJECT_DIR$/ehr/templates/addPharmacy.html" />
         <option value="$PROJECT_DIR$/ehr/templates/addLab.html" />
-        <option value="$PROJECT_DIR$/ehr/templates/hospitalProfileView.html" />
         <option value="$PROJECT_DIR$/ehr/doctor/models.py" />
         <option value="$PROJECT_DIR$/ehr/templates/updateDoctor.html" />
         <option value="$PROJECT_DIR$/ehr/templates/DoctorProfileView.html" />
-        <option value="$PROJECT_DIR$/ehr/templates/doctorProfileView.html" />
         <option value="$PROJECT_DIR$/ehr/templates/patientIndex.html" />
         <option value="$PROJECT_DIR$/ehr/templates/updatePharmacy.html" />
         <option value="$PROJECT_DIR$/../EHR_system/.idea/EHR_system.iml" />
@@ -103,11 +109,9 @@
         <option value="$PROJECT_DIR$/ehr/templates/Doctor_app/Doctor_base.html" />
         <option value="$PROJECT_DIR$/ehr/templates/navbar.html" />
         <option value="$PROJECT_DIR$/ehr/templates/Doctor_app/prescription_list.html" />
-        <option value="$PROJECT_DIR$/ehr/templates/Doctor_app/Patiant_ID_singup.html" />
         <option value="$PROJECT_DIR$/ehr/doctor/urls.py" />
         <option value="$PROJECT_DIR$/ehr/lab/urls.py" />
         <option value="$PROJECT_DIR$/ehr/pharmacy/urls.py" />
-        <option value="$PROJECT_DIR$/ehr/doctor/views.py" />
         <option value="$PROJECT_DIR$/ehr/static_in_pro/our_static/js/patientHistory.js" />
         <option value="$PROJECT_DIR$/ehr/ehr/settings.py" />
         <option value="$PROJECT_DIR$/ehr/ehr/settings.py" />
@@ -118,16 +122,24 @@
         <option value="$PROJECT_DIR$/ehr/templates/patientHistoryReport.html" />
         <option value="$PROJECT_DIR$/ehr/templates/addHospitalDoctor.html" />
         <option value="$PROJECT_DIR$/ehr/templates/patientHistory.html" />
-        <option value="$PROJECT_DIR$/ehr/ehr/__init__.py" />
         <option value="$PROJECT_DIR$/ehr/static_in_pro/our_static/styles/main_styles.css" />
-        <option value="$PROJECT_DIR$/ehr/templates/patientProfileView.html" />
         <option value="$PROJECT_DIR$/ehr/templates/pharmacyIndex.html" />
         <option value="$PROJECT_DIR$/ehr/pharmacy/views.py" />
         <option value="$PROJECT_DIR$/ehr/templates/labLogin.html" />
         <option value="$PROJECT_DIR$/ehr/templates/labIndex.html" />
         <option value="$PROJECT_DIR$/ehr/templates/patientAnalyticsToBeSubmit.html" />
-        <option value="$PROJECT_DIR$/ehr/doctor/views.py" />
         <option value="$PROJECT_DIR$/ehr/lab/views.py" />
+        <option value="$PROJECT_DIR$/ehr/ehr/__init__.py" />
+        <option value="$PROJECT_DIR$/ehr/templates/Doctor_app/Doctor_index.html" />
+        <option value="$PROJECT_DIR$/ehr/templates/Doctor_app/Patiant_ID_singup.html" />
+        <option value="$PROJECT_DIR$/ehr/templates/patientProfileView.html" />
+        <option value="$PROJECT_DIR$/ehr/templates/hospitalProfileView.html" />
+        <option value="$PROJECT_DIR$/ehr/templates/clinicProfileView.html" />
+        <option value="$PROJECT_DIR$/ehr/templates/labProfileView.html" />
+        <option value="$PROJECT_DIR$/ehr/doctor/views.py" />
+        <option value="$PROJECT_DIR$/ehr/doctor/views.py" />
+        <option value="$PROJECT_DIR$/ehr/templates/doctorProfileView.html" />
+        <option value="$PROJECT_DIR$/ehr/templates/pharmacyProfileView.html" />
       </list>
     </option>
   </component>
@@ -143,6 +155,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -159,19 +172,12 @@
               <item name="EHR" type="b2602c69:ProjectViewProjectNode" />
               <item name="EHR" type="462c0819:PsiDirectoryNode" />
               <item name="ehr" type="462c0819:PsiDirectoryNode" />
-              <item name="patient" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EHR" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EHR" type="462c0819:PsiDirectoryNode" />
-              <item name="ehr" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="doctor" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Course" />
     </panes>
   </component>
@@ -205,7 +211,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.views (1)">
+  <component name="RunManager" selected="Python.urls">
+    <configuration name="urls" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="EHR" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ehr/doctor" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ehr/doctor/urls.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="views (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="EHR" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -252,6 +280,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.urls" />
         <item itemvalue="Python.views (1)" />
         <item itemvalue="Python.views" />
       </list>
@@ -291,11 +320,12 @@
       <workItem from="1560206298970" duration="13637000" />
       <workItem from="1560328405445" duration="12291000" />
       <workItem from="1560419814530" duration="3031000" />
+      <workItem from="1560487064375" duration="805000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="376256000" />
+    <option name="totallyTimeSpent" value="387267000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -308,8 +338,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="957" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22173436" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.27442372" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -339,38 +370,10 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/EHR$views.coverage" NAME="views Coverage Results" MODIFIED="1560157382838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ehr/patient" />
+    <SUITE FILE_PATH="coverage/EHR$urls.coverage" NAME="urls Coverage Results" MODIFIED="1560474593943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ehr/doctor" />
     <SUITE FILE_PATH="coverage/EHR$views__1_.coverage" NAME="views (1) Coverage Results" MODIFIED="1560206688517" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ehr/hospital" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ehr/templates/doctorProfileView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/Doctor_app/Patiant_ID_singup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/patientIdentity.html" />
-    <entry file="file://$PROJECT_DIR$/ehr/templates/signup.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Oabw9z00VD.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4400" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/manage.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/pharmacy/apps.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/ehr/pharmacy/models.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -545,7 +548,7 @@
     <entry file="file://$PROJECT_DIR$/ehr/ehr/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+          <caret line="2" column="28" lean-forward="true" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -591,37 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/patientProfileView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="140" column="38" selection-start-line="140" selection-start-column="38" selection-end-line="140" selection-end-column="38" />
-          <folding>
-            <element signature="n#style#0;n#label#0;n#div#0;n#div#3;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#1;n#div#0;n#div#3;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#div#1;n#div#6;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#1;n#div#1;n#div#6;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#div#0;n#div#7;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#1;n#div#0;n#div#7;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#div#1;n#div#7;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#1;n#div#1;n#div#7;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#0;n#div#2;n#div#7;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#label#1;n#div#2;n#div#7;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#7;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#a#0;n#div#0;n#div#7;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#7;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#a#0;n#div#1;n#div#7;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/pharmacyProfileView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ehr/templates/pharmacyIndex.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -638,20 +610,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ehr/pharmacy/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
+        <state relative-caret-position="165">
           <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/patient/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="40" column="13" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -666,30 +628,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/doctor/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="115" column="53" lean-forward="true" selection-start-line="115" selection-start-column="53" selection-end-line="115" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#53#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/templates/labIndex.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ehr/lab/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="27" lean-forward="true" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
+        <state>
+          <caret column="22" selection-start-column="22" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -697,13 +639,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="41" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ehr/lab/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="866">
-          <caret line="129" column="13" lean-forward="true" selection-start-line="129" selection-start-column="13" selection-end-line="129" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -728,6 +663,141 @@
             <element signature="e#38242#39557#0" />
             <element signature="e#39585#41003#0" />
             <element signature="e#41039#41869#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/lab/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="54" column="50" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/labIndex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/patient/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="78" column="4" selection-start-line="78" selection-start-column="4" selection-end-line="78" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/Doctor_app/Doctor_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/Doctor_app/Patiant_ID_singup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/doctor/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="11" column="68" lean-forward="true" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/hospitalProfileView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="254" column="18" lean-forward="true" selection-start-line="254" selection-start-column="18" selection-end-line="254" selection-end-column="18" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/clinicProfileView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="94" column="38" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h3#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/labProfileView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="94" column="38" selection-start-line="94" selection-start-column="38" selection-end-line="94" selection-end-column="38" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/patientProfileView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="55" column="88" selection-start-line="55" selection-start-column="88" selection-end-line="55" selection-end-column="185" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/doctor/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="477" column="58" lean-forward="true" selection-start-line="477" selection-start-column="58" selection-end-line="477" selection-end-column="58" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+            <element signature="e#986#1607#0" />
+            <element signature="e#1641#3073#0" />
+            <element signature="e#3109#4216#0" />
+            <element signature="e#4256#5145#0" />
+            <element signature="e#5194#5844#0" />
+            <element signature="e#5889#8219#0" />
+            <element signature="e#8264#8793#0" />
+            <element signature="e#8830#9573#0" />
+            <element signature="e#9618#10240#0" />
+            <element signature="e#10281#10884#0" />
+            <element signature="e#10924#11808#0" />
+            <element signature="e#11842#12565#0" />
+            <element signature="e#12607#13221#0" />
+            <element signature="e#13259#13806#0" />
+            <element signature="e#13843#15123#0" />
+            <element signature="e#15162#15905#0" />
+            <element signature="e#15952#16582#0" />
+            <element signature="e#16625#17189#0" />
+            <element signature="e#17231#18548#0" />
+            <element signature="e#18551#18586#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/doctorProfileView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="46" column="163" lean-forward="true" selection-start-line="46" selection-start-column="85" selection-end-line="46" selection-end-column="163" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ehr/templates/pharmacyProfileView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="52" column="153" selection-start-line="52" selection-start-column="153" selection-end-line="52" selection-end-column="153" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" />
           </folding>
         </state>
       </provider>

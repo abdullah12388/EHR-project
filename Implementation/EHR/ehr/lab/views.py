@@ -72,10 +72,10 @@ def labPatientLogin(request):
                 return HttpResponseRedirect('/lab/labPatientLogin/?notify=user_not_found')
         else:
             if 'ssnid' not in request.session:
-                return render(request, 'labIndex.html', {'lab_id': request.session['lab_id']})
+                return render(request, 'labIndex.html', {'lab_id': request.session['lab_id'],'first_name':labName(request)})
             else:
                 return render(request, 'labIndex.html',
-                              {'lab_id': request.session['lab_id'], 'SSN_ID': request.session['ssnid'], })
+                              {'lab_id': request.session['lab_id'], 'SSN_ID': request.session['ssnid'],'first_name':labName(request)})
     else:
         return HttpResponseRedirect('/hospital/')
 
@@ -232,3 +232,8 @@ def lab_profile_view(request, labid=None):
         return HttpResponseRedirect('/lab/')
 
     return render(request, 'labProfileView.html', context)
+
+def labName(request):
+    lab_id = request.session['lab_id']
+    first_name = organization.objects.get(org_id=lab_id).org_name
+    return first_name

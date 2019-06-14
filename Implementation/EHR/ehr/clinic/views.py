@@ -57,6 +57,7 @@ def Index(request):
             'clinic': clinicdata,
             'clin_id': clinicdata.org_id,
             'doctor': doctordata,
+            'first_name':clinicdata.org_name
         }
         return render(request, 'clinicIndex.html', context)
     else:

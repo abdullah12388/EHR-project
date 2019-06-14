@@ -163,6 +163,7 @@ def Index(request):
             'doctor': doctordata,
             'pharmacy': pharmacydata,
             'lab': labdata,
+            'first_name':hospitaldata.h_name
         }
         return render(request, 'hospitalIndex.html', context)
     else:

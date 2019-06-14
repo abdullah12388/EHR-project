@@ -61,10 +61,10 @@ def pharmacyPatientLogin(request):
                 return HttpResponseRedirect('/pharmacy/pharmacyPatientLogin/?notify=not_user')
         else:
             if 'ssnID' not in request.session:
-                return render(request, 'pharmacyIndex.html', {'ph_id': request.session['pharmacy_id']})
+                return render(request, 'pharmacyIndex.html', {'ph_id': request.session['pharmacy_id'],'first_name':pharmacyName(request)})
             else:
                 return render(request, 'pharmacyIndex.html',
-                              {'ph_id': request.session['pharmacy_id'], 'SSNID': request.session['ssnID']})
+                              {'ph_id': request.session['pharmacy_id'], 'SSNID': request.session['ssnID'],'first_name':pharmacyName(request)})
     else:
         return HttpResponseRedirect('/pharmacy/')
 
@@ -166,3 +166,8 @@ def pharmacy_profile_view(request, pharid=None):
     if 'patient_id' not in request.session and 'hospital_id' not in request.session and 'pharmacy_id' not in request.session:
         return HttpResponseRedirect('/pharmacy/')
     return render(request, 'pharmacyProfileView.html', context)
+
+def pharmacyName(request):
+    pharmacy_id = request.session['pharmacy_id']
+    first_name = organization.objects.get(org_id=pharmacy_id).org_name
+    return first_name

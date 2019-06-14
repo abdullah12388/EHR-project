@@ -332,6 +332,7 @@ def home(request):
             'patid': patient_id,
             'notifications': notifyData,
             'newNotifications': newNotifyData,
+            'first_name':patientName(request)
         }
         if patientReport:
             lastMedicineInReportTrueOrFalse = multi_medecines.objects.filter(
@@ -796,7 +797,7 @@ class patientProfileDetialView(DetailView):
                 return redirect('/')
 
     def get_object(self):
-        return get_object_or_404(doctor, **self.kwargs)
+        return get_object_or_404(patient, **self.kwargs)
     # self.kwargs['pk']
     # def render_to_response(self , redirect_url):
     #     if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
@@ -1086,6 +1087,12 @@ def organizationRate(request,orgid,patid):
             return render(request, 'organizationRate.html', {'org_name':'Lab'})
     else:
         return HttpResponseRedirect('/patient/Index/')
+
+def patientName(request):
+    patient_id = request.session['patient_id']
+    userid = patient.objects.get(id=patient_id).Patient_id
+    first_name = user.objects.get(user_id=userid).first_name
+    return first_name
 
 def aboutUs(request):
     return render(request,'aboutUs.html',{})

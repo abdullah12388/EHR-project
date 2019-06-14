@@ -136,12 +136,13 @@ def AnalyticsListView(request):
                 }
                 return render(request, 'patientAnalyticsToBeSubmit.html', context)
             else:
-                return HttpResponse("You don't have any analytics")
-                # return HttpResponseRedirect('/lab/labPatientLogin/Analytics/?notify=no_analytics')
+                # return HttpResponse("You don't have any analytics")
+                return HttpResponseRedirect('/lab/labPatientLogin/?notify=1')
         else:
-            return HttpResponseNotFound('<h1>patient not found</h1>')
+            # return HttpResponseNotFound('<h1>patient not found</h1>')
+            return HttpResponseRedirect('/lab/labPatientLogin/?notify=0')
     else:
-        return HttpResponseRedirect('/hospital/')
+        return HttpResponseRedirect('/lab/')
 
 
 
@@ -192,11 +193,13 @@ def RaysListView(request):
                 }
                 return render(request, 'patientRaysToBeSubmit.html', context)
             else:
-                return HttpResponse("You don't have any Rays")
+                # return HttpResponse("You don't have any Rays")
+                return HttpResponseRedirect('/lab/labPatientLogin/?notify=2')
         else:
-            return HttpResponseNotFound('<h1>patient not found</h1>')
+            # return HttpResponseNotFound('<h1>patient not found</h1>')
+            return HttpResponseRedirect('/lab/labPatientLogin/?notify=0')
     else:
-        return HttpResponseRedirect('/hospital/')
+        return HttpResponseRedirect('/lab/')
 
 
 # def lab_profile_view(request,labid,hosid):

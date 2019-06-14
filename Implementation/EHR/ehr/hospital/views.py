@@ -512,7 +512,7 @@ def unblock_doctor(request, ssn):
 
 
 def hospital_profile_view(request, hosid=None):
-    if 'hospital_id' in request.session:
+    if 'hospital_id' in request.session or 'patient_id' in request.session:
         hospitaldata = get_object_or_404(hospital, h_id=hosid)
         context = {
             'hospital': hospitaldata,

@@ -1,55 +1,68 @@
 {% extends 'base.html' %}
 {% block labIndex %}
 
-{% if request.GET.notify == "patient_not_found" %}
-<script>
-alert("This's not a patient")
-</script>
-{% elif request.GET.notify == "user_not_found" %}
-<script>
-alert("This's not a user")
-</script>
-{% endif %}
-<div class="home_container" style="top:30%">
-    <div class="container">
-				<div class="row">
-					<div class="col-sm">
-						<div class="home_content">
-                            <div class="home_title">Patient Login</div>
-							<form method="POST" action="">
-                                {% csrf_token %}
-                                <div class="home_text">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="pat_id" aria-describedby="emailHelp" placeholder="Enter Patient ID" required="required" value="{{ SSN_ID }}">
-                                    </div>
-                                    <div class="form-group">
-                                        <select class="form-control" style="height: auto" name="type" required>
-                                            <option value="" selected disabled>Choose type...</option>
-                                            <option value="1">Analytics</option>
-                                            <option value="2">Rays</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="button home_button" name="BtnForSearch">Search</button>
-                                    </div>
+    {% if request.GET.notify == "patient_not_found" %}
+        <script>
+            alert("This's not a patient")
+        </script>
+    {% elif request.GET.notify == "user_not_found" %}
+        <script>
+            alert("This's not a user")
+        </script>
+    {% elif request.GET.notify == "0" %}
+        <script>
+            alert("No Patient With This ID")
+        </script>
+    {% elif request.GET.notify == "1" %}
+        <script>
+            alert("You Don't Have Any Analytics")
+        </script>
+    {% elif request.GET.notify == "2" %}
+        <script>
+            alert("You Don't Have Any Rays")
+        </script>
+    {% endif %}
+    <div class="home_container" style="top:30%">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="home_content">
+                        <div class="home_title">Patient Login</div>
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <div class="home_text">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="pat_id" aria-describedby="emailHelp"
+                                           placeholder="Enter Patient ID" required="required" value="{{ SSN_ID }}">
                                 </div>
-                            </form>
-						</div>
-					</div>
-				</div>
-                <div class="home_text">
-                    <div class="row">
-                        <div class="col-sm-3" style="margin-top: 45px">
-                            <span>Login Fast</span>
-                        </div>
-                        <div class="col-sm-3">
-                            <a href="{% url 'lab:QRCodeScanView' %}">
-                                <button type="button" class="button home_button" name="btnForScanQR">Scan Id</button>
-                            </a>
-                        </div>
+                                <div class="form-group">
+                                    <select class="form-control" style="height: auto" name="type" required>
+                                        <option value="" selected disabled>Choose type...</option>
+                                        <option value="1">Analytics</option>
+                                        <option value="2">Rays</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="button home_button" name="BtnForSearch">Search</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-			</div>
-</div>
+            </div>
+            <div class="home_text">
+                <div class="row">
+                    <div class="col-sm-3" style="margin-top: 45px">
+                        <span>Login Fast</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <a href="{% url 'lab:QRCodeScanView' %}">
+                            <button type="button" class="button home_button" name="btnForScanQR">Scan Id</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock labIndex %}

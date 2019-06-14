@@ -129,7 +129,8 @@ def medicineListView(request):
             else:
                 return HttpResponseRedirect("/pharmacy/pharmacyPatientLogin/?notify=1")
         else:
-            return HttpResponseNotFound('<h1>patient not found</h1>')
+            # return HttpResponseNotFound('<h1>patient not found</h1>')
+            return HttpResponseRedirect("/pharmacy/pharmacyPatientLogin/?notify=2")
     else:
         return HttpResponseRedirect('/pharmacy/')
 

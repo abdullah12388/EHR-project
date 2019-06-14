@@ -267,7 +267,7 @@ def unblock_doctor(request, ssn):
 
 
 def clinic_profile_view(request, clinid=None):
-    if 'clinic_id' in request.session:
+    if 'clinic_id' in request.session or 'patient_id' in request.session:
         clinicdata = get_object_or_404(organization, org_id=clinid)
         context = {
             'clinic': clinicdata,

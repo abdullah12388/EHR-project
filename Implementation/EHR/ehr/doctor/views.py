@@ -8,22 +8,35 @@ from django.views.generic import (View, DetailView, ListView, FormView,
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from patient.models import user, patient, AllNotification
+from patient.models import user, patient, AllNotification, rate
 from patient.views import QRCodeScanner
 from hospital.models import hospital
 from .forms import GetPatianTIDForm, PrescriptionForm, AddmedicenForm, AddRaysForm, AddanalyticsForm
 from .models import (prescription, report, doctor, multi_medecines,
                      patient_medicine, multi_rays, patient_rays, patient_analytics, multi_analytics)
+from django.utils import timezone
+from datetime import datetime,timedelta
 
+from django.core import serializers
+
+import feedparser
 
 def Doctor(request):
     if 'doctor_id' not in request.session:
         return HttpResponseRedirect('/patient/')
-    else:
-        user_type = request.session['user_T']
-        user_id = request.session['doctor_id']
-        p_id = request.session['Doctor_Patiant_ID']
-    context = {'ID': user_id, 'Type': user_type, 'p_id': p_id}
+    docid = request.session['doctor_id']
+    userid = doctor.objects.get(id=docid).Doc_id
+    goodBadComments = rate.objects.filter(Doctor=userid)
+    goodComment = goodBadComments.filter(Rate__gte=8)
+    badComment = goodBadComments.filter(Rate__lte=8)
+
+    NewsFeed = feedparser.parse("https://rss.medicalnewstoday.com/featurednews.xml")
+    entry = NewsFeed.entries
+    context = {
+        "Good":goodComment,
+        "Bad":badComment,
+        "News":entry
+    }
     return render(request, 'Doctor_app/Doctor_index.html', context)
 
 
@@ -66,24 +79,24 @@ def GetPatianTID(request):
 
 def QRCodeScanView(request):
     QRData = QRCodeScanner()
-    QRData = QRData.decode("UTF-8")
-    getUser = user.objects.get(Ssn_id=QRData)
+    if QRData:
+        QRData = QRData.decode("UTF-8")
+        getUser = user.objects.get(Ssn_id=QRData)
 
-    if getUser:
-        user_Type_number = getUser.User_type
+        if getUser:
+            user_Type_number = getUser.User_type
 
-        ssn_id = QRData
-        print(ssn_id)
-        user_is_exist = user.objects.filter(Ssn_id=ssn_id).exists()
-        if user_is_exist:
-            get = user.objects.get(Ssn_id=ssn_id)
-            user_id = get.user_id
-            patientget = patient.objects.get(Patient_id=user_id)
-            p_id = patientget.id
-            print(user_id)
-            user_Type_number = get.User_type
-            print(user_Type_number)
-
+            ssn_id = QRData
+            print(ssn_id)
+            user_is_exist = user.objects.filter(Ssn_id=ssn_id).exists()
+            if user_is_exist:
+                get = user.objects.get(Ssn_id=ssn_id)
+                user_id = get.user_id
+                patientget = patient.objects.get(Patient_id=user_id)
+                p_id = patientget.id
+                print(user_id)
+                user_Type_number = get.User_type
+                print(user_Type_number)
             if user_Type_number == 1:
                 request.session['Doctor_Patiant_ID'] = p_id
                 print(request.session['Doctor_Patiant_ID'])
@@ -94,6 +107,7 @@ def QRCodeScanView(request):
             return HttpResponseRedirect('/doctor/')
     else:
         return HttpResponseRedirect('/doctor/')
+
 
 
 class ReportListView(ListView):
@@ -126,8 +140,8 @@ class PrescriptionDetialView(DetailView):
     context_object_name = 'presc_detial'
     redirect_url = '/doctor/patiant/prescription/'
 
-    # self.kwargs['pk']
     def render_to_response(self, redirect_url):
+        self.request.session['presc_id'] = self.kwargs['pk']
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
             return HttpResponseRedirect('/patient/login/')
         elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
@@ -167,7 +181,7 @@ class prescriptionFormView(FormView):
         notifyPatient.save()
         #############################################################################################
 
-        return HttpResponseRedirect(reverse('doctor:newmed', kwargs={'pk': create_report.prescription.prescription_id}))
+        return HttpResponseRedirect(reverse('doctor:prescriptiondetial', kwargs={'pk': create_report.prescription.prescription_id}))
 
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
@@ -458,14 +472,20 @@ class doctorProfileDetialView(DetailView):
     template_name = 'doctorProfileView.html'
     context_object_name = 'doctor'
     redirect_url = '/doctor/'
-    # self.kwargs['pk']
-    # def render_to_response(self , redirect_url):
+
+    def render_to_response(self, redirect_url):
+        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session and 'hospital_id' not in self.request.session and 'clinic_id' not in self.request.session:
+            return HttpResponseRedirect('/doctor/')
+        else:
+            return super().render_to_response(redirect_url)
+
+    # def render_to_response(self, redirect_url):
     #     if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-    #         return HttpResponseRedirect('/patient/login/')
+    #         return HttpResponseRedirect('/')
     #     elif 'patient_id' in self.request.session and 'doctor_id' not in self.request.session:
     #         return HttpResponseRedirect('/')
     #     else:
-    #        return super().render_to_response(redirect_url)
+    #         return super().render_to_response(redirect_url)
 
 
 class StatView(View):
@@ -478,27 +498,49 @@ class DoctorStatistics(APIView):
     permission_classes = []
 
     def get(self, request, format=None):
-        labels = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
-        defulatdata_items = [12500, 10000, 15500, 11151, 12115, 13891]
+        docid = request.session['doctor_id']
+        ######################################################################################
+        # bar chart
+        lbldate1=(datetime.now().date() - timedelta(1)).strftime("%A")
+        lbldate2=(datetime.now().date() - timedelta(2)).strftime("%A")
+        lbldate3=(datetime.now().date() - timedelta(3)).strftime("%A")
+        lbldate4=(datetime.now().date() - timedelta(4)).strftime("%A")
+        lbldate5=(datetime.now().date() - timedelta(5)).strftime("%A")
+        lbldate6=(datetime.now().date() - timedelta(6)).strftime("%A")
+        lbldate7=(datetime.now().date() - timedelta(7)).strftime("%A")
+        labels = [lbldate1,lbldate2,lbldate3,lbldate4,lbldate5,lbldate6,lbldate7]
+        daysData = report.objects.filter(doctor=docid)
+        d1 = daysData.filter(Submit_date__contains=datetime.now().date() - timedelta(1)).count()
+        d2 = daysData.filter(Submit_date__contains=datetime.now().date() - timedelta(2)).count()
+        d3 = daysData.filter(Submit_date__contains=datetime.now().date() - timedelta(3)).count()
+        d4 = daysData.filter(Submit_date__contains=datetime.now().date() - timedelta(4)).count()
+        d5 = daysData.filter(Submit_date__contains=datetime.now().date() - timedelta(5)).count()
+        d6 = daysData.filter(Submit_date__contains=datetime.now().date() - timedelta(6)).count()
+        d7 = daysData.filter(Submit_date__contains=datetime.now().date() - timedelta(7)).count()
+        defulatdata_items = [d1,d2,d3,d4,d5,d6,d7]
         data1 = {
             "label": labels,
             "default": defulatdata_items,
         }
+        ##########################################################################################
+        # pie chart
+        lblGC = 'Good Comment'
+        lblBC = 'Bad Comment'
+        labels2 = [lblGC, lblBC]
+        userid = doctor.objects.get(id=docid).Doc_id
+        goodBadComments = rate.objects.filter(Doctor=userid)
+        goodComment = goodBadComments.filter(Rate__gte=8).count()
+        badComment = goodBadComments.filter(Rate__lte=8).count()
+        defulatdata_items2 = [goodComment, badComment]
         data2 = {
-            "label": ['Rd', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            "default": defulatdata_items,
-        }
-        data3 = {
-            "label": labels,
-            "default": defulatdata_items,
+            "label": labels2,
+            "default": defulatdata_items2,
         }
         data = {
             "data1": data1,
             "data2": data2,
-            "data3": data3,
         }
         return Response(data)
-
 
 def RestDoctorPassword(request):
     if request.method == 'POST':
@@ -519,3 +561,4 @@ def RestDoctorPassword(request):
             return HttpResponseRedirect('/')
     else:
         return render(request, 'Resetpassword.html', {})
+

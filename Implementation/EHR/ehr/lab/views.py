@@ -50,12 +50,12 @@ def labLogout(request):
 def labPatientLogin(request):
     if request.method == 'POST':
         ssn_id = request.POST['pat_id']
-        ssn_found = user.objects.filter(Ssn_id__exact=ssn_id).exists()
+        ssn_found = user.objects.filter(Ssn_id__iexact=ssn_id).exists()
         if ssn_found:
             myUser = user.objects.get(Ssn_id=ssn_id)
-            user_type = myUser.User_type
-            if str(user_type) == "1":
-                u_id = myUser.user_id
+            userType = myUser.User_type
+            if str(userType) == "1":
+                u_id = user.objects.get(Ssn_id=ssn_id).user_id
                 request.session['patie_id'] = u_id
                 if request.POST['type'] == '1':
                     print('we did it')
@@ -79,9 +79,13 @@ def labPatientLogin(request):
 
 def QRCodeScanView(request):
     QRData = QRCodeScanner()
-    QRData = QRData.decode("UTF-8")
-    request.session['ssnid'] = QRData
-    return HttpResponseRedirect('/lab/labPatientLogin/')
+    if QRData:
+        QRData = QRData.decode("UTF-8")
+        request.session['ssnid'] = QRData
+        return HttpResponseRedirect('/lab/labPatientLogin/')
+    else:
+        return HttpResponseRedirect('/lab/labPatientLogin/')
+
 
 
 def AnalyticsListView(request):
@@ -211,4 +215,6 @@ def lab_profile_view(request, labid=None):
         'lab': labData,
         'lab_id': labData.org_id,
     }
+    if 'patient_id' not in request.session and 'hospital_id' not in request.session and 'lab_id' not in request.session:
+        return HttpResponseRedirect('/lab/')
     return render(request, 'labProfileView.html', context)

@@ -68,9 +68,12 @@ def pharmacyPatientLogin(request):
 
 def QRCodeScanView(request):
     QRData = QRCodeScanner()
-    QRData = QRData.decode("UTF-8")
-    request.session['ssnID'] = QRData
-    return HttpResponseRedirect('/pharmacy/pharmacyPatientLogin/')
+    if QRData:
+        QRData = QRData.decode("UTF-8")
+        request.session['ssnID'] = QRData
+        return HttpResponseRedirect('/pharmacy/pharmacyPatientLogin/')
+    else:
+        return HttpResponseRedirect('/pharmacy/pharmacyPatientLogin/')
 
 
 def medicineListView(request):
@@ -152,4 +155,6 @@ def pharmacy_profile_view(request, pharid=None):
         'ph_id': pharmacyData.org_id,
         'hos_id': None,
     }
+    if 'patient_id' not in request.session and 'hospital_id' not in request.session and 'pharmacy_id' not in request.session:
+        return HttpResponseRedirect('/pharmacy/')
     return render(request, 'pharmacyProfileView.html', context)

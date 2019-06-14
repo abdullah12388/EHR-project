@@ -75,7 +75,7 @@ def GetPatianTID(request):
         else:
             Get_PatianT_ID_Form = GetPatianTIDForm()
             return render(request, 'Doctor_app/Patiant_ID_singup.html',
-                          {'ID': request.session['doctor_id'], 'Patiant_form': Get_PatianT_ID_Form})
+                          {'ID': request.session['doctor_id'], 'Patiant_form': Get_PatianT_ID_Form,'first_name':doctorName(request)})
 
 
 def QRCodeScanView(request):
@@ -592,3 +592,9 @@ def RestDoctorPassword(request):
             return render(request, 'Resetpassword.html', {})
     else:
         return HttpResponseRedirect('/doctor/')
+
+def doctorName(request):
+    doctor_id = request.session['doctor_id']
+    userid = doctor.objects.get(id=doctor_id).Doc_id
+    first_name = user.objects.get(user_id=userid).first_name
+    return first_name

@@ -329,7 +329,6 @@ class rays_UPDATE(UpdateView):
 class raysFormView(FormView):
     template_name = 'Doctor_app/patient_rays_form.html'
     form_class = AddRaysForm
-
     def form_valid(self, form):
         if 'Doctor_Patiant_ID' in self.request.session:
             Doctor_Patiant_ID = self.request.session['Doctor_Patiant_ID']
@@ -542,22 +541,23 @@ class DoctorStatistics(APIView):
 
 
 def RestDoctorPassword(request):
-    if request.method == 'POST':
-        print("ID DOc : ", request.session['doctor_id'])
-        newpassword = request.POST['new_pass']
-        print(newpassword)
-        confirmpassword = request.POST['confirm_pass']
-        print(confirmpassword)
-        if str(newpassword) == str(confirmpassword):
-            print("TRue")
-            password = make_password(newpassword)
-            print(password)
-            doctor_id = doctor.objects.get(id=request.session['doctor_id'])
+    if 'doctor_id' in request.session:
+        if request.method == 'POST':
+            print("ID DOc : ", request.session['doctor_id'])
+            newpassword = request.POST['new_pass']
+            print(newpassword)
+            confirmpassword = request.POST['confirm_pass']
+            print(confirmpassword)
+            if str(newpassword) == str(confirmpassword):
+                print("TRue")
+                password = make_password(newpassword)
+                print(password)
+                doctor_id = doctor.objects.get(id=request.session['doctor_id'])
 
-            user.objects.filter(user_id=doctor_id.Doc_id).update(New_Password=password)
-            return HttpResponseRedirect('/patient/logout')
+                user.objects.filter(user_id=doctor_id.Doc_id).update(New_Password=password)
+                return HttpResponseRedirect('/patient/logout')
+            else:
+                return HttpResponseRedirect('/')
         else:
-            return HttpResponseRedirect('/')
-    else:
-        return render(request, 'Resetpassword.html', {})
-
+            return render(request, 'Resetpassword.html', {})
+    return HttpResponseRedirect('/doctor/')

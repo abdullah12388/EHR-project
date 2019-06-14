@@ -31,7 +31,6 @@ class doctor(models.Model):
     def __str__(self):
         return self.Doc.first_name
 
-
 class prescription(models.Model):
     prescription_id = models.AutoField(primary_key=True)
     Disease_name = models.CharField(max_length=100)

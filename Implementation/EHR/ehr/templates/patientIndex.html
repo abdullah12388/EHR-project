@@ -2,7 +2,11 @@
 {% load staticfiles %}
 
 {% block patientIndex %}
-
+{% if request.GET.notify == "not_found" %}
+    <script>
+    alert("User Not Exist Or Not Allowed to access")
+    </script>
+    {%endif%}
 <div class="container">
     <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);margin-top:30px;color: #FFF">
         <div class="row">

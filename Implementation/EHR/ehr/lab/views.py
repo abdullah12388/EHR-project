@@ -227,4 +227,5 @@ def lab_profile_view(request, labid=None):
     }
     if 'patient_id' not in request.session and 'hospital_id' not in request.session and 'lab_id' not in request.session:
         return HttpResponseRedirect('/lab/')
+
     return render(request, 'labProfileView.html', context)

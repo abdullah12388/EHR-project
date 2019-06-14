@@ -9,6 +9,10 @@ alert("This's not a patient")
 <script>
 alert("This's not a user")
 </script>
+{% elif request.GET.notify == "not_found" %}
+<script>
+alert("user Doest Exist")
+</script>
 {% endif %}
 <div class="home_container" style="top:30%">
     <div class="container">

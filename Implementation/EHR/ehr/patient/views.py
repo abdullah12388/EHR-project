@@ -22,7 +22,8 @@ from hospital.models import organization, hospital
 from patient.forms import tempRegister, login, AddUser, AddPatient, searchHistory
 from patient.models import user, patient, temp_register, AllNotification,rate
 
-
+from django.shortcuts import redirect, get_object_or_404
+from django.http import Http404
 # Create your views here.
 
 
@@ -769,11 +770,14 @@ class patientProfileDetialView(DetailView):
     context_object_name = 'patient'
     redirect_url = '/patient/Index/'
 
-    def render_to_response(self, redirect_url):
-        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
-            return HttpResponseRedirect('/patient/')
-        else:
-            return super().render_to_response(redirect_url)
+    def get(self, request, *args, **kwargs):
+        try:
+            return super(patientProfileDetialView, self).get(request, *args, **kwargs)
+        except Http404:
+            return redirect('/patient/Index/?notify=not_found')
+
+    def get_object(self):
+        return get_object_or_404(doctor, **self.kwargs)
     # self.kwargs['pk']
     # def render_to_response(self , redirect_url):
     #     if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:

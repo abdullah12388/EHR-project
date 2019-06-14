@@ -21,6 +21,9 @@ from django.core import serializers
 
 import feedparser
 
+from django.shortcuts import redirect, get_object_or_404
+from django.http import Http404
+
 def Doctor(request):
     if 'doctor_id' not in request.session:
         return HttpResponseRedirect('/patient/')
@@ -471,11 +474,20 @@ class doctorProfileDetialView(DetailView):
     context_object_name = 'doctor'
     redirect_url = '/doctor/'
 
-    def render_to_response(self, redirect_url):
-        if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session and 'hospital_id' not in self.request.session and 'clinic_id' not in self.request.session:
-            return HttpResponseRedirect('/doctor/?notify=not_found')
-        else:
-            return super().render_to_response(redirect_url)
+    def get(self, request, *args, **kwargs):
+        try:
+            return super(doctorProfileDetialView, self).get(request, *args, **kwargs)
+        except Http404:
+            return redirect('/doctor/?notify=not_found')
+
+    def get_object(self):
+        return get_object_or_404(doctor, **self.kwargs)
+
+    # def render_to_response(self, redirect_url):
+    #     if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session and 'hospital_id' not in self.request.session and 'clinic_id' not in self.request.session:
+    #         return HttpResponseRedirect('/doctor/?notify=not_found')
+    #     else:
+    #         return super().render_to_response(redirect_url)
 
     # def render_to_response(self, redirect_url):
     #     if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
@@ -560,4 +572,3 @@ def RestDoctorPassword(request):
             return HttpResponseRedirect('/')
     else:
         return render(request, 'Resetpassword.html', {})
-

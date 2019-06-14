@@ -774,7 +774,20 @@ class patientProfileDetialView(DetailView):
         try:
             return super(patientProfileDetialView, self).get(request, *args, **kwargs)
         except Http404:
-            return redirect('/patient/Index/?notify=not_found')
+            if 'doctor_id' in self.request.session:
+                return redirect('/doctor/')
+            if'patient_id' in self.request.session:
+                return redirect('/patient/Index')
+            if  'hospital_id' in self.request.session:
+                return redirect('/hospital/Index/')
+            if 'clinic_id' in self.request.session:
+                return redirect('/clinic/Index')
+            if 'pharmacy_id' in self.request.session:
+                return redirect('/pharmacy/pharmacyPatientLogin/')
+            if 'lab_id' in self.request.session:
+                return redirect('/lab/labPatientLogin/')
+            else:
+                return redirect('/')
 
     def get_object(self):
         return get_object_or_404(doctor, **self.kwargs)

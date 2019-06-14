@@ -777,7 +777,7 @@ class patientProfileDetialView(DetailView):
             if 'doctor_id' in self.request.session:
                 return redirect('/doctor/')
             if'patient_id' in self.request.session:
-                return redirect('/patient/Index')
+                return redirect('/patient/')
             if  'hospital_id' in self.request.session:
                 return redirect('/hospital/Index/')
             if 'clinic_id' in self.request.session:
@@ -790,7 +790,7 @@ class patientProfileDetialView(DetailView):
                 return redirect('/')
 
     def get_object(self):
-        return get_object_or_404(doctor, **self.kwargs)
+        return get_object_or_404(patient, **self.kwargs)
     # self.kwargs['pk']
     # def render_to_response(self , redirect_url):
     #     if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:

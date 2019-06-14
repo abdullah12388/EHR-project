@@ -8,7 +8,7 @@
     <div class="jumbotron" style="background-color:rgba(18,17,17,0.66);padding: 2rem 2rem">
         <div class="row">
         {% if pharmacy %}
-            <div class="col-sm-4">
+            <div class="col-lg-4">
                 <div class="row">
                     <div style="width:200px;margin: auto">
                         <h3 style="color: #FFF;text-align: center;font-weight: bold;">Logo</h3>
@@ -23,77 +23,77 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-lg-8">
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Name</label>
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Name">Name</label>
                     </div>
-                    <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ pharmacy.org_name }}</label>
+                    <div class="col-md-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ pharmacy.org_name }}">{{ pharmacy.org_name }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Phone</label>
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Phone">Phone</label>
                     </div>
-                    <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ pharmacy.org_phone_num }}</label>
-                    </div>
-                </div>
-                <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Website</label>
-                    </div>
-                    <div class="col-sm-8" style="max-height: 60px;overflow: hidden">
-                        <a href="{{ pharmacy.org_website }}" style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ pharmacy.org_website }}</a>
+                    <div class="col-md-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ pharmacy.org_phone_num }}">{{ pharmacy.org_phone_num }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Country</label>
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Website">Website</label>
                     </div>
-                    <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ pharmacy.org_country }}</label>
-                    </div>
-                </div>
-                <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">State</label>
-                    </div>
-                    <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ pharmacy.org_state }}</label>
+                    <div class="col-md-8" style="max-height: 60px;overflow: hidden">
+                        <a href="{{ pharmacy.org_website }}" style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ pharmacy.org_website }}">{{ pharmacy.org_website }}</a>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">City</label>
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Country">Country</label>
                     </div>
-                    <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ pharmacy.org_city }}</label>
-                    </div>
-                </div>
-                <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Zip Code</label>
-                    </div>
-                    <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ pharmacy.org_zipcode }}</label>
+                    <div class="col-md-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ pharmacy.org_country }}">{{ pharmacy.org_country }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">E-Mail</label>
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="State">State</label>
                     </div>
-                    <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ pharmacy.org_email }}</label>
+                    <div class="col-md-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ pharmacy.org_state }}">{{ pharmacy.org_state }}</label>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom:20px">
-                    <div class="col-sm-4">
-                        <label style="font-size: 20px;color: #FFF;font-weight: bold;">Creation Date</label>
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="City">City</label>
                     </div>
-                    <div class="col-sm-8">
-                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;">{{ pharmacy.creation_date }}</label>
+                    <div class="col-md-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ pharmacy.org_city }}">{{ pharmacy.org_city }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Zip Code">Zip Code</label>
+                    </div>
+                    <div class="col-md-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ pharmacy.org_zipcode }}">{{ pharmacy.org_zipcode }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="E-Mail">E-Mail</label>
+                    </div>
+                    <div class="col-md-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ pharmacy.org_email }}">{{ pharmacy.org_email }}</label>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom:20px">
+                    <div class="col-md-4">
+                        <label style="font-size: 20px;color: #FFF;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="Creation Date">Creation Date</label>
+                    </div>
+                    <div class="col-md-8">
+                        <label style="font-size: 20px;color: #32c69a;font-weight: bold;" class="ellipsis" data-toggle="tooltip" data-placement="top" title="{{ pharmacy.creation_date }}">{{ pharmacy.creation_date }}</label>
                     </div>
                 </div>
             </div>

@@ -159,6 +159,11 @@
                                                 {% endif %}
                                                 {% if 'patient_id' not in request.session and 'doctor_id' not in request.session and 'hospital_id' not in request.session and 'pharmacy_id' not in request.session and 'lab_id' not in request.session and 'clinic_id' not in request.session %}
                                                     {% if 'type' in request.session %}
+                                                        {% if request.get_full_path == '/patient/' %}
+
+                                                        <li><a href="{% url 'patient:patientLogin' %}">Login</a></li>
+                                                        <li><a href="{% url 'patient:signup' %}">Register</a></li>
+                                                        {% endif %}
                                                     {% else %}
                                                         <li><a href="{% url 'patient:patientLogin' %}">Login</a></li>
                                                         <li><a href="{% url 'patient:signup' %}">Register</a></li>

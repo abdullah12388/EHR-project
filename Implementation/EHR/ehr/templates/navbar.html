@@ -11,10 +11,97 @@
             <button class="menu_search_button"><i class="fa fa-search" aria-hidden="true"></i></button>
         </form>
         <ul>
-            <li class="menu_item"><a href="{% url 'patient:patientLogin' %}">Home</a></li>
-            <li class="menu_item"><a href="{% url "patient:aboutUs" %}">About us</a></li>
-            <li class="menu_item"><a href="{% url 'patient:patientLogin' %}">Login</a></li>
-            <li class="menu_item"><a href="{% url 'patient:signup' %}">Register</a></li>
+            {#            <li class="menu_item"><a href="{% url 'patient:patientLogin' %}">Home</a></li>#}
+            {#            <li class="menu_item"><a href="{% url "patient:aboutUs" %}">About us</a></li>#}
+            {#            <li class="menu_item"><a href="{% url 'patient:patientLogin' %}">Login</a></li>#}
+            {#            <li class="menu_item"><a href="{% url 'patient:signup' %}">Register</a></li>#}
+            {% if 'patient_id' not in request.session and 'doctor_id' not in request.session and 'hospital_id' not in request.session and 'pharmacy_id' not in request.session and 'lab_id' not in request.session and 'clinic_id' not in request.session %}
+            {% elif 'patient_id' in request.session %}
+                <li><a href="{% url 'patient:home' %}">Home</a></li>
+            {% elif 'doctor_id' in request.session %}
+                <li><a href="{% url 'doctor:patiant_id' %}">Home</a></li>
+                <li><a href="{% url 'doctor:stat' %}">Statistics</a></li>
+                <li><a href="{% url 'doctor:doctor' %}">News</a></li>
+            {% elif 'hospital_id' in request.session %}
+                <li><a href="{% url 'hospital:Index' %}">Home</a></li>
+                {#                                                    <li><a href="{% url 'hospital:stat' %}">Statistics</a></li>#}
+            {% elif 'pharmacy_id' in request.session %}
+                <li><a href="{% url 'pharmacy:pharmacyPatientLogin' %}">Home</a>
+                </li>
+            {% elif 'lab_id' in request.session %}
+                <li><a href="{% url 'lab:labPatientLogin' %}">Home</a></li>
+            {% elif 'clinic_id' in request.session %}
+                <li><a href="{% url 'clinic:Index' %}">Home</a></li>
+            {% endif %}
+            {% if 'patient_id' not in request.session and 'doctor_id' not in request.session and 'hospital_id' not in request.session and 'pharmacy_id' not in request.session and 'lab_id' not in request.session and 'clinic_id' not in request.session %}
+                {% if 'type' in request.session %}
+                    {% if request.get_full_path == '/patient/' %}
+
+                        <li><a href="{% url 'patient:patientLogin' %}">Login</a>
+                        </li>
+                        <li><a href="{% url 'patient:signup' %}">Register</a></li>
+                    {% endif %}
+                {% else %}
+                    <li><a href="{% url 'patient:patientLogin' %}">Login</a></li>
+                    <li><a href="{% url 'patient:signup' %}">Register</a></li>
+                {% endif %}
+            {% endif %}
+            {% if 'patient_id' in request.session %}
+                <li><a href="{% url 'patient:patientHistory' %}">History</a></li>
+                {% if request.get_full_path == '/patient/Index/' %}
+                    <li>
+                        <a href="{% url 'patient:patientProfileView' pk=patid %}">Profile</a>
+                    </li>
+{#                    <li>#}
+{#                        <a data-toggle="collapse"#}
+{#                           href="#collapseExample" role="button"#}
+{#                           aria-expanded="false"#}
+{#                           aria-controls="collapseExample">#}
+                            {#                                                                Notification#}
+{#                            <i class="fa fa-bell"#}
+{#                               style="font-size: 25px;color: rgba(18,17,17,0.8)">#}
+{#                                {% if newNotifications|length == 0 %}#}
+{#                                {% else %}#}
+{#                                    <span style="font-size: 20px">{{ newNotifications|length }}</span>#}
+{#                                {% endif %}#}
+{#                            </i>#}
+{#                        </a>#}
+{#                    </li>#}
+                {% endif %}
+                <li><a href="{% url 'patient:logout' %}">Logout</a></li>
+            {% elif 'doctor_id' in request.session %}
+                {#                                                    <li><a href="{% url 'doctor:patiant_id'%}">Enter A Patiant</a></li>#}
+                {% if request.get_full_path == '/doctor/' %}
+                    <li>
+                        <a href="{% url 'doctor:doctorProfileView' pk=ID %}">Profile</a>
+                    </li>
+                {% endif %}
+                <li><a href="{% url 'patient:logout' %}">Logout</a></li>
+            {% elif 'hospital_id' in request.session %}
+                {% if '/doctor/doctorProfileView/' not in request.get_full_path and '/pharmacy/pharmacyProfileView/' not in request.get_full_path and '/lab/labProfileView/' not in request.get_full_path %}
+                    <li>
+                        <a href="{% url 'hospital:hospital_profile_view' hosid=hos_id %}">Profile</a>
+                    </li>
+                {% endif %}
+                <li><a href="{% url 'hospital:hospitalLogout' %}">Logout</a></li>
+            {% elif 'pharmacy_id' in request.session %}
+                <li>
+                    <a href="{% url 'pharmacy:pharmacy_profile_view' pharid=ph_id %}">Profile</a>
+                </li>
+                <li><a href="{% url 'pharmacy:pharmacyLogout' %}">Logout</a></li>
+            {% elif 'lab_id' in request.session %}
+                <li>
+                    <a href="{% url 'lab:lab_profile_view' labid=lab_id %}">Profile</a>
+                </li>
+                <li><a href="{% url 'lab:labLogout' %}">Logout</a></li>
+            {% elif 'clinic_id' in request.session %}
+                {% if '/doctor/doctorProfileView/' not in request.get_full_path and '/pharmacy/pharmacyProfileView/' not in request.get_full_path and '/lab/labProfileView/' not in request.get_full_path %}
+                    <li>
+                        <a href="{% url 'clinic:clinic_profile_view' clinid=clin_id %}">Profile</a>
+                    </li>
+                {% endif %}
+                <li><a href="{% url 'clinic:clinicLogout' %}">Logout</a></li>
+            {% endif %}
         </ul>
     </div>
     <div class="menu_social">
@@ -244,7 +331,7 @@
                                                 <span style="color: #FFF;font-size: 20px;font-weight: bold">Welcome: Dr.{{ first_name|upper }}</span>
                                             {% elif 'hospital_id' in request.session and request.get_full_path == '/hospital/Index/' %}
                                                 <span style="color: #FFF;font-size: 20px;font-weight: bold">Welcome: {{ first_name|upper }}</span>
-                                            {% elif 'pharmacy_id' in request.session and request.get_full_path == '/pharmacy/pharmacyPatientLogin/'%}
+                                            {% elif 'pharmacy_id' in request.session and request.get_full_path == '/pharmacy/pharmacyPatientLogin/' %}
                                                 <span style="color: #FFF;font-size: 20px;font-weight: bold">Welcome: {{ first_name|upper }}</span>
                                             {% elif 'lab_id' in request.session and request.get_full_path == '/lab/labPatientLogin/' %}
                                                 <span style="color: #FFF;font-size: 20px;font-weight: bold">Welcome: {{ first_name|upper }}</span>

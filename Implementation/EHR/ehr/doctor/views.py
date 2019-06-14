@@ -589,6 +589,6 @@ def RestDoctorPassword(request):
             else:
                 return HttpResponseRedirect('/')
         else:
-            return HttpResponseRedirect('/')
+            return render(request, 'Resetpassword.html', {})
     else:
-        return render(request, 'Resetpassword.html', {})
+        return HttpResponseRedirect('/doctor/')

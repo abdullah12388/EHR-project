@@ -1098,3 +1098,9 @@ def patientName(request):
 
 def aboutUs(request):
     return render(request,'aboutUs.html',{})
+
+def loops(request):
+    f = open("drug.txt", "r")
+    data = f.read()
+    print(data)
+    return data

@@ -13,7 +13,7 @@ from patient.views import QRCodeScanner
 from hospital.models import hospital,organization
 from .forms import GetPatianTIDForm, PrescriptionForm, AddmedicenForm, AddRaysForm, AddanalyticsForm
 from .models import (prescription, report, doctor, multi_medecines,
-                     patient_medicine, multi_rays, patient_rays, patient_analytics, multi_analytics)
+                     patient_medicine, multi_rays, patient_rays, patient_analytics, multi_analytics,all_medicine,all_analytics,all_rays)
 from django.utils import timezone
 from datetime import datetime,timedelta
 
@@ -609,3 +609,24 @@ def doctorName(request):
     userid = doctor.objects.get(id=doctor_id).Doc_id
     first_name = user.objects.get(user_id=userid).first_name
     return first_name
+###############################################################################################
+# def medi(request):
+#     f = open("E:\GP Project\GitHub\EHR-project\Implementation\EHR\ehr\doctor\drug.txt", "r")
+#     drugs = []
+#     for i in f:
+#         # drugs.append(i)
+#         all_medicine.objects.create(medicine_name=i)
+
+# def medi(request):
+#     f = open("E:\GP Project\GitHub\EHR-project\Implementation\EHR\ehr\doctor\\analytics.txt", "r")
+#     drugs = []
+#     for i in f:
+#         # drugs.append(i)
+#         all_analytics.objects.create(analytics_name=i)
+
+# def medi(request):
+#     f = open("E:\GP Project\GitHub\EHR-project\Implementation\EHR\ehr\doctor\\rays.txt", "r")
+#     drugs = []
+#     for i in f:
+#         # drugs.append(i)
+#         all_rays.objects.create(ray_name=i)

@@ -40,3 +40,5 @@ pip install pyzbar[scripts]
 
 ehr.healthcare2019@gmail.com
 As123123123
+
+https://prezi.com/p/mf3pwosrm2un/ehr/

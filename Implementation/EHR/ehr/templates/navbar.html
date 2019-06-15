@@ -152,6 +152,7 @@
         {% elif '/patient/OrganizationRate/' in request.get_full_path %}height:0px;
         {% elif request.get_full_path == '/doctor/Home/' %}height:0px;
         {% elif request.get_full_path == '/patient/aboutUs/' %}height:0px;
+        {% elif '/patient/getReport/' in request.get_full_path %}height:0px;
         {% endif %}">
     <div class="
     {% if request.get_full_path == '/patient/patientHistory/' %}
@@ -185,6 +186,7 @@
             {% elif '/patient/OrganizationRate/' in request.get_full_path %}display:none;
             {% elif request.get_full_path == '/doctor/Home/' %}display:none;
             {% elif request.get_full_path == '/patient/aboutUs/' %}display:none;
+            {% elif '/patient/getReport/' in request.get_full_path %}display:none;
             {% endif %}
             "></div>
 

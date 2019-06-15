@@ -10,7 +10,7 @@ from rest_framework.views import APIView
 
 from patient.models import user, patient, AllNotification, rate
 from patient.views import QRCodeScanner
-from hospital.models import hospital
+from hospital.models import hospital,organization
 from .forms import GetPatianTIDForm, PrescriptionForm, AddmedicenForm, AddRaysForm, AddanalyticsForm
 from .models import (prescription, report, doctor, multi_medecines,
                      patient_medicine, multi_rays, patient_rays, patient_analytics, multi_analytics)
@@ -164,8 +164,19 @@ class prescriptionFormView(FormView):
         Prescription_Instance = prescription.objects.last()
         patient_instance = patient.objects.get(id=Doctor_Patiant_ID)
         Doc_instance = doctor.objects.get(id=D_ID)
+        hospital_id = Doc_instance.hospital_id
+        clinic_id = Doc_instance.clinic_id
+        print(clinic_id)
+        if hospital_id:
+            hospital_instance = hospital.objects.get(h_id=hospital_id)
+        else:
+            hospital_instance = None
+        if clinic_id:
+            clinic_instance = organization.objects.get(org_id=clinic_id)
+        else:
+            clinic_instance = None
         create_report = report.objects.create(prescription=Prescription_Instance, doctor=Doc_instance,
-                                              patient=patient_instance)
+                                              patient=patient_instance,hospital=hospital_instance,clinic=clinic_instance)
         ##################### khan added from here to make notifications available ##################
         # creating instance from table "AllNotification" to affect and get notification from it
         notifyPatient = AllNotification()

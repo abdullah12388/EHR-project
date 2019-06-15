@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d8ec0d3-e378-4bab-aa60-45a1fc63fd41" name="Default Changelist" comment="" />
+    <list default="true" id="4d8ec0d3-e378-4bab-aa60-45a1fc63fd41" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/patient/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient/views.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/patient/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="867" column="29" selection-start-line="867" selection-start-column="29" selection-end-line="867" selection-end-column="29" />
+            <state relative-caret-position="523">
+              <caret line="1103" selection-start-line="1103" selection-start-column="2" selection-end-line="1107" selection-end-column="17" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
                 <element signature="e#1183#12189#0" />
@@ -64,7 +66,141 @@
                 <element signature="e#34716#34738#0" />
                 <element signature="e#35197#36729#0" />
                 <element signature="e#36765#38319#0" />
+                <element signature="e#38361#39033#0" />
+                <element signature="e#39067#39115#0" />
                 <element signature="e#39118#39145#0" />
+                <element signature="e#40701#42257#0" />
+                <element signature="e#42284#43921#0" />
+                <element signature="e#43957#44933#0" />
+                <element signature="e#44935#44958#0" />
+                <element signature="e#45142#46762#0" />
+                <element signature="e#46812#48860#0" />
+                <element signature="e#48892#49100#0" />
+                <element signature="e#49128#49168#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clinic/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1">
+              <caret line="297" selection-start-line="297" selection-end-line="297" />
+              <folding>
+                <element signature="e#0#54#0" expanded="true" />
+                <element signature="e#448#1479#0" />
+                <element signature="e#1513#1857#0" />
+                <element signature="e#1884#2428#0" />
+                <element signature="e#2470#6904#0" />
+                <element signature="e#6963#10855#0" />
+                <element signature="e#10879#11037#0" />
+                <element signature="e#11068#11326#0" />
+                <element signature="e#11391#11600#0" />
+                <element signature="e#11641#11952#0" />
+                <element signature="e#12006#12512#0" />
+                <element signature="e#12556#12775#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/doctor/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="417">
+              <caret line="633" column="11" lean-forward="true" selection-start-line="633" selection-start-column="11" selection-end-line="633" selection-end-column="11" />
+              <folding>
+                <element signature="e#0#40#0" expanded="true" />
+                <element signature="e#1057#1681#0" />
+                <element signature="e#1715#3209#0" />
+                <element signature="e#3245#4352#0" />
+                <element signature="e#4391#5274#0" />
+                <element signature="e#5323#5967#0" />
+                <element signature="e#6012#8852#0" />
+                <element signature="e#8897#9420#0" />
+                <element signature="e#9457#10194#0" />
+                <element signature="e#10239#10855#0" />
+                <element signature="e#10896#11493#0" />
+                <element signature="e#11533#12417#0" />
+                <element signature="e#12451#13168#0" />
+                <element signature="e#13210#13818#0" />
+                <element signature="e#13856#14397#0" />
+                <element signature="e#14434#15708#0" />
+                <element signature="e#15747#16484#0" />
+                <element signature="e#16531#17155#0" />
+                <element signature="e#17198#17756#0" />
+                <element signature="e#17798#19109#0" />
+                <element signature="e#19112#19147#0" />
+                <element signature="e#20325#22197#0" />
+                <element signature="e#22226#22438#0" />
+                <element signature="e#22478#24951#0" />
+                <element signature="e#24991#25908#0" />
+                <element signature="e#25940#26116#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hospital/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-485">
+              <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#54#0" expanded="true" />
+                <element signature="e#630#1614#0" />
+                <element signature="e#1650#2006#0" />
+                <element signature="e#2033#7935#0" />
+                <element signature="e#7977#12432#0" />
+                <element signature="e#12491#16407#0" />
+                <element signature="e#16431#16589#0" />
+                <element signature="e#16620#16878#0" />
+                <element signature="e#16954#18718#0" />
+                <element signature="e#18752#20245#0" />
+                <element signature="e#20291#22093#0" />
+                <element signature="e#22122#23610#0" />
+                <element signature="e#23650#23867#0" />
+                <element signature="e#23930#24270#0" />
+                <element signature="e#24311#24630#0" />
+                <element signature="e#24685#25199#0" />
+                <element signature="e#25243#25551#0" />
+                <element signature="e#25580#25745#0" />
+                <element signature="e#25746#25747#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lab/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="109">
+              <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#55#0" expanded="true" />
+                <element signature="e#467#1475#0" />
+                <element signature="e#1506#1832#0" />
+                <element signature="e#1869#3429#0" />
+                <element signature="e#3465#3718#0" />
+                <element signature="e#3758#7030#0" />
+                <element signature="e#7065#10223#0" />
+                <element signature="e#10226#10270#0" />
+                <element signature="e#11010#11371#0" />
+                <element signature="e#11399#11521#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/predict_risk/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#541#3453#0" />
               </folding>
             </state>
           </provider>
@@ -167,16 +303,16 @@
         <option value="$PROJECT_DIR$/doctor/views.py" />
         <option value="$PROJECT_DIR$/doctor/urls.py" />
         <option value="$PROJECT_DIR$/templates/navbar.html" />
-        <option value="$PROJECT_DIR$/patient/views.py" />
         <option value="$PROJECT_DIR$/templates/patientProfileView.html" />
         <option value="$PROJECT_DIR$/templates/Doctor_app/Doctor_index.html" />
+        <option value="$PROJECT_DIR$/patient/views.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-10" />
-    <option name="width" value="815" />
-    <option name="height" value="870" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1000" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -194,18 +330,7 @@
             <path>
               <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
               <item name="ehr" type="462c0819:PsiDirectoryNode" />
-              <item name="patient" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ehr" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ehr" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="Doctor_app" type="462c0819:PsiDirectoryNode" />
+              <item name="doctor" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -317,7 +442,7 @@
       <workItem from="1560540311768" duration="2919000" />
       <workItem from="1560589368443" duration="2330000" />
       <workItem from="1560615397292" duration="2506000" />
-      <workItem from="1560618761962" duration="1591000" />
+      <workItem from="1560618761962" duration="5186000" />
     </task>
     <task id="LOCAL-00001" summary="on the way">
       <created>1554725365252</created>
@@ -337,13 +462,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="348789000" />
+    <option name="totallyTimeSpent" value="352384000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17292225" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.735823" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -399,16 +524,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="on the way" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/clinicProfileView.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="28" column="85" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="85" />
-          <folding>
-            <element signature="n#style#0;n#label#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/Doctor_app/patient_rays_detail.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -590,32 +705,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clinic/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="59" column="44" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pharmacy/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1320">
           <caret line="66" column="105" selection-start-line="66" selection-start-column="105" selection-end-line="66" selection-end-column="140" />
           <folding>
             <element signature="e#0#80#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lab/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1540">
-          <caret line="77" column="102" selection-start-line="77" selection-start-column="102" selection-end-line="77" selection-end-column="132" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -672,16 +767,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hospital/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="55" column="8" selection-start-line="55" selection-start-column="8" selection-end-line="55" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/patient/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -701,16 +786,6 @@
             <element signature="e#178#1154#0" />
             <element signature="e#1191#1738#0" />
             <element signature="e#1796#2068#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doctor/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="621" column="1" selection-start-line="621" selection-start-column="1" selection-end-line="621" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -751,8 +826,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/patient/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="867" column="29" selection-start-line="867" selection-start-column="29" selection-end-line="867" selection-end-column="29" />
+        <state relative-caret-position="523">
+          <caret line="1103" selection-start-line="1103" selection-start-column="2" selection-end-line="1107" selection-end-column="17" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
             <element signature="e#1183#12189#0" />
@@ -773,7 +848,131 @@
             <element signature="e#34716#34738#0" />
             <element signature="e#35197#36729#0" />
             <element signature="e#36765#38319#0" />
+            <element signature="e#38361#39033#0" />
+            <element signature="e#39067#39115#0" />
             <element signature="e#39118#39145#0" />
+            <element signature="e#40701#42257#0" />
+            <element signature="e#42284#43921#0" />
+            <element signature="e#43957#44933#0" />
+            <element signature="e#44935#44958#0" />
+            <element signature="e#45142#46762#0" />
+            <element signature="e#46812#48860#0" />
+            <element signature="e#48892#49100#0" />
+            <element signature="e#49128#49168#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clinic/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="297" selection-start-line="297" selection-end-line="297" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+            <element signature="e#448#1479#0" />
+            <element signature="e#1513#1857#0" />
+            <element signature="e#1884#2428#0" />
+            <element signature="e#2470#6904#0" />
+            <element signature="e#6963#10855#0" />
+            <element signature="e#10879#11037#0" />
+            <element signature="e#11068#11326#0" />
+            <element signature="e#11391#11600#0" />
+            <element signature="e#11641#11952#0" />
+            <element signature="e#12006#12512#0" />
+            <element signature="e#12556#12775#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hospital/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-485">
+          <caret line="53" column="19" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+            <element signature="e#630#1614#0" />
+            <element signature="e#1650#2006#0" />
+            <element signature="e#2033#7935#0" />
+            <element signature="e#7977#12432#0" />
+            <element signature="e#12491#16407#0" />
+            <element signature="e#16431#16589#0" />
+            <element signature="e#16620#16878#0" />
+            <element signature="e#16954#18718#0" />
+            <element signature="e#18752#20245#0" />
+            <element signature="e#20291#22093#0" />
+            <element signature="e#22122#23610#0" />
+            <element signature="e#23650#23867#0" />
+            <element signature="e#23930#24270#0" />
+            <element signature="e#24311#24630#0" />
+            <element signature="e#24685#25199#0" />
+            <element signature="e#25243#25551#0" />
+            <element signature="e#25580#25745#0" />
+            <element signature="e#25746#25747#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+            <element signature="e#467#1475#0" />
+            <element signature="e#1506#1832#0" />
+            <element signature="e#1869#3429#0" />
+            <element signature="e#3465#3718#0" />
+            <element signature="e#3758#7030#0" />
+            <element signature="e#7065#10223#0" />
+            <element signature="e#10226#10270#0" />
+            <element signature="e#11010#11371#0" />
+            <element signature="e#11399#11521#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/predict_risk/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#541#3453#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/doctor/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="417">
+          <caret line="633" column="11" lean-forward="true" selection-start-line="633" selection-start-column="11" selection-end-line="633" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+            <element signature="e#1057#1681#0" />
+            <element signature="e#1715#3209#0" />
+            <element signature="e#3245#4352#0" />
+            <element signature="e#4391#5274#0" />
+            <element signature="e#5323#5967#0" />
+            <element signature="e#6012#8852#0" />
+            <element signature="e#8897#9420#0" />
+            <element signature="e#9457#10194#0" />
+            <element signature="e#10239#10855#0" />
+            <element signature="e#10896#11493#0" />
+            <element signature="e#11533#12417#0" />
+            <element signature="e#12451#13168#0" />
+            <element signature="e#13210#13818#0" />
+            <element signature="e#13856#14397#0" />
+            <element signature="e#14434#15708#0" />
+            <element signature="e#15747#16484#0" />
+            <element signature="e#16531#17155#0" />
+            <element signature="e#17198#17756#0" />
+            <element signature="e#17798#19109#0" />
+            <element signature="e#19112#19147#0" />
+            <element signature="e#20325#22197#0" />
+            <element signature="e#22226#22438#0" />
+            <element signature="e#22478#24951#0" />
+            <element signature="e#24991#25908#0" />
+            <element signature="e#25940#26116#0" />
           </folding>
         </state>
       </provider>

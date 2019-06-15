@@ -909,7 +909,7 @@ def patientDoctor(request):
 #         return HttpResponse('age:fail to calculate')
 
 def patientCard(request, userid):
-    if 'patient_id' in request.session:
+    if 'patient_id' in request.session or 'doctor_id' in request.session:
         # print(request.session['user_id'])
         Profile_picture = user.objects.get(user_id=userid).Profile_picture
         first_name = user.objects.get(user_id=userid).first_name

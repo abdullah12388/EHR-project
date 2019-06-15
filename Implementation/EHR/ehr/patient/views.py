@@ -366,6 +366,7 @@ def home(request):
                 # 'lastAnalyticsInReport': 'False',
                 # 'lastRaysInReport': 'False',
                 'patid': patient_id,
+                'first_name': patientName(request)
             }
             return render(request, 'patientIndex.html', context)
     else:
@@ -1094,6 +1095,7 @@ def patientName(request):
     patient_id = request.session['patient_id']
     userid = patient.objects.get(id=patient_id).Patient_id
     first_name = user.objects.get(user_id=userid).first_name
+    # print(first_name)
     return first_name
 
 def aboutUs(request):

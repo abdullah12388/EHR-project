@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d8ec0d3-e378-4bab-aa60-45a1fc63fd41" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/patient/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patientProfileView.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patientProfileView.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Doctor_app/Doctor_index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Doctor_app/Doctor_index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,10 +75,14 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/patientProfileView.html">
+        <entry file="file://$PROJECT_DIR$/templates/Doctor_app/Doctor_index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="71" column="26" lean-forward="true" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
+            <state relative-caret-position="154">
+              <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#div#1;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#1;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -151,7 +153,6 @@
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/django/contrib/admin/static/admin/css/base.css" />
         <option value="$PROJECT_DIR$/hospital/urls.py" />
         <option value="$PROJECT_DIR$/templates/Doctor_app/Doctor_base.html" />
-        <option value="$PROJECT_DIR$/templates/Doctor_app/Doctor_index.html" />
         <option value="$PROJECT_DIR$/templates/footer.html" />
         <option value="$PROJECT_DIR$/doctor/admin.py" />
         <option value="$PROJECT_DIR$/../../../machine learning/ItT.py" />
@@ -176,6 +177,7 @@
         <option value="$PROJECT_DIR$/templates/navbar.html" />
         <option value="$PROJECT_DIR$/patient/views.py" />
         <option value="$PROJECT_DIR$/templates/patientProfileView.html" />
+        <option value="$PROJECT_DIR$/templates/Doctor_app/Doctor_index.html" />
       </list>
     </option>
   </component>
@@ -206,6 +208,12 @@
               <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
               <item name="ehr" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ehr" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ehr" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="Doctor_app" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -317,7 +325,7 @@
       <workItem from="1560540311768" duration="2919000" />
       <workItem from="1560589368443" duration="2330000" />
       <workItem from="1560615397292" duration="2506000" />
-      <workItem from="1560618761962" duration="283000" />
+      <workItem from="1560618761962" duration="492000" />
     </task>
     <task id="LOCAL-00001" summary="on the way">
       <created>1554725365252</created>
@@ -337,7 +345,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="347481000" />
+    <option name="totallyTimeSpent" value="347690000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -499,13 +507,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="924">
           <caret line="42" column="39" lean-forward="true" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Doctor_app/Doctor_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -742,6 +743,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/patientProfileView.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="71" column="26" lean-forward="true" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/patient/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="44">
@@ -773,10 +781,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/patientProfileView.html">
+    <entry file="file://$PROJECT_DIR$/templates/Doctor_app/Doctor_index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="71" column="26" lean-forward="true" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
+        <state relative-caret-position="154">
+          <caret line="23" column="18" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#1;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>

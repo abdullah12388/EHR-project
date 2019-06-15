@@ -1,0 +1,191 @@
+AAPM - American Association of Physics in Medicine
+AAS - Acute Abdominal Series
+ABC - Automatic Brightness Control
+ABD - Abdomen
+AC - Alternating Current
+ACR - American College of Radiology
+ADC - Analog-to-Digital Converter
+AEC - Automatic Exposure Control
+AGC - Automatic Gain Control
+AHRA - American Healthcare Radiology Administrators
+Al - Aluminium
+ALARA - As Low As Reasonably Achievable.
+AMU - Atomic mass units
+AP - Anterio-Posterior
+APR - Anatomical Programmed Radiography
+ARNA - American Radiological Nurses Association
+ARR - Academy of Radiology Research
+ARRS - American Roentgen Ray Society
+ARRT - American Registry of Radiologic Technology
+a-Se - Aamorphous Selenium
+a-Si - Amorphous Silicon
+ASRT - American Society of Radiologic Technologists
+Ba - Barium
+BAS - Barium Swallow
+Be - Beryllium
+BE - Barium Enema
+BIR - The British Institute of Radiology
+BS - British Standard
+BW - Bandwidth
+C/kg - Coulomb per Kilogram
+CAT - Computed Axial Tomography
+CAU - Caudal
+CCD - Charge Coupled Device
+CD - Compact Disc
+CDR - Recordable Compact Disc
+CEU - Continuing Education Unit
+CHD - Coronary Heart Disease
+CINE - C inematographic
+CNR - Contrast-to-Noise Ratio
+CPR - Cardio-Pulmonary Resuscitation
+CR - Computed Radiography
+CRA - Cranial
+CRT - Cathode Ray Tube
+CsI - Caesium Iodide
+CT - Computed Tomography
+CTDI - Computed Tomography Dose Index
+Cu - Copper
+CXR - Chest X-ray
+DAP - Dose Area Product
+DAS - Data Acquisition System
+DC - Direct Current
+DDR - Direct Digital Radiography
+DECUB - Decubitis
+DH - Department of Health
+DICOM - Digital Imaging and Communication in Medicine
+DLP - Dose-Length Product
+DQE - Detective Quantum Efficiency
+DSA - Digital Subtraction Angiography
+DTPA - Diethylenetriaminepentaacetic Acid
+DVD - Digital Video Disc
+Eb - Electron Binding Energy
+EBCT - Electron Beam Computed Tomography
+ECG - Electro Cardiogram
+EPI - Echo Planar Imaging
+ESR - Electron Spin Resonance
+ETL - Echo Train Length
+eV - Electron Volt
+FA - Flip Angle
+FATSAT - Fat Saturation
+FDA - Food and Drug Administration
+FDA - Food and Drug Administration
+FDD - Focus to Detector Distance
+FDD -focus to detector distance
+FE - Field Echo
+FFT - Fast Fourier Transform
+FID - Focus to Isocentre Distance, Free Induction Decay
+FOV - Field Of View
+FPR - Fluoroscopy Programmed Radiography
+FPS - Frames Per Second
+FSE - Fast Spin Echo
+FT - Fourier Transform
+GCF - Grid Conversion Factor
+Gd - Gadolinium
+Gd2O2S - Gadolinium Oxysulphide
+GE - Geometric Efficiency, General Electric, Gradient Echo
+GI - Gastrointestinal
+Gy - Gray
+H+ - Hydrogen Density
+HIS - Hospital Information System
+HU - Hounsfield Unit
+Hz - Hertz
+ICRP - International Commison on Radiological Protection
+II - Image Intensifier
+IM - Intramuscular
+IR - Inversion Recovery, Interventional Radiology
+ISO - International Organization for Standardization
+IV - Intravenous
+IVP - Intravenous Pyleogram
+IVU - Intravenous Urogram
+JRCERT - Joint Review Committee on Education in Radiologic Technology
+KeV - Kiloelectron Volt
+Kg - Kilogram
+kVp - Kilovoltage Peak
+LAO - Left Anterior Oblique
+LCD - Low Contrast Detail, Liquid Crystal Display
+LCR - Low Contrast Resolution
+LI - Linear Interpolator
+LIH - Last Image Hold
+LPO - Left Posterior Oblique
+LSF - Line Spread Function
+LT - Left
+LUT - Look Up Table
+MAMMO - Mammography, Mammogram
+mA - Milliamperage
+mAs - Milliampere Seconds
+MDA - Medical Devices Agency
+MDCT - Multi-Detector Computed Tomography
+MDD - Medical Device Directive
+MinIP - Minimum Intensity Projection
+MIP - Maximum Intensity projection
+Mo - Molybdenum
+MOD - Magneto-Optical Disc
+MRA - Magnetic Resonance Angiography
+MRI - Magnetic Resonance Imaging
+MRS - Magnetic Resonance Spectroscopy
+MSAD - Multiple Scan Average Dose
+MSCT - Multi-Slice Computed Tomography
+MTF - Modulation Transfer Function
+Mz - Magnetization Vector
+NCRP - National Council on Radiation Protection and Measurment
+NEMA - National Equipment Manufacturers Agency
+NEQ - Noise Equivalent Quantz
+NEX - Number of Excitations
+NRC - Nuclear Ragulatory Commission
+NRPB - National Radiological Protection Board
+OBL - Oblique
+OD - Optical Density
+PA - Postero-Anterior
+PACS - Picture Archive and Communications System
+Pb - Lead
+PBL - Positive Beam Limitation
+PMT - Photomultiplier Tube
+POSL - Pulse Optically Stimulated Luminescence Dosimeter
+PPS - Pulses Per Second
+PRE-SAT - Presaturation
+PSF - Point Spread Function
+PSP - Photostimulable Phosphor
+PTCA - Percutaneous Transluminal Coronary Angioplasty
+QA - Quality Assurance
+QC - Quality Control
+R&F - Radiography and Fluoroscopy
+RAD - Radiation Absorbed Dose
+RAM - Random Access Memory
+RAO - Right Anterior Oblique
+REM - Radiation Equivalent Man
+RFOV - Reconstruction Field Of View
+Rh - Rhodium
+RIS - Radiology Information System
+ROI - Region Of Interest
+RPO - Right Posterior Oblique
+RSNA - Radiological Society of North America
+RT - Right, Registered Technologist
+SAR - Specific Absorption Rate
+SCP - Service Class Provider
+SCAR - Society for Computer Applications in Radiology
+SCR - Silicon Controlled Rectifier
+SCU - Service Class User
+SE - Spin Echo
+SFOV - Scan Field Of View
+SID - Source to Image Distance
+SNR - Signal to Noise Ratio
+SONO - Sonogram, Sonography
+SPR - Scan Projection Radiograph
+SSD - Surface Shaded Display
+Sv - Seivert
+T - Tesla
+TCDD - Threshold Contrast Detail Detectability
+TDI - Time Delay Integration
+TE - Echo Time
+TFT - Thin Film Transistor
+TI - Inversion Time
+TLD - Thermoluminescent Dosimeter
+TOF - Time of Flight
+TOMO - Tomography, Tomogram
+TR - Repetition Time
+UGI - Upper Gastrointestinal Series
+US - Ultrasond, Ultrasonography
+VR - Volume Rendered, Volume Rendering
+W - Tungsten
+WIP - Work In Progress
+XR - X-ray

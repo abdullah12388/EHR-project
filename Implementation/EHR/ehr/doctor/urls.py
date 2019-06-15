@@ -32,6 +32,7 @@ urlpatterns = [
     # url(r'^doctorProfileView/$', views.doctor_profile_view, name='doctor_profile_view'),
     # url(r'^doctorProfileView/(?P<docid>\w+)/$', views.doctor_profile_view,name='doctor_profile_view'),
     url(r'^QRScan/$', views.QRCodeScanView, name='QRCodeScanView'),
+    # url(r'^medi/$', views.medi, name='medi'),
     url(r'^QRScan/$', views.QRCodeScanView, name='QRCodeScanView'),
     url(r'^api/charts/data/$', views.DoctorStatistics.as_view(),name="api-data"),
     url(r'^Statistics/$', views.StatView.as_view(),name="stat"),

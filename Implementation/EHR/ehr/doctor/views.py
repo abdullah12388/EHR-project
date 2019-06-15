@@ -1,5 +1,10 @@
+from datetime import datetime, timedelta
+
+import feedparser
 from django.contrib.auth.hashers import make_password
+from django.http import Http404
 from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, get_object_or_404
 from django.shortcuts import render
 # from django.core.urlresolvers import reverse
 from django.urls import reverse
@@ -8,21 +13,13 @@ from django.views.generic import (View, DetailView, ListView, FormView,
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from hospital.models import hospital, organization
 from patient.models import user, patient, AllNotification, rate
 from patient.views import QRCodeScanner
-from hospital.models import hospital,organization
 from .forms import GetPatianTIDForm, PrescriptionForm, AddmedicenForm, AddRaysForm, AddanalyticsForm
 from .models import (prescription, report, doctor, multi_medecines,
-                     patient_medicine, multi_rays, patient_rays, patient_analytics, multi_analytics)
-from django.utils import timezone
-from datetime import datetime,timedelta
+                     patient_medicine, multi_rays, patient_rays, patient_analytics, multi_analytics, all_medicine,all_analytics,all_rays)
 
-from django.core import serializers
-
-import feedparser
-
-from django.shortcuts import redirect, get_object_or_404
-from django.http import Http404
 
 def Doctor(request):
     if 'doctor_id' not in request.session:
@@ -36,9 +33,9 @@ def Doctor(request):
     NewsFeed = feedparser.parse("https://rss.medicalnewstoday.com/featurednews.xml")
     entry = NewsFeed.entries
     context = {
-        "Good":goodComment,
-        "Bad":badComment,
-        "News":entry
+        "Good": goodComment,
+        "Bad": badComment,
+        "News": entry
     }
     return render(request, 'Doctor_app/Doctor_index.html', context)
 
@@ -75,7 +72,8 @@ def GetPatianTID(request):
         else:
             Get_PatianT_ID_Form = GetPatianTIDForm()
             return render(request, 'Doctor_app/Patiant_ID_singup.html',
-                          {'ID': request.session['doctor_id'], 'Patiant_form': Get_PatianT_ID_Form,'first_name':doctorName(request)})
+                          {'ID': request.session['doctor_id'], 'Patiant_form': Get_PatianT_ID_Form,
+                           'first_name': doctorName(request)})
 
 
 def QRCodeScanView(request):
@@ -108,7 +106,6 @@ def QRCodeScanView(request):
             return HttpResponseRedirect('/doctor/')
     else:
         return HttpResponseRedirect('/doctor/')
-
 
 
 class ReportListView(ListView):
@@ -176,7 +173,8 @@ class prescriptionFormView(FormView):
         else:
             clinic_instance = None
         create_report = report.objects.create(prescription=Prescription_Instance, doctor=Doc_instance,
-                                              patient=patient_instance,hospital=hospital_instance,clinic=clinic_instance)
+                                              patient=patient_instance, hospital=hospital_instance,
+                                              clinic=clinic_instance)
         ##################### khan added from here to make notifications available ##################
         # creating instance from table "AllNotification" to affect and get notification from it
         notifyPatient = AllNotification()
@@ -193,7 +191,8 @@ class prescriptionFormView(FormView):
         notifyPatient.save()
         #############################################################################################
 
-        return HttpResponseRedirect(reverse('doctor:prescriptiondetial', kwargs={'pk': create_report.prescription.prescription_id}))
+        return HttpResponseRedirect(
+            reverse('doctor:prescriptiondetial', kwargs={'pk': create_report.prescription.prescription_id}))
 
     def render_to_response(self, redirect_url):
         if 'doctor_id' not in self.request.session and 'patient_id' not in self.request.session:
@@ -343,6 +342,7 @@ class rays_UPDATE(UpdateView):
 class raysFormView(FormView):
     template_name = 'Doctor_app/patient_rays_form.html'
     form_class = AddRaysForm
+
     def form_valid(self, form):
         if 'Doctor_Patiant_ID' in self.request.session:
             Doctor_Patiant_ID = self.request.session['Doctor_Patiant_ID']
@@ -490,9 +490,9 @@ class doctorProfileDetialView(DetailView):
         except Http404:
             if 'doctor_id' in self.request.session:
                 return redirect('/doctor/')
-            if'patient_id' in self.request.session:
+            if 'patient_id' in self.request.session:
                 return redirect('/patient/Index')
-            if  'hospital_id' in self.request.session:
+            if 'hospital_id' in self.request.session:
                 return redirect('/hospital/Index/')
             if 'clinic_id' in self.request.session:
                 return redirect('/clinic/Index')
@@ -502,7 +502,6 @@ class doctorProfileDetialView(DetailView):
                 return redirect('/lab/labPatientLogin/')
             else:
                 return redirect('/')
-
 
     def get_object(self):
         return get_object_or_404(doctor, **self.kwargs)
@@ -530,7 +529,6 @@ class StatView(View):
             return HttpResponseRedirect('/')
 
 
-
 class DoctorStatistics(APIView):
     authentication_classes = []
     permission_classes = []
@@ -539,14 +537,14 @@ class DoctorStatistics(APIView):
         docid = request.session['doctor_id']
         ######################################################################################
         # bar chart
-        lbldate1=(datetime.now().date() - timedelta(1)).strftime("%A")
-        lbldate2=(datetime.now().date() - timedelta(2)).strftime("%A")
-        lbldate3=(datetime.now().date() - timedelta(3)).strftime("%A")
-        lbldate4=(datetime.now().date() - timedelta(4)).strftime("%A")
-        lbldate5=(datetime.now().date() - timedelta(5)).strftime("%A")
-        lbldate6=(datetime.now().date() - timedelta(6)).strftime("%A")
-        lbldate7=(datetime.now().date() - timedelta(7)).strftime("%A")
-        labels = [lbldate1,lbldate2,lbldate3,lbldate4,lbldate5,lbldate6,lbldate7]
+        lbldate1 = (datetime.now().date() - timedelta(1)).strftime("%A")
+        lbldate2 = (datetime.now().date() - timedelta(2)).strftime("%A")
+        lbldate3 = (datetime.now().date() - timedelta(3)).strftime("%A")
+        lbldate4 = (datetime.now().date() - timedelta(4)).strftime("%A")
+        lbldate5 = (datetime.now().date() - timedelta(5)).strftime("%A")
+        lbldate6 = (datetime.now().date() - timedelta(6)).strftime("%A")
+        lbldate7 = (datetime.now().date() - timedelta(7)).strftime("%A")
+        labels = [lbldate1, lbldate2, lbldate3, lbldate4, lbldate5, lbldate6, lbldate7]
         daysData = report.objects.filter(doctor=docid)
         d1 = daysData.filter(Submit_date__contains=datetime.now().date() - timedelta(1)).count()
         d2 = daysData.filter(Submit_date__contains=datetime.now().date() - timedelta(2)).count()
@@ -555,7 +553,7 @@ class DoctorStatistics(APIView):
         d5 = daysData.filter(Submit_date__contains=datetime.now().date() - timedelta(5)).count()
         d6 = daysData.filter(Submit_date__contains=datetime.now().date() - timedelta(6)).count()
         d7 = daysData.filter(Submit_date__contains=datetime.now().date() - timedelta(7)).count()
-        defulatdata_items = [d1,d2,d3,d4,d5,d6,d7]
+        defulatdata_items = [d1, d2, d3, d4, d5, d6, d7]
         data1 = {
             "label": labels,
             "default": defulatdata_items,
@@ -604,8 +602,38 @@ def RestDoctorPassword(request):
     else:
         return HttpResponseRedirect('/doctor/')
 
+
 def doctorName(request):
     doctor_id = request.session['doctor_id']
     userid = doctor.objects.get(id=doctor_id).Doc_id
     first_name = user.objects.get(user_id=userid).first_name
     return first_name
+
+
+###############################################################################################
+# def medi(request):
+#     f = open("E:\EHR-project\Implementation\EHR\ehr\doctor\drug.txt", "r")
+#     s = 0
+#     for i in f:
+#         all_medicine.objects.create(medicine_name=i)
+#         s = s + 1
+#         if s == 100:
+#             break
+#
+# def medi(request):
+#     f = open("E:\EHR-project\Implementation\EHR\ehr\doctor\\analytics.txt", "r")
+#     s = 0
+#     for i in f:
+#         all_analytics.objects.create(analytics_name=i)
+#         s = s + 1
+#         if s == 100:
+#             break
+#
+# def medi(request):
+#     f = open("E:\EHR-project\Implementation\EHR\ehr\doctor\\rays.txt", "r")
+#     s = 0
+#     for i in f:
+#         all_rays.objects.create(ray_name=i)
+#         s = s + 1
+#         if s == 100:
+#             break

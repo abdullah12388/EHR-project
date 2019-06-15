@@ -132,7 +132,7 @@
         {% elif '/hospital/hospitalProfileView/' in request.get_full_path %} height:0px;
         {% elif '/patient/patientCard/' in request.get_full_path %} height:0px;
         {% elif '/doctor/doctorProfileView/' in request.get_full_path %} height:0px;
-        {% elif '/hospital/updateDoctor/' in request.get_full_path %} height:0px;
+        {% elif '/hospital/updateHospitalDoctor/' in request.get_full_path %} height:0px;
         {% elif '/hospital/updatePharmacy/' in request.get_full_path %} height:0px;
         {% elif '/hospital/updateLab/' in request.get_full_path %} height:0px;
         {% elif '/pharmacy/pharmacyProfileView/' in request.get_full_path %} height:0px;
@@ -153,6 +153,7 @@
         {% elif request.get_full_path == '/doctor/Home/' %}height:0px;
         {% elif request.get_full_path == '/patient/aboutUs/' %}height:0px;
         {% elif '/patient/getReport/' in request.get_full_path %}height:0px;
+        {% elif request.get_full_path == '/doctor/resetpassword/' %}height:0px;
         {% endif %}">
     <div class="
     {% if request.get_full_path == '/patient/patientHistory/' %}
@@ -170,7 +171,7 @@
             {% elif '/patient/patientProfileView/' in request.get_full_path %} display:none;
             {% elif '/patient/patientCard/' in request.get_full_path %} display:none;
             {% elif '/doctor/doctorProfileView/' in request.get_full_path %} display:none;
-            {% elif '/hospital/updateDoctor/' in request.get_full_path %} display:none;
+            {% elif '/hospital/updateHospitalDoctor/' in request.get_full_path %} display:none;
             {% elif '/hospital/updatePharmacy/' in request.get_full_path %} display:none;
             {% elif '/hospital/updateLab/' in request.get_full_path %} display:none;
             {% elif '/pharmacy/pharmacyProfileView/' in request.get_full_path %} display:none;
@@ -187,6 +188,7 @@
             {% elif request.get_full_path == '/doctor/Home/' %}display:none;
             {% elif request.get_full_path == '/patient/aboutUs/' %}display:none;
             {% elif '/patient/getReport/' in request.get_full_path %}display:none;
+            {% elif request.get_full_path == '/doctor/resetpassword/' %}display:none;
             {% endif %}
             "></div>
 

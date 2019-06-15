@@ -60,6 +60,7 @@ class DB_functions:
         temp_is_exist = temp_register.objects.filter(email__iexact=self.__patient_email).exists()
         user_is_exist = user.objects.filter(email_1__iexact=self.__patient_email).exists()
         if temp_is_exist:
+            print("temp_is_exist", self.__patient_email)
             get = temp_register.objects.get(email=self.__patient_email)
             id = get.id
             password_db = get.password
@@ -365,6 +366,7 @@ def home(request):
                 # 'lastAnalyticsInReport': 'False',
                 # 'lastRaysInReport': 'False',
                 'patid': patient_id,
+                'first_name': patientName(request)
             }
             return render(request, 'patientIndex.html', context)
     else:
@@ -432,6 +434,7 @@ def patientLogin(request):
                 db.set_patient_password(password)
                 result = db.patient_login(request)
                 if result == 'temp_email_exists':
+                    print(result)
                     return HttpResponseRedirect('/patient/patientProfile/')
                 elif result == 'email_exists':
                     if request.session['user_T'] == 2:
@@ -596,7 +599,7 @@ def patient_profile_update(request):
 
 
 def patient_profile(request):
-    if 'patient_temp_id' not in request.session:
+    if 'patient_temp_id' in request.session:
         if request.method == 'POST':
             form1 = AddUser(request.POST or None)
             form2 = AddPatient(request.POST or None)
@@ -1092,7 +1095,14 @@ def patientName(request):
     patient_id = request.session['patient_id']
     userid = patient.objects.get(id=patient_id).Patient_id
     first_name = user.objects.get(user_id=userid).first_name
+    # print(first_name)
     return first_name
 
 def aboutUs(request):
     return render(request,'aboutUs.html',{})
+
+def loops(request):
+    f = open("drug.txt", "r")
+    data = f.read()
+    print(data)
+    return data

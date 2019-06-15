@@ -28,7 +28,7 @@ class user(models.Model):
     marital_status = models.CharField(max_length=20)
     Child_num = models.IntegerField()
     email_1 = models.EmailField(max_length=100)
-    email_2 = models.EmailField(max_length=100)
+    email_2 = models.EmailField(max_length=100, null=True, blank=True)
     Nationality = models.CharField(max_length=100)
     Profile_picture = models.ImageField()
     Job_name = models.CharField(max_length=100)

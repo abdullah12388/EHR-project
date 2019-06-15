@@ -60,6 +60,7 @@ class DB_functions:
         temp_is_exist = temp_register.objects.filter(email__iexact=self.__patient_email).exists()
         user_is_exist = user.objects.filter(email_1__iexact=self.__patient_email).exists()
         if temp_is_exist:
+            print("temp_is_exist", self.__patient_email)
             get = temp_register.objects.get(email=self.__patient_email)
             id = get.id
             password_db = get.password
@@ -432,6 +433,7 @@ def patientLogin(request):
                 db.set_patient_password(password)
                 result = db.patient_login(request)
                 if result == 'temp_email_exists':
+                    print(result)
                     return HttpResponseRedirect('/patient/patientProfile/')
                 elif result == 'email_exists':
                     if request.session['user_T'] == 2:
@@ -596,7 +598,7 @@ def patient_profile_update(request):
 
 
 def patient_profile(request):
-    if 'patient_temp_id' not in request.session:
+    if 'patient_temp_id' in request.session:
         if request.method == 'POST':
             form1 = AddUser(request.POST or None)
             form2 = AddPatient(request.POST or None)

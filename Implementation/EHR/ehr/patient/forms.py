@@ -167,7 +167,6 @@ class AddUser(forms.ModelForm):
         'class': 'form-control',
         'pattern': '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$',
         'placeholder': 'Second E-mail',
-        'required': 'required'
     }))
     Nationality = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
